@@ -1,0 +1,268 @@
+<HTML>
+
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<TITLE>Příručka mtPaint - Kapitola 9 - Animace</TITLE>
+</HEAD>
+
+<BODY>
+
+<P>
+<H1>9. Animace</H1>
+<P>
+mtPaint je schopen upravovat snímky animací a také vytvářet animační snímky
+s pomocí vrstev. Pokud máte nainstalován program Gifsicle, můžete otevřít,
+nebo vytvořit animovaný GIF. Pokud ho už nemáte, můžete si ho stáhnout
+<a href="http://www.lcdf.org/gifsicle/">ZDE</a>.
+
+
+<H2><A name=SEC1>9.1 Otevření animovaného GIFu</H2>
+<P>
+Pokud se pokusíte otevřít soubor GIF s více snímky, mtPaint to pozná a nabídne vám
+možnost je upravit. Pokud to potvrdíte, mtPaint se vás zeptá na dočasný adresář
+pro uložení těchto snímků. Je vhodné vytvořit nový adresář (přes výběr souborů)
+poblíž originálního GIF souboru kvůli snadné navigaci.
+<P>
+Potom, co Gifsicle vytvořil tyto snímky, bude spuštěn nový proces mtPaint s názvy
+souborů snímků v okně příkazového řádku. Kliknete na název souboru a ten bude nahrán,
+takže ho můžete upravovat, jako normální obrázek.
+<P>
+jakmile dokončíte editaci snímků a chcete vytvořit nový animovaný soubor,
+vyberte z menu Soubor 'Exportovat jako Animovaný GIF' pro otevření dialogu. Okénko
+Zpoždění animace nastavuje zpoždění v krocích po 1 setině sekundy mezi snímky. Tato hodnota
+by měla být zapamatována, když se animace otevírala, ale nemusí být přesná, pokud
+vstupní soubor má více  různých hodnot zpoždění. Do položky názvu souboru zadejte
+nový název jako 'new.gif' a následně soubor uložte na vaše oblíbené místo.
+
+
+<H2><A name=SEC2>9.2 Vytvoření animovaného GIFu</H2>
+<P>
+Zde je příklad kroků, které je třeba vykonat pro vytvoření jednoduchého animovaného GIFu:
+<P>
+<LI>Použijte menu Soubor pro vytvoření nového obrázku s indexovanou paletou o velikosti 320x240 s 8 barvami.
+Pro vytvoření animovaného GIFu musí být paleta indexovaná, nikoliv RGB.
+<LI>Použijte menu Soubor a zvolte 'Uložit Jako'.  Jděte na požadované místo a vytvořte nový
+adresář pro vaše animační snímky. Zadejte tento adresář, vyberte formát GIF a soubor pojmenujte
+'frame-001.gif'.
+<P>
+<IMG src="../img/9.2a.gif"/>
+<P>
+<LI>Stiskněte T a do otevřeného okna napište 'Animating'. Stiskněte Enter
+a vložte tento text do horní části obrázku. Použijte 'Soubor-&gt;Uložit jako' pro uložení
+obrázku jako 'frame-002.gif'.
+<P>
+<IMG src="../img/9.2b.gif"/>
+<P>
+<LI>Stiskněte znovu T a vložte text 'is' do středu obrázku. Uložte tento obrázek jako
+'frame-003.gif'.
+<P>
+<IMG src="../img/9.2c.gif"/>
+<P>
+<LI>Stiskněte znovu T a vložte text 'fun' do spodní části obrázku. Uložte tento obrázek jako
+'frame-004.gif'.
+<P>
+<IMG src="../img/9.2d.gif"/>
+<P>
+<LI>Z menu Soubor vyberte 'Exportovat jako animovaný GIF' pro otevření dialogu. Zadejte
+100 do okna Zpoždění animace, což nastaví zpoždění mezi snímky na 1 sekundu.
+Do názvu souboru zadejte 'final.gif' a stiskněte Enter pro vytvoření souboru.
+<P>
+<IMG src="../img/9.2e.gif"/>
+
+
+<H2><A name=SEC3>9.3 Animování vrstev</H2>
+<P>
+Použití vrstev při vytváření animace vám ušetří mnoho času a úsilí. Místo editace
+každého snímku po pixelech nastavíte klíčové snímky definicí pozic všech vrstev.
+Jakmile jste spokojeni s rozmístěním, můžete vytvořit všechny snímky stiskem
+jediného tlačítka. mtPaint spočítá všechny mezilehlé snímky. Musíte být ovšem
+velice dobře seznámeni s používáním
+vrstev, takže pokud nejste, tak vám velmi doporučuji přečíst sekci o vrstvách.
+
+
+<H3><A name=SEC31>9.3.1 Příprava nápadů</H3>
+<P>
+Jakmile přijdete s nápadem pro vaši animaci, musíte před použitím mtPaintu
+nejprve připravit vaše plány. Například musíte rozhodnout pár věcí, jako je
+velikost výsledného obrázku, počet snímků za sekundu, počet barev a
+celková doba běhu animace.
+
+
+<H3><A name=SEC32>9.3.2 Zahájení projektu</H3>
+<P>
+Před zahájením práce na animace je vhodné vytvořit
+nový adresář pro umístění všech obrázkových souborů, což vám ušetří mnoho starostí
+s prací se soubory. Následně vytvoříte obrázek pozadí, který určí rozměry
+finální animace. Nakonec vytvoříte a uložíte každou obrázkovou vrstvu, kterou chcete
+mít v animaci.
+<P>
+Jakmile máte všechny obrázkové vrstvy připravené, můžete parametry
+animace nastavit pomocí položky 'Vrstvy-&gt;konfigurovat animaci'. Zde
+určíte první a poslední číslo snímku, jméno adresáře pro uložení snímků
+a různé další detaily.
+
+
+<H3><A name=SEC33>9.3.3 Nastavení pozic a opakovacích dat</H3>
+<P>
+Jakmile máte umístěné všechny vrstvy pro první snímek,
+vyberte položku menu 'Vrstvy-&gt;nastavit klíčový snímek'. Toto můžete
+následně provést pro další snímky animace.
+Na záložde pozice konfiguračního okna byste měli mít
+následující dva řádky:
+<P>1	10	10	255	0
+<P>10	20	20	128	0
+<P>
+Tato vrstva začíná na pozici (10,10) ve snímku 1 a přesune se na pozici (20,20)
+ve snímku 10 s neprůhledností měnící se od 100% (255) do 50% (128). Každý ze snímků
+2-9 jsou mtPaintem spočítány jako mezilehlé snímky. 0 na konci znamená,
+že to bude rovná čára. Hodnota 1 znamená, že mtPaint přesune tuto vrstvu
+po lehce plynulejší trajektorii mezi danými body.
+<P>
+Záložka Cyklus se používá pro určení, v jakou chvíli jsou které vrstvy viditelné.
+Může být vloženo až 100 řádek v následujícím formátu:
+<P>
+frame1	frame2	layer1, layer2, layer3, ... , layer50
+<P>
+Na každém řádku můžete mít až 50 vrstev. Mezi dvěma snímky animace bude viditelná
+pouze jediná sekvence s ostatními vypnutými. Jak snímky narůstají,
+mude v sekvenci zobrazena další vrstva a předchozí bude skryta.
+<P>
+Například:
+<P>
+1	10	1, 2, 3
+<P>
+Bude střídat viditelnost vrstev 1, 2, 3 mezi snímky 1 a 10.
+<P>
+Normálně bude 2. snímek vyšší než snímek 1, ale pokud jsou stejné, můžete manuálně
+nastavit, které vrstvy jsou na snímku viditelné a skryté. Například:
+<P>
+15	15	10, 11, 12, -1, -2, -3
+<P>
+Zobrazí vrstvy 10, 11, 12 a skryje vrstvy 1, 2, 3 na snímku 15.
+<P>
+Následně můžete provést náhled animace stiskem tlačítka
+Náhled (nebo použitím menu Vrstvy) a posunováním posuvníku prohlédnout animaci.
+Pro změnu snímku můžete také použít kurzorové klávesy, page up/down, nebo + či -.
+
+
+<H3><A name=SEC34>9.3.4 Exportování snímků pro kódování GIF, nebo MPEG</H3>
+<P>
+Jakmile jste s animací, co jste vytvořili, spokojeni, můžete snímky
+exportovat použitím tlačítka 'Vytvořit snímky'. Pokud máte zaškrtnutou volbu
+GIF, tak mtPaint vygeneruje indexované GIF soubory. Pokud ne, tak vytvoří
+vytvoří RGB PNG soubory. Potom můžete použít enkódovací software, jako Gifsicle,
+nebo mencoder pro vytvoření souboru animace. Pokud enkódujete do GIFu, mtPaint
+se pokusí zavolat Gifsicle automaticky a vytvoří pro vás animovaný GIF.
+Na GNU/Linux systémech může být také použitý gifview pro zobrazení výsledku.
+<P>
+Zde je příklad, jak přinutit mencoder pro vytvoření MPEG souboru z RGB PNG souborů:
+<P><B>
+mencoder mf://*.png -mf fps=25 -ovc lavc -lavcopts vcodec=mpeg4 -o output.avi
+</B></P>
+<P>
+Pro více informací, jak používat mencoder navštivte domácí stránku mplayeru
+<a href="http://www.mplayerhq.hu/">ZDE</a>
+<P>
+Pro více informací, jak používat gifsicle navštivte jeho domácí stránku
+<a href="http://www.lcdf.org/gifsicle/">ZDE</a>
+
+
+<H3><A name=SEC35>9.3.5 Další poznámky</H3>
+<P>
+Pokud sestavujete obzvlášť dlouhou animaci, která potřebuje více jak 100
+řádek v záložkách pozice, nebo cyklus, můžete jednoduše zkopírovat soubor
+vrstev a mít odlišné soubory pro každou sekci animace. Například
+'layers00001-00500.txt' může být prvních 500 snímků a
+'layers00500-01000.txt' může být 500 dalších. Potom vytvoříte
+snímky jako normálně ve všech případech a spojíte je dohromady vaším oblíbeným
+enkódovacím software.
+
+
+<H2><A name=SEC4>9.4 Příklady animací s indexovanou paletou</H2>
+<P>
+Zde je pár příkladů animací vytvořených programy mtPaint a Gifsicle. Pro stažení
+zdrojových souborů klikněte na jednotlivé obrázky:
+<P>
+<A href="../files/9.4a.zip"><IMG src="../img/9.4a.gif"></A>
+<A href="../files/9.4b.zip"><IMG src="../img/9.4b.gif"></A>
+<A href="../files/9.4c.zip"><IMG src="../img/9.4c.gif"></A>
+<A href="../files/9.4d.zip"><IMG src="../img/9.4d.gif"></A>
+<A href="../files/9.4e.zip"><IMG src="../img/9.4e.gif"></A>
+<A href="../files/9.4g.zip"><IMG src="../img/9.4g.gif"></A>
+<A href="../files/9.4h.zip"><IMG src="../img/9.4h.gif"></A>
+
+
+
+<H2><A name=SEC5>9.5 Příklady RGB animací</H2>
+<P>
+Ačkoliv je mtPaint primárně určen pro zpracování kreseb s indexovanou paletou,
+je také schopen vytvořit RGB animace, které používají větší plátno,
+výšší počet snímků za sekundu a různou průhlednost vrstev.
+Zde jsou některé příklady:
+<P>
+<A href="../files/9.5b.zip"><IMG src="../img/9.5b.png"></A>
+
+
+<H2><A name=SEC6>9.6 Posouvání palety</H2>
+<P>
+Posouvání palety je stará technika používaná k vytvoření iluze pohybu
+pomocí přesunu barev mezi nastavenými limity. Protože je tato technika založena
+na paletě, tak funguje pouze na obrázcích s indexovanou paletou. Posunovač palety
+v mtPaintu lze vyvolat volbou v menu Paleta, kde se vám zobrazí následující
+dialog:
+<P><IMG src="../img/9.6a.png">
+<P>
+Každý řádek reprezentuje posun palety v sekvenci, kde první dvě čísla
+představují první a poslední čísla barev určených pro přesun.
+Záporným znaménkem u číslice otočíte směr posunování palety.
+Zpoždění představuje počet snímků mezi dvěma přesuny, kde nula znamená
+bez zpoždění.
+<P>
+Zde jsou dva obrázky:
+<P><IMG src="../img/9.6b.png"> <IMG src="../img/9.6c.gif">
+<P>
+Pokud nahrajete do mtPaintu první obrázek a potom vyvoláte okno posunovače palety,
+tak můžete reprodukovat animaci zadáním těchto dat:<BR>
+13,6,0<BR>
+50,19,0<BR>
+51,82,0<BR>
+<P>
+Pro vyjasnění, jak jsem vytvořil tento obrázek, je zde verze
+obrázku s lehce odlišnou paletou pro zvýraznění skrytých barev:
+<P>
+<IMG src="../img/9.6d.png">
+
+<P>
+Jakmile jste vytvořili animaci, se kterou jste spokojeni, můžete vytvořit
+animovaný GIF pomocí těchto kroků:
+<LI>Otevřete originální obrázek kvůli vyčištění historie.
+<LI>Nastavte posunovač palety dle požadovaných parametrů a s použitím tlačítka
+přehrát si prohlédněte náhled výsledku.
+<LI>Stiskněte tlačítko 'Vytvořit snímky' a zavřete okno posunovače palety.
+<LI>Vraťte jeden snímek zpět stiskem Ctrl-Z.
+<LI>Vyberte 'Export obrázků historie' z menu Soubor a uložte soubory do
+do libovolného nového adresáře a použijte název souboru 'out'.  Přesvědčete se, že jste vybrali
+soubor typu GIF.
+<LI>Otevřete jeden z těchto snímků jako out001.gif.
+<LI>Vyberte 'Exportovat jako Animovaný GIF' z menu soubor a vyberte vhodný
+název souboru a zpoždění.
+
+<P>
+Zde jsou další příklady přesunování palety společně se zdrojovými obrázky
+a vstupy potřebnými pro jejich vytvoření:
+<P>
+<IMG src="../img/9.6e.png"> 1,60,0 <IMG src="../img/9.6f.gif">
+<P>
+<IMG src="../img/9.6g.png"> 1,16,0 <IMG src="../img/9.6h.gif">
+<P>
+<IMG src="../img/9.6i.png"> 1,16,0 <IMG src="../img/9.6j.gif">
+
+
+
+<P>
+<HR>
+
+</BODY>
+</HTML>
+
+

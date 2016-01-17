@@ -1,0 +1,163 @@
+<HTML>
+
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">	
+<TITLE>Příručka mtPaint - Příloha D - Soubor README z mtPaintu</TITLE>
+</HEAD>
+
+<BODY>
+
+<P>
+<H1>Příloha D - Soubor README z mtPaintu</H1>
+
+<HR>
+
+---------------------------------------------<BR>
+mtPaint 3.10 - Copyright (C) 2004-2006 Autoři<BR>
+---------------------------------------------<BR>
+<BR>
+Seznam autorů naleznete v sekci 'Kredity'.<BR>
+<BR>
+mtPaint je volný software; můžete ho šířit a/nebo modifikovat dle znění GNU General Public License, jak byla publikována Free Software Foundation; také verzí 2 této licence, nebo (jako možnost) její pozdější verzí.<BR>
+<BR>
+mtPaint je distribuován v naději, že bude užitečný, ale bez jakékoliv záruky; bez jakékoliv záruky ZISKU, nebo VHODNOSTI PRO SPECIFICKÝ ÚČEL. Pro více detailů si přečtěte GNU General Public Licenci.<BR>
+<BR>
+mtPaint je jednoduchý GTK+1/2 kreslicí program udělaný pro vytváření ikon a kreseb pomocí pixelů. Může upravovat obrázky s indexovanou paletou, nebo 24 bit RGB obrázky a nabídne základní nástroje pro kreslení a manipulace s paletou. Má také mnoho jiných výkonných funkcí, jako kanály, vrstvy a animace. Díky své jednoduchosti a málo závislostí běhá dobře na GNU/Linuxu, Windows a starším PC hardware.<BR>
+<BR>
+Kompletní dokumentace funkcí mtPaintu je k dispozici v příručce. Pokud jí ještě nemáte, můžete ji stáhnout z webových stránek mtPaintu.<BR>
+<BR>
+Pokud se vám mtPaint líbí a chcete vědět o nových verzích, nebo chcete dát nějakou zpětnou vazbu, tak vás možná budou zajímat mailové konference:<BR>
+<BR>
+http://sourceforge.net/mail/?group_id=155874<BR>
+<BR>
+---------<BR>
+Kompilace<BR>
+---------<BR>
+<BR>
+Abyste mohli mtPaint zkompilovat na systému GNU/Linux, budete potřebovat knihovny a hlavičkové soubory GTK+1 a/nebo GTK+2,libpng a zlib. Pokud chcete otevírat, nebo ukládat soubory GIF, JPEG a TIFF, budete také potřebovat libungif, libjpeg a libtiff. Pokud chcete zkompilovat mezinárodní verzi, musíte mít ještě nainstalovaný systém gettext a hlavičkové soubory. Potom můžete upravit Makefile/zdrojáky pro splnění vašich požadavků a potom:<BR>
+<BR>
+Pro GTK+2<BR>
+=========<BR>
+<BR>
+./configure<BR>
+make<BR>
+su -c "make install"<BR>
+<BR>
+Pro GTK+1<BR>
+=========<BR>
+<BR>
+./configure gtk1<BR>
+make<BR>
+su -c "make install"<BR>
+<BR>
+<BR>
+Pokud chcete tyto soubory ze systému odinstalovat, měli byste napsat:<BR>
+<BR>
+su -c "make uninstall"<BR>
+<BR>
+Je zde mnoho configure voleb, které se mohou někomu hodit.  Použijte "./configure --help" pro zobrazení voleb, které jsou k dispozici. Pokud kompilujete mtPaint na starším systému bez gtk-config, budete možná muset upravit configure skript, protože nastavení GTK+1 je prováděno manuálně. Pro demonstraci je příklad k dispozici v configure skriptu.
+<BR>
+Pokud kompilace proběhla úspěšně, můžete program vyzkoušet napsáním "mtpaint src/graphics/testcard.png". Můžete také mtPaint zavolat s volbou -v a potom program naběhne v režimu prohlížení, kde je skrytá paleta, menu atd. Položky lze obnovit stisknutím klávesy "Home". Po instalaci můžete vytvořit symbolický link pro přidání příkazu prohlížeče takto<BR>
+<BR>
+su -c "ln -s mtpaint /usr/local/bin/mtv"<BR>
+<BR>
+Pak lze otevřít nějaké obrázky pomocí "mtv *.jpg". To je zkratka pro napsání "mtpaint -v *.jpg". mtPaint může upravovat pouze jeden obrázek najednou, ale pokud zadáte na příkazovou řádku více jak jeden soubor, tak se objeví okno se všemi soubory v seznamu. Pokud jeden vyberete, tak se otevře. Tato funkce mi přijde užitečná při upravování mnoha ikon, nebo digitálních fotografií.<BR>
+<BR>
+Při prvním spuštění mtPaintu je vytvořen nový soubor pro uložení vašeho nastavení, historie apod. Tento soubor je pojmenován ".mtpaint" a je uložen do domovského adresáře uživatele. Pokud tento soubor přejmenujete, nebo odstraníte, tak mtPaint použije při příštím spuštění výchozí nastavení.<BR>
+<BR>
+mtPaint je také možné zkompilovat na systému Windows s použitím MinGW/MSYS s patřičnými knihovnami a hlavičkami. Pokud to chcete provést, musíte nejdříve stáhnout normální setup program, nainstalovat soubory do "C:/Program Files/mtPaint/" a potom:<BR>
+<BR>
+1) Nainstalovat MinGW a MSYS - http://www.mingw.org/<BR>
+MinGW-3.1.0-1.exe - do c:/MinGW/<BR>
+MSYS-1.0.10.exe - do c:/msys/<BR>
+<BR>
+2) Nainstalovat GTK+2 vývojové balíčky (a závislosti jako libpng) - ftp://ftp.gtk.org/pub/gtk/v2.6/win32/ a http://gnuwin32.sourceforge.net/packages.html<BR>
+<BR>
+Pro GTK+2 musíte stáhnout a rozbalit následující zip soubory do c:/msys:<BR>
+gtk+-dev-2.6.4.zip<BR>
+pango-dev-1.8.0.zip<BR>
+atk-dev-1.9.0.zip<BR>
+<BR>
+Musíte také stáhnout a rozbalit následující zip soubory do c:/msys:<BR>
+You will also need to download and extract the following zip files to c:/msys:<BR>
+glib-dev-2.6.4.zip<BR>
+libpng-1.2.7-lib.zip<BR>
+zlib-1.2.1-1-lib.zip<BR>
+libungif-4.1.4-lib.zip<BR>
+jpeg-6b-3-lib.zip<BR>
+tiff-3.6.1-2-lib.zip<BR>
+<BR>
+If you want to compile the internationlized version you will need to download and extract the following zip files to c:/msys:<BR>
+Pokud chcete zkompilovat mezinárodní verzi, musíte také stáhnout a rozbalit následující zip soubory do c:/msys:<BR>
+gettext-0.14.1-bin.zip<BR>
+gettext-0.14.1-dep.zip<BR>
+gettext-0.14.1-lib.zip<BR>
+libiconv-1.8-1-bin.zip<BR>
+libintl-0.11.5-2-bin.zip<BR>
+<BR>
+Z nějakého důvodu musím přesunout c:/msys/bin/msgfmt a xgettext do c:/msys/local/bin/ aby běželi správně. Pokud máte problém s během msgfmt, možná musíte provést to samé.<BR>
+<BR>
+3) Stáhnout poslední zdrojáky mtPaintu a rozbalit je do c:/msys.<BR>
+<BR>
+4) Pro komlipaci kódu musíte použít MSYS na "./configure win", potom "make" a "make install"<BR>
+<BR>
+5) Jestli vše proběhne dobře, měli byste mít mtpaint.exe který můžete spustit stejnou metodou popsanou výše. mtPaint můžete zkompilovat s použitím novějších knihoven, takže bude nutné změnit nějaké názvy, jako libpng12.dll -&gt; libpng13.dll a libungif.dll -&gt; libungif4.dll.<BR>
+<BR>
+Protože používám Windows jen zřídka, tak nemohu již podporovat GTK+1, nebo starší verze GTK+2 na tomto systému z důvodu nedostatku času.<BR>
+<BR>
+-------<BR>
+Kredity<BR>
+-------<BR>
+<BR>
+mtPaint spravuje Dmitry Groshev.<BR>
+<BR>
+wjaguar@mail.ru<BR>
+http://mtpaint.sourceforge.net/<BR>
+<BR>
+Následující lidé (v abecedním pořadí) přímo přispívají do projektu a patří jím tudíž veliké díky za jejich šlechetnost a tvrdou práci:<BR>
+<BR>
+<BR>
+Autoři<BR>
+<BR>
+Dennis Lee - Napsal dvě kvantizační metody DL1 a 3 - více informací v quantizer.c.<BR>
+Dmitry Groshev - Přispívající vývojář pro verzi 2.30. Vedoucí vývojář a správce od verze 3.00 do současnosti.<BR>
+Magnus Hjorth - Napsal inifile.c/h, z programu mhWaveEdit 1.3.0.<BR>
+Mark Tyler - Originální autor a správce do verze 3.00, pozdější občasný přispěvovatel.<BR>
+Xiaolin Wu - Napsal Wu kvantizační metodu - více informací v wu.c.<BR>
+<BR>
+<BR>
+Hlavní přispěvovatelé (Zpětná vazba a nápady pro zlepšení)<BR>
+<BR>
+Abdulla Al Muhairi - Redesign webu v Dubnu 2005<BR>
+Alan Horkan<BR>
+Alexandre Prokoudine<BR>
+Antonio Andrea Bianco<BR>
+Ed Jason<BR>
+Eddie Kohler - Vytvořil Gifsicle, který je potřeba pro vytvoření a prohlížení animovaných GIFů http://www.lcdf.org/gifsicle/<BR>
+Guadalinex Team (Junta de Andalucia) - manuálová stránka, Launchpad/Rosetta registrace<BR>
+Lou Afonso<BR>
+Magnus Hjorth<BR>
+Martin Zelaia<BR>
+Pavel Ruzicka<BR>
+Puppy Linux (Barry Kauler)<BR>
+Vlastimil Krejcir<BR>
+William Kern<BR>
+<BR>
+<BR>
+Překlady<BR>
+<BR>
+Brazilská Portugalština - Paulo Trevizan<BR>
+Čeština - Pavel Ruzicka<BR>
+Francoužština - Nicolas Velin, Pascal Billard<BR>
+Němčina - Oliver Frommel<BR>
+Polština - Simek<BR>
+Portugalština - Israel G. Lugo<BR>
+Španělština - Guadalinex Team (Junta de Andalucia), Antonio San<BR>
+Taiwanská Čínština - Wei-Lun Chao<BR>
+Turečtina - Muhammet Kara, Tutku Dalmaz<BR>
+<BR>
+<P>
+<HR>
+
+</BODY>
+</HTML>

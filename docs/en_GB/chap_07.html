@@ -1,0 +1,393 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<TITLE>The mtPaint Handbook - Chapter 7 - Channels</TITLE></HEAD><BODY BGCOLOR="white" TEXT="black">
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<H1>7. Channels</H1>
+<P>
+mtPaint is able to create and use up to three utility channels - Alpha,
+Selection and Mask. The Channels menu has various options which are used to
+handle these features. At any time these channels will have the same geometry as
+the image being edited. You can display the channels as overlays and prescribe
+the colour and opacity of these overlays using the 'Configure Overlays' option.
+</P>
+<P>
+You can edit any of the channels by selecting it from the menu and then using
+the normal painting tools. The value of the pixels to be plotted is taken from
+the 'Settings Toolbar'.
+</P>
+<A NAME="SEC1"></A>
+<H2>7.1 Alpha</H2>
+<P>
+An image uses an alpha channel in order to determine how transparent a given
+pixel is. Alpha channels can be used to smoothly blend the edges of one image
+when super-imposing it onto another image, such as with layers. This is very
+useful for things like text.
+</P>
+<P>
+In the main editing window, a pixel that is made transparent by the alpha
+channel will show the chequered pattern underneath like this:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.1.png" BORDER="0" ALT="">
+</P>
+<P>
+If you want to edit just the alpha channel it may be convenient to hide the
+image channel or show the alpha channel as an overlay. These options can be
+toggled on and off with the Channels menu. This is what the above image looks
+like with these toggles switched on:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.1b.png" BORDER="0" ALT="">
+</P>
+<A NAME="SEC11"></A>
+<H3>7.1.1 Coupling RGBA Operations</H3>
+<P>
+When you have an alpha channel and you are painting to the image channel, it may
+be convenient to couple painting actions between the image and alpha channels
+(or to keep them separate). For example here are the results of painting a
+rectangle with the 'Couple RGBA Operations' toggled on and off via the Channels
+menu:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.1.1a.png" BORDER="0" ALT="">
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.1.1b.png" BORDER="0" ALT="">
+</P>
+<A NAME="SEC12"></A>
+<H3>7.1.2 Unassociate Alpha</H3>
+<P>
+RGB images with alpha transparency can be stored in two different ways. One way
+is to store raw RGB values and alpha values as separate and independent
+channels; this is called "unassociated alpha". Another way is to store RGB
+values not raw, but premultiplied by corresponding alpha value, which is then
+called "associated alpha". mtPaint, like most other image processing programs,
+stores images with unassociated alpha, to be able to manipulate RGB and alpha
+independently of one another, and not lose RGB data when zeroing out alpha. On
+the other hand, rendering software prefers associated alpha, because with RGB
+values already multiplied by alpha, less work remains to be done in real time
+when doing alpha blending. Some image formats, such as TIFF and TGA, support
+both types of alpha, but are frequently mislabelled; other formats such as PNG
+or BMP support just one type of alpha, and usually don't define which - in
+practice it means that it can be both types equally likely. mtPaint
+automatically converts images with definitely recognized associated alpha to
+unassociated - but type of alpha cannot be autodetected reliably, and when
+autodetection fails, "Unassociate Alpha" allows one to convert a misdetected
+image with associated alpha to unassociated.
+</P>
+<A NAME="SEC2"></A>
+<H2>7.2 Selection</H2>
+<P>
+The selection channel is used by the copy function in order to include only
+certain parts of the image. For example you may want to copy and paste an
+elliptical shaped area like this:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.2.png" BORDER="0" ALT="">
+</P>
+<A NAME="SEC3"></A>
+<H2>7.3 Mask</H2>
+<P>
+The mask channel is used to protect certain areas of the image from being
+changed by the painting tools. For example you can protect an elliptical shaped
+area like this to avoid spraying pixels over it:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.3.png" BORDER="0" ALT="">
+</P>
+<P>
+The mask channel can also be used to selectively apply effects such as blur,
+sharpen or any kind of colour transformation.
+</P>
+<P>
+Normally each mask pixel is completely set or cleared (255 or 0), but partial
+values in between can be used to offer semi protection. See section 7.5.8 for an
+example of this.
+</P>
+<A NAME="SEC4"></A>
+<H2>7.4 File Handling</H2>
+<P>
+If you are editing an image with any type of channel, mtPaint will save this
+data within the PNG file format. Any other format will not save this data, so if
+you need to keep the channel you will need to use the PNG format or save the
+channel individually using the Channels menu.
+</P>
+<P>
+Technically, the channel is saved as a compressed private chunk which means that
+mtPaint will be able to recognise this data, but other image editors will not.
+</P>
+<A NAME="SEC5"></A>
+<H2>7.5 Tricks and Tips</H2>
+<A NAME="SEC51"></A>
+<H3>7.5.1 Converting a Colour Transparency to an Alpha Transparency</H3>
+<UL>
+<LI>Create alpha channel using "Set colour A radius B", with A=B=transparent
+colour
+<LI>Invert the alpha channel
+</UL>
+
+<P>
+This method fails for indexed palette images which contain another,
+non-transparent palette colour with same RGB values as the transparent one. This
+can be prevented by first changing transparent colour's RGB to something
+otherwise unused.
+</P>
+<P>
+Another method is to:
+</P>
+<UL>
+<LI>Mask the transparent colour (i.e. click to the right of the transparent colour
+on the palette so that the 'x' appears).
+<LI>Create a cleared alpha channel.
+<LI>Edit the alpha channel and press Ctrl-A to select all.
+<LI>Select an alpha of 255 on the settings toolbar.
+<LI>Fill selection.
+</UL>
+
+<A NAME="SEC52"></A>
+<H3>7.5.2 Converting an Alpha Transparency to a Colour Transparency</H3>
+<UL>
+<LI>Create a mask channel from alpha and switch to editing it
+<LI>Threshold it at value you want (128 for more-than-half transparent to become
+transparent)
+<LI>Switch to editing image
+<LI>Set colour A to the transparent colour
+<LI>Select all
+<LI>Fill selection
+</UL>
+
+<A NAME="SEC53"></A>
+<H3>7.5.3 Separating a Red, Green or Blue Channel</H3>
+<UL>
+<LI>Set colour A to cyan, magenta or yellow respectively
+<LI>Toggle tint mode on and tint +- mode on
+<LI>Select all
+<LI>Fill selection
+</UL>
+
+<A NAME="SEC54"></A>
+<H3>7.5.4 Adding a Red, Green or Blue Channel</H3>
+<UL>
+<LI>Copy single-colour image into clipboard
+<LI>Load the RGB image from somewhere
+<LI>Set colour A to red, green or blue respectively
+<LI>Toggle tint mode on and tint +- mode on
+<LI>Select all
+<LI>Fill selection
+<LI>Toggle tint +- off
+<LI>Paste
+</UL>
+
+<A NAME="SEC55"></A>
+<H3>7.5.5 Converting Red, Green or Blue into any Other Colour</H3>
+<UL>
+<LI>Create a selection channel from R, G or B
+<LI>Fill image with the colour you want
+<LI>Copy it to clipboard
+<LI>Fill image with black
+<LI>Paste
+</UL>
+
+<A NAME="SEC56"></A>
+<H3>7.5.6 Adding or Subtracting Masks</H3>
+<UL>
+<LI>Copy one mask into clipboard
+<LI>Load or create the other mask
+<LI>Toggle tint mode on (For subtracting, just toggle on tint +- on)
+<LI>Paste
+</UL>
+
+<A NAME="SEC57"></A>
+<H3>7.5.7 Creating a Mask from a Single Colour</H3>
+<UL>
+<LI>Pick the colour from the canvas using Ctrl+Left/Right mouse click to store it
+in colour A &amp; B
+<LI>Create a new channels using 'Set colour A radius B'
+</UL>
+
+<A NAME="SEC58"></A>
+<H3>7.5.8 Cutting out Text Shapes from a Photo</H3>
+<P>
+It is possible to cut out text shapes from a photo like this:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.5.8.jpg" BORDER="0" ALT="">
+</P>
+<UL>
+<LI>Load the photo into mtPaint
+<LI>Create and edit a new empty selection channel
+<LI>Paste some text onto the selection channel with anti-aliasing
+<LI>Create a new mask channel based on the selection channel
+<LI>Invert the mask channel
+<LI>Edit the main image channel
+<LI>Select the whole image and cut using Ctrl+A and Ctrl+X
+<LI>Remove the mask and selection channels
+<LI>Paste the clipboard onto the image
+</UL>
+
+<P>
+This technique works with all images. For example you could use
+it to cut out shapes from a gradient you have created.
+</P>
+<A NAME="SEC59"></A>
+<H3>7.5.9 Creating Text Cut Outs for Web Pages</H3>
+<P>
+It is possible to cut out text shapes from a photo and use them as web graphics
+like this:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.5.9.png" BORDER="0" ALT="">
+</P>
+<UL>
+<LI>Load the photo into mtPaint
+<LI>Create and edit a new alpha channel
+<LI>Paste some text
+<LI>Crop the image to the text
+<LI>Save the image as an RGB PNG file, so it can be read by alpha PNG aware
+browsers
+</UL>
+
+<A NAME="SEC510"></A>
+<H3>7.5.10 Feathered Edges</H3>
+<P>
+It is possible to use the Gaussian Blur effect to feather the edge of any
+channel like this:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.5.10.png" BORDER="0" ALT="">
+</P>
+<UL>
+<LI>Load an image into mtPaint
+<LI>Create a new selection channel
+<LI>Use the selection tool to paint an ellipse
+<LI>Use the Gaussian Blur effect with a value of 10
+<LI>Edit the image channel
+<LI>Select the area you want and paste it somewhere
+</UL>
+
+<P>
+It is also possible to use a gradient to achieve other types of feathered edges
+like this:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.5.10b.png" BORDER="0" ALT="">
+</P>
+<A NAME="SEC511"></A>
+<H3>7.5.11 Outlined Edges</H3>
+<P>
+It is possible to use an alpha channel to create outlines on an image like this:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.5.11a.png" BORDER="0" ALT="">
+</P>
+<UL>
+<LI>Load the original into mtPaint
+<LI>Ctrl+A, Ctrl-C, Ctrl+Shift+V to create a new layer
+<LI>Select the 'Effects-&gt;Edge Detect' menu option
+<LI>Press the 'Insert' key and set saturation to a minimum and raise gamma to
+about 300
+<LI>Select 'Channels-&gt;Edit Alpha' menu option and create the alpha channel from
+'Image Red'
+<LI>Select 'Channels-&gt;Edit Image' menu option
+<LI>Select 'Effects-&gt;Invert' and then 'Channels-&gt;Threshold' to the value of 230
+<P></P>
+<IMG ALIGN="middle" SRC="../img/7.5.11c.png" BORDER="0" ALT="">
+<P></P>
+<LI>If you want to make the edges much sharper select 'Channels-&gt;Edit Alpha' and
+'Channels-&gt;Threshold' to value 30
+<P></P>
+<IMG ALIGN="middle" SRC="../img/7.5.11b.png" BORDER="0" ALT="">
+<P></P>
+<LI>Export the composite image using 'Layers-&gt;Save Composite Image ...'
+<LI>If you want to keep the outline image and its alpha channel use 'File-&gt;Save as ...'
+<LI>If you want to keep the layer data file use 'Layers-&gt;Save as ...'
+</UL>
+
+<A NAME="SEC512"></A>
+<H3>7.5.12 Partial Masking</H3>
+<P>
+It is possible to use partial masking to create image transition effects. For
+example I created the following image by doing the following:
+</P>
+<UL>
+<LI>Create an image using a chequer pattern.
+<LI>Create an empty mask channel.
+<LI>Paint a gradient onto the mask channel.
+<LI>Paste another image onto the image channel (in this case yellow zigzags).
+</UL>
+
+<P>
+<IMG ALIGN="middle" SRC="../img/7.5.12.png" BORDER="0" ALT="">
+</P>
+<A NAME="SEC513"></A>
+<H3>7.5.13 Magic Wand Selections</H3>
+<P>
+It is possible to emulate the Magic Wand tool that appears in other graphics
+programs by using a selection channel and the flood fill tool. For example, here
+is the start image:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.5.11b.png" BORDER="0" ALT="">
+</P>
+<P>
+In order to copy and paste the red star, you would do the following:
+</P>
+<UL>
+<LI>Create a clear new selection channel.
+<LI>Right click on the flood fill icon and check the option 'By Image Channel'.
+<LI>Select the flood fill tool and ensure that on the settings toolbar the
+selection value is 255.
+<LI>Left click on the red star.
+<LI>Move back to editing the image channel.
+<LI>Use the rectangle selection tool to place a square around the red star.
+<LI>Press the lasso button and you should be able to move the selected red star
+around ready for pasting like this:
+</UL>
+
+<P>
+<IMG ALIGN="middle" SRC="../img/7.5.13b.png" BORDER="0" ALT="">
+</P>
+<P>
+It is also possible to use this flood fill method several times before copying
+and pasting in order to add several areas from the original image to the
+selection. For example I could flood fill the blue and yellow shapes to achieve
+this result:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/7.5.13c.png" BORDER="0" ALT="">
+</P>
+<A NAME="SEC514"></A>
+<H3>7.5.14 Colour Replacement</H3>
+<P>
+It is possible to replace one colour without touching others, when using any
+drawing tool. In indexed mode, you can do that using colour mask:
+</P>
+<UL>
+<LI>Select "Palette-&gt;Mask All" menu option; "x" marks will appear beside all
+colours in palette window.
+<LI>Click on the "x" mark beside the colour you wish to replace, to unmask it.
+<LI>Draw.
+</UL>
+
+<P>
+In RGB mode, you use the colour-selective mode:
+</P>
+<UL>
+<LI>Right click on the colour-selective mode icon on the settings toolbar, to
+open the configuration dialog.
+<LI>Set the "Centre" colour to the colour you wish to replace.
+<LI>Select the "Cube" mode, check the "Inverse" option, and set radius to 0.
+<LI>Press "OK" to close the dialog.
+<LI>Left click on the colour-selective mode icon to activate the mode.
+<LI>Draw.
+</UL>
+
+<HR NOSHADE SIZE=1>
+
+<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html chap_00.t2t chap_01.t2t chap_02.t2t chap_03.t2t chap_04.t2t chap_05.t2t chap_06.t2t chap_07.t2t chap_08.t2t chap_09.t2t chap_A.t2t chap_B.t2t -->
+</BODY></HTML>

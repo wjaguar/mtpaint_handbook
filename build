@@ -1,0 +1,15 @@
+# The mtPaint documentation build script
+#
+# Builds the ZIP archive
+# Only the mtPaint maintainer needs to run this script
+#
+# by Mark Tyler 24-5-2006
+
+
+VERSION=3.31
+
+####	CREATE THE ARCHIVE
+
+cd ..
+zip -r ~/mtpaint_handbook-$VERSION.zip mtpaint_handbook-$VERSION/
+cd mtpaint_handbook-$VERSION

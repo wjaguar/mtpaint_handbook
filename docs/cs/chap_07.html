@@ -1,0 +1,316 @@
+<HTML>
+
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<TITLE>Příručka mtPaint - Kapitola 7 - Kanály</TITLE>
+</HEAD>
+
+<BODY>
+
+<P>
+<H1>7. Kanály</H1>
+<P>
+mtPaint umí vytvořit a používat až tři šikovné kanály - Alfa, Výběr a Maska.
+Menu Kanály má několik voleb sloužící pro manipulaci s těmito funkcemi. Tyto kanály
+budou mít vždy stejnou velikost jako právě upravovaný obrázek. Kanály můžete zobrazovat
+jako překryvné vrstvy a předepsat jejich barvu a průhlednost s použitím volby
+'Konfigurovat Overlaye'.
+<P>
+Jednotlivé kanály můžete upravovat jejich vybráním z menu a následně použitím normálních
+kreslicích nástrojů. Hodnota pixelů pro jejich vykreslení se upraví v 'Liště nastavení'.
+
+
+<H2><A name=SEC1>7.1 Alfa</H2>
+<P>
+Obrázek používá alfakanál kvůli určení, jak je transparentní daný pixel.
+Alfakanály mohou být použity pro jemné smíchání hran jednoho obrázku při vkládání
+na jiný obrázek, jako s vrstvami. Velmi se to hodí na věci, jako je text.
+<P>
+V hlavním editačním okně bude pixel, který je transparentní alfa kanálem, zobrazen
+jako součást šachovnice asi takto:
+<P>
+<IMG src="../img/7.1.png">
+<P>
+Pokud chcete upravovat pouze alfakanál, může být šikovné skrýt kanál obrázku,
+nebo zobrazit alfakanál jako překryv. Tyto volby můžete zapínat, nebo vypínat v
+menu Kanály. Takto bude vypadat horní obrázek se těmito volbami zapnutými:
+<P>
+<IMG src="../img/7.1b.png">
+
+
+
+<H3><A name=SEC11>7.1.1 Párování RGBA Operací</H3>
+<P>
+Pokud máte alfakanál a děláte změny do obrazového kanálu, může být
+užitečné párovat kreslicí akce mezi obrazovým a alfa kanálem (nebo je naopak nechat
+oddělené). Například zde jsou výsledky  nakreslení obdélníku s 'Párováním RGBA Operací'
+zapnutým a potom vypnutým v menu Kanály:
+<P>
+<IMG src="../img/7.1.1a.png">
+<P>
+<IMG src="../img/7.1.1b.png">
+
+
+<H2><A name=SEC2>7.2 Výběr</H2>
+<P>
+Kanál výběru se používá kopírovací funkcí pro vkládání pouze určitých
+částí obrázku. Například můžete chtít kopírovat a vložit eliptickou oblast asi
+takto:
+<P>
+<IMG src="../img/7.2.png">
+
+
+<H2><A name=SEC3>7.3 Maska</H2>
+<P>
+Kanál masky se používá pro ochranu určitých oblastí obrázku před jejich změnami
+kreslicími nástroji. Můžete například ochránit eliptickou oblast před jejím
+poškozením sprejem asi takto:
+<P>
+<IMG src="../img/7.3.png">
+<P>
+Kanály masky se mohou také použít pro selektivní aplikování efektů, jako rozmazání,
+zaostření, nebo kteroukoliv barevnou transformaci.
+<P>
+Normálně je každý pixel masky kompletně nastaven, nebo vymazán (255 nebo 0), ale je možné
+použít mezihodnoty zajišťující pseudoochranu. Příklady tohoto naleznete v sekci 7.5.8.
+
+
+
+<H2><A name=SEC4>7.4 Souborové operace</H2>
+<P>
+Pokud upravujete obrázek s libovolným typem kanálu, mtPaint uloží tato data jako
+součást PNG formátu. Všechny ostatní formáty tato data neuloží a pokud chcete kanály
+zachovat, musíte použít formát PNG, nebo uložit kanály samostatně použitím funkce
+v menu Kanály.
+<P>
+Technicky řečeno je kanál uložen jako komprimovaný soukromý blok, což znamená, že mtPaint
+bude těmto datům rozumět, ale ostatní obrázkové editory nikoliv.
+
+
+<H2><A name=SEC5>7.5 Tipy a triky</H2>
+<P>
+
+
+<H3><A name=SEC51>7.5.1 Konverze barevné průhlednosti na Alfa průhlednost</H3>
+<P>
+<UL>
+<LI>Vytvořte alfa kanál použitím "Nastavit barvu A radius B", s A=B=transparentní barva
+<LI>Invertujte alfa kanál
+</UL>
+<P>
+Tato metoda selže pro obrázky s indexovanou paletou, které obsahují jiné netransparentní barvy se stejnou RGB hodnotou jako ta transparentní. Tomu lze zabránit vybráním jiné transparentní RGB hodnoty na jinou, která není použitá.
+<P>
+Zde je jiná metoda:
+<UL>
+<LI>Zamaskujte transparentní barvu (klikněte napravo od transparentní barvy
+až se vedle ní objeví 'x' ).
+<LI>Vytvořte čistý alfa kanál.
+<LI>Upravte alfa kanál a vyberte vše stisknutím Ctrl-A.
+<LI>Vyberte alfa z 255 na liště nastavení.
+<LI>Vyplňte výběr.
+</UL>
+
+
+
+<H3><A name=SEC52>7.5.2 Konverze alfa průhlednosti na barevnou průhlednost</H3>
+<P>
+<UL>
+<LI>Vytvořte kanál masky z alfa kanálu a přepněte se do jeho editace
+<LI>Nastavte žádanou prahovou hodnotu (128 pro více-než-poloviční transparentnost)
+<LI>Přepněte se do editace obrázku
+<LI>nastavte barvu A jako transparentní
+<LI>Vyberte vše
+<LI>Vyplňte výběr
+</UL>
+
+
+<H3><A name=SEC53>7.5.3 Separace červeného, zeleného, nebo modrého kanálu</H3>
+<P>
+<UL>
+<LI>Nastavte barvu A na azurovou, purpurovou, nebo respektivě na žlutou
+<LI>Zapněte režim Kolorování a Kolorování +-
+<LI>Vyberte vše
+<LI>Vyplňte výběr
+</UL>
+
+
+<H3><A name=SEC54>7.5.4 Přidání červeného, zeleného, nebo modrého kanálu</H3>
+<P>
+<UL>
+<LI>Zkopírujte jednobarevný obrázek do schránky
+<LI>Otevřete nějaký RGB obrázek
+<LI>Nastavte barvu A na červenou, zelenou, respektivě modrou
+<LI>Zapněte režim Kolorování a Kolorování +-
+<LI>Vyberte vše
+<LI>Vyplňte výběr
+<LI>Vypněte Kolorování +-
+<LI>Vložte
+</UL>
+
+
+<H3><A name=SEC55>7.5.5 Konverze červené, zelené, nebo modré do jakékoliv jiné barvy</H3>
+<P>
+<UL>
+<LI>Vytvořte kanál výběru z červené, zelené, nebo modré
+<LI>Vyplňte obrázek barvou, jakou chcete
+<LI>Zkopírujte ho do schránky
+<LI>Vyplňte obrázek černou
+<LI>Vložte
+</UL>
+
+
+<H3><A name=SEC56>7.5.6 Přičítání, nebo odčítání masek</H3>
+<P>
+<UL>
+<LI>Zkopírujte jednu masku do schránky
+<LI>Otevřete, nebo vytvořte další masku
+<LI>Zapněte režim Kolorování (Pro odčítání jednoduše zapněte Kolorování +-)
+<LI>Vložte
+</UL>
+
+
+
+<H3><A name=SEC57>7.5.7 Vytvoření masky z jedné barvy</H3>
+<P>
+<UL>
+<LI>Vezměte barvu z plátna použitím Ctrl+levé/pravé tlačítko myši pro uložení do barvy A &amp; B
+<LI>Vytvořte nové kanály použitím 'Nastavení barva A radius B'
+</UL>
+
+<H3><A name=SEC58>7.5.8 Vystřižení obrysu textu z fotografie</H3>
+<P>
+Je možné vystříhnout text z fotografie jako tady:
+<P>
+<IMG src="../img/7.5.8.jpg">
+<UL>
+<LI>Nahrajte fotku do mtPaintu
+<LI>Vytvořte a upravte nový prázdný kanál výběru
+<LI>Vložte nějaký text do kanálu výběru s anti-aliasingem
+<LI>Vytvořte nový kanál masky založený na kanále výběru
+<LI>Invertujte kanál masky
+<LI>Upravujte hlavní kanál obrázku
+<LI>Vyberte kompletní obrázek a vystřihněte ho použitím Ctrl+A a Ctrl+X
+<LI>Odstraňte kanály výběru a masky
+<LI>Vložte schránku do obrázku
+</UL>
+
+
+<H3><A name=SEC59>7.5.9 Vytvoření textových obrysů pro webové stránky</H3>
+<P>
+Je možné vytvořit výstřižky z fotografie a použít je pro webovou grafiku asi takto:
+<P>
+<IMG src="../img/7.5.9.png">
+<UL>
+<LI>Nahrajte fotku do mtPaintu
+<LI>Vytvořte a editujte nový alfakanál
+<LI>Vložte nějaký text
+<LI>Ořízněte obrázek na text
+<LI>Uložte obrázek jako RGB PNG soubor, takže ho budete moct načíst browsery s podporou PNG s alfakanálem
+</UL>
+
+
+
+
+<H3><A name=SEC510>7.5.10 Opeřené hrany</H3>
+<P>
+Je možné použít efekt Gaussova rozmazání pro opeření hran libovolného kanálu asi takto:
+<P>
+<IMG src="../img/7.5.10.png">
+<P>
+<UL>
+<LI>Nahrajte obrázek do mtPaintu
+<LI>Vytvořte nový kanál výběru
+<LI>Použijte nástroj výběru pro nakreslení elipsy
+<LI>Použijte efekt Gaussova rozmazání s hodnotou 10
+<LI>Editujte kanál obrázku
+<LI>Vyberte nějakou oblast a vložte to tam
+</UL>
+<P>
+Je také možné použít gradient pro dosažení jiných typů opeřených
+hran jako toto:
+<P>
+<IMG src="../img/7.5.10b.png">
+
+
+<H3><A name=SEC511>7.5.11 Orýsované hrany</H3>
+<P>
+Pro vytvoření obrysů kolem obrázku můžete použít alfakanál asi takto:
+<P>
+<IMG src="../img/7.5.11a.png">
+<P>
+<UL>
+<LI>Nahrajte originál do mtPaintu
+<LI>Ctrl+A, Ctrl-C, Ctrl+Shift+V pro vytvoření nové vrstvy
+<LI>Vyberte volbu 'Efekty-&gt;Detekce hran' v menu
+<LI>Stiskněte klávesu 'Insert' a nastavte Saturaci na minimum a změňte Gamma na hodnotu kolem 300
+<LI>Vyberte volbu z menu 'Kanály-&gt;Upravit Alfakanál' a vytvořte alfakanál z 'Červené obrázku'
+<LI>Vyberte volbu z menu 'kanály-&gt;Upravit Obrázek'
+<LI>Vyberte 'Efekty-&gt;Invertovat' a potom 'Kanály-&gt;Práh' na hodnotu 230
+<P>
+<IMG src="../img/7.5.11c.png">
+<P>
+<LI>Pokud chcete vytvořit hrany mnohem ostřejší, vyberte 'Kanály-&gt;Upravit Alfakanál' a
+'Kanály-&gt;Práh' na hodnotu 30
+<P>
+<IMG src="../img/7.5.11b.png">
+<P>
+<LI>Exportujte kompozitní obrázek použitím 'Vrstvy-&gt;Uložit kompozitní obrázek ...'
+<LI>Pokud chcete zachovat obrysový obrázek a jeho alfakanál, tak použijte 'Soubor-&gt;Uložit jako ...'
+<LI>Pokud chcete zachovat data o vrstvách, použijte 'Vrstvy-&gt;Uložit jako ...'
+</UL>
+
+
+
+<H3><A name=SEC512>7.5.12 Částečné maskování</H3>
+<P>
+pro přechodové efekty obrázků lze také použít částečné maskování.
+Například následující obrázek jsem vytvořil takto:
+<UL>
+<LI>Vytvoření obrázku s použitím vzorku šachovnice.
+<LI>Vytvoření prázdného kanálu masky.
+<LI>Namalování gradientu do kanálu masky.
+<LI>Vložení jiného obrázku do kanálu obrázku (v tomto případě žluté cikcaky).
+</UL>
+<P>
+<IMG src="../img/7.5.12.png">
+
+
+
+<H3><A name=SEC513>7.5.13 Výběry magickou hůlkou</H3>
+<P>
+Je možné emulovat nástroj Magická hůlka, který se objevuje v jiných programech
+použitím kanálu výběru a nástroje vyplnění. Například zde je výchozí
+obrázek:
+<P>
+<IMG src="../img/7.5.11b.png">
+<P>
+Pro výběr a vložení červené hvězdy musíte provést následující:
+<UL>
+<LI>Vytvořte čistý nový kanál výběru.
+<LI>Pravým tlačítkem klikněte na ikonu vyplnění a vyberte volbu 'Kanálem obrázku'.
+<LI>Vyberte nástroj vyplnění a ujistěte se, že v nastavení nástroje výběru
+je hodnota 255.
+<LI>Klikněte levým tlačítkem na červenou hvězdu.
+<LI>Přesuňte se zpět do editace kanálu obrázku.
+<LI>Použijte nástroj označení výběru a udělejte čtverec okolo červené hvězdy.
+<LI>Stiskněte tlačítko laso a měli byste být schopni posouvat vybranou červenou
+hvězdou dokola připravenou pro vložení asi takto:
+</UL>
+<P>
+<IMG src="../img/7.5.13b.png">
+<P>
+Je také možné použít tuto vyplňovací metodu mnohokrát před kopírováním a
+vkládáním v pořadí pro přidání více oblastí z originálního obrázku do výběru.
+Například můžu vyplnit modré a žluté tvary pro dosažení tohoto výsledku:
+<P>
+<IMG src="../img/7.5.13c.png">
+
+
+
+<P>
+<HR>
+
+</BODY>
+</HTML>
+
+

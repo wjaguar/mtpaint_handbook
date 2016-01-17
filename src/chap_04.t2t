@@ -1,0 +1,212 @@
+
+%!postproc: '(?i)(</head>)' '<TITLE>The mtPaint Handbook - Chapter 4 - The Selection Tool</TITLE>\1'
+
+
+=4. The Selection Tool=
+
+The selection tool is used to mark out areas on the canvas. Once these areas
+have been defined then you can do various operations such as filling, drawing an
+outline or copying and pasting. These operations can be accessed via the
+Selection menu or on the tools toolbar. The Edit menu has the cut and paste
+options.
+
+The copy function can be greatly enhanced with the use of a selection channel
+which allows you to specify which pixels will be copied. For example it is
+possible to copy and paste elliptical shapes. See the channels chapter for more
+information and examples of how this works.
+
+
+==4.1 Rectangle Selections==[SEC1]
+
+The rectangle selection works by clicking on the canvas and dragging from one
+corner to another. If you want to select the whole image press Ctrl-A. To clear
+this selection press Escape, the right mouse button, Ctrl+Shift-A or use the
+Edit menu. The selection box can be moved around pixel by pixel by using the
+arrow keys. Pressing Shift and the arrow keys causes the selection box to be
+moved a set number of pixels determined by the Preferences window. After you
+have made a selection you can click and drag the corners to new positions. With
+the tool mouse cursor option switched on you will see the relevant corner arrow
+to indicate this new behaviour.
+
+
+==4.2 Polygon Selections==[SEC2]
+
+After selecting this tool you click the left mouse button on the canvas where
+you want to start forming the polygon shape. You can then either hold the left
+button down for a freehand shape or release it to have a long straight edge. To
+finish press the right button. You can also create an polygon by holding down
+the right mouse button and then dragging. In this case, releasing the right
+button completes the polygon. To cancel the shape press the Escape key.
+
+
+==4.3 The Lasso==[SEC3]
+
+Once a selection has been made you can use the lasso tool to shrink wrap the
+edges of the selection with the same colour. This feature works by flood filling
+transparent pixels, starting at the first point of the polygon selection or the
+top left of the rectangular selection. For example:
+
+- Select a rough area around a shape:
+- 
+[../img/4.3a.png]
+- Press the lasso icon:
+- 
+[../img/4.3b.png]
+- Paste the shape over a new background:
+- 
+[../img/4.3c.png]
+
+
+Using the Selection menu you can also 'lasso cut' an area which fills the lasso
+selected area on the canvas.
+
+If you have made no selection on the canvas, the lasso tool will shrink wrap the
+current clipboard (starting at the top left, as with a rectangular selection).
+
+
+==4.4 Masking Colours==[SEC4]
+
+While you are pasting it is possible to make certain colours in the paste
+invisible. For example:
+
+- Pasting a solid shape:
+- 
+[../img/4.4a.png]
+- Select white as colour A and yellow as colour B, and select Selection->Mask
+Colour A,B. This will make those coloured areas transparent:
+- 
+[../img/4.4b.png]
+
+
+You can do this with as many colours as you want, just keep repeating the
+procedure. Selecting Selection->Clear Mask will remove the mask entirely.
+
+
+==4.5 Alpha Blending==[SEC5]
+
+Normal copying and pasting involves copying whole pixels from one area to
+another. However, it is possible to use an alpha channel to blend certain areas
+more smoothly. For example, here is a flat RGB image that has been exported from
+Inkscape that contains several smooth edges and colour blends:
+
+[../img/4.5a.png]
+
+If I were to lasso the objects and paste them over a red background, it would 
+look like this:
+
+[../img/4.5b.png]
+
+As you can see the edges of the objects look odd, and the blends look out of
+place. There is a function in mtPaint that allows you to extract the blending
+properties of a paste and put them over any background while keeping the
+smoothness. As an example, use the first image above as a start point and then:
+
+- Select the black shapes with a rectangle selection box, copy and paste with
+Ctrl-C and Ctrl-V.
+- Select black as colour A and white as colour B from the palette. 
+- Choose the menu option "Selection->Alpha blend A,B". 
+- Drag the paste box over the red area and commit the paste by pressing ENTER. 
+
+
+You should then see: 
+
+[../img/4.5c.png]
+
+- Clear the paste box with the Escape key. Select, copy and paste the yellow
+shapes with the same procedure above, but choose yellow as colour A. 
+- If you commit this second paste over the first you should end up with
+something like this: 
+
+
+[../img/4.5d.png]
+
+This technique works on any simple blend from one foreground colour to a
+background colour. It works well with antialiasing as found around text and
+geometric shapes created with programs like Inkscape which are exported to a
+lossless format like PNG. Note that you must export a PNG image from Inkscape
+with a flat colour background, not a transparent background.
+
+
+===4.5.1 Single Colour Variation===[SEC51]
+
+If you have colour A and B as the same colour you can turn that colour to alpha
+in the selection and blend all other colours to shades of alpha. For example, if
+you take the above image as an example, copy the top section, set colour A and B
+as pure white and then paste the result after applying "Selection->Alpha blend
+A,B" you will get the following result:
+
+[../img/4.5.1.png]
+
+This method works well when the source has a single colour background, with
+several foreground colours of a totally different colour type.
+
+
+==4.6 Multiple Clipboards==[SEC6]
+
+mtPaint allows the user to store up to 12 images in a multiple image clipboard.
+This works by saving a PNG file containing the clipboard image and then using
+the Edit menu to load these images as required.
+
+The feature also means that you can have two independent mtPaint programs
+running and be able to load and save clipboard data between the two at the touch
+of a button. Also, as long as the files are not deleted you will have access to
+these clipboard images after closing and restarting mtPaint, or even rebooting
+the system.
+
+It is possible to paste an RGB clipboard onto an RGB image and an Indexed
+Palette clipboard onto an Indexed Palette or RGB image. As the clipboard files
+are standard PNG files, the user can also open them in another mtPaint process
+and edit them. The clipboard files are stored in the location set in the
+Preferences window.
+
+mtPaint uses its own internal clipboard which other programs cannot touch
+without permission. In the Edit menu, you can use the "Import clipboard from
+system" command to copy clipboard contents from some other program into
+mtPaint, or "Export clipboard to system" to let other programs paste the
+contents of mtPaint's clipboard.
+
+
+==4.7 Brush Pasting==[SEC7]
+
+While you are pasting, you can hold both the left and right mouse buttons at the
+same time to achieve a brush pasting effect. If you are pasting an object with a
+non rectangular edge you can achieve some interesting effects like this:
+
+[../img/4.7a.png]
+
+Here I have pasted a semi transparent orb with the opacity mode switched off.
+
+
+==4.8 Ramps==[SEC8]
+
+Using the the rectangle selection tool and the selection menu ramp options you
+can create a vertical or horizontal ramp between 2 points or lines on the
+canvas. In this zoomed example I have created a ramp between a red and yellow
+line to create a perfectly smooth gradient:
+
+[../img/4.8.png]
+
+As well as canvas effects the ramp can also be combined with the palette copying
+featuring in section 3.3.7 to create perfectly spaced one or two dimensional
+palettes.
+
+
+==4.9 Paste Swap==[SEC9]
+
+When editing an image containing many fixed sized tiles its nice to swap 2 areas
+of the canvas with a minimum of effort. To do this you can use the paste swap:
+
+- Select the first area with the rectangle selection tool.
+- Press Ctrl+C or Ctrl+X to copy or cut the original area.
+- Move the paste area to where you want to swap.
+- Press Shift+Enter to commit the swap.
+- Move the new paste area back to the original copy/cut place and commit the
+paste.
+
+
+You can repeat these steps many times to switch many tiles in sequence. In some
+situations where there are no guidelines on the canvas, cutting the original
+area is more useful as it leaves a hole which you can aim for later when pasting
+the final item.
+
+-------------------------------------------------

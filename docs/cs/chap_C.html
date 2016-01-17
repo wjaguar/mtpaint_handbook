@@ -1,0 +1,453 @@
+<HTML>
+
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">	
+<TITLE>Příručka mtPaint - Příloha C - Soubor NEWS z mtPaintu</TITLE>
+</HEAD>
+
+<BODY>
+
+<P>
+<H1>Příloha C - Soubor NEWS z mtPaintu</H1>
+
+<HR>
+
+------------<BR>
+mtPaint NOVINKY<BR>
+------------<BR>
+<BR>
+Zde je souhrn hlavních změn provedených v této verzi (podrobnosti najdete v příručce):<BR>
+<BR>
+3.01	2006-7-15<BR>
+<BR>
+* Německý překlad aktualizován pro verzi 3<BR>
+* BUGFIX - Problémy se zarovnáním paměti na Windows vyřešeny (může ovlivnit rychlost)<BR>
+* BUGFIX - RGB-specifické položky menu jsou nyní správně vypnuté v indexovaném režimu<BR>
+<BR>
+3.00	2006-6-21<BR>
+<BR>
+* Přidána funkce kanálů<BR>
+* Menu a lišty přepracovány kvůli lepšímu zaměření na ůlohy<BR>
+* Lišty mohou být vypínány a zapínány přes menu Zobrazit<BR>
+* Funkce Pusť a Táhni ze správců souborů nyní podporována pro nahrávání nových vrstev<BR>
+* Náhled Animace má nyní tlačítko Přehrát<BR>
+* Kliknutím na číslo barvy se otevře "Editor Palety"<BR>
+* Náhled vkládání nyní respektuje ochrannou masku palety<BR>
+* Okno transformace barev - Přidáno ovládání odstínu<BR>
+* Okno transformace barev - Volba selektivní palety<BR>
+* Volba zpět nyní šetří více s pamětí při změně palety<BR>
+* Velké přepsání základního kódu pro zlepšení výkonu<BR>
+* Editor barev A/B nyní používá GTK+ barevný dialog<BR>
+* Ctrl+Šipky mění velikost oblasti výběru<BR>
+* Vyplnění má nyní fuzzy režim - nastavení pravým tlačítkem na ikonu<BR>
+* Ukládání/Otevírání schránek nyní obsahuje data masek<BR>
+* Ukládání kompozitního obrázku vrstev je nyní odděleno od ukládání datového souboru s vrstvami<BR>
+* Většina dokumentace byla odstraněna z F1 Pomoc a je nyní v HTML příručce<BR>
+* HTML dokumentace je k dispozici jako samostatný balíček<BR>
+* Spuštěny mtPaint mailové konference - http://sourceforge.net/mail/?group_id=155874<BR>
+* Skript configure nedělá hypotézy ohledně CPU - ./configure --help<BR>
+* BUGFIX - Ukládání kompozitního vrstvového obrázku občas nezachová průhledné oblasti<BR>
+* BUGFIX - Transformace barev palety s náhledem (RGB obrázky) pracuje nyní správně<BR>
+* BUGFIX - Stavová lišta je nyní aktualizována po odstranění všech vrstev<BR>
+* BUGFIX - Změna velikosti obrázku na šířka/výška 1/2 nezpůsobí pád<BR>
+<BR>
+2.31	2006-5-31<BR>
+<BR>
+* Německým překladem přispěl Oliver Frommel<BR>
+<BR>
+2.30	2006-3-1<BR>
+<BR>
+* Animace vrstev je nyní možná - podívejte se do části 'Animace' v dokumentaci<BR>
+* Animované GIF soubory lze nyní otevírat snímek po snímku, pokud máte nainstalovaný Gifsicle<BR>
+* Soubor-&gt;Exportovat jako animovaný GIF ... může vytvořit animovaný GIF, pokud máte nainstalovaný Gifsicle<BR>
+* Obrázek může být nyní v okně vycentrován - Nastavení v okně voleb<BR>
+* Možnosti změny velikosti obrázku vylepšil a rozšířil Dmitry Groshev<BR>
+* Režim Upravit-&gt;Tónovat přidal Dmitry Groshev - podrobnosti naleznete v sekci nástroje v dokumentaci<BR>
+* Kód prázdné elipsy vylepšil Dmitry Groshev<BR>
+* Výběr-&gt;Alfa přechod A,B : podrobnosti ve webovém návodu<BR>
+* Různé návody přidány na webové stránky<BR>
+* BUGFIX - Nástroj klonování se chová divně při chytání pod hranou obrázku se stisknutým CTRL<BR>
+* BUGFIX - Rotace textu by nyní měla pracovat správně ve Windows XP<BR>
+* BUGFIX - Soubory s UTF8 znaky v názvu lze nyní ve Windows otevřít<BR>
+* BUGFIX - Třesení stavové lišty s některými Windows systémy bylo vyřešeno<BR>
+* BUGFIX - Vložení textu + maska výběru + zoom neztratí masku<BR>
+<BR>
+2.20	2006-1-1<BR>
+<BR>
+* mtPaint web je nyní na http://mtpaint.sourceforge.net/<BR>
+* Okno zobrazení je nyní součástí hlavního okna - klávesa V zapíná a vypíná jeho zobrazení<BR>
+* Ctrl+Šipky, nebo Ctrl+Shift+Šipky přesunují vrstvy dokola<BR>
+* Zobrazit-&gt;okno přiblížení nastaví zoom pro okno hlavní/zobrazení + přiblížení - Z klávesa ovládá zobrazení<BR>
+* Škálování palety nyní používá barvy A/B jako počáteční/konečné barvy a index<BR>
+* Gimp paletové soubory (*.gpl) lze nyní otevřít/uložit v menu paleta<BR>
+* Jestliže existuje soubor ~/mtpaint.gpl , tak je nahrán jako výchozí paleta při spuštění<BR>
+* Transparentní GIF informace lze nyní otevřít/uložit + vylepšení základního importu GIF souborů<BR>
+* Transparentní pixely v hlavním okně jsou nyní šedá šachovnice v režimu jedné vrstvy<BR>
+* Počítání RGB nyní vyžaduje 2MB místo 16MB<BR>
+* Nyní lze kompilovat vlastní ikony pro mtPaint - podrobnosti v ./src/icons1/README<BR>
+* Maximální počet vrstev zvětšen na 100<BR>
+* Instalace Windows binárního souboru byla zjednodušena na standardní setup.exe<BR>
+* BUGFIX - Při změně nástroje funkční klávesou je nyní štětec správně vyčištěn<BR>
+<BR>
+2.10	2005-11-20<BR>
+<BR>
+* Podpora tabletů citlivých na tlak v okně voleb, podrobnosti v části 'Nástroje' v dokumentaci<BR>
+* Přidán histogram barev do informačního okna (Ctrl-I)<BR>
+* Paleta-&gt;Vytvořit kvantované (Wu) metoda přidána - Dobré pro malé palety jako 32 barev<BR>
+* Okno Konvertovat na indexovaný vylepšeno<BR>
+* Okno zobrazení má nyní přepínač zaměření zamčený na hlavním okně<BR>
+* Informační okno nyní počítá všechny barvy v RGB obrázku - pokud je k dispozici 16MB paměti<BR>
+* Okno voleb je nyní nemodální a má tlačítko Provést<BR>
+* ./src/Makefile zjednodušen<BR>
+* Překladem do Brazilské Portugalštiny přispěl Paulo Trevizan<BR>
+* BUGFIX - únik paměti při DL1 a Floyd-Steinberg kvantizaci opraven<BR>
+* BUGFIX - segfault opraven při současném stisku kláves * a - v okně náhledu<BR>
+* BUGFIX - segfault opraven při používání systému souborů jen pro čtení bez možnosti zápisu do ~/.mtpaint<BR>
+* BUGFIX - segfault opraven při otevírání některých animovaných GIFů - místo toho varovné hlášení<BR>
+<BR>
+2.03	2005-9-23<BR>
+<BR>
+* BUGFIX - Vyřešen občasný segfault při přesunu vrstvy nahoru/dolů bez okna zobrazení<BR>
+<BR>
+2.02	2005-9-19<BR>
+<BR>
+* PNG soubory s průhledností lze nyní otevírat a ukládat - Podrobnosti viz 'Omezení'<BR>
+* Zobrazit-&gt;Zobrazovat zoom mřížku - Parametry nastaveny v okně voleb Zoom<BR>
+* Okno "Uložit jako" vylepšeno o nové prvky atributu souborů<BR>
+* Stavová lišta změněna - (T=?) kvůli průhlednosti, 'x' v geometrii výběru<BR>
+* mtPaint projekt registrován s Launchpad/Rosetta pro pomoc s překlady:<BR>
+https://launchpad.net/products/mtpaint/+translations<BR>
+* Částečným překladem do Francoužštiny přispěl Nicolas Velin<BR>
+* Částečným Portugalským překladem přispěl Israel G. Lugo<BR>
+* BUGFIX - Kopírovat/Vložit v auto režimu následované nástrojem malování nenakreslí čáru navíc<BR>
+<BR>
+2.01	2005-8-14<BR>
+<BR>
+* BUGFIX - Vyřešen občasný segfault při otevírání a současném zobrazování vrstev v hlavním okně<BR>
+* BUGFIX - Windows verze: Otisk obrazovky nyní skryje okno nového obrázku<BR>
+<BR>
+2.00	2005-8-7<BR>
+<BR>
+* Zobrazit -&gt; Okno vrstev - Podrobnosti v dokumentaci v části 'Vrstvy'<BR>
+* Upravit -&gt; Vložit do nové vrstvy<BR>
+* Přidán nástroj výběru polygonem - Podrobnosti v dokumentaci v části 'Výběry'<BR>
+* Výběr -&gt; Výběr lasem a Vyjmout<BR>
+* Přidán nástroj klonování - Podrobnosti v dokumentaci v části 'Nástroje'<BR>
+* Okno zobrazení má nyní možnost zoomu<BR>
+* Nástroj čára má nyní možnost kreslit šipky - Podrobnosti v dokumentaci v části 'Nástroje'<BR>
+* Relativní názvy souborů prošlé na příkazový řádek jsou převedeny na absolutní<BR>
+* GTK+2: Sejmutí obrazovky přes okno nového obrázku nejdříve minimalizuje hlavní okno<BR>
+* Přepínač voleb pro provedení vložení při změně nástroje<BR>
+* Klávesové zkratky pro naposledy použité soubory - Shift+Ctrl+F1 = Vrácení<BR>
+* Ikony na liště přepracovány dle nejpoužívanějších funkcí<BR>
+* BUGFIX - PNG soubory se škálou šedi jsou nyní otevřeny správně<BR>
+<BR>
+0.97	2005-6-4<BR>
+<BR>
+* Text tool: Antialiasing without a background colour now possible (alpha blended edges)<BR>
+* Text tool: Changing colour/pattern during paste updates text<BR>
+* Text tool: Independent toggles for background colour and rotation<BR>
+* Changes are flagged in the titlebar<BR>
+* Brushes and patterns increased to 81<BR>
+* Maximum tool size/flow increased to 200<BR>
+* Logic of colour A/B editor improved for RGB images<BR>
+* Help docs now supported with international po files<BR>
+* Accuracy of circle brush in continuous mode improved<BR>
+* Specifying a CPU is now more generic - see "./configure --help"<BR>
+* BUGFIX - Loading a large image now correctly adjusts the scrollbars<BR>
+* BUGFIX - Czech characters improved in Windows<BR>
+<BR>
+0.95	2005-5-4<BR>
+<BR>
+* Text tool added - See "Tools" for usage<BR>
+* View window now available via View menu or 'V' key<BR>
+* Brush presets now available via Edit menu, F3, icon on toolbar or preview area<BR>
+* Screenshot grabbing facility - "mtpaint -s" or File-&gt;New - See "Tips" section<BR>
+* Right mouse button paints with A/B reversed<BR>
+* Palette -&gt; Swap A &amp; B<BR>
+* Mouse scroll wheel zooms in/out if set in Preferences - GTK+2 only<BR>
+* Function keys don't zoom any more - use numbers 1-9 instead<BR>
+* Various new keyboard shortcuts added/changed<BR>
+* Website redesign contributed by Abdulla Al Muhairi<BR>
+* BUGFIX - Xine does not now close Pan Window/Pattern chooser popup<BR>
+* BUGFIX - Occasional pasting 'slips' eliminated<BR>
+* BUGFIX - Edit all colours window now works properly when screen depth &lt;24 bpp<BR>
+<BR>
+0.90	2005-4-12<BR>
+<BR>
+* Internationalization now supported with "./configure intl"<BR>
+* Spanish translation contributed by the Guadalinex team<BR>
+* Czech translation contributed by Pavel Ruzicka<BR>
+* Preferences window allows the manual selection of language translations<BR>
+* Man page contributed by Guadalinex team - "./configure man" to install<BR>
+* Pasting with less than 100% opacity now shows preview of resulting transparency<BR>
+* Widget behaviour improved in Quantize &amp; Transform Colour windows<BR>
+* Page Up/Down keys now work as expected in Command Line Window<BR>
+* Changing tool does not tax the CPU as much on older hardware<BR>
+* Accuracy improvements for line tool and circle in continuous mode when size&gt;1<BR>
+* Max geometry is now 16384x16384<BR>
+* New typeface for palette numbers<BR>
+* Several more configure script options added - "./configure --help" for details<BR>
+* BUGFIX - Pattern flood fills now work under all conditions<BR>
+* BUGFIX - In GTK+2, filenames with non ASCII characters are now be handled properly<BR>
+* BUGFIX - Attempting to fill on a protected colour does not set opacity to 100%<BR>
+* BUGFIX - Ctrl -/+ Adjusts opacity as originally designed<BR>
+* BUGFIX - Undo/Redo to an indexed image with smudge does not cause segfault<BR>
+<BR>
+0.75	2005-2-15<BR>
+<BR>
+* Pan window added - See "Tools" for usage<BR>
+* Colour protection mask now works with RGB images<BR>
+* Selection -&gt; Outline Ellipse + New icon : Thickness = tool size<BR>
+* Converting RGB images to indexed improved:<BR>
+*   i)   'Exact' option now uses less memory + slightly quicker<BR>
+*   ii)  Accuracy of 'Dither' method is now better<BR>
+*   iii) Floyd-Steinberg option added<BR>
+*   iv)  Palette quantization DL1 &amp; DL3 options added with[out] Floyd-Steinberg<BR>
+* Palette -&gt; Create Quantized (DL1 &amp; DL3) : RGB images only<BR>
+* Palette -&gt; Sort -> Frequency : Sorts an indexed palette by pixel frequency on canvas<BR>
+* Palette Sort window has apply button<BR>
+* File -&gt; Export Undo Images (reversed)<BR>
+* Transform Colour window improved:<BR>
+*   i)   Apply button added<BR>
+*   ii)  Toggles to transform RGB image and/or palette<BR>
+*   iii) Gamma moved to top and is now the 1st operation to be done<BR>
+*   iv)  Window now pops up where the mouse pointer is positioned<BR>
+*   v)   Return/Enter keys now press 'OK' button<BR>
+* Tips section added to README &amp; help<BR>
+* Progress window is now movable and does not remain above other windows<BR>
+* configure script improved to cater for systems without pkg-config, i.e. GTK+1 only<BR>
+* BUGFIX - Memory leaks in read_png &amp; read_jpeg cleaned up<BR>
+* BUGFIX - Corrupt PNG &amp; JPEG files are now handled properly<BR>
+* BUGFIX - Palette area update invisibility on some systems corrected<BR>
+* BUGFIX - Jerking of vertical/horizontal scrollbars when zooming eliminated<BR>
+* BUGFIX - Zooming in GTK+1 now respects the specified zoom centre<BR>
+* BUGFIX - While pasting, cursor flickering on slow hardware has been eliminated<BR>
+<BR>
+0.50	2005-1-1<BR>
+<BR>
+* Smudge tool - RGB images only, continuous or non-continuous modes<BR>
+* Image -&gt; Free Rotate : Rotate image at any angle<BR>
+* Selection -&gt; Mask Colour A,B : See 'Selections' in README/Help for example<BR>
+* Selection -&gt; Unmask Colour A,B<BR>
+* Selection -&gt; Mask All Colours<BR>
+* Selection -&gt; Clear Mask : Revert to normal opaque rectangular paste<BR>
+* Counting unique RGB pixels is faster (particularly GTK+2)<BR>
+* Selection geometry on status bar now also shows selection diagonal angle + length<BR>
+* Preferences -&gt; Force zoom to 100% or current zoom with a new file<BR>
+* Numbers 1-9 set zoom, Insert=Transform colours, Delete=Crop, Page Up/Down=Scale/Resize<BR>
+* 1-9, +, -, =, Q, Home, Insert, etc... keys work while Command Line window selected<BR>
+* Compilation now works using gcc-2.95 and libpng-1.0<BR>
+* Configure script contains example of how to compile with Slackware 8.0<BR>
+* Undo/Redo stops current paste only when changing to/from Indexed/RGB<BR>
+* BUGFIX - Occasional Pango warnings in GTK+2 upon startup stopped<BR>
+* BUGFIX - When undo/redo clears paste the cursor is not stuck as 4 way arrow<BR>
+* BUGFIX - Last pixel of straight line now painted if size=1<BR>
+<BR>
+0.47	2004-12-11<BR>
+<BR>
+* View -&gt; 10%, 25%, 50% : +, -/= keys can be used to get zoom below 100%<BR>
+* View -&gt; Toggle Image View (Home key) : Show/Hide palette, menu, status bar etc<BR>
+* View -&gt; Command Line Window : Shows files passed in command line (if > 1)<BR>
+* Effects -&gt; Isometric Transformations<BR>
+* Palette colours : Shift + click/drag moves a colour to a new index<BR>
+* Posterize effect merged with brightness/contrast/saturation window -&gt; Transform Colour<BR>
+* Gamma added to Transform Colour window<BR>
+* Using "mtpaint -v" or calling from other binary name starts in full image view<BR>
+* Selection resize method improved + right button = clear<BR>
+* Limitation relating to flood fill colour resolved for most situations<BR>
+* Using arrow keys while painting changes colour A/B<BR>
+* Edit -&gt; Opacity Undo Mode (F12) replaces Preferences option<BR>
+* Greyscale now in Effects menu<BR>
+* Escape key now selects first button of alert box<BR>
+* Default tool is now selection<BR>
+* Colour toolbar icons moved together<BR>
+* Keyboard shortcuts added for Cropping/Transforming colours/Invert/Greyscale<BR>
+* Compiler options tweaked - faster/smaller binary<BR>
+* BUGFIX - Undo/Redo to indexed/RGB while pasting RGB/indexed does not cause segfault<BR>
+<BR>
+0.45	2004-11-21<BR>
+<BR>
+* Tool opacity is now variable so subtle RGB painting is now possible<BR>
+* Effects -&gt; Edge Detect, Sharpen, Soften, Blur, Emboss<BR>
+* Scaling a 24 bit RGB image is now smoother<BR>
+* Image -&gt; Convert To Indexed : Exact conversion, Quantized Palette, Dithered, Scattered<BR>
+* Save TIFF files (uncompressed RGB)<BR>
+* Save GIF files (uncompressed indexed 256 colours)<BR>
+* Save BMP files (uncompressed indexed &amp; RGB)<BR>
+* File -&gt; Export Undo Images<BR>
+* File -&gt; Export ASCII Art<BR>
+* Palette -&gt; Add Colours changed to Set Palette Size, i.e. reduction is now possible<BR>
+* File -&gt; Save As : If image has a filename, put this into the filename box<BR>
+* When loading a png/tiff/jpeg/gif only use progress bar if image is large<BR>
+* Middle mouse button sets the zoom centre<BR>
+* Image -&gt; Preferences : Q key can now quit mtPaint<BR>
+* Spray/shuffle mouse pointers made more consistent<BR>
+* BUGFIX - Rotating the image with no undo memory does not cause image corruption<BR>
+* BUGFIX in GTK+2.4 - Pressing enter while pasting does not press toolbar button<BR>
+<BR>
+0.40	2004-11-8<BR>
+<BR>
+* File -&gt; New : Create 24 bit RGB image<BR>
+* Most functions/tools now work on a 24 bit RGB canvas (except colour protection mask)<BR>
+* Load/Save 24 bit RGB PNG files<BR>
+* Load 24 bit RGB/Greyscale, Save 24 bit RGB JPEG files - Quality set by Preferences<BR>
+* Load TIFF files<BR>
+* Load uncompressed BMP files<BR>
+* Image -&gt; Convert To RGB<BR>
+* Image -&gt; Convert To Indexed<BR>
+* Edit -&gt; Load Clipboard -> 1-12<BR>
+* Edit -&gt; Save Clipboard -> 1-12<BR>
+* More icons have been added to the toolbar<BR>
+* File menu now contains a recently used file list - Set limit in Preferences window (0-20)<BR>
+* Maximum canvas height/width set to 8192, minimum set to 1<BR>
+* Last directory loaded from command line is now correctly remembered<BR>
+* Palette -&gt; Load default<BR>
+* BUGFIX - Resizing/Scaling with no undo memory does not cause segfault<BR>
+* BUGFIX - Using a static tool after resize/scale/rotate does not create unwanted shapes<BR>
+* BUGFIX - An occasional crash when using the GTK+ colour selector was corrected<BR>
+<BR>
+0.37	2004-10-25<BR>
+<BR>
+* Image -&gt; Brightness-Contrast-Saturation<BR>
+* Image -&gt; Scale Canvas<BR>
+* Image -&gt; Resize Canvas<BR>
+* Image -&gt; Preferences : The user can specify what info is displayed on the status bar<BR>
+* Image -&gt; Rotate Clockwise<BR>
+* Image -&gt; Rotate Anti-Clockwise<BR>
+* Selection -&gt; Rotate Clockwise<BR>
+* Selection -&gt; Rotate Anti-Clockwise<BR>
+* Help -&gt; About (F1) : Reflects the current README file<BR>
+* File -&gt; New : User can now create a greyscale image<BR>
+* Palette -&gt; Edit All Colours<BR>
+* Palette -&gt; Create Scale : Create blended colours from one index to another<BR>
+* Palette -&gt; Sort<BR>
+* Image -&gt; Bacteria Effect : Try it a few times with "mtpaint graphics/bacteria.png"<BR>
+* File selection window geometry stored independently from main window geometry<BR>
+* BUGFIX - Progress window now appears above file selector in GTK+2 Windows/Gnome<BR>
+* BUGFIX - Maximizing A/B colour editor window does not cause segfault or window corruption<BR>
+<BR>
+0.35	2004-10-16<BR>
+<BR>
+* Sources can now be compiled using MinGW/MSYS to create a Windows version of mtPaint<BR>
+* XPM &amp; XBM images can now be loaded and saved<BR>
+* File -&gt; Preferences : User can view/set XPM/XBM transparency/hotspot info<BR>
+* Straight line tool added to toolbar<BR>
+* Image menu now houses Convert to greyscale, Posterize, Information, Preferences and Crop<BR>
+* Image -&gt; Flip Vertically<BR>
+* Image -&gt; Flip Horizontally<BR>
+* Image -&gt; Invert<BR>
+* Selection -&gt; Flip Vertically<BR>
+* Selection -&gt; Flip Horizontally<BR>
+* Undo/redo levels displayed on status bar<BR>
+* Progress bar is now used for load/save/flip - Useful for large images or slow machines<BR>
+* Minimum main window size set so 640x480 screens can use mtPaint<BR>
+* Setting zoom centre now requires Shift+Right button - Avoids clash with paste/line tools<BR>
+* BUGFIX - Save failure does not now clear the mem_changed flag<BR>
+* BUGFIX - Accuracy of max undo levels improved in Information window<BR>
+* BUGFIX - Menus updated when loading file from command line (no option to crop to 1x1)<BR>
+<BR>
+0.30	2004-10-4<BR>
+<BR>
+* GIF images can now be loaded into mtPaint<BR>
+* Mouse pointers for static shapes improved<BR>
+* Selection menu now houses "Select All", "Select None"<BR>
+* Selection -&gt; Outline Rectangle : Draws outline of tool size pixels around current selection<BR>
+* Selection -&gt; Filled Rectangle : Fills the current selection area<BR>
+* Selection -&gt; Filled Ellipse : Draws a filled ellipse inside the current selection area<BR>
+* Selection -&gt; Line - Slash : Draws straight line on selection from top left to bottom right<BR>
+* Selection -&gt; Line - Backslash : Draws straight line on selection from top right to bottom left<BR>
+* Edit -&gt; Continuous Painting : Makes painting the 6 static shapes continuous and smooth<BR>
+* Status bar has "CON" to indicate if the program is in Continuous Painting mode<BR>
+* Information window now contains details of current clipboard data<BR>
+* Ctrl+Left Button while over palette sets colour B (useful for stylus/tablet users)<BR>
+* configure script extended - use "./configure --help" for details<BR>
+* BUGFIX - Selecting None during paste at high zoom does not tax the CPU<BR>
+* BUGFIX - Changing tool during paste at high zoom does not tax the CPU<BR>
+* BUGFIX - Pasting while already pasting at high zoom does not cause program termination<BR>
+* BUGFIX - Selection/Paste perimeter does not get corrupted in GTK+2 while using scrollbars<BR>
+<BR>
+0.25	2004-9-24<BR>
+<BR>
+* Palette -&gt; Convert To Greyscale : Converts current palette to greyscale<BR>
+* Edit -&gt; Crop : Crops the canvas to the current selection<BR>
+* The red/white selection box can now be resized by clicking and dragging the corners<BR>
+* Selection geometry is now displayed on the status bar<BR>
+* Start with blank canvas if file was not successfully loaded from the command line<BR>
+* Enter/Return now commits a paste even when Shift/Ctrl are pressed<BR>
+* Loading a palette can now be undone/redone<BR>
+* BUGFIX - Errors while trying to "Save As" are now treated properly<BR>
+* BUGFIX - Pressing CTRL and moving the mouse without pressing a button does not tax the CPU<BR>
+* BUGFIX - Loading a palette with 256 colours is now possible<BR>
+* BUGFIX - Paste To Centre menu item now behaves as expected<BR>
+* BUGFIX - mem_changed flag now cleared properly after saving - no more false warnings<BR>
+* BUGFIX - Fixed segfault when cutting during a paste (edit menu logic improved)<BR>
+* Select/Paste now uses less CPU and doesn't flicker as much<BR>
+* Undo system rewritten:<BR>
+* Accommodates geometry changes from cropping<BR>
+* Only malloc's memory as required, not en masse at beginning<BR>
+* Tool perimeter shows correct position when mouse is over the grey background<BR>
+<BR>
+0.24	2004-9-19<BR>
+<BR>
+* Makefile - Default compiler options changed to make no optimizations<BR>
+* Preferences -&gt; Option to show mouse cursor as the tool shape<BR>
+* Preferences -&gt; Confirm exit alert now optional<BR>
+* When quitting/opening/file-new without saving changes, the user is warned<BR>
+* TODO list in README updated with my plans for the next few months<BR>
+* File -&gt; Save As given shortcut Shift+Ctrl-S<BR>
+* Selection tool added to toolbar<BR>
+* Edit -&gt; Cut<BR>
+* Edit -&gt; Copy<BR>
+* Edit -&gt; Paste To Centre<BR>
+* Edit -&gt; Paste<BR>
+* Edit -&gt; Select All<BR>
+* Edit -&gt; Select None<BR>
+* Preferences -&gt; Option to not display clipboard image while pasting<BR>
+* README updated with details about selection, copy, cut, paste etc.<BR>
+* BUGFIX in memory.c - correct posterizing now happens whether using -ffast-math or not<BR>
+* BUGFIX in GTK+1 - CTRL shortcuts are now not blocked by size/spray spin buttons<BR>
+* First public release of mtPaint on gnomefiles.org<BR>
+<BR>
+<BR>
+0.23	2004-9-13<BR>
+<BR>
+First public release of mtPaint on freshmeat.net<BR>
+<BR>
+0.21	2004-9-6<BR>
+<BR>
+Beta testing begins!<BR>
+<BR>
+0.20	2004-9-5<BR>
+<BR>
+9 basic tools + palette edit/add/posterize/merge/load/save finished<BR>
+<BR>
+0.16	2004-8-31<BR>
+<BR>
+Undo/Redo implemented - default MAX_UNDO = 100<BR>
+<BR>
+0.15	2004-8-28<BR>
+<BR>
+Patterns implemented with square tool + colour protection mask implemented<BR>
+<BR>
+0.05	2004-8-14<BR>
+<BR>
+PNG load + image display &amp; zoom features<BR>
+<BR>
+0.04	2004-8-12<BR>
+<BR>
+Program structure fixated<BR>
+<BR>
+0.02	2004-8-7<BR>
+<BR>
+GUI fixated<BR>
+<BR>
+0.00	2004-7-4<BR>
+<BR>
+Project started - GUI &amp; back end designs kicked around on paper and in Glade<BR>
+
+<P>
+<HR>
+
+</BODY>
+</HTML>

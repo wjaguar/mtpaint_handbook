@@ -1,0 +1,312 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<TITLE>The mtPaint Handbook - Chapter 9 - Animation</TITLE></HEAD><BODY BGCOLOR="white" TEXT="black">
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<H1>9. Animation</H1>
+<P>
+mtPaint is able to edit frames of animations and also generate animation frames
+with the layer facilities. If you have the program Gifsicle installed you can
+load or create an animated GIF file. If you don't have Gifsicle already you can
+download it <A HREF="http://www.lcdf.org/gifsicle/">HERE</A>.
+</P>
+<A NAME="SEC1"></A>
+<H2>9.1 Loading Animated GIF Files</H2>
+<P>
+When you attempt to load a GIF file that has several frames, mtPaint will detect
+this and give you a message to ask if you want to edit them. If you do, then
+mtPaint will prompt you for a temporary directory to store these frames in. It
+is advisable to create a new folder (via the file selector) near the original
+GIF file for easy navigation.
+</P>
+<P>
+After Gifsicle has created these frames, a new mtPaint process will be started
+with the frame filenames in the command line window. You click on a frame
+filename and this will be loaded so you can edit it as a normal image.
+</P>
+<P>
+Once you have finished editing the frames and you want to create the new
+animation file, select 'Export GIF animation' from the file menu to bring up the
+file dialog. The frame delay box sets the delay in 1/100ths of a second between
+each of the frames. This value should be remembered from when the animation was
+loaded, but it may not be accurate if the input file has several different delay
+values. In the filename box enter the new filename e.g. 'new.gif' and then save
+the file to your preferred location.
+</P>
+<A NAME="SEC2"></A>
+<H2>9.2 Creating Animated GIF Files</H2>
+<P>
+Here is an example of the steps you might take to create a simple animated GIF
+file:
+</P>
+<UL>
+<LI>Use the File menu to create a new indexed palette image of 320x240 pixels with
+8 colours. To create an animated GIF it must be indexed palette, not RGB.
+<LI>Use the File menu to select 'Save as'. Navigate to a suitable place and create
+a new folder for your animation images. Enter this folder, select the GIF
+format, and name the file 'frame-001.gif'.
+<P></P>
+<IMG ALIGN="middle" SRC="../img/9.2a.gif" ALT="">
+<P></P>
+<LI>Press T to bring up the text paste input window and type 'Animating'. Press
+Enter and paste this text at the top of the image. 'Use File-&gt;Save as' to save
+this image as 'frame-002.gif'.
+<P></P>
+<IMG ALIGN="middle" SRC="../img/9.2b.gif" ALT="">
+<P></P>
+<LI>Press T again and paste the text 'is' to the centre of the image. Save this
+image as 'frame-003.gif'.
+<P></P>
+<IMG ALIGN="middle" SRC="../img/9.2c.gif" ALT="">
+<P></P>
+<LI>Press T again and paste the text 'fun' to the bottom of the image. Save this
+image as 'frame-004.gif'.
+<P></P>
+<IMG ALIGN="middle" SRC="../img/9.2d.gif" ALT="">
+<P></P>
+<LI>Select 'Export animated GIF' from the file menu to bring up the file dialog.
+Enter 100 in the frame delay box which creates a delay of 1 second between each
+of the frames. In the filename box enter 'final.gif' and then press enter to
+create the file.
+<P></P>
+<IMG ALIGN="middle" SRC="../img/9.2e.gif" ALT="">
+</UL>
+
+<A NAME="SEC3"></A>
+<H2>9.3 Animating Layers</H2>
+<P>
+Using layers to create an animation can save a lot of time and effort. Instead
+of editing each frame pixel by pixel you set up key frames defining the
+positions of all the layers. Once you are happy with the setup you can create
+all of the frames at the touch of a button as mtPaint will calculate all of the
+'in between' frames. You will need to be very comfortable using layers, so if
+you aren't I would suggest you read the section on layers.
+</P>
+<A NAME="SEC31"></A>
+<H3>9.3.1 Preparation of Ideas</H3>
+<P>
+Once you have come up with an idea for an animation you need to prepare your
+plans before using mtPaint. For example you need to decide on issues like final
+image size, frames per second, number of colours used and total animation
+duration.
+</P>
+<A NAME="SEC32"></A>
+<H3>9.3.2 Project Initializing</H3>
+<P>
+Before starting work on the animation it is advisable to create a new directory
+to put all of the image files in as this makes file management much easier. You
+then create a background image which will set the size of the final animation.
+Finally you create and save each of the image layers that you want in the
+animation.
+</P>
+<P>
+Once the image layers are in place you can then configure the animation with the
+menu option 'Frames-&gt;Configure Animation'. Here you determine the first and last
+frame numbers, the name of the directory to hold the frames, and various other
+details.
+</P>
+<A NAME="SEC33"></A>
+<H3>9.3.3 Setting up Positions and Cycle Data</H3>
+<P>
+After you have positioned each of the layers for the first frame, you select the
+menu option 'Frames-&gt;Set key frame'. You can then do this for further key frames
+in the animation. In the positions tab of the configuration window, you could
+have the following 2 lines:
+</P>
+<P>
+1 10 10 255 0
+</P>
+<P>
+10 20 20 128 0
+</P>
+<P>
+This layer will begin at position (10,10) in frame 1 and move to (20,20) at
+frame 10 with opacity changing from 100% (255) to 50% (128). Each of the frames
+2-9 are calculated by mtPaint as in between frames. The 0 at the end means this
+will be a straight line. A value of 1 would mean mtPaint moves this layer on a
+slightly smoother curve between the given points.
+</P>
+<P>
+The cycles tab is used to determine which layers are visible at any particular
+time. Up to 100 lines can be entered in the following format:
+</P>
+<P>
+frame1 frame2 layer1, layer2, layer3, ... , layer50
+</P>
+<P>
+Up to 50 layers can be listed on each line. Between the 2 frames of the
+animation only one of the sequence will be visible, with the others being
+switched off. As the frame increments, the next layer in the sequence will be
+shown, and the previous one hidden.
+</P>
+<P>
+For example:
+</P>
+<P>
+1 10 1, 2, 3
+</P>
+<P>
+Will cycle the visibility of layers 1, 2, 3 between frames 1 and 10.
+</P>
+<P>
+Normally frame2 will be greater than frame1, but if they are equal you can then
+manually set which layers are visible or invisible at that frame. For example:
+</P>
+<P>
+15 15 10, 11, 12, -1, -2, -3
+</P>
+<P>
+Will show layers 10, 11, 12 and hide layers 1, 2, 3 at frame 15.
+</P>
+<P>
+You can then preview this animation by pressing the preview button (or by using
+the Frames menu) and dragging the slider to view the animation. You can also use
+the arrow keys, page up/down keys, or + or - keys to change frames.
+</P>
+<A NAME="SEC34"></A>
+<H3>9.3.4 Exporting Frames for GIF or MPEG Encoding</H3>
+<P>
+When you are happy with the animation you have created you can export the frames
+with the 'Create Frames' button. If you have selected the GIF toggle mtPaint
+will generate indexed palette GIF files, but if not it will generate RGB PNG
+files. You can then use encoding software such as Gifsicle or mencoder to turn
+these frames into an animation file. If encoding to GIF files, mtPaint will
+attempt to call Gifsicle automatically and create the animated GIF for you. On
+GNU/Linux systems gifview will also be used to display the result.
+</P>
+<P>
+Here is an example of how to get mencoder to create an MPEG file with RGB PNG
+files:
+</P>
+<P>
+<B>mencoder mf://*.png -mf fps=25 -ovc lavc -lavcopts vcodec=mpeg4 -o output.avi</B>
+</P>
+<P>
+For more information on how to use mencoder, check out the mplayer home page
+<A HREF="http://www.mplayerhq.hu/">HERE</A>
+</P>
+<P>
+For more information on how to use gifsicle, check out the home page
+<A HREF="http://www.lcdf.org/gifsicle/">HERE</A>
+</P>
+<A NAME="SEC35"></A>
+<H3>9.3.5 Extra Notes</H3>
+<P>
+If you are composing a particularly long animation that needs more than 100
+lines in the position or cycle table you can simply copy the layers file and
+have different files for each section of the animation. For example
+'layers00001-00500.txt' could be for the first 500 frames and
+'layers00500-01000.txt' could be for the second 500 frames. You then create the
+frames as normal in each case and knit them together with your favourite encoder
+software.
+</P>
+<A NAME="SEC4"></A>
+<H2>9.4 Indexed Palette Animation Examples</H2>
+<P>
+Here are some examples of animations created with mtPaint and Gifsicle. Click on
+each image to download the source files:
+</P>
+<P>
+<A HREF="../files/9.4a.zip"><IMG ALIGN="middle" SRC="../img/9.4a.gif" ALT=""></A> <A HREF="../files/9.4b.zip"><IMG ALIGN="middle" SRC="../img/9.4b.gif" ALT=""></A>
+<A HREF="../files/9.4c.zip"><IMG ALIGN="middle" SRC="../img/9.4c.gif" ALT=""></A> <A HREF="../files/9.4d.zip"><IMG ALIGN="middle" SRC="../img/9.4d.gif" ALT=""></A>
+<A HREF="../files/9.4e.zip"><IMG ALIGN="middle" SRC="../img/9.4e.gif" ALT=""></A> <A HREF="../files/9.4g.zip"><IMG ALIGN="middle" SRC="../img/9.4g.gif" ALT=""></A>
+<A HREF="../files/9.4h.zip"><IMG ALIGN="middle" SRC="../img/9.4h.gif" ALT=""></A> 
+</P>
+<A NAME="SEC5"></A>
+<H2>9.5 RGB Animation Examples</H2>
+<P>
+Although mtPaint is mainly geared towards indexed palette pixel art, it is also
+capable of creating RGB animations which use a larger canvas, a higher frame
+rate, and with variable opacity for the layers. Here are some examples:
+</P>
+<P>
+<A HREF="../files/9.5b.zip"><IMG ALIGN="middle" SRC="../img/9.5b.png" ALT=""></A>
+</P>
+<P>
+When creating the frames for this animation you are advised to use a low value
+for PNG compression, such as 1. See section A.2 for more information on PNG
+compression settings.
+</P>
+<A NAME="SEC6"></A>
+<H2>9.6 Palette Shifting</H2>
+<P>
+Palette shifting is an old technique used to create the illusion of movement by
+shifting palette colours between set limits. Because it is palette based, it
+only works on indexed palette images. The palette shifter in mtPaint is invoked
+by using the Palette menu option, which will show you the following dialog:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/9.6a.png" ALT="">
+</P>
+<P>
+Each row represents a palette shift in the sequence with the first two numbers
+representing the first and last numbers of the palette colours to be shifted. By
+reversing the numbers you will reverse the direction of the shifting. The delay
+is the number of frames to wait before the next shift, with zero meaning no
+delay.
+</P>
+<P>
+Here are two images:
+</P>
+<P>
+<IMG ALIGN="left" SRC="../img/9.6b.png" ALT=""> <IMG ALIGN="middle" SRC="../img/9.6c.gif" ALT=""> 
+</P>
+<P>
+If you load the first image into mtPaint, and then call up the palette shifter
+dialog you can reproduce the animation by entered the following data:
+</P>
+<P>
+13,6,0
+</P>
+<P>
+50,19,0
+</P>
+<P>
+51,82,0
+</P>
+<P>
+In order to make it clearer how I created the image, here is a version of the
+image with a slightly different palette to expose the hidden colours:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/9.6d.png" ALT="">
+</P>
+<P>
+Once you have created an animation you are happy with, you can create an
+animated GIF using the following steps:
+</P>
+<UL>
+<LI>Load the original image, in order to clear the undo history.
+<LI>Set up the palette shifter with the values you want, and using the play button
+to preview the results.
+<LI>Press the 'Create Frames' button and close the palette shifter window.
+<LI>Undo one frame by pressing Ctrl-Z.
+<LI>Select 'Export Undo Images' from the File menu and place the files in a new
+directory somehwere using the filename 'out'. Make sure you select the GIF file
+type.
+<LI>Load one of these undo frames such as out001.gif.
+<LI>Select 'Export Animated GIF' from the File menu and choose a suitable filename
+and delay.
+</UL>
+
+<P>
+Here are some more examples of palette shifting, along with the source image and
+the inputs required to create them:
+</P>
+<P>
+<IMG ALIGN="left" SRC="../img/9.6e.png" ALT=""> 1,60,0 <IMG ALIGN="middle" SRC="../img/9.6f.gif" ALT=""> 
+</P>
+<P>
+<IMG ALIGN="left" SRC="../img/9.6g.png" ALT=""> 1,16,0 <IMG ALIGN="middle" SRC="../img/9.6h.gif" ALT=""> 
+</P>
+<P>
+<IMG ALIGN="left" SRC="../img/9.6i.png" ALT=""> 1,16,0 <IMG ALIGN="middle" SRC="../img/9.6j.gif" ALT=""> 
+</P>
+<HR NOSHADE SIZE=1>
+
+<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html chap_00.t2t chap_01.t2t chap_02.t2t chap_03.t2t chap_04.t2t chap_05.t2t chap_06.t2t chap_07.t2t chap_08.t2t chap_09.t2t chap_A.t2t chap_B.t2t -->
+</BODY></HTML>

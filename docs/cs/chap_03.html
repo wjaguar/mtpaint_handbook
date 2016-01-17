@@ -1,0 +1,493 @@
+<HTML>
+
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<TITLE>Příručka mtPaint - Kapitola 3 - Pixelová kresba</TITLE>
+</HEAD>
+
+<BODY>
+
+<H1>3. Pixelová kresba</H1>
+<P>
+Pixelová kresba je hlavní úkol, pro který byl mtPaint navržen. Tato forma kresby je v podstatě velmi
+jednoduchá a podobná malování v reálném světě. Máte například plátno na které kreslíte, štětec
+se kterým malujete a paletu barev do kterých štětec namáčíte.
+<P>
+Zde je ukázka, jak vypadá hlavní okno mtPaintu:
+<P>
+<IMG src="../img/3.png">
+<P>
+Lišty nástrojů nahoře a paleta nalevo mohou být skryty a opět zobrazeny pomocí kláves
+F5-F8 dle vašich požadavků k práci.
+
+
+<H2><A name=SEC1>3.1 Vytvoření nového plátna</H2>
+<P>
+První rozhodnutí, které musíte udělat před započetím projektu je
+s jakým typem plátna budete pracovat. mtPaint podporuje dva typy plátna:
+
+<P>
+<LI>S indexovanou paletou
+<LI>24 bit RGB
+
+<P>
+Obrázky s indexovanou paletou používají 2 až 256 barev. Každá z těchto barev může být
+nastavena uživatelem a je uložena společně s plátnem do obrázku. RGB obrázky neukládají
+paletu, ale mají výhodu v použití mnoho milionů barev v obrázku. Pro veškeré práce
+související s digitálními fotografiemi musíte použít RGB plátno.
+
+<P>
+Po spuštění mtPaintu máte automaticky prázdné plátno se stejnými rozměry jako při
+předchozí práci. Pokud chcete něco jiného, musíte vytvořit nový obrázek, který lze
+zavolat pomocí Ctrl-N, použitím menu Soubor, nebo stiskem ikony Nový obrázek.
+
+
+<H2><A name=SEC2>3.2 Kreslicí nástroje</H2>
+<P>
+mtPaint má mnoho různých nástrojů na malování, které můžete použít. Začněte kliknutím
+na příslušnou ikonu v sekci Nástroje nástrojové lišty v horní části okna mtPaintu.
+<P>
+Kdykoliv uděláte chybu, můžete vždy použít funkci Zpět a Vpřed přes klávesy Ctrl-Z a Ctrl-R,
+přes menu Upravit, nebo ikony na hlavním panelu. Paměť umožňuje vrátit až 100 změn. Maximální
+limit paměti pro zpětné akce můžete nastavit v okně voleb.
+
+
+<H3><A name=SEC21>3.2.1 Malování</H3>
+<P>
+Nástroj Malování je nejjednodušší kreslicí nástroj. Nejsnažší cesta pro jeho použití je vybrat
+jeden z předdefinovaných štětců stiskem F3, nebo kliknutím do oblasti s ukázkou štětce nad paletou.
+Dostanete na výběr různé tvary a velikosti štětců:
+<P>
+<IMG src="../img/3.2.1b.png">
+
+<P>
+Pokud chcete manuálně upravit velikost štětce, nebo bohatost spreje, můžete to udělat
+na liště nastavení.
+
+
+<H3><A name=SEC22>3.2.2 Přeházení</H3>
+<P>
+Nástroj Přeházení prohodí náhodné pixely v oblasti štětce. Hodí se to pro mixování mezi
+dvěma bloky barev na plátně a vytvoření pixelované textury jako tato:
+<P>
+<IMG src="../img/3.2.2.png">
+<P>
+Velikost nástroje a bohatost ovlivní, jak prohazování pracuje na plátně.
+
+
+<H3><A name=SEC23>3.2.3 Vyplnění</H3>
+<P>
+Nástroj Vyplnění pracuje tak, že vyplní oblast, kde mají pixely
+stejnou barvu. Pokud na ikonu Vyplnění kliknete pravým tlačítkem, tak máte více možností
+nad vyplnováním.
+<P>
+Nastavením 'Kanálem obrázku' můžete oblast vyplnit v požadovaném kanále použitím
+kanálu obrázku jako odkazu pro vyplňovací plochu.
+<P>
+'Fuzzy' režim se použije nastavením čísla většího než 0. Tento režim umožňuje
+vyplnit oblast pixelů, které jsou podobné tomu, na který jste klikli poprvé raději
+než pixely, které jsou identické, což se hodí pro fotografie.
+<P>
+Přepínač 'RGB krychle' zajistí ve fuzzy režimu použití modelu RGB krychle narozdíl od výchozího
+L*X*N* koule, který se může hodit v některých situacích (pro více detailů ohledně rozdílu
+mezi metodami krychle a koule se podívejte do kapitoly 3.5.4).
+Přepínač 'Gradientem' ve fuzzy režimu bude brát v úvahu rozdíl mezi sousedními pixely
+raději, než originální pixel a každý a každý další kandidát.
+
+
+<H3><A name=SEC24>3.2.4 Rovná čára</H3>
+<P>
+Rovnou čáru můžete v mtPaintu nakreslit jednoduše takto:
+
+<P>
+<LI>Vyberte nástroj Rovná čára z nástrojové lišty
+<LI>Klkněte a uvolněte levé tlačítko, kde chcete čáru začít
+<LI>Přesuňte kurzor na místo, kde má čára končit a stiskněte levé tlačítko
+
+<P>
+Kreslení čáry bude pokračovat, dokud nestisknete pravé tlačítko, nebo klávesu
+Escape. Tloušťka čáry je dána nastavením její velikosti.
+
+
+<H4><A name=SEC241>3.2.4.1 Kreslení šipek</H4>
+<P>
+Nástroj Rovná čára může také nakreslit vrchol šipky na konci aktuální čáry, pokud
+stisknete klávesy 'A', nebo 'S' pro otevřenou, nebo uzavřenou šipku. Velikost hlavy
+šipky se nastavuje bohatostí.
+
+
+<H3><A name=SEC25>3.2.5 Rozmazat</H3>
+<P>
+Nástroj rozmazání je k dispozici pouze pokud pracujete v RGB režimu. Pracuje
+rozmazáním oblasti pixelů nastavenou velikostí. Tažením kurzoru v různých
+směrech dosáhnete různého rozmazacího efektu. Zde je jeden příklad rozmazání:
+<P>
+<IMG src="../img/3.2.5.png">
+<P>
+Tohoto efektu je dosaženo se zapnutým spojitým režimem a vypnutým režimem
+neprůsvitnosti.
+
+
+<H3><A name=SEC26>3.2.6 Klonovat</H3>
+<P>
+Nástroj klonování se používá pro kopírování kusů z jedné části obrázku do jiné. Po
+vybrání nástroje Klonovat musíte nastavit jeho velikost a potom přesunout kurzor
+myši nad oblast plátna. Potom stisknete Ctrl a přesunete myš pro upřesnění pozice
+ohraničení (černobílá) dál od klonovacího ohraničení (černočervená). Po uvolnění
+Ctrl můžete stisknout levé tlačítko pro kopírování pixelů z červenočerné oblasti
+do černobílého boxu. Zde je příklad:
+
+<P>
+<IMG src="../img/3.2.6.png">
+
+
+<H3><A name=SEC27>3.2.7 Text</H3>
+<P>
+Pokud chcete na plátno vložit nějaký text, tak stikněte klávesu 'T', nebo klikněte
+na ikonu textového nástroje na liště. Následně se vám ukáže formulář, kde musíte
+napsat text, který chcete vložit na plátno. Budete moci změnit typ fontu
+a jeho velikost.
+<P>
+Pokud používáte GTK+2 a upravujete RGB obrázek, máte také možnost mít 
+vyhlazený text s jemnějšími hranami. Uživatelé GTK+2.6 mají luxus
+rotace textu pod libovolným úhlem.
+<P>
+Až budete spokojeni s textem v oblasti náhledu
+budete následně mít možnost vzít text a umístit ho na libovolné místo. Následně
+můžete změnit barvu textu kliknutím na příslušnou položku palety, nebo můžete
+také změnit vzorek. Text můžete otáčet pod úhlem 90 stupňů
+kdykoliv kliknutím na ikony rotace výběru na nástrojové liště, nebo použitím
+menu Výběr. Umístění textu na plátno potvrdíte
+stejně, jako to děláte u normálních operací vložení jednoduše pravým tlačítkem,
+nebo klávesou Enter.
+
+
+
+<H2><A name=SEC3>3.3 Paleta</H2>
+<P>
+Paleta je umístěna na levé straně okna mtPaintu a je používána pro výběr barev
+pro kreslení. Pokud kliknete na barvu levým tlačítkem, tak ji vyberete pro barvu A
+a pokud pravým, tak vyberete barvu B. Barvy A a B jsou zobrazeny v malé oblasti
+nad paletou. Barvy A a B můžete prohodit stiskutím klávesy 'X'.
+
+
+<H3><A name=SEC31>3.3.1 Úprava barev</H3>
+<P>
+Upravit barvy A a B můžete stisknutím
+Ctrl-E, nebo kliknutím na náhled A/B barev. Celou paletu upravíte stiskem kláves
+Ctrl-W.
+
+
+<H3><A name=SEC32>3.3.2 Otevření a uložení palety</H3>
+<P>
+Aktuální paletu můžete uložit, nebo otevřít vyvoláním příslušné funkce
+v menu Paleta. Pokud uložíte paletu do souboru mtpaint.gpl ve vašem domovském adresáři
+(jako /home/user/ v GNU/Linuxu, nebo C:/Documents and Settings/user/ in Windows XP)
+tak se stane výchozí paletou při dalším spuštění mtPaintu.
+
+
+<H3><A name=SEC33>3.3.3 Seřazení a úpravy palety</H3>
+<P>
+Celou paletu je možné setřídit použitím volby v menu Paleta. Můžete
+také přesunout jednu barvu v paletě z jednoho indexu na jiný
+a to následovně:
+<P>
+<LI>Najeďte kurzorem na barvu, kterou chcete přesunout
+<LI>Stiskněte a podržte klávesu shift
+<LI>Stiskněte a podržte levé tlačítko
+<LI>Přesuňte ukazatel  na požadovaný index
+<LI>Uvolněte tlačítko myši pro potvrzení operace
+<P>
+Pokud to provádíte s indexovanou paletou, budou barvy na plátně příslušně
+změněny.
+<P>
+Všeobecné změny barev palety můžete dělat, pokud upravujete RGB obrázek,
+stiskem klávesy 'Insert' a změnou nastavení sady nástrojů.
+
+
+<H3><A name=SEC34>3.3.4 Ochrana barev</H3>
+<P>
+Existuje zde funkce ochranné masky, která zabrání tomu, aby byla určitá
+barva na plátně překreslena.  To se velmi často hodí, pokud máte nakreslený
+obrys a následně chcete dokreslit zbytek mezi těmito čárami ostatními barvami
+bez poškození obrysu. Pro ochranu barvy před jejím překreslením jednoduše
+klikněte napravo od této barvy v okně palety. Měl by se tam objevit kříž.
+Při dalším kliknutí bude maska odstraněna a barva může být zase překreslována
+jako normálně. V menu Paleta najdete také funkci pro nastavení a zrušení
+masky všech barev. Tato ochrana se vztahuje na všechny základní nástroje, jako
+normální kreslení a vkládání (RGB a indexované obrázky) a také globální funkce
+jako efekty a barevné transformace.
+
+
+<H3><A name=SEC35>3.3.5 Transparentní barva</H3>
+<P>
+Při úpravě některých typů souborů, jako XPM, GIF, nebo PNG si můžete přát
+nastavit konkrétní barvu jako transparentní. Provedete to stiskem Ctrl-P
+pro okno voleb a následně v sekci Soubory nastavíte index průhlednosti.
+Nastavení -1 průhlednost vypne. Máte také možnost toto nastavit při ukládání
+pomocí volby 'Uložit jako'.
+
+
+<H3><A name=SEC36>3.3.6 Vybírání barvy z plátna</H3>
+<P>
+Pokud malujete, tak se vám někdy hodí vybrat barvu z plátna místo z paleta
+pro barvy A a B. Uděláte to podržením klávesy Ctrl a stisknutím levého tlačítka
+pro barvu A, nebo tlačítka pravého pro barvu B.
+<P>
+Pokud upravujete celou paletu, můžete vybrat barvu odkudkoliv z obrazovky
+stisknutím ikony kapátka (jen GTK+2).
+
+
+<H2><A name=SEC4>3.4 Vzorky</H2>
+<P>
+Při malování se obvykle používají samostatné barvy, ale je také možné použít různé
+vzorky. Pro výběr různých vzorků stiskněte F2, nebo klikněte do oblasti náhledu
+vzorku těsně nad paletou. Následně se vám otevře výběr následujících vzorků,
+ze kterých si můžete vybrat:
+
+<P>
+<IMG src="../img/3.4.png">
+
+
+<H2><A name=SEC5>3.5 Kreslicí režimy</H2>
+<P>
+Kreslicí režimy mohou být použity pro změnu základního chování
+kreslicích akcí. Tyto režimy se zapínají a vypínají použitím ikon
+na liště nastavení, jako zde:
+<P>
+<IMG src="../img/3.5.png">
+<P>
+Ne všechny režimy jsou aplikovatelné na všechny nástroje. Zde je detailní
+tabulka ukazující, které režimy ovlivní jaký nástroj:
+<TABLE cellpadding="5" cellspacing="1" border="1">
+<tr>
+	<td></td>
+	<td>Malování</td>
+	<td>Přeházení</td>
+	<td>Vyplnění</td>
+	<td>Rozmazat</td>
+	<td>Klonovat</td>
+	<td>Vložit</td>
+</tr>
+<tr>
+	<td>Spojitý</td>
+	<td>Ano</td>
+	<td></td>
+	<td></td>
+	<td>Ano</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>Neprůsvitnost</td>
+	<td>Ano</td>
+	<td></td>
+	<td></td>
+	<td>Ano</td>
+	<td>Ano</td>
+	<td>Ano</td>
+</tr>
+<tr>
+	<td>Kolorování</td>
+	<td>Ano</td>
+	<td></td>
+	<td>Ano</td>
+	<td></td>
+	<td></td>
+	<td>Ano</td>
+</tr>
+<tr>
+	<td>Maska</td>
+	<td>Ano</td>
+	<td>Ano</td>
+	<td>Ano</td>
+	<td>Ano</td>
+	<td>Ano</td>
+	<td>Ano</td>
+</tr>
+<tr>
+        <td>Gradient</td>
+        <td>Ano</td>
+        <td></td>
+        <td>Ano</td>
+        <td></td>
+        <td></td>
+        <td></td>
+</tr>
+</TABLE>
+<P>
+Malování obsahuje štětce, spreje, rovné čáry, výběry vyplněné a obrysové.
+
+
+<H3><A name=SEC51>3.5.1 Spojitý</H3>
+<P>
+Pokud je zapnutý spojitý režim, tak pokud budete držet tlačítko myši
+nad plátnem, budou mezery mezi přesuny vyplněny.
+
+
+<H3><A name=SEC52>3.5.2 Neprůsvitnost</H3>
+<P>
+Pokud kreslíte s neprůsvitností menší než 255 a zpětný režim neprůsvitnosti je
+aktivován, tak malování změní každý pixel dle této hodnoty přesně stejným
+způsobem, jako na tomto příkladě:
+<P>
+<IMG src="../img/3.5.2a.png">
+<P>
+Pokud je režim neprůsvitnosti vypnutý, bude neprůsvitnost zvětšena pokaždé, pokud
+přemalujete pixel, jako v tomto případě:
+<P>
+<IMG src="../img/3.5.2b.png">
+
+
+<H3><A name=SEC53>3.5.3 Kolorování</H3>
+<P>
+Pokud je zapnutý režim kolorování během editace RGB obrázku, tak místo nahrazení
+barvou operace zvětší, nebo zmenší individuální barevný kanál relativně k barvě
+A a B. S indexovaným obrázkem to bude index, který se zvýší, nebo sníží.
+Pro výplňové operace s výběrem musíte také nastavit přepínač Kolorování +- pro
+určení, kterým směrem bude kolorování provedeno. Zde je příklad kolorování
+s modrou elipsou na šedivém obrázku:
+<P>
+<IMG src="../img/3.5.3.png">
+
+
+<H3><A name=SEC54>3.5.4 Výběr barev</H3>
+<P>
+Režim výběru barvy je speciální typ masky, který upravuje kreslicí operace
+vzhledem k barvě pixelů na plátně. Nastavení režimu provedete kliknutím pravým
+tlačítkem na ikonu přepínače režimu, načež se vyvolá následující okno:
+<P>
+<IMG src="../img/3.5.4.png">
+<P>
+Obrázek ukazuje plynulý šedivý přechod z jednoho rohu do druhého a výběr
+barev, který složí pro střední sekci této šedi. Zelená oblast náhledu zobrazuje
+pixely chráněné před kreslicí operací. Zaškrtnutím volby 'Inverze' zvolíte,
+které pixely budou k dispozici pro kreslení.
+<P>
+Volba Koule je L*X*N* koule (stejná jako fuzzy výplně) a používá Euklidovské
+rozměry v percepčním jednotném barevném prostoru, který lépe se lépe hodí
+pro lidské oko. Nicméně používá složité výpočty a jeho použití může zdržovat.
+Volba Krychle používá největší rozdíl mezi Červenou, Zelenou a Modrou
+komponentou barvy, takže je rychlejší, ale méně rozlišující a může být
+nejlépe použitelná, řekněme pro oblasti se stejnou barvou ignorující šum
+v nižších bitech RGB barev, nebo při vyplňování oblastí tak velkých, že výchozí
+režim by byl příliš pomalý.
+
+
+<H3><A name=SEC55>3.5.5 Maska</H3>
+<P>
+Přepínač Vypnout všechny masky se používá pro dočasné vypnutí aktuálních masek.
+To ovlivní kanál masek, jakékoliv barvy v paletě, které jsou chráněné
+a také masku výběru barev.
+
+
+<H3><A name=SEC56>3.5.6 Gradienty</H3>
+<P>
+When you select the gradient mode by clicking the horizontal gradient button,
+you are able to paint smooth graduated areas of pixels onto the canvas.  By default
+the gradient uses colour A and B, although you can define your own colours, which
+is explained later.  Once the mode is switched on, there are two ways to use it:
+<LI>As a placed gradient in a fixed position using the gradient selection tool
+followed by a painting tool.
+<LI>As a stroke gradient using the brush shapes.
+
+<H4><A name=SEC561>3.5.6.1 Vkládané Gradienty</H4>
+<P>
+Gradient vložíte výběrem nástroje Vložit gradient z lišty nástrojů
+a následně zadáte počáteční a koncový bod kliknutím myši.
+Jakmile to provedete,
+uvidíte náhled výsledného přechodu a následně musíte
+vybrat kreslící nástroj a nakreslíte ho na plátno. Pokud chcete
+gradient nakonfigurovat, musíte stisknout pravé tlačítko na ikoně
+vložení gradientu na liště. Zde je příklad jednoduchého lineárního gradientu
+z červené do žluté kreslené pomocí nástroje polygon pro vytvoření trianglu.
+Levá část obrázku zobrazuje konstrukci čar pro nástroj vložení gradientu a nástroj
+polygon a pravá část reprezentuje přesné pixely na plátně:
+<P>
+<IMG src="../img/3.5.6.1a.png">
+<P>
+Použitím různých nastavení v okně nastavení gradientu můžete dosáhnout
+mnoha druhů efektů. Například zde je duha, kterou jsem nakreslil:
+<P>
+<IMG src="../img/3.5.6.1b.png">
+<P>
+Tento obrázek byl vytvořen podle následujícího postupu po spuštění mtPaintu:
+<LI>Vytvořit nový RGB obrázek.
+<LI>Vyberte červenou jako barvu A (index 1) a fialovou jako barvu B (index 5).
+<LI>Použijte nástroj vložení gradientu pro vložení obou bodů blízko spodního středu obrázku.
+<LI>Pravým tlačítkem klikněte na nástroj Vložení gradientu pro nastavení následujícího:
+<UL>
+	<LI>Délku na 75 - Plná šířka duhy.
+	<LI>Posun na 50 - Vytvoří díru uprostřed.
+	<LI>Typ gradientu na Radiální.
+	<LI>Použijte Gradient 'A do B (HSV)' s použitím tlačítka obráceně -
+	To vytvoří celou cestu barevného spektra.
+</UL>
+<LI>Použijte nastavení pro zapnutí gradient režimu.
+<LI>Vyberte nástroj výběru pravoůhlé oblasti a nakreslete horní polovinu duhy s použitím
+ikony vyplnění oblasti.
+
+
+<H4><A name=SEC562>3.5.6.2 Tahové Gradienty</H4>
+<P>
+Aby tahové gradienty fungovaly, musíte nejprve vyčistit jakoukoliv čáru gradientu
+umístěnou na plátno použitím escape, nebo pravého tlačítka myši se zapnutým
+nástrojem Vložení gradientu. Následně musíte nastavit tah stisknutím pravého
+tlačítka myši na nástroji vložení gradientu na liště. Jako příklad, čeho
+můžete dosáhnout se podívejte, co bylo vytvořeno použitím červeného přechodu
+do bílé s délkou 50 a zrcadlovým typem rozšíření:
+<P>
+<IMG src="../img/3.5.6.2a.png">
+<P>
+Zde je příklad s podobným nastavením, ale s typem rozšíření 'Žádné' a menším
+štětcem:
+<P>
+<IMG src="../img/3.5.6.2b.png">
+
+
+<H4><A name=SEC563>3.5.6.3 Vlastní Gradienty</H4>
+<P>
+Pokud chcete vytvořit přechod, nebo průhlednost sestavenou z více bodů,
+tak musíte vybrat typ gradientu 'Vlastní' a následně kliknout na
+tlačítko 'Upravit Vlastní'. Potom můžete nadefinovat až 256 bodů na přechod,
+které budou vloženy průměrně daleko od sebe. Zde je příklad jednoduchého vlastního
+gradientu:
+<P>
+<IMG src="../img/3.5.6.3.png">
+<P>
+Zde jsou kroky, které jsem učinil pro vytvoření tohoto obrázku:
+<LI>Vytvořit nový obrázek.
+<LI>Konfigurovat typ gradientu na 'Radiální' a mít typ rozšíření nastaven na 'Opakovat'.
+<LI>Vybrat 'Vlastní' pro Gradient a potom kliknout na tlačítko 'Upravit Vlastní'.
+<LI>Vybrat 5 barev, každou nadefinovat jako 'Konstantní' takže jen blokové barvy jsou použity.
+<LI>Použijte nástroj Vložení Gradientu pro vložení prvního bodu uprostřed
+obrázku a druhý bod kousek od středu obrázku a jeho krajů.
+<LI>Stiskněte Ctrl-A pro výběr celého obrázku a následně ikonu 'Vyplnit výběr'
+pro vyplnění celého obrázku gradientem.
+
+
+<H4><A name=SEC564>3.5.6.4 kanálové Gradienty</H4>
+<P>
+Je možné nakreslit přechody do různých kanálů použitím stejných metod jako
+na kanál obrázku.  Například, zde je obrázek s gradientem
+nakresleném na alfa-kanálu:
+<P>
+<IMG src="../img/3.5.6.4.png">
+<P>
+Zde jsou kroky, které jsem učinil pro vytvoření tohoto obrázku:
+<LI>Vyberte 'Upravit alfakanál' z menu Kanály a nastavte všechny pixely.
+<LI>Použijte nástroj Vložení gradientu pro nastavení prvního bodu doprostřed
+a druhého bodu v rohu.
+<LI>Stiskněte Ctrl-A pro výběr celého obrázku a stiskněte ikonu 'Vyplnit výběr'
+pro nakreslení gradientu (přesvědčete se, že je režim gradientu zapnutý
+na liště nastavení).
+
+
+
+<P>
+<HR>
+
+</BODY>
+</HTML>
+
+

@@ -1,0 +1,751 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<TITLE>The mtPaint Handbook - Chapter 3 - Pixel Art</TITLE></HEAD><BODY BGCOLOR="white" TEXT="black">
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<H1>3. Pixel Art</H1>
+<P>
+Pixel Art is the main task that mtPaint is designed for. This art form is
+essentially very simple and similar to painting in the real world. For example
+you have a canvas to paint on, a brush to paint with, and a palette of colours
+for the brush to use.
+</P>
+<P>
+Here is what the mtPaint main window looks like:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.png" BORDER="0" ALT="">
+</P>
+<P>
+The toolbars at the top and the palette on the left can be toggled on and off
+with the keys F5-F8 to best suit the job you are doing.
+</P>
+<A NAME="SEC1"></A>
+<H2>3.1 Creating a New Canvas</H2>
+<P>
+The first decision you need to make before starting a project is what type of
+canvas do you want to work with. mtPaint supports two types of canvas:
+</P>
+<UL>
+<LI>Indexed Palette
+<LI>24 bit RGB
+</UL>
+
+<P>
+Indexed Palette images use a palette of between 2 and 256 colours. Each of these
+colours can be set by the user and is saved along with the canvas to the image
+file. RGB images do not save the palette, but they have the benefit of being
+able to use many millions of colours in the image. For any type of work related
+to digital photographs you will need to use an RGB canvas.
+</P>
+<P>
+When starting mtPaint you automatically have an empty canvas with the same
+geometry as your previous work. If you want something else you must use the new
+image window which is called up by pressing Ctrl-N, using the File menu or by
+pressing the new image icon. It allows you to:
+</P>
+<UL>
+<LI>create a new empty canvas (up to 16384 x 16384 pixels)
+<LI>grab a screenshot of the current desktop
+<LI>import image from the system clipboard (or from internal clipboard if the
+system clipboard is empty)
+</UL>
+
+<P>
+If you check the 'Undoable' option when creating new image, it becomes possible
+to undo it just like any other editing operation. This is especially useful
+when grabbing screenshots - you can grab several, and then save all of them at
+once using 'Export undo images' from the File menu.
+</P>
+<A NAME="SEC2"></A>
+<H2>3.2 Painting Tools</H2>
+<P>
+mtPaint has several different painting tools which you can use. To start using
+these tools you select the relevant icon on the Tools section of the toolbar at
+the top of the mtPaint window.
+</P>
+<P>
+If at any time you make a mistake, you can always use the undo and redo
+functions via the Ctrl-Z and Ctrl-R keys, the Edit menu or the main toolbar.
+By default, you can undo up to 100 actions - less if undo space is not large
+enough. Preferences window allows you to allocate more memory to the undo
+space, or increase the undo limit up to 1000 actions.
+</P>
+<P>
+Generally, you need undo space of at least twice the uncompressed size of the
+largest image you want to process - i.e., (width x height x 6) for RGB images,
+or (width x height x 2) for indexed.
+</P>
+<A NAME="SEC21"></A>
+<H3>3.2.1 Paint</H3>
+<P>
+The Paint tool is the simplest painting tool. The easiest way to use it is to
+select one of the pre-defined brush settings by pressing F3 or by clicking on
+the brush preview area above the palette. This will then give you a selection
+of brush shapes to choose from:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.2.1b.png" BORDER="0" ALT="">
+</P>
+<P>
+If you want to manually adjust the brush size, or flow of the spray, you can do
+this by using the settings toolbar.
+</P>
+<A NAME="SEC22"></A>
+<H3>3.2.2 Shuffle</H3>
+<P>
+The shuffle tool swaps random pixels in the brush area. It is useful for mixing
+between two blocks of colour on the canvas and creating a pixellated texture
+like this:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.2.2.png" BORDER="0" ALT="">
+</P>
+<P>
+The tool size and flow affect how the shuffle operates on the canvas.
+</P>
+<A NAME="SEC23"></A>
+<H3>3.2.3 Flood Fill</H3>
+<P>
+The flood fill works by filling an area where all of the pixels are the same
+colour. If you right click on the flood fill icon you can have more control over
+the flood fill actions.
+</P>
+<P>
+By setting 'By image channel' you can fill an area on a utility channel by using
+the image channel as the reference for the fill area.
+</P>
+<P>
+A 'fuzzy' mode can be used by setting the number to greater than 0. This mode
+allows you to fill an area of pixels that are similar to the one you first
+click, rather than relying on pixels being identical, which is useful for
+photographs.
+</P>
+<P>
+The 'RGB Cube' toggle makes the fuzzy mode use the RGB cube model as opposed to
+the default L*X*N* sphere, which can be useful for certain situations (see
+<A HREF="#SEC54">3.5.4</A> for more details of the difference between the cube and sphere
+methods). The 'Gradient-driven' toggle makes the fuzzy mode consider the
+difference between adjacent pixels, rather than the original starting pixel and
+each candidate pixel.
+</P>
+<A NAME="SEC24"></A>
+<H3>3.2.4 Straight Line</H3>
+<P>
+To draw a straight line in mtPaint you simply:
+</P>
+<UL>
+<LI>Select the straight line tool from the toolbar
+<LI>Left click and release where you want the line to start
+<LI>Move the pointer to where you want the line to end and left click
+</UL>
+
+<P>
+The line procedure will then continue until you press the right mouse button or
+press the Escape key to stop. The thickness of this line is set by the tool
+size.
+</P>
+<A NAME="SEC241"></A>
+<H4>3.2.4.1 Drawing Arrows</H4>
+<P>
+The straight line tool can also draw an arrow head at the end of the current
+line if you press either the 'A' or 'S' keys for an open or closed head. The
+size of the head is determined by the tool flow.
+</P>
+<A NAME="SEC25"></A>
+<H3>3.2.5 Smudge</H3>
+<P>
+The smudge tool is only available when you are editing an RGB image. It works by
+smudging an area of pixels set by the tool size. By dragging the mouse in
+different directions you will achieve a different smudge effect. Here is an
+example of smudging:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.2.5.png" BORDER="0" ALT="">
+</P>
+<P>
+This effect is achieved with Continuous mode switched on and Opacity mode
+switched off.
+</P>
+<A NAME="SEC26"></A>
+<H3>3.2.6 Clone</H3>
+<P>
+The clone tool is used to copy chunks from one part of the image to the other.
+After selecting the clone tool you must set the tool size and then move the
+mouse cursor over the canvas area. Then you hold the Ctrl key down and move the
+mouse in order to position the tool perimeter (black and white) away from the
+clone perimeter (black and red). After releasing Ctrl you can then press the
+left mouse button to copy pixels from the red and black box to the white and
+black box. Here is an example:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.2.6.png" BORDER="0" ALT="">
+</P>
+<A NAME="SEC27"></A>
+<H3>3.2.7 Text</H3>
+<P>
+If you wish to paste some text onto the canvas you need to press the 'T' key or
+click the text tool icon on the toolbar. You will then be presented with a form,
+where you need to type in the text you want to paste onto the canvas. You will
+be able to change the font type and its size.
+</P>
+<P>
+If you are using GTK+2 and editing an RGB image you also have the option of
+having antialiased text for smoother edges. GTK+2.6 users have the luxury of
+rotating the text to any angle.
+</P>
+<P>
+Once you are happy with the text in the preview area you will then be able to
+drag the text around and position it where you want. You can then change the
+colour of the text by clicking on a palette colour or you may want to change the
+pattern. You can rotate the text by 90 degree steps at any time with with the
+rotate selection icons on the toolbar, or by using the Selection menu. You
+commit the text to the canvas just like you would for a normal paste operation,
+so you right click or press the Enter key.
+</P>
+<A NAME="SEC271"></A>
+<H4>3.2.7.1 Text (FreeType)</H4>
+<P>
+As well as using the standard GTK+ text rendering facilities, mtPaint can also
+use the FreeType text rendering library directly in order to gain the following
+advantages:
+</P>
+<UL>
+<LI>Bitmap fonts can be used, including scaling and rotating.
+<LI>Fonts are loaded directly from files, so do not need to be installed on the
+host operating system.
+<LI>Scalable fonts without italic or oblique styles can be skewed in order to
+achieve an oblique effect.
+<LI>Rendering is identical regardless of operating system, or GTK+ version.
+<LI>Rendering and rotation quality is higher on some systems, such as Windows.
+<LI>Text rotation is available to GTK+1 and GTK+2.0 - GTK+2.4 systems.
+<LI>The GTK+1 version of mtPaint can now paste anti-aliased text.
+</UL>
+
+<P>
+<IMG ALIGN="middle" SRC="../img/3.2.7.1.png" BORDER="0" ALT="">
+</P>
+<P>
+Despite these advantages, the standard GTK+ text rendering is still retained in
+mtPaint as it has these advantages:
+</P>
+<UL>
+<LI>Some systems may offer font substitution facilities which makes using
+different alphabets within a single string possible.
+<LI>It is a simpler dialog which some people may prefer if they don't need the
+extra power and quality that the FreeType rendering offers.
+</UL>
+
+<P>
+The first step when using the FreeType text tool is to populate the 'Font
+Directory' tab. When the dialog is started for the first time, mtPaint will
+attempt to find all the fonts on your system automatically. If this fails then
+you will need to manually enter each directory which contains the fonts that you
+want to use. Once you are happy with your directories you must press the 'Create
+Index' button which will create the font index.
+</P>
+<P>
+At this point you should be able to return to the 'Text' tab and select the font
+you wish to use.
+</P>
+<A NAME="SEC3"></A>
+<H2>3.3 The Palette</H2>
+<P>
+The palette is positioned on the left hand side of the mtPaint window and is
+used to select colours for painting. If you left click on a colour it is chosen
+for colour A and a right click will choose colour B. Colour A and B are
+previewed in a small area above the palette. A and B can be swapped by pressing
+the 'X' key.
+</P>
+<A NAME="SEC31"></A>
+<H3>3.3.1 Editing the Palette</H3>
+<P>
+You can edit colours A and B by pressing Ctrl-E, or by clicking on the colours
+A/B preview.
+</P>
+<P>
+In case the image is indexed, and colours A and B are the same, you need to
+edit colour B to get the palette entry to change.
+</P>
+<P>
+You can edit the whole palette by pressing Ctrl-W, or by clicking on colour
+index in the palette window - in this case palette editor starts with the
+clicked colour selected.
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.3.1.png" BORDER="0" ALT="">
+</P>
+<P>
+When editing the whole palette, you can create colour scales between two
+selected colours; set the "From" and "To" spins to the endpoints of the scale,
+select the interpolation mode, and press the "Create" button. Pressing the
+"From" and "To" buttons sets the corresponding spin to the current colour index.
+</P>
+<P>
+Scales can be built by interpolating between the endpoints' colours in RGB, in
+HSV, or by using the currently selected gradient; in the latter case, the
+endpoints get modified too. If you want a reverse HSV or gradient scale, set
+the endpoints in a reverse order (the "To" index smaller than the "From" index).
+</P>
+<A NAME="SEC32"></A>
+<H3>3.3.2 Loading and Saving the Palette</H3>
+<P>
+You can save and load the current palette by accessing the relevant function in
+the Palette menu. If you want a palette file to be used as the default mtPaint
+palette you can set this in the Path section of the Preferences window.
+</P>
+<A NAME="SEC33"></A>
+<H3>3.3.3 Sorting and Adjusting the Palette</H3>
+<P>
+It is possible to sort the whole palette by using the Palette menu option. You
+can move a single palette entry from one index to another by doing the
+following:
+</P>
+<UL>
+<LI>Move the mouse pointer to the colour you want to move
+<LI>Press and hold the shift key
+<LI>Press and hold the left mouse button
+<LI>Drag the pointer to the desired index
+<LI>Release the mouse pointer to commit the operation
+</UL>
+
+<P>
+When doing this with an indexed image, the canvas colours will be adjusted to
+accommodate the change.
+</P>
+<P>
+The general colour of the palette can be adjusted when editing an RGB image by
+pressing the 'Insert' key and adjusting the settings with the palette toggle
+set.
+</P>
+<A NAME="SEC34"></A>
+<H3>3.3.4 Colour Protection</H3>
+<P>
+There is a colour protection mask feature which stops certain colours from being
+painted over on the canvas. This is very useful when you have drawn an outline
+and then want to fill in between these lines with other colours without
+affecting the outline. To protect a colour from being painted on, simply left
+click to the right of its colour in the palette window - a cross should then
+appear. Click again and the mask will be removed and this colour can be edited
+on the canvas as normal. The palette menu allows you to set or clear the mask
+for all colours. This protection affects all basic tools like normal painting or
+pasting (RGB &amp; Indexed images) and also global functions like effects and colour
+transformations.
+</P>
+<A NAME="SEC35"></A>
+<H3>3.3.5 The Transparent Colour</H3>
+<P>
+When editing certain types of file like XPM, GIF or PNG you may wish to have a
+particular colour set as transparent. To do this you press Ctrl-P for the
+Preferences window and then go to the Files section and set the palette index
+you want to be transparent. A setting of -1 will turn transparency off. You also
+have an opportunity to set this when using the 'Save As' option.
+</P>
+<A NAME="SEC36"></A>
+<H3>3.3.6 Picking a Colour from the Canvas</H3>
+<P>
+While you are painting it is sometimes useful to select a colour from the canvas
+for colour A or B. To do this you hold down the Ctrl key and press the left
+mouse button to choose colour A or the right button for colour B.
+</P>
+<P>
+Ctrl+double click will select the gamma corrected average colour under the
+selection rectangle, or if there is no selection, under the brush square.
+Again, double clicking the left button selects colour A, and right button,
+colour B. You can use this to select colours for antialiasing.
+</P>
+<P>
+If you picked an RGB colour from canvas, and want to find one like it in your
+palette, you can do it by Ctrl+middle click. This will change colour A to the
+palette colour nearest to it, and choose colour B and pattern to together
+produce the best possible approximation of the original colour A. If you do not
+need the dither, but only the nearest solid colour, then Ctrl+middle click a
+second time - this will set colour B to same as colour A, and pattern to solid.
+</P>
+<P>
+While you are editing the whole palette, you can select any colour from anywhere
+on your computer screen by pressing the eye dropper icon.
+</P>
+<A NAME="SEC37"></A>
+<H3>3.3.7 Copy to Palette</H3>
+<P>
+If you are editing an RGB or indexed image the Edit menu allows you to copy the
+current selection, or clipboard contents if there is no selection, to the
+palette. This operation also sets the size of the palette accordingly.
+</P>
+<A NAME="SEC38"></A>
+<H3>3.3.8 Paste Palette</H3>
+<P>
+If you are editing an RGB image the Edit menu allows you to put the current
+palette onto clipboard, which you could then paste to the canvas. If you
+firstly select an area with the selection tool you can make the paste area have
+a different width.
+</P>
+<A NAME="SEC4"></A>
+<H2>3.4 Patterns</H2>
+<P>
+Painting actions normally use a flat colour, but it is possible to use different
+patterns. To choose a different pattern you can press F2 or click on the pattern
+preview area just above the palette. You will then be presented with the
+following patterns which you can choose from:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.4.png" BORDER="0" ALT="">
+</P>
+<P>
+<A HREF="chap_A.html#SEC61">Section A.6.1</A> explains how to customize these patterns.
+</P>
+<A NAME="SEC5"></A>
+<H2>3.5 Painting Modes</H2>
+<P>
+Painting modes can be used to change the general behaviour of the painting
+actions. These modes are toggled on and off by using the settings toolbar icons,
+as shown here:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.png" BORDER="0" ALT="">
+</P>
+<P>
+Not all modes are applicable to all of the tools. Here is a table detailing
+which modes affect each of the tools:
+</P>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TD></TD>
+<TD>Paint</TD>
+<TD>Shuffle</TD>
+<TD>Flood Fill</TD>
+<TD>Smudge</TD>
+<TD>Clone</TD>
+<TD>Paste</TD>
+</TR>
+<TR>
+<TD>Continuous</TD>
+<TD>Yes</TD>
+<TD COLSPAN="2"></TD>
+<TD>Yes</TD>
+<TD COLSPAN="2"></TD>
+</TR>
+<TR>
+<TD>Opacity</TD>
+<TD>Yes</TD>
+<TD></TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+</TR>
+<TR>
+<TD>Tint</TD>
+<TD>Yes</TD>
+<TD></TD>
+<TD>Yes</TD>
+<TD COLSPAN="2"></TD>
+<TD>Yes</TD>
+</TR>
+<TR>
+<TD>Mask</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+</TR>
+<TR>
+<TD>Gradient</TD>
+<TD>Yes</TD>
+<TD></TD>
+<TD>Yes</TD>
+<TD COLSPAN="3"></TD>
+</TR>
+<TR>
+<TD>Blend</TD>
+<TD>Yes</TD>
+<TD></TD>
+<TD>Yes</TD>
+<TD COLSPAN="2"></TD>
+<TD>Yes</TD>
+</TR>
+</TABLE>
+
+<P>
+Paint includes brushes, sprays, straight lines, selection shape fills and
+outlines.
+</P>
+<A NAME="SEC51"></A>
+<H3>3.5.1 Continuous</H3>
+<P>
+If continuous mode is set then when you drag the mouse over the canvas and paint
+as well, the gaps between the movements are filled in. If you use non-continuous
+mode you can right click on the mode icon and set the brush spacing between tool
+commits. A value of 0 means that spacing is disabled and a tool is committed
+every time it is reported to mtPaint. Here is an example of what can be
+achieved:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.1.png" BORDER="0" ALT="">
+</P>
+<P>
+The first line was created using continuous mode. The second line was created
+using non-continuous mode with a brush space of 0, and the final line was
+created with a brush space of 5. Varying the non-continuous brush spacing also
+makes the results of using the spray tool more deterministic, however fast the
+mouse is moved.
+</P>
+<A NAME="SEC52"></A>
+<H3>3.5.2 Opacity</H3>
+<P>
+When you are painting with an opacity of less than 255, and the opacity undo
+mode is switched on then the paint operation will change each pixel according to
+this value in a single uniform way, like this example:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.2a.png" BORDER="0" ALT="">
+</P>
+<P>
+If opacity mode is switched off then the opacity will be increased each time the
+tool paints over a pixel, like this example:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.2b.png" BORDER="0" ALT="">
+</P>
+<A NAME="SEC53"></A>
+<H3>3.5.3 Tint</H3>
+<P>
+If the tint mode is switched on while editing an RGB image then instead of
+replacing the whole colour, the operation will increase or decrease the
+individual colour channel relative to colour A and B. With an indexed image, it
+will be the index that is increased or decreased. For painting operations
+pressing the left button will increase, and the right button will decrease. For
+selection based filling operations you will also need to set the Tint +- toggle
+to determine which direction the tinting will occur. Here is an example of
+tinting with blue ellipses over a greyscale image:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.3.png" BORDER="0" ALT="">
+</P>
+<A NAME="SEC54"></A>
+<H3>3.5.4 Colour Selection</H3>
+<P>
+Colour selection mode is a special kind of mask that regulates painting
+operations according to the colour of the pixels on the canvas. You configure
+the mode settings by right clicking on the toggle button which brings up the
+following dialog:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.4.png" BORDER="0" ALT="">
+</P>
+<P>
+The screenshot depicts a smooth grey gradient from one corner to the other, and
+the colour selection is for a middle section of this grey. The green preview
+area indicates what pixels will be protected from painting operations. By
+selecting the 'Inverse' toggle you will be designating which pixels will be
+available for painting.
+</P>
+<P>
+The sphere option is the L*X*N* Sphere (the same as fuzzy flood fills) and uses
+Euclidean distance in a perceptionally uniform colour space, thus it better
+conforms to human colour vision. However, it uses expensive calculations and
+using it could cause delays. The Cube option uses the largest of differences
+between Red, Green and Blue colour components, so it is faster but less
+discriminating, and could best be used for, say, same-coloured areas while
+ignoring noise in RGB colours' low bits, or when filling areas so large that
+default mode becomes too slow.
+</P>
+<A NAME="SEC55"></A>
+<H3>3.5.5 Mask</H3>
+<P>
+The disable all masks toggle is used to temporarily disable the current masks.
+This affects the mask channel, any colours in the palette that have been
+protected and also the colour-selection mask.
+</P>
+<A NAME="SEC56"></A>
+<H3>3.5.6 Gradient</H3>
+<P>
+When you select the gradient mode by clicking the horizontal gradient button,
+you are able to paint smooth graduated areas of pixels onto the canvas. By
+default the gradient uses colour A and B, although you can define your own
+colours, which is explained later. Once the mode is switched on, there are two
+ways to use it:
+</P>
+<UL>
+<LI>As a placed gradient in a fixed position using the gradient selection tool
+followed by a painting tool.
+<LI>As a stroke gradient using the brush shapes.
+</UL>
+
+<A NAME="SEC561"></A>
+<H4>3.5.6.1 Placed Gradients</H4>
+<P>
+You place a gradient by selecting the gradient placement tool from the toolbar
+and then you place the beginning and end points by clicking the mouse. Once this
+has been done you will see a temporary preview of the resulting gradient and you
+then need to select a painting tool and paint on the canvas. In order to
+configure the gradient you need to press the right button on the gradient
+placement icon on the toolbar. Here is an example of a simple linear gradient
+from red to yellow painted using the polygon tool to create a triangle. The
+image on the left displays the construction lines for the gradient placement
+tool and the polygon tool, whereas the image on the right represents the exact
+pixels on the canvas:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.6.1a.png" BORDER="0" ALT="">
+</P>
+<P>
+By using several of the settings on the gradient configuration dialog you can
+achieve all sorts of creative effects. For example, here is a rainbow which I
+painted:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.6.1b.png" BORDER="0" ALT="">
+</P>
+<P>
+This image was created using the following steps from a new mtPaint session:
+</P>
+<UL>
+<LI>Create a new RGB image.
+<LI>Select red as colour A (index 1) and magenta as colour B (index 5).
+<LI>Use the gradient placement tool to place both points near the bottom centre of
+the image.
+<LI>Right click on the gradient placement icon to configure the following:
+  <UL>
+  <LI>Length of 75 - The full width of the rainbow.
+  <LI>Offset of 50 - Creates the hole in the middle.
+  <LI>Radial gradient type.
+  <LI>Use Gradient 'A to B (HSV)' using the reverse toggle - This creates the
+full sweep of the colour spectrum.
+  </UL>
+<LI>Use the settings toolbar to switch on gradient mode.
+<LI>Select the rectangle selection tool and paint the top half of the rainbow
+using the icon to 'Fill Selection'.
+</UL>
+
+<A NAME="SEC562"></A>
+<H4>3.5.6.2 Stroke Gradients</H4>
+<P>
+To make stroke gradients work you must firstly clear any gradient line that you
+have positioned on the canvas by pressing escape or the right mouse button with
+the gradient placement tool on. Then you must set up the stroke by pressing the
+right button on the gradient placement icon on the toolbar. As an example for
+what you can achieve, the following was created using a red to white gradient
+with a length of 50 and an extension type of 'Mirror':
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.6.2a.png" BORDER="0" ALT="">
+</P>
+<P>
+Here is an example using similar settings, but with the extension type 'None'
+and a smaller brush:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.6.2b.png" BORDER="0" ALT="">
+</P>
+<A NAME="SEC563"></A>
+<H4>3.5.6.3 Custom Gradients</H4>
+<P>
+If you want to create a gradient or opacity composed from more than just end
+points then you will need to select the 'Custom' gradient type, and then press
+the 'Edit Custom' button. You can then define up to 256 points on the gradient
+which will then be placed equal distances apart. Here is an example of a simple
+custom gradient:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.6.3.png" BORDER="0" ALT="">
+</P>
+<P>
+Here are the steps I took to create this image:
+</P>
+<UL>
+<LI>Create a new image.
+<LI>Configure the gradient to be a 'Radial' type, and to have a 'Repeat' extension
+type.
+<LI>Select 'Custom' for the Gradient and then press the 'Edit Custom' button.
+<LI>Select 5 colours, each defined as 'Constant' so that only block colours are
+used.
+<LI>Use the gradient placement tool to place the first point at the centre
+of the image and the second point some distance away from the centre and image
+edges.
+<LI>Press Ctrl-A to select the whole image and then press the 'Fill Selection'
+icon to fill the whole image with the gradient.
+</UL>
+
+<A NAME="SEC564"></A>
+<H4>3.5.6.4 Utility Channel Gradients</H4>
+<P>
+It is possible to paint gradients on utility channels using the same methods as
+painting on the image channel. For example, here is the above image with a
+gradient painted onto the alpha channel:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.6.4.png" BORDER="0" ALT="">
+</P>
+<P>
+Here are the steps I took to create this image:
+</P>
+<UL>
+<LI>Select 'Edit Alpha' from the Channels menu and 'Set' all of the pixels.
+<LI>Use the gradient placement tool to set the first point at the centre and
+the second point in the corner.
+<LI>Press Ctrl-A to select the whole image and the press the 'Fill Selection'
+icon to paint the gradient (remember to ensure that the gradient mode is
+enabled on the settings toolbar).
+</UL>
+
+<A NAME="SEC565"></A>
+<H4>3.5.6.5 Shapeburst Gradients</H4>
+<P>
+If you draw a filled ellipse, fill a rectangular or polygon area, or do a flood
+fill in gradient mode without placing a gradient with the gradient placement
+tool, you can create shapeburst gradients like this:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.6.5.png" BORDER="0" ALT="">
+</P>
+<A NAME="SEC57"></A>
+<H3>3.5.7 Blend</H3>
+<P>
+Blend mode can only be used on RGB images, and works by blending certain parts
+of the source pixels with the canvas. In order to use this mode, you will need
+to configure it by pressing the right mouse button on the mode button.
+</P>
+<P>
+In this example I have painted 2 ellipses onto a greyscale background. The
+ellipse on the left was painted using a pure red (RGB 255,0,0) with a 'Colour'
+blend affecting red green and blue. The ellipse on the right was created using
+a pure red again, with a 'Normal' blend affecting red and blue.
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.7a.png" BORDER="0" ALT="">
+</P>
+<P>
+The blend in the blend mode icon can be achieved in 3 steps:
+</P>
+<UL>
+<LI>Paint a red circle using a normal blend affecting only the red channel.
+<LI>Paint a green circle using a normal blend affecting only the green channel.
+<LI>Paint a blue circle using a normal blend affecting only the blue channel.
+</UL>
+
+<P>
+<IMG ALIGN="middle" SRC="../img/3.5.7b.png" BORDER="0" ALT="">
+</P>
+<P>
+Using blend mode, you can reproduce the effects of GIMP's "layer modes"; choose
+the blend named like the layer mode you want, and paste what would have been
+the upper layer onto what would have been the lower one. In case of both layers
+being the same image (as is most common), just copy the image and paste it
+over itself.
+</P>
+<P>
+mtPaint has no "Overlay" blend, because it does the same thing as "Soft Light";
+when you need "Overlay", use "Soft Light" instead.
+</P>
+<HR NOSHADE SIZE=1>
+
+<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html chap_00.t2t chap_01.t2t chap_02.t2t chap_03.t2t chap_04.t2t chap_05.t2t chap_06.t2t chap_07.t2t chap_08.t2t chap_09.t2t chap_A.t2t chap_B.t2t -->
+</BODY></HTML>

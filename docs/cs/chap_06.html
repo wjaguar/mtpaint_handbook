@@ -1,0 +1,416 @@
+<HTML>
+
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<TITLE>Příručka mtPaint - Kapitola 6 - Manipulace s obrázkem</TITLE>
+</HEAD>
+
+<BODY>
+
+<P>
+<H1>6. Manipulace s obrázkem</H1>
+<P>
+mtPaint má mnoho základních nástrojů pro manipulaci s obrázkem, které jsou
+užitečné v mnoha situacích. Tyto funkce lze nalézt v menu Obrázek
+a Efekty.
+
+
+<H2><A name=SEC1>6.1 Ořez</H2>
+<P>
+Pro oříznutí obrázku stačí udělat obdélníkovou výseč oblasti
+obrázku, kterou chcete zachovat a stisknout klávesu Delete.
+
+
+<H2><A name=SEC2>6.2 Změna měřítka</H2>
+<P>
+Pro rychlou změnu měřítka obrázku jednoduše stisknete klávesu 'Page Up'
+a zadáte nové rozměry jaké požadujete. Pokud měníte měřítko RGB
+obrázku, máte na výběr několik metod. Pro většinu situací bude
+nejlepší použít výchozí metodu, ale jsou zde k dispozici další metody,
+pokud potřebujete něco speciálního, jako lehké zaostření obrázku, které
+se používá při vytváření miniatur obrázku.
+
+<H3><A name=SEC21>6.2.1 Gamma korekce</H3>
+<P>
+Pokud měníte měřítko RGB obrázku, tak máte možnost použít volbu
+gamma korekce pro úpravu obrázku.
+Lidské oko je více citlivé na rozdíly mezi tmavými odstíny,
+než na rozdíly mezi světlými. Tato nelinearita je zanesená
+v RGB kódování, takže množství světla vyzářené body na stínítku
+obrazovky nezávisí na RGB hodnotách lineárně, ale je dáno množstvím
+energie. Obyčejně se o toto nemusíte starat, ale při práci
+s grafikou, kde je mnoho pixelů mícháno dohromady, vede prosté
+míchání jejich RGB hodnot k tomu, že je obrázek tmavší, než by měl být
+a menší světlé detaily se ztratí. Pro vyřešení tohoto problému
+je vhodné použít gamma korekci.
+<P>
+Aktuální úrovně jasu záleží na nastavení displeje, jako je jas, nebo
+kontrast a citlivost lidí na různé odstíny světla se také
+velice liší - někteří lidé vidí barvy levým okem jinak,
+než jak je vidí pravým. Aby k těmto probémům nedocházelo,
+tak profesionální práce grafika vyžaduje kalibraci monitoru
+a formáty obrázku obsahující data barevného profilu; ale pixelová
+kresba barevné profily neřeší a je prohlížena neprofesionály na
+nezkalibrovaných displejích - takže pro práci s nimi je nejlepší
+pracovat s průměrem. Předpis z ITU-R doporučení 709,
+které je použito v mtPaintu, pracuje dobře ve většině případů.
+Gamma korekce je provedena převedením každé RGB komponenty každého
+pixelu na jeho odpovídající jasovou úroveň použitím výše zmíněného
+předpisu, smícháním těchto úrovní dohromady jak daná operace
+zpracování vyžaduje a převedením výsledku zpět na RGB.
+<P>
+Gamma korekce je nabídnuta jako možnost místo toho, aby byla použita
+vždy, protože uživatel může ji může chtít vypnout kvůli lepšímu
+zachování malých tmavých detailů na jasném pozadí, které by se jinak
+ztratily v oslnění. Také, protože mnoho jiných programů, jako
+GIMP nemají gamma korekci a uživatel může vyžadovat identické
+výsledky s těmito programy.
+<P>
+Gamma korekci můžete trvale zapnout nastavením přepínače
+v okně voleb. Zde je obrázek, který byl zmenšen s a bez
+gamma korekce:
+<P>
+<IMG src="../img/6.2.1a.png">
+<IMG src="../img/6.2.1b.png">
+<IMG src="../img/6.2.1c.png">
+<P>
+Gamma korekce tohoto typu je také použitá v jiných funkcích, jako je volná rotace,
+efekt zaostřovací masky a efekt škály šedi.
+
+
+<H2><A name=SEC3>6.3 Rotace</H2>
+<P>
+Je možné otáčet obrázek rychle po 90 stupních, nebo dle jakéhokoliv
+úhlu. Například můžete mít fotku, která není úplně rovná a v tomto případě
+můžete zkusit následující postup:
+<P>
+<LI>Spočítejte potřebný úhel otočení použitím vyznačovacího obdélníku
+roztaženého z jednoho konce rové čáry na druhý (od vlevo dole nahoru doprava)
+a následně odečtěte úhel na stavové liště - v našem případě 12.1 stupně:
+<P>
+<IMG src="../img/6.3a.jpg">
+<P>
+<LI>Rotujte funkcí v menu Obrázek a vložte záporný úhel potřebný pro narovnání
+obrázku, jako -12.1 zde:
+<P>
+<IMG src="../img/6.3b.jpg">
+
+
+<H2><A name=SEC4>6.4 Změna velikosti plátna</H2>
+<P>
+Pokud chcete zvětšit, nebo zmenšit šířku, či výšku obrázku, můžete to provést
+stisknutím klávesy 'Page Down'.
+
+
+<H2><A name=SEC5>6.5 Úprava Gamma, Jasu, Kontrastu, Saturace, Odstínu</H2>
+<P>
+Pokud chcete upravit barvu obrázku, můžete to provést
+stiskem klávesy 'Insert'. Zde také najdete funkci redukce bitů barev
+umožňující snížení počtu barev v obrázku.
+
+
+<H2><A name=SEC6>6.6 Aplikování efektů</H2>
+<P>
+Menu Efekty vám umožní aplikovat různé efekty na aktuální obrázek.
+Typ efektů, které jsou k dispozici závisí na tom, jestli upravujete obrázek
+s indexovanou paletou, nebo RGB obrázek.
+
+
+<H3><A name=SEC61>6.6.1 Baktérie</H3>
+<P>
+Zde je ukázka efektu Baktérie, co provede na patřičně připraveném obrázku:
+<P><IMG src="../img/6.6a.png">
+<IMG src="../img/6.6b.png">
+<IMG src="../img/6.6c.png">
+<IMG src="../img/6.6d.png">
+
+
+<H3><A name=SEC62>6.6.2 Škála šedi</H3>
+<P>
+mtPaint má dvě metody pro vytvoření obrázku se škálou šedi. Je zde jednoduchá
+metoda převodu a také verze s gamma korekcí, jak je popsána v sekci
+6.2.1.  Zde je vizuální porovnání:
+<P>
+<TABLE cellpadding="5" cellspacing="1" border="1">
+<tr>
+	<td><IMG src="../img/6.6.2a.png"></td>
+	<td>Originální obrázek</td>
+</tr>
+<tr>
+	<td><IMG src="../img/6.6.2b.png"></td>
+	<td>Ve škále šedi</td>
+</tr>
+<tr>
+	<td><IMG src="../img/6.6.2c.png"></td>
+	<td>Ve škále šedi (s Gamma korekcí)</td>
+</tr>
+</TABLE>
+
+
+
+<H3><A name=SEC63>6.6.3 Zaostřovací maska</H3>
+<P>
+Zaostřovací maska je speciální typ metody zaostření, který se více hodí
+pro fotografy, než standardní zaostřovací efekty, kvůli větším možnostem
+jeho nastavení.
+<P>
+Hodnota Poloměr řídí, kolik pixelů se zůčastní zaostřovacího procesu.
+Jestliže má fotografie více jemných detailů, tak bude vhodná nižší hodnota.
+Když se poloměr nastaví na moc velkou hodnotu, tak se okolo hran objeví kruhy.
+<P>
+Hodnota množství řídí, jak moc se obrázek zaostří. Čím vyšší hodnota,
+tím bude výsledný obrázek ostřejší.
+<P>
+Prahová hodnota nastaví minimální rozdíl mezi pixely před aplikováním zaostření.
+Tuto hodnotu lze použít jako ochranu oblastí s jemnými přechody před poškozením
+zaostřovacím procesem, třeba modrá obloha.
+
+
+
+<H3><A name=SEC64>6.6.4 Gaussovo rozmazání</H3>
+<P>
+Zde je vizuální příklad Gaussova rozmazání s různým nastavením hodnot X/Y:
+<P>
+<TABLE cellpadding="5" cellspacing="1" border="1">
+<tr>
+	<td><IMG src="../img/6.6.4a.png"></td>
+	<td>Originální obrázek</td>
+</tr>
+<tr>
+	<td><IMG src="../img/6.6.4b.png"></td>
+	<td>X = 10, Y = 0</td>
+</tr>
+<tr>
+	<td><IMG src="../img/6.6.4c.png"></td>
+	<td>X = 0, Y = 10</td>
+</tr>
+</TABLE>
+
+
+
+<H2><A name=SEC7>6.7 Isometrické Transformace</H2>
+<P>
+Funkce v menu Efekty vám umožní transformovat plochý obrázek na izometrický.
+Například zde je původní obrázek následován dalším s efektem 'Levá strana dolů':
+<P><IMG src="../img/6.7a.png">
+<P><IMG src="../img/6.7b.png">
+<P>
+Tento obrázek je vytvořen s pomocí původního obrázku a dále aplikací
+funkcí 'Dolní strana vpravo' a následně 'Levá strana dolů':
+<P><IMG src="../img/6.7c.png">
+
+
+<H2><A name=SEC8>6.8 Konverze RGB palety na indexovanou</H2>
+<P>
+Z technických, nebo uměleckých důvodů může být vhodné převést RGB obrázek
+na obrázek s indexovanou paletou. mtPaint má mnoho nástrojů, jak toho docílit
+s použitím položky 'Převést na indexovaný'. Proces se skládá ze dvou částí: Nejdříve
+je dané číslo v paletě nastaveno; Následně jsou pixely nakresleny s použitím této
+palety, aby se co nejvíce blížily originálnímu RGB obrázku.
+Protože je tento proces aproximací, není řešení úplně perfektní a výsledek
+se může značně lišit v závislosti na nastavení, které kreslíř předepíše.
+
+
+<H3><A name=SEC81>6.8.1 Paleta</H3>
+<P>
+První rozhodnutí, které musíte udělat je kolik budete chtít mít v paletě barev
+(mezi 2 a 256). Čím více barev zvolíte, tím se bude výsledný obrázek více podobat
+originálnímu RGB obrázku. Pokud už nemáte paletu připravenou, tak můžete
+použít kvantizér pro vytvoření přibližné palety. Každý z kvantizérů
+v mtPaintu má různé výhody a nevýhody, takže nejlepší bude experimentálně
+zjistit, který pracuje nejlépe na daný obrázek.
+
+
+<H3><A name=SEC82>6.8.2 Pixely</H3>
+<P>
+Jakmile máte paletu připravenou, tak mohou být pixely spočítány na nové plátno
+s indexovanou paletou. Nejjednodušší metoda je vybrat nejbližší barvu v paletě
+ke každému pixelu, což je volba 'Žádný' v sekci 'Rozechvět'.
+Ostatní metody používají techniky rozechvění šíření pixelů pro dosažení pro oko
+hezčího výsledku.
+<P>
+Režimy 'Rozechvělý' a 'Rozptýlený' jsou jako speciální efekty a jejich
+výsledky jsou trochu stylizované a mohou trochu změnit podobu
+originálu. Pro praktické použití je vhodný 'Floyd-Steinberg (rychlý)', který
+podává dobré výsledky pro rozsáhlejší palety jako
+tyto vytvořené Kvantizací na 64 barev a více.
+<P>
+'Floyd-Steinberg' a 'Stucki' jsou více pokročilé režimy, které rozhazují
+pixely dle parametrů provedeného pod tlačítkem 'Nastavení'.
+Stucki vzory mají tendenci být hrubé, s více pixely mimo barvu.
+Zde je popis, co dělá každá z ostatních voleb:
+<P>
+Barevný prostor definuje, jak jsou barvy porovnávány. Jsou zde tři, kde každý
+zdůrazňuje rozdílné aspekty fyzických barev - přírodně, na účet
+ostatních aspektů. Z tohoto důvodu může být každá z nich nejlepší volbou v některých
+případech a nejhorší v jiných.
+<P>
+sRGB je měření světla vyzářeného barevným pixelem. Stejně jako dithering
+manimuluje také se světlem, barvy nejblíže v sRGB produkují co nejmenší
+rozdíly - což vede k jemnějším výsledkům s velice malou paletou.
+Ale pro méně vhodné palety se to stane nevýhodou, protože lidské oko vidí
+rozdíly mezi světlými barvami mnohem méně ostře, než mezi tmavými, takže
+barvy nejbližší v sRGB nemusí vypadat nebližší pro uživatele.
+<P>
+RGB je barevný prostor, který používá každý, i když mnoho lidí neví
+co to je a jak ho správně používat. Narozdíl od sRGB mají RGB hodnoty
+nelineární vztah ke světlu vyzářenému pixely - a zatímco nejsou přesným
+měřením jasu, jak ho vnímá člověk, tak jsou k němu nejblíž, víc než sRGB
+hodnoty. Z tohoto důvodu produkují porovnání v RGB větší aktuální
+rozdíly, než při použití sRGB - ale výsledky mohou stále vypadat lépe.
+<P>
+LXN je barevný prostor, který se snaží poskytnout měření, jak člověk aktuálně
+vnímá rozdíly barev. Ale jeho úspěch v tomto je omezen, což by mělo být
+očekáváno - nemůže existovat žádné správné měření, protože vnímání barev není
+vůbec konstantní; různí lidé vidí věci rozdílně, stejná věc v rozdílných
+podmínkách je viděna rozdílně, atd. Ale když RGB vybere 'nejbližší'
+barvu, se kterou bude souhlasit jen slepec, tak nás zachrání LXN;
+Je daleko méně náchylný k nalezení zelené jako nejbližší k červené, nebo
+k udělání podobného nesmyslu. Ale znovu, s LXN budou aktuální rozdíly
+rozházeny mnohem více, než v případě RGB, takže výsledné
+vzorkování bude mnohem citelnější.
+<P>
+Rozdíl měření definuje, co lze považovat za rozdíl mezi dvěma barvami
+ve vybraném barevném prostoru. Většinou to lze nechat napokoji s výchozí
+tradiční Euclidean vzdáleností; ale někdy se to hodí jako poslední možnost,
+takže je vždy naděje.
+'Největší' používá jako vzdálenost
+největší rozdíl v souřadnicích mezi třemi souřadnicemi a 'Suma' používá
+absolutní hodnoty všech těchto tří rozdílů sečtených dohromady.
+<P>
+Redukce plýtvání barvami se snaží zastavit rozdíly propagace, než se stanou
+škodlivými a vytvoří viditelné artefakty, místo vylepšení toho, jak obrázek
+vypadá. Výchozí volba 'Gamut' interferuje nejméně; udrží
+každou barvu-plus-rozdíl v limitech palety, takže rozdíl nemůže
+růst nekonečně - to udrží rozdíly zaznamenatelné v jednom
+pixelu, zabránění takovým věcem, jako mimobarevné okraje okolo jednobarevných
+oblastí. Volba 'Slabě' navíc udrží  rozdíl sám o sobě na takové hodnotě,
+aby nebyl víc jak polovina maximálního jasu; a 'Silně' ji udrží ještě
+víc, na jedné čtvrtině maxima. To lze použít pro předcházení mimobarevých
+pixelů, kde by způsobily více škody, než užitku, ale já preferuji
+vyladit místo toho chybu propagace.
+<P>
+Serpentinový scan ynamená, že každá druhá řádka je zpracovávána v opačném
+směru. Obvykle je to nejlepší volba, protože rozdíly jsou distribuovány
+střídavě z leva do prava a z prava do leva, bez shromažďování na pravé
+straně a bez vytváření viditelných artefaktů. Ale jsou zde případy, kde
+vykreslení nashromážděných rozdílů někde na pravé straně je lepší, než
+přehození zpět do leva - potom může být serpentinový scan vypnutý.
+<P>
+Chyba propagace řídí, jaké procento rozdílu vyvstane z každého pixelu,
+který byl předistribuován. Obyčejně jsou to všechny - 100%; ale pro
+ne úplně dobře palety, jejíž časté změny nemůžou ovlivnit dost blízkých
+pixelů a místo toho nepoužitelně akumulují, dokud nezpůsobí některý vzdálený
+pixel barvu mimo místo. Zabránit tomuto chování lze tím, že omezíme úroveň
+propagace. Nejčastější rada je nastavit ji na 75%, ale já jsem vyzkoušel,
+že 85% podává prakticky stejné výsledky; obrázky jsou mnohem čistší, až na
+ty celkově tmavší. Ty obvykle vypadají lépe, když se použije algoritmus Stucki.
+<P>
+Ale omezením chyby propagace není vždy nejlepší volba;
+ideální řešení by mělo být pouze utlumení nepoužitelných a škodlivých případů,
+kde zachování těchto rozdílů zlepší vyzuální kvalitu. Selektivní chyba
+propagace se tomu blíží, co nejvíc, jak je to možné v akceptovatelném čase
+a omezení místa.
+<P>
+Selektivní chyba propagace vyžaduje zpracování rozdílu barev ne vzdálenějších,
+než sousední pixely; jestliže to v nich není vloženo, měly by být
+zahozeny. Ale problém je ten, že vstupní rozdíl a originální barva pixelu
+jsou sečteny dohromady a potom je barva pixelu vybrána s ohledem na tuto
+vlastnost, takže jak rozhodnout která část zbývajícího rozdílu náleží
+pixelu samotnému a má být propagován dál a která část je
+ze vstupního rozdílu a má být vyhozena? Čtyři podivně vypadající
+režimy, které vydíte jsou čtyři různé cesty k rozumnému vyřešení tohoto
+nevyřešitelného problému.
+<P>
+V každém případě je rozdíl rozdělen na část vstupního rozdílu
+do jednoho lokálního (později rozdíl, který má zbýt,
+bude mít vstupní rozdíl nulu). Ale v režimech 'Separovat'
+jsou složky červená, zelená a modrá váženy odděleně a rozdělení tomu
+odpovídá - a v režimech 'Délka' jsou jako váhy použité rozdílové vektory
+stejné pro všechny tři komponenty.
+<P>
+Druhá polovina jmen režimů se vztahuje ke zpracování vstupního rozdílu,
+který nemá žádný vliv na přijaté barvy pixelů; v režimech 'Součtových'
+jsou rozdíly stále váženy a rozděleny, jako nahoře a 'Rozdílové' režimy
+jednoduše kompletně zahodí vstupní rozdíly a zpropagují ten lokální.
+<P>
+I když jsou výsledné čtyři režimy jen lehce rozdílné, jsou zde stále
+případy, kde jeden z nich pracuje lépe, nebo hůře než druhý; ale který
+z nich je nejlepší na daný obrázek lze rozpoznat pouze jejím vyzkoušením.
+<P>
+Pokud je selektivní propagace zapnutá, řídí posuvník chyby propagace, kolik
+procent vstupního rozdílu bude zachováno, i když má být zahozen; ve výchozím
+stavu je to 0. ale může být nastaven na 75%, nebo 85% pro více
+rozlišitelnou variantu redukované celkové chybové propagace.
+<P>
+Selektivní propagace je nejčastěji potřebná v obrázcích s velkým rozlišením
+konvertovaných do ne-moc-padnoucí palety. Pro malý obrázek
+konvertovaný z jedné palety do druhé, řekněme, že červená oblast bude lehce
+tmavší, ale stále jemná je jednoznačně lepší, než stejná oblast
+popepřená bílými pixely; a selektivní propagace zabrání těmto nešťastným
+případům, ale stále nám umožní překonvertovat řekněme růžovou oblast
+na šachovnicový vzorek červených a bílých pixelů.
+
+
+<H3><A name=SEC83>6.8.3 Příklady</H3>
+<P>
+<IMG src="../img/6.8.3a.png">
+<IMG src="../img/6.8.3b.png">
+<IMG src="../img/6.8.3c.png">
+<IMG src="../img/6.8.3d.png">
+<IMG src="../img/6.8.3e.png">
+<P>
+A - Originál.
+<P>
+B - 8 barev, s použitím aktuální palety, Floyd-Steinberg (rychlý).
+<P>
+C - 8 barev, s použitím aktuální palety, Floyd-Steinberg.
+<P>
+D - 8 barev, s použitím aktuální palety, Floyd-Steinberg, RGB barevný prostor, separovat/rozdělit na 50% chyby propagace.
+<P>
+E - 8 barev, DL3 Kvantování, Floyd-Steinberg.
+
+
+
+<H3><A name=SEC84>6.8.4 Tipy a triky</H3>
+<P>
+
+<H4><A name=SEC841>6.8.4.1 Saturace</H4>
+<P>
+Někdy Kvantizéry produkují plošší a méně barevné výsledky, které jsou
+nežádoucí.  Tomu lze někdy zabránit zvýšením saturace obrázku s použitím
+okna 'Transformace Barev' před konvertováním originálního obrázku.
+
+
+<H4><A name=SEC842>6.8.4.2 Manuální výběr barev</H4>
+<P>
+Pokud provádíte redukci počtu barev RGB obrázku jen na pár, řekněme 16, tak může
+Kvantizér zahodit několik důležitých barev, které chcete mít v indexovaném obrázku.
+Můžete manuálně zabránit tomuto problému tímto postupem:
+<LI>Redukujte počet barev na 14 použitím 'Paleta -&gt; Nastavit počet barev'.
+<LI>Vyberte 'Paleta -&gt; Vytvořit  Kvantované' s použitím vybraného Kvantizéru.
+<LI>Zvětšete počet barev na 16.
+<LI>S použitím nástroje kapátko v paletě, vyberte dvě další barvy
+z plátna.
+<LI>Použijte 'Obrázek -&gt; Převést na indexovaný' s 'Použít aktuální paletu' a vaší vybranou
+metodou rozechvění.
+
+
+<H4><A name=SEC843>6.8.4.3 Nastavení rozmazání</H4>
+<P>
+nastavení rozechvění pro Floyd-Steinberg a Stucki vyžaduje experimentování
+s každým obrázkem pro dosažení nejlepšího výsledku, ale já používám následující nastavení
+pro jejich dobré výsledky s mnoha různými typy fotografií:
+<LI>sRGB barevný prostor, 75% chyba propagace, Separovat rozdělit.
+<LI>RGB barevný prostor, 50% chyba propagace, Separovat rozdělit.
+<LI>RGB barevný prostor, 75% chyba propagace.
+<LI>RGB barevný prostor, 85% chyba propagace.
+
+
+<P>
+<HR>
+
+</BODY>
+</HTML>
+
+

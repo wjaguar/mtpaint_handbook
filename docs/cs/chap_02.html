@@ -1,0 +1,162 @@
+<HTML>
+
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<TITLE>Příručka mtPaint - Kapitola 2 - Úvod</TITLE>
+</HEAD>
+
+<BODY>
+
+<P>
+<H1>2. Úvod</H1>
+<P>
+Rozhodnul jsem se napsat tuto příručku, abych pomohl všem uživatelům mtPaintu využít ho co
+nejlépe. Jako všechen software je mtPaint nástroj a pro jeho efektivní využití budete muset
+studovat co dělá a jak to pracuje. Jestli si přejete pochopit některá moje rozhodnutí ohledně
+návrhu, bude vás možná zajímat, proč jsem vytvořil mtPaint.
+
+
+
+<H2><A name=SEC1>2.1 Život před mtPaintem</H2>
+<P>
+Poprvé jsem se začal zajímat o kreslicí programy a počítačovou grafiku v roce 1984. Jako
+mnoho mladíků té doby mě počítače zaujali díky hrám a tvůrčím činnostem jako programování,
+kreslení a skládání hudby.
+<P>
+Poprvé jsem viděl AMX Art na BBC Micro v té době a brzy poté AMX Super Art.
+V roce 1988 jsem začal používat Neochrome na Atari ST a o rok později jsem použil Animatic
+Sprite Master, který se mi velmi líbil, protože jsem mohl experimentovat s animací.
+<P>
+Během 90. let jsem si začal hrát s novými 24 bitovými RGB editačními programy.
+Ačkoliv byly skvělé pro úpravu fotografií, byl jsem frustrován jejich chabou podporou
+obrázků založených na paletě a pixelové kresbě. Jako odpověď jsem napsal několik malých
+kreslicích programů pro vyplnění mezery na trhu, ale bohužel jsem neměl čas na jejich
+pořádný vývoj až do roku 2004.
+
+
+
+
+<H2><A name=SEC2>2.2 Vznik mtPaintu</H2>
+<P>
+4. Července 2004 jsem se rozhodl začít přemýšlet nad vytvořením vlastního kreslicího programu
+pro můj GNU/Linux systém.
+Několik týdnů jsem zvažoval používat ostatní volné kreslicí programy jako výchozí bod, ale
+rozhodl jsem se, že mé požadavky se neshodují s žádným z programů a že bude lepší začít
+od nuly.
+<P>
+Programovat jsem začal 7. srpna a použitelnou verzi jsem dal k dispozici 13. září 2004.
+Tento rychlý vývoj byl možný až potom, co jsem použil a studoval skvělý program nazvaný
+mhWaveEdit, který napsal Magnus Hjorth na jaře 2004. Stejně jako je to skvělý editor wav
+souborů, naučil jsem se mnoho užitečných věcí z tohoto programu.
+<P>
+Například z důvodu přenositelnosti jsem v mtPaintu použil GTK+ toolkit verze 1, nebo 2.
+To znamená, že bude fungovat na mnoha volných operačních systémech, i když budou několik let
+staré a pracují na starším hardware s méně výkonným CPU a menší pamětí.
+
+
+<H2><A name=SEC3>2.3 Hlavní filozofie</H2>
+<P>
+Vždy jsem chtěl, aby byl mtPaint malý, spolehlivý, rychlý a jednoduchý na použití, protože si myslím,
+že to jsou vlastnosti, které by měl mít kreslicí program pro mé potřeby. Nicméně mtPaint není
+korporátní program a není klonem jiných programů, takže nemusí vyhovovat kreslicím potřebám každého
+uživatele.
+<P>
+Důležité rozhodnutí, které jsem s mtPaintem udělal, bylo jeho uvolnění
+jako volný software pod GNU General Public Licencí. To dává všem uživatelům mtPaintu
+svobodu, která je výhodou pro ně i pro mne samotného. Jestliže nemáte informace o těchto
+právech a pracujete na GNU projektu, tak silně doporučuji přečíst o nich
+tady: <a href="http://www.gnu.org/">http://www.gnu.org/</a>. Výsledkem použití této
+licence je pro mnoho lidí možnost přispívání nápadů a zdrojového kódu do mtPaintu a tím
+zlepšování programu.
+
+
+<H2><A name=SEC4>2.4 Časová linie vývoje</H2>
+<P>
+Projekt mtPaint se během času neustále rozšiřuje a vyvíjí.
+Zde je graf, který popisuje tento proces:
+<P>
+<IMG src="../img/2.4a.png">
+<P>
+
+
+
+<H3><A name=SEC41>2.4.1 Verze 0.23 - 0.37</H3>
+<P>
+Verze 0.23 bylo první veřejné vydání a vypadala takto:
+<P>
+<IMG src="../img/2.4.1.png">
+<P>
+Během prvních 3 měsíců vývoje mě zajímal pouze vývoj kreslicího programu s indexovanou
+paletou, takže jsem totálně ignoroval podporu RGB obrázků. V tomto stádiu zrodu zde
+bylo k dispozici jen pár nástrojů a také uživatelské rozhraní bylo velmi jednoduché.
+V tomto bodě bylo pro mne nejdůležitější mít dobře vyřešenou práci s paletou, což je to,
+co mnoho dnešních moderních programů zanedbává. Například jsem chtěl mít rychlou
+a jednoduchou možnost ochránit vybrané barvy na plátně, tak jsem vymyslel jednoduchý
+systém křížků vedle barev v místě palety.
+<P>
+Po verzi 0.30 jsem se rozhodl, že se mi program opravdu líbí a že ho chci používat na
+systémech Windows, když nemám přístup k mým oblíbeným volným operačním systémům. Tento
+úkol byl docela jednoduchý díky GTK+ portovanému na Windows a zdrojovým kódům mtPaintu
+v čistém jazyce C, takže jsem jen potřeboval jednoduché MinGW vývojové prostředí.
+
+
+<H3><A name=SEC42>2.4.2 Verze 0.40 - 0.97</H3>
+<P>
+Poté, co jsem dosáhl svých cílů s indexovanou paletou, jsem se rozhodl, že chci mít
+možnost upravovat digitální fotografie a jiné 24 bit RGB obrázky. Také jsem přidal
+několik nástrojů, jako vlkádání textu a rozmazávání.
+<P>
+To bylo během této fáze vývoje, kdy jsem začal dostávat odezvy od lidí o jejich
+zkušenostech s mtPaintem a jak bych mohl některé věci zlepšit. Podrobné informace
+o těchto příspěvcích najdete v sekci CREDITS souboru README. Ačkoliv primárně
+vyvíjím mtPaint pro své vlastní potřeby, nemám monopol na dobré nápady, takže
+tato pomoc je velice vítána.
+
+
+<H3><A name=SEC43>2.4.3 Verze 2.00 - 2.30</H3>
+<P>
+Verze 2.00 byla velmi vylepšena a to byl také důvod, proč jsem přeskočil verzi 1.xx.
+Přechod z verze 0.97 na 1.00 by neodpovídal obrovským uměnám ve fukcionalitě díky
+implementaci možností vrstev. Vrstvy jsou velice užitečné při vytváření kreseb,
+takže jsem byl velmi potěšen jejich implemetací.
+<P>
+Verze 2.00 byla uvolněna 7. srpna 2005 jako výročí zahájení práce na mtPaintu.
+
+
+<H3><A name=SEC44>2.4.4 Verze 3.00</H3>
+<P>
+Velká změna ve verzi 3 je představení kanálů. Zvažoval jsem zavedení kanálů už
+ve verzi 2.00, protože jsou velmi užitečné, ale nakonec jsem usoudil, že jsou pro můj
+jednoduchý mozek příliš komplexní, abych je správně implementoval.
+<P>
+Naštěstí pro mě a ostatní uživatele mtPaintu přišla pomoc od jiného programátora
+Dmitrije Grosheva, který byl schopen naimplementoval alfa kanál, výběr a maskové
+kanály. To vyvolalo obrovské přepsání kódu, což vyžadovalo skok z verze 2 na 3.
+<P>
+Ačkoliv jsem používal kód jiných lidí pro různé části mtPaintu, tak toto byl první
+případ, že někdo jiný začal pracovat přímo na zdrojovém kódu. V minulosti jsem použil
+kód pro věci jako ini soubory a kvantizaci barev, ale to byl volný software, který
+jsem nalezl na internetu a upravil dle mých potřeb.
+<P>
+Další důležitý krok ve verzi 3 bylo přepracování uživatelského rozhraní, menu
+a nástrojových lišt, které jsou nyní více úkolově zaměřené.
+<P>
+V neposlední řadě jsem se rozhodl napsat tuto příručku. Díky vzrůstajícím možnostem
+a všestrannosti mtPaintu jsem došel k názoru, že je čas vytvořit plně ilustrovaný HTML
+dokument, který vysvětlí, jak vše pracuje.
+<P>
+Navzdory všem těmto přídavkům zůstává jádro mtPaintu malé, spolehlivé,
+rychlé a jednoduché k použití.
+<P>
+Verze 3.00 mtPaintu byla moje poslední jako správce z důvodu nedostatku času a energie.
+
+
+<P>
+<HR>
+
+</BODY>
+</HTML>
+
+
+
+

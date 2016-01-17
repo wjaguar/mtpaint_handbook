@@ -1,0 +1,389 @@
+
+%!postproc: '(?i)(</head>)' '<TITLE>The mtPaint Handbook - Appendix A - Miscellaneous</TITLE>\1'
+
+
+=Appendix A - Miscellaneous=
+
+
+==A.1 Shortcuts==[SEC1]
+
+Several of the menu options have keyboard shortcuts which are labelled next to
+the option. In addition to these facilities, there are further shortcuts that
+you may find useful.
+
+
+===A.1.1 Keyboard Shortcuts===[SEC11]
+
+| A            | Draw open arrow head while drawing line |
+| Q            | Quit the program (can be switched off in the preferences window) |
+| S            | Draw closed arrow head while drawing line |
+| Insert       | Transform the image colours, e.g. gamma, brightness, contrast |
+| Home         | Toggle full view mode |
+| Page Up      | Scale image |
+| Page Down    | Resize canvas |
+| Delete       | Crop image to current selection |
+| Escape       | Cancel paste or selection, Cancel line drawing |
+| Enter/Return | Commit paste operation |
+| Shift + Enter/Return | Commit paste operation and swap canvas into the clipboard |
+| Arrow keys   | Painting tool - Move the mouse cursor |
+| Arrow keys   | Paste/selection tool - Move area by one pixel |
+| Arrow keys + SHIFT   | Nudge mouse pointer, selection box or paste box by x pixels - x is defined by the Preferences window |
+| Arrow keys + CTRL [ + SHIFT ] | Move layer or resize selection box |
+| [ or ]       | Change colour A to the next or previous palette item |
+| Shift + [ or ]       | Change colour B to the next or previous palette item |
+| + or =       | Main edit window - Zoom in |
+| -            | Main edit window - Zoom out |
+| Shift + or = | View window - Zoom in |
+| Shift -      | View window - Zoom out |
+| 1            | 10% zoom |
+| 2            | 25% zoom |
+| 3            | 50% zoom |
+| 4            | 100% zoom |
+| 5            | 400% zoom |
+| 6            | 800% zoom |
+| 7            | 1200% zoom |
+| 8            | 1600% zoom |
+| 9            | 2000% zoom |
+| Shift + 1    | Edit image channel |
+| Shift + 2    | Edit alpha channel |
+| Shift + 3    | Edit selection channel |
+| Shift + 4    | Edit mask channel |
+| F4           | Paint tool |
+| F9           | Selection tool |
+
+
+===A.1.2 Mouse Shortcuts===[SEC12]
+
+| Left button        | Paint to canvas using the current tool and pattern |
+| Middle button      | Selects the point which will be the centre of the image after the next zoom |
+| Right button       | Paint to canvas with A/B colours reversed, Commit paste to canvas / Stop drawing current line / Cancel selection |
+| Scroll Wheel       | In GTK+2 the user can have the scroll wheel zoom in or out via the Preferences window |
+| Ctrl+Left button   | Choose colour A from under mouse pointer |
+| Ctrl+Left button double click  | Choose colour A from under mouse pointer by averaging the canvas area under the current brush |
+| Ctrl+Middle button | Create colour A/B and dither pattern based on the RGB colour in A (RGB images only) |
+| Ctrl+Right button  | Choose colour B from under mouse pointer |
+| Ctrl+Right button double click | Choose colour B from under mouse pointer by averaging the canvas area under the current brush |
+| Ctrl+Scroll Wheel  | Scroll the main edit window left or right |
+| Shift+Right button | Selects the point which will be the centre of the image after the next zoom |
+
+You can fixate the X/Y co-ordinates while moving the mouse:
+
+| Shift      | Constrain mouse movements to a vertical line   |
+| Shift+Ctrl | Constrain mouse movements to a horizontal line |
+
+
+==A.2 Supported File Types==[SEC2]
+
+mtPaint can handle the following file formats:
+
+| **Format**    | **Load** | **Save** | **Image Type** |
+| BMP           | All.     | Indexed palette. 24 bit RGB including alpha channel. | Any |
+| GIF           | All single images. Animation frames via Gifsicle. | Indexed palette including transparency index. Animations via Gifsicle. | Indexed |
+| JPEG          | All.     | 24 bit RGB. | RGB |
+| JPEG2000      | All.     | 24 bit RGB. | RGB |
+| LSS16 (*.lss) | All.     | Indexed palette (16 colours), 18 bits per colour (6 per RGB channel). | Indexed with 16 colours or less |
+| PNG           | All.     | Indexed palette. 24 bit RGB. Including transparency index, alpha/selection/mask channels. | Any |
+| TGA           | All.     | Indexed palette. 24 bit RGB. Including alpha channel. | Any |
+| TIFF          | All.     | Indexed palette. 24 bit RGB. Including alpha channel. | Any |
+| XBM           | All.     | 2 colour indexed palette including hotspot. | Indexed with 2 colours |
+| XPM           | All with 4096 colours or less | Indexed palette. 24 bit RGB images with up to 4096 colours. Including transparency index and hotspot | Indexed, or RGB with 4096 colours or less |
+
+File types PNG, JPEG, JPEG2000, TIFF, and GIF are handled by external libraries:
+libpng, libjpeg, libopenjpeg, libtiff, and libungif/giflib. As a result of this,
+the efficiency of these file operations will depend on the version of these
+libraries installed on your system. For example, libtiff is unable to read
+certain old JPEG compressed TIFF files. For more information on these libraries,
+consult their respective websites:
+
+| libpng            | http://www.libpng.org/pub/png/libpng.html |
+| libjpeg           | http://www.ijg.org/                       |
+| libopenjpeg       | http://www.openjpeg.org/                  |
+| libtiff           | http://www.libtiff.org/                   |
+| libungif / giflib | http://libungif.sourceforge.net/doc/      |
+
+
+===A.2.1 PNG Files===[SEC21]
+
+When saving a PNG file you can use the preferences window or the save as dialog
+to set a compression value between 1 and 9 (0 = no compression). A value of 9
+compresses the most, but with the penalty that it will take more CPU usage and
+time to create the file. Therefore for large images it may be sensible to use a
+lower value. Faster saving may be very important for certain jobs such as saving
+the frames of an animation. Here is a table comparing the time it takes me to
+save a 4096x4096 photo. As a comparison the basic BMP image format is also
+included:
+
+| Format | Seconds to Save | % of PNG 9 | KB file size | % of PNG 9 |
+| BMP    | 1               | 0.6        | 49,236       | 514.7      |
+| PNG 1  | 6               | 3.8        | 13,055       | 136.5      |
+| PNG 5  | 10              | 6.4        | 10,656       | 111.4      |
+| PNG 9  | 156             |            | 9,566        |            |
+
+
+===A.2.2 JPEG 2000 Files===[SEC22]
+
+The JPEG file format is currently the most commonly used file format for storing
+digital photos. However, there also exists a more modern and higher quality
+format called JPEG 2000 which mtPaint can use. Unfortunately this newer format
+has yet to be supported by all image viewers (e.g. web browsers) and editors,
+but it is still an excellent choice for storing images when quality is the most
+important factor.
+
+There are two main benefits of JPEG 2000 files (JP2) compared to a regular JPEG
+file:
+- For the same file size, JP2 files are normally of a higher quality.
+- Photos can be stored losslessly so that no information is lost.
+
+
+====A.2.2.1 Lossy Image Comparison - JPEG vs JP2====[SEC221]
+
+In this example I have used the photo image from section 6.8.3, and then saved
+it as a JPEG image at level 95, and compared this to a JPEG 2000 file saved at
+level 6. The JPEG file was 15,172 bytes in size, with the JP2 file being 14,438
+bytes.
+
+Pixel by pixel analysis of the difference between the original image and the
+compressed files reveals the following errors:
+
+|               | Channel | JP2 (6) | JPEG (95) |
+| Maximum Error | Red     | 19      | 84        |
+|               | Green   | 12      | 46        |
+|               | Blue    | 21      | 104       |
+| Average Error | Red     | 2.78    | 4.17      |
+|               | Green   | 1.87    | 2.54      |
+|               | Blue    | 2.62    | 5.15      |
+
+This data was created by using the micmp program from libmtpixel, available from
+the mtPaint website.
+
+In this example, the JP2 image on the left shows far closer similarity to the
+original in the centre than the JPEG on the right. The JPEG wheel arch at the
+top is much more blurred and has completely lost its light rim.
+
+[../img/A.2.2a.png] [../img/A.2.2b.png] [../img/A.2.2c.png] 
+
+In this example, the roof of the red car appears to be a different shade on the
+JPEG image at the bottom compared to the original in the centre, and the JP2
+image at the top.
+
+[../img/A.2.2d.png]
+
+[../img/A.2.2e.png]
+
+[../img/A.2.2f.png]
+
+
+====A.2.2.2 Lossless Image Comparison - PNG vs JP2====[SEC222]
+
+To store a photographic image losslessly it is possible to use a compressed PNG
+file. However, for most photos the JP2 format produces smaller files by about
+5-25%. As an example, here are the results for the photo image in section 6.8.3:
+
+| Format                 | File Size (Bytes) |
+| Uncompressed BMP       | 87,222            |
+| Lossless PNG (level 9) | 56,297            |
+| Lossless JP2 (level 1) | 51,731            |
+
+It should be noted that the PNG file format still produces smaller files than
+JP2 when compressing images with fewer colours, such as pixel art, so the
+benefits are strictly limited to photographic images.
+
+
+==A.3 Grabbing Screenshots==[SEC3]
+
+mtPaint can be used to grab a screenshot with either 'File->New' or using
+'mtpaint -s' from the command line. If you are an IceWM user you can assign the
+key 'Print Screen' to grab a screenshot by editing the file ~/.icewm/keys to
+include:
+
+key "Print" mtpaint -s
+
+
+==A.4 Preferences==[SEC4]
+
+The preferences you choose in the preferences window are stored in the file
+**.mtpaint**
+
+On GNU/Linux systems, it is placed in the user's home directory,
+and on Windows systems, in the user's profile directory. On Windows 9x, the
+root directory of the current drive is used instead (usually, **C:\** ).
+
+
+===A.4.1 Touch Sensitive Tablets===[SEC41]
+
+It is possible to use the Preferences window to enable the use of touch
+sensitive tablets in mtPaint. Firstly, these devices need to be set up and
+tested using your operating system drivers. Once you have done this, you can
+then configure the 'Tablet' section of the Preferences window in order to affect
+tool size, flow and opacity. To test if this is working, use the tablet to apply
+pressure to the test area and you will see how much pressure has been
+registered.
+
+
+===A.4.2 Localized Translations===[SEC42]
+
+mtPaint can be compiled to use localized translations to help non English
+speaking people. If your copy of mtPaint has this feature, there will be a
+section of the Preferences window called 'Language' which you can use to choose
+a different language.
+
+Each of these translations has been completed voluntarily by several mtPaint
+users who wish to make its features more accessible. Some of these translations
+are not complete. If you wish to complete any of these translations, or create
+new translations then you are advised to visit the mtPaint website so you can
+contact the maintainer in order to get instructions on doing this.
+
+
+==A.5 Limitations==[SEC5]
+
+The maximum image geometry is 16384x16384. The minimum geometry is 1x1.
+
+After loading a new palette, the canvas may contain references to colours that
+are not defined. I call these orphan pixels. If you examine the image
+information via the Image menu you will see how many pixels have been orphaned.
+You can retrieve the pixels by expanding the palette to 256 items and then
+'Palette->Remove Unused Colours'.
+
+When using the colour A/B editor with an indexed image, if colour A = colour B,
+you must edit colour B to change its RGB.
+
+On some systems there are problems when editing large images at high zoom levels
+like 2048x2048 at 1600%.
+
+Some key combinations may not work under certain window managers, e.g.
+Shift+F1-F12 or Ctrl+Mouse button.
+
+Using the status bar items 'Cursor X,Y' and 'Pixel [ I ] {RGB}' can cause high
+CPU usage on older hardware when moving the cursor vigorously.
+
+The maximum number of layers is 100.
+
+GTK+ Text rotation does not work in Windows ME/95.
+
+
+==A.6 Customizing mtPaint==[SEC6]
+
+One of the benefits of free software is that you have access to the source code
+so you can customize the program to suit your needs.
+
+
+===A.6.1 Creating Patterns===[SEC61]
+
+Each pattern is simply an 8x8 grid which you can edit in the source code file
+./src/icons1/xbm_patterns.xbm. To use these new patterns you need to save the
+new file somewhere safe and then refer to this file in the Path section of the
+Preferences window.
+
+
+===A.6.2 Creating Brushes===[SEC62]
+
+If you have a particular preference for certain types of brushes, such as
+circles or sprays, you can manually edit the sources to cater for your needs.
+Edit memory.c and find mem_brush_list which defines all of the brushes. Each
+entry is defined by a tool type, tool size and flow.
+
+
+===A.6.3 Custom Icons===[SEC63]
+
+The directory ./src/icons1 contains icons and mouse pointers that are compiled
+into mtPaint. It is possible to create custom icon sets to suit personal taste.
+For example in order to create and build a new set try:
+
+- cd src
+- cp -r icons1 icons-new
+- Edit the icons and pointers in icons-new as required
+- ./configure icons-new
+- make
+
+
+===A.6.4 Default Settings===[SEC64]
+
+The GNU/Linux version of mtPaint allows to override the default configuration
+settings, using a global preferences file: **/etc/mtpaint/mtpaintrc**
+
+Packagers and distribution builders can use this to preconfigure mtPaint in a
+distribution-specific way; start mtPaint, modify whatever preferences you want,
+exit mtPaint, and copy the resulting **~/.mtpaint** file to
+**/etc/mtpaint/mtpaintrc**
+
+The area where such preconfiguring is needed most, is file actions - different
+distros provide different selection of preinstalled software, and some of
+programs which mtPaint would run by default may be unavailable on a specific
+distribution. In such cases, it's better to substitute another similar program,
+or to disable the action entirely, than to confuse users by actions which do
+not work.
+
+
+==A.7 File Actions==[SEC7]
+
+The 'Actions' section of the File menu can be used to send the current image
+file to another program, such as a web browser or email client. The
+implementatation varies between GNU/Linux and Windows systems due to the
+different underlying system structures. In both cases though you can configure
+up to 25 items, with each having a text description (Action), a command and a
+directory in which the command will be run. The first 15 items will be placed in
+the menu as presets. If you don't want an item to appear as a preset then you
+can place a '#' character at the beginning of the Action. You can re-order the
+items in the list by dragging and dropping them in the list.
+
+When editing the command, the current image file is represented by using '%f'
+which is substituted when the command is run.
+
+
+===A.7.1 GNU/Linux Systems===[SEC71]
+
+The GNU/Linux version of mtPaint comes pre-loaded with some examples of file
+actions. The command is executed using the shell command sh, so in the case of
+bash you can using more than one command by separating them with a semi colon.
+For example this command waits for 5 seconds and then grabs a screenshot:
+
+sleep 5; mtpaint -s &
+
+Because commands are run through the shell you can use any shell facilities like
+pipes, redirection, and wildcards.
+
+
+===A.7.2 Windows Systems===[SEC72]
+
+To run a program using the Windows version of mtPaint you must place the whole
+path of the program in the command box. For example the following command starts
+MS Paint editing the current image (in Windows XP or Window 98 respectively):
+
+C:\WINDOWS\system32\mspaint.exe %f
+
+C:\Program Files\Accessories\MSPAINT.EXE %f
+
+
+==A.8 Image Loading and Saving==[SEC8]
+
+These functions may seem obvious, but there is more to them than meets the eye.
+
+First, file selector supports tab completion and wildcards. For example, if you
+type "p" into the entry box and press tab, only files beginning with "p" will
+be displayed. If you type "dsc*.jpg" into the entry box and press tab, the file
+list will only display files beginning with "dsc" and ending with ".jpg". As
+you would expect the * wildcard represents any number of characters and the ?
+wildcard represents exactly one character.
+
+Then, there is undoable loading. If you enable it, loading a new image file is
+treated like an ordinary image modification - you can undo it, and return to
+the image you were working with before. This way, if you want to add to the
+current image a piece of another, you don't need to open a separate instance of
+mtPaint for that; just load the second image in undoable mode, copy the needed
+part of it to clipboard, undo the load, and paste the clipboard into the first
+image.
+
+Another use of undoable loading is image comparison. You can load two (or more)
+images one after another, and then quickly switch back and forth between them
+using the keyboard shortcuts for undo and redo (Ctrl+Z and Ctrl+R).
+
+As for saving, the choice of image file formats which mtPaint offers you depends
+on the image you're trying to save - its type (RGB or indexed) and number of
+colours in it. If it isn't possible to save the image in a given format, it is
+simply not offered - which doesn't mean that the format is unavailable, but that
+you need to convert the image to an acceptable type and/or number of colours.
+See the "Image Type" column of the table in [section A.2 #SEC2] for requirements
+of specific image formats.
+
+
+-------------------------------------------------

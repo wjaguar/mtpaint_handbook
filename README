@@ -1,0 +1,17 @@
+------------
+Installation
+------------
+
+* The mtPaint handbook is installed on Windows systems using the standard mtpaint-?.??-setup.exe program.
+
+* Slackware users can install the handbook with the relevant TGZ package from the Sourceforge site.
+
+* Other GNU/Linux users can install the handbook as follows (as root user):
+
+make install
+
+Once installed you call the handbook by selecting 'Documentation' from the Help menu.  To choose the browser that is used to read the HTML, set this program name using the 'Files' section of the Preferences window.
+
+You can remove the files from your system using:
+
+make uninstall

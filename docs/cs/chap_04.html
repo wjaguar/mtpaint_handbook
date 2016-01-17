@@ -1,0 +1,176 @@
+<HTML>
+
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<TITLE>Příručka mtPaint - Kapitola 4 - Nástroj výběru</TITLE>
+</HEAD>
+
+<BODY>
+
+<P>
+<H1>4. Nástroj výběru</H1>
+<P>
+Nástroj výběru se používá pro vyznačení oblastí na plátně. Jakmile jsou tyto
+oblasti definovány, tak můžete provádět různé operace, jako vyplňování,
+kreslení obrysu, nebo kopírování a vkládání. Tyto operace jsou přístupné přes
+menu Výběr, nebo na nástrojové liště. V menu Upravit jsou volby vyjmutí
+a vkládání.
+<P>
+Funkce kopírování může být skvěle vylepšena s použitím výběru kanálů,
+což vám umožní specifikovat, které pixely budou zkopírovány. Například
+je možné kopírovat a vkládat eliptické tvary. Pro více informací se podívejte
+na kapitolu kanály a příklady, jak to pracuje.
+
+
+<H2><A name=SEC1>4.1 Pravoúhlé výběry</H2>
+<P>
+Pravoúhlý výběr se provádí kliknutím na plátno a následným tažením kurzoru
+z jednoho rohu do druhého.  Celý obrázek označíte stiskem Ctrl-A. Pro zrušení
+označení stiskněte Escape, pravé tlačítko myši, Ctrl+Shift-A, nebo použijte
+menu Upravit. Označovací box můžete posunovat po pixelech pomocí kláves
+šipek. Stiskem klávesy Shift a kurzorové klávesy můžete označenou oblast
+posunovat o předdefinovaný počet pixelů nastavení v okně voleb.
+Po té co provedete výběr, můžete kliknout a posunovat rohy do nových pozic.
+Se zapnutým kurzorem myši jako nástroj uvidíte odpovídající rohovou šipku
+indikující tuto novou vlastnost.
+
+
+<H2><A name=SEC2>4.2 Výběr polygonem</H2>
+<P>
+Po vybrání tohoto nástroje klikněte levým tlačítkem na plátno, kde
+chcete začít formovat tvar polygonu. Potom můžete také podržet
+levé tlačítko myši pro volné kreslení, nebo ho uvolnit pro dlouhou
+rovnou hranu. Práci dokončíte pravým tlačítkem myši. Můžete také vytvořit
+polygon držením pravého tlačítka a následným posunováním kurzoru. V tomto
+případě uvolněním pravého tlačítka polygon dokončíte. Výběr zrušíte
+stiskem klávesy Escape.
+
+
+<H2><A name=SEC3>4.3 Laso</H2>
+<P>
+
+Když dokončíte výběr pomocí polygonu, tak můžete použít nástroj Laso
+pro zmenšení hran okolo výběru se stejnou barvou.
+Tato funkce pracuje vyplněním transparentních pixelů od prvního bodu
+polygonového výběru, nebo z levého horního rohu obdélníkového výběru.
+Například:
+<P>
+<LI>Vyberte hrubou oblast kolem tvaru:
+<P><IMG src="../img/4.3a.png">
+<LI>Stiskněte ikonu Laso:
+<P><IMG src="../img/4.3b.png">
+<LI>Vložte tvar na nové pozadí:
+<P><IMG src="../img/4.3c.png">
+
+<P>
+V menu Výběr najdete také funkci 'Vyjmout lasem', která vyplní
+oblast na plátně vybranou lasem.
+
+
+<H2><A name=SEC4>4.4 Maskovací barvy</H2>
+<P>
+Během vkládání výběru můžete udělat některé barvy ve výběru
+neviditelné. Například:
+<P>
+<LI>Vložení celistvého tvaru:
+<P><IMG src="../img/4.4a.png">
+<LI>Vyberte bílou jako barvu A a žlutou jako barvu B a zvolte Výběr-&gt;Maskovat barvy A,B.
+To způsobí, že tyto barvy budou transparentní:
+<P><IMG src="../img/4.4b.png">
+<P>
+Toto můžete provést s kolika barvami budete chtít, prostě jen opakujte stejnou
+proceduru. Zvolením Výběr-&gt;Zrušit Masku zrušíte celou masku.
+
+
+<H2><A name=SEC5>4.5 Smíchání s alfa kanálem</H2>
+<P>
+Normální kopírování a vkládání zahrnuje kopírování samotných pixelů z jednoho
+místa na jiné. Nicméně je možné použít alfa kanál pro jemnější smíchání určitých
+oblastí. Například zde máme holý RGB obrázek, který byl exportován z programu
+Inkscape, který obsahuje více jemnějších hran a barevné přechody:
+<P>
+<IMG src="../img/4.5a.png">
+<P>
+Pokud použiji laso na objekty a vložím je přes červené pozadí, bude to vypadat
+asi takto:
+<P>
+<IMG src="../img/4.5b.png">
+<P>
+jak můžete vidět, vypadají hrany objektů ošklivě a přechody vypadají mimo
+mísu. V mtPaintu je funkce, která vám umožní extrahovat přechodové informace
+výběru a aplikovat je na pozadí se zachováním jemného přechodu.
+Jako příklad použijte první obrázek nahoře a začněte:
+<P>
+<LI>Vyberte černé objekty Pravoúhlým výběrem a zkopírujte je a vložte pomocí
+Ctrl-C and Ctrl-V.
+<LI>Vyberte z palety černou jako barvu A s bílou jako B. 
+<LI>Vyberte položku v menu "Výběr-&gt;Alfa přechod mezi A,B". 
+<LI>Přsuňte vkládací box nad červenou oblast a potvrďte vložení stiskem ENTER. 
+
+<P>
+Nyní byste měli vidět toto:
+<P>
+<IMG src="../img/4.5c.png">
+<P>
+<LI>Vyčistěte vkládací box klávesou Escape. Označte, zkopírujte a vložte žluté objekty
+stejným postupem jako předtím, ale jako barvu A vyberte žlutou.
+<LI>Až potvrdíte tuto druhou operaci, měli byste vidět zhruba toto:
+<P>
+<IMG src="../img/4.5d.png">
+<P>
+Tato technika pracuje na jakékoliv jednoduché přechody z jedné barvy
+do druhé. Pracuje skvěle s antialiasingem, který se vyskytuje kolem textu
+a geometrických objektů vytvořených programy jako Inkscape, které jsou exportovány
+do bezeztrátového formátu jako PNG. Obrázky z programu Inkscape se musí
+exportovat s jednobarevným pozadím, nikoliv průhledným pozadím.
+
+<H3><A name=SEC51>4.5.1 Variace s jednou barvou</H3>
+<P>
+Pokud máte barvy A a B jako stejnou barvu, můžete tuto barvu přepnout do alfa kanálu
+při výběru a smíchat ostatní barvy do alfa stínů.  Například, pokud si vezmete
+obrázek nahoře jako příklad, zkopírujete horní
+část, nastavíte barvy A a B jako čistě bílou a potom vložíte výsledek po aplikaci
+"Výběr-&gt;Alfa přechod mezi A,B", tak dostanete takovýto výsledek:
+<P>
+<IMG src="../img/4.5.1.png">
+<P>
+Tato metoda pracuje skvěle, pokud má zdroj jednobarevné pozadí s mnoha
+barvami totálně odlišného typu.
+
+
+<H2><A name=SEC6>4.6 Několik schránek</H2>
+<P>
+mtPaint umožňuje uložit až 12 obrázků do více obrazových schránek.
+PNG obrázky se uloží do schránky a následně se mohou v menu Upravit
+otevřít dle potřeby.
+<P>
+Tato funkce také znamená, že můžete mít dva běžící nezávislé mtPainty
+a jste schopni mezi nimi vyměňovat data ze schránky stiskem tlačítka.
+Vzhledem k tomu, že se soubory nemažou, můžete se dostat do těchto
+obrazových schránek po uzavření a restartování mtPaint, nebo restartu
+celého systému.
+<P>
+Vkládat je možné RGB schránku na RGB obrázek a Indexovanou schránku
+na Indexovaný obrázek, nebo RGB obrázek. Díky tomu, že schránky
+jsou standardní PNG soubory, může je uživatel otevírat v jiném mtPaintu
+a upravovat je. Soubory schránky jsou uloženy v cestě, která se nastaví
+v okně voleb.
+
+
+<H2><A name=SEC7>4.7 Vkládání štětce</H2>
+<P>
+Během vkládání můžete podržet najednou obě tlačítka myši a dosáhnout efektu
+vkládání schránky jako štětce. Pokud vkládáte objekt s nepravoůhlými hranami,
+můžete dosáhnout zajímavých efektů, jako je tento:
+<P><IMG src="../img/4.7a.png">
+<P>
+Zde jsem vložil semi transparentní kouli s vypnutým režimem neprůsvitnosti.
+
+
+<P>
+<HR>
+
+</BODY>
+</HTML>
+
+
