@@ -34,6 +34,10 @@ like with these toggles switched on:
 
 [../img/7.1b.png]
 
+If you disable alpha in the Channels menu, all pixels will display as fully
+opaque, and processes which respect alpha transparency - such as image scaling,
+rotating, skewing, or Gaussian blur - will ignore it.
+
 
 ===7.1.1 Coupling RGBA Operations===[SEC11]
 
@@ -46,6 +50,10 @@ menu:
 [../img/7.1.1a.png]
 
 [../img/7.1.1b.png]
+
+Note: Gaussian Blur of an RGBA image affects both image and alpha channels when
+this is on (respects alpha transparency when "Disable alpha" is off, or blurs
+them separately when it is on).
 
 
 ===7.1.2 Unassociate Alpha===[SEC12]

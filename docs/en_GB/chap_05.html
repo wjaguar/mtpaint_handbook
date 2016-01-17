@@ -53,12 +53,19 @@ key. Pressing the Home key again will return the controls.
 <H2>5.3 Image File List</H2>
 <P>
 If you started mtPaint by passing more than one filename at the command line
-such as 'mtpaint *.jpg', these filenames will be put into a list in a window.
+such as '<B>mtpaint *.jpg</B>', these filenames will be put into a list in a window.
 Then whenever you click on the filename, this image will be loaded into mtPaint.
 This can be useful for editing animation frames, or working with several digital
-photos. In the Windows version of mtPaint this feature can be used by selecting
+photos.
+</P>
+<P>
+In the Windows version of mtPaint this feature can be used by selecting
 the image files in Explorer, right clicking and using the 'Send To' option to
-send them to mtPaint.
+send them to mtPaint; or otherwise, mtPaint can take a wildcard pattern and
+find the files on its own if you use "-w" option, like this:
+'<B>mtpaint -w "*.jpg"</B>'. This option may prove useful on GNU/Linux system as
+well, in case there are too many matching files to fit into command line (rather
+unlikely, given its size limit of 64 Kb, but possible).
 </P>
 <P>
 Here is an example of what you can do using this procedure, along with a pan
@@ -181,6 +188,29 @@ From the same dialog, you can also enable the tile grid, useful for visually
 separating tiles in a tileset, configure its colour, and horizontal and vertical
 spacing. Unlike the zoom grid, tile grid, if enabled, is displayed for all zoom
 factors.
+</P>
+<P>
+Toggle on the "Preview" button if you want to dynamically see how the changes
+you make to the grid will look on the canvas.
+</P>
+<A NAME="SEC7"></A>
+<H2>5.7 Dock Pane</H2>
+<P>
+When the settings toolbar or the layers window are not displayed as separate
+windows, they instead reside in the dock pane, which is on the right side of
+the main window. This arrangement is sometimes more convenient, particularly on
+widescreen displays. Image file list, if present, occupies a separate tab in
+the dock pane.
+</P>
+<P>
+The dock area can be toggled on or off by F12 key, or through the View menu.
+Its width can be changed by dragging the separator between main window and dock,
+and is remembered across sessions.
+</P>
+<P>
+When some window in dock area is selected and is taking the input, arrow keys
+will navigate through its fields, instead of moving the mouse cursor over the
+canvas. To release input from the dock, press the Escape key.
 </P>
 <HR NOSHADE SIZE=1>
 

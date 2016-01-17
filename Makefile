@@ -1,4 +1,4 @@
-DOCDIR=/usr/doc/mtpaint
+DOCDIR=$(DESTDIR)/usr/doc/mtpaint
 
 install:
 	mkdir -p $(DOCDIR)

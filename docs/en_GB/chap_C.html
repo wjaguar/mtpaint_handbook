@@ -17,6 +17,103 @@ mtPaint NEWS<BR>
 <BR>
 Here is a summary of the main changes in this release (see handbook for full details):<BR>
 <BR>
+3.40	2011-12-30<BR>
+<BR>
+	* Tagalog translation added by Anjelo delCarmen<BR>
+	* Hungarian translation added by Ur Balazs<BR>
+	* Czech translation updated by Roman Hornik<BR>
+	* German translation updated by B. Clausius<BR>
+	* Italian translation updated by Angelo Gemmi<BR>
+	* Japanese translation updated by Norihiro YONEDA<BR>
+	* Swedish translation updated by Daniel Eriksson<BR>
+	* Spanish translation updated by Adolfo Jayme<BR>
+	* Brazilian Portuguese translation updated by Valter Nazianzeno<BR>
+	* Chinese (Simplified) translation updated by Cecc<BR>
+	* Russian translation updated<BR>
+	* Eliminated flicker when positioning line, polygon side, or gradient in Windows version<BR>
+	* Scrolling made more smooth in Windows version<BR>
+	* Dock area now holds settings toolbar and layers dialog when their windows are closed<BR>
+	* Main toolbar and tools toolbar now rearrange themselves to fit in window<BR>
+	* Preferences window now has scrollbars when screen is too small to display it whole<BR>
+	* The preview button on the colour selectors is now a toggle to enable interactive previews<BR>
+	* Line tool now displays geometry info on the status bar<BR>
+	* Gaussian blur effect now faster by 20-35%<BR>
+	* Image scaling now faster by 10-35%<BR>
+	* "Protect details" toggle added to Kuwahara-Nagao blur<BR>
+	* Image scaling, Gaussian blur, Unsharp mask and Difference of Gaussians effects now use multithreading to utilize all available CPU cores<BR>
+	* Moving the pointer with the arrow keys now scrolls the canvas when moving beyond the viewport<BR>
+	* Dragging selection frame in canvas window, layer in view window, or colour in palette window, beyond the viewport now scrolls the window<BR>
+	* "View-&gt;Snap To Tile Grid" restricts the positions of tools to tile grid points - B key toggles on/off<BR>
+	* sRGB colour scale generation added to palette editor<BR>
+	* sRGB gradients added<BR>
+	* Line tool now uses stroke gradient when no gradient placement exists<BR>
+	* "Palette-&gt;Pick Gradient" approximates an A-&gt;B gradient using colours from current palette (see handbook section 3.3.9)<BR>
+	* New palette sort mode added - Brightness<BR>
+	* "Image-&gt;Segment" added : See handbook section 6.10 for details<BR>
+	* Colour chooser popup added - press 'E' to open<BR>
+	* Posterize function in Transform Colour window now has 3 types - Bitwise, Truncated, Rounded<BR>
+	* Toggle to transform RGB clipboard image added to Transform Colour window<BR>
+	* The Convert To Indexed window now remembers the previous settings in that mtPaint session<BR>
+	* Text pasting tools now support multiline text (use Ctrl+Enter to insert line breaks)<BR>
+	* "~/.fonts" directory added to default font paths for FreeType text tool on Linux<BR>
+	* Animated GIF and multipage TIFF files now can be loaded into layers (one frame/page per layer)<BR>
+	* GIF animation file exploding is now done internally in mtPaint, not Gifsicle<BR>
+	* "Explode Frames" can now save frames in any suitable supported file format<BR>
+	* File actions can now specify file format conversion : See handbook section A.7 for details<BR>
+	* Netpbm file formats (PBM/PGM/PPM/PAM) save/load added<BR>
+	* PCX file format save/load added<BR>
+	* SVG file format import added (using librsvg; requires GTK+ 2.4 or later)<BR>
+	* Better support for loading CMYK TIFF files as RGB/RGBA<BR>
+	* ICC colour profiles embedded in PNG, JPEG and TIFF images now can be applied on load (using LittleCMS)<BR>
+	* JPEG2000 file format support now can be compiled with either JasPer or OpenJPEG library<BR>
+	* GIF loader made more tolerant to truncated or malformed GIF files<BR>
+	* PNG and TGA loaders now convert palette-based alpha into an alpha channel<BR>
+	* "Palette-&gt;Open" now can extract palette from indexed images in any supported file format<BR>
+	* "Scale Canvas" now has 3 boundary extension modes - Mirror, Tile, Void<BR>
+	* Filename and modified status now part of undo system<BR>
+	* Transparent colour now part of undo system<BR>
+	* Palette sorting, dragging a colour, or removing duplicate colours now do not lose transparent colour<BR>
+	* New keyboard shortcuts added - J for lasso tool, D for line tool, F for flood fill tool<BR>
+	* Toolbar and menu icons are now themeable (Preferences-&gt;Paths-&gt;Default Theme)<BR>
+	* Command line globbing now possible using -w option, e.g. mtpaint -w "*.jpg"<BR>
+	* Loading default settings from /etc/mtpaint/mtpaintrc is now supported in Windows version<BR>
+	* Name and location of user settings file is now configurable : See handbook section A.6.4 for details<BR>
+	* "Smart grid" and gamma correction are now enabled by default<BR>
+	* "Selective error propagation" for dithering is now at 85% by default<BR>
+	* Drawing and fill tools now are 2-3 times faster<BR>
+	* Support for compiling with libpng 1.4, libjpeg 8a, and zlib 1.2.5 added<BR>
+	* Configure script rewritten, now understands standard variables and options for installation paths and (cross-)compilation settings<BR>
+	* Minimum required GTK+2 version now can be specified as configure option (e.g., "./configure gtk2.8")<BR>
+	* Workaround for bug in GTK+ versions 2.14.0 - 2.14.2, 2.16.0, 2.16.1 added (spin buttons had wrong max values)<BR>
+	* Workaround for unknown problem in GTK+ version 2.24.4 added (program locked up when trying to save a file when layers list is active)<BR>
+	* BUGFIX - Problems with editing large images at high zoom levels are now eliminated<BR>
+	* BUGFIX - Titlebar now displays new image's filename after loading layers file, as it should<BR>
+	* BUGFIX - Layers list now correctly displays selected layer after loading layers file<BR>
+	* BUGFIX - Layers window now correctly displays transparent colour after it has been modified elsewhere<BR>
+	* BUGFIX - Other layers shown on canvas are now redrawn properly when current layer is moved<BR>
+	* BUGFIX - Loading TIFF files with X or Y mirroring doesn't cause crash<BR>
+	* BUGFIX - Planar TIFF files with alpha now load properly<BR>
+	* BUGFIX - Transparency in indexed TGA files is now read properly<BR>
+	* BUGFIX - Failed operations now do not flag image as modified<BR>
+	* BUGFIX - Gradient colours are now properly updated after converting indexed image to RGB<BR>
+	* BUGFIX - Cut operation in gradient mode when no placement exists now draws shapeburst gradient as it should<BR>
+	* BUGFIX - Drawing arrowheads with tablet enabled now works properly<BR>
+	* BUGFIX - Drawing arrowheads now doesn't produce corrupted undo frames<BR>
+	* BUGFIX - Builtin file selector now properly handles manual edits in directory box<BR>
+	* BUGFIX - Problem with FreeType text dialog occasionally hiding behind main window is now eliminated<BR>
+	* BUGFIX - Lists in FreeType text dialog now don't fail to update or scroll<BR>
+	* BUGFIX - FreeType text renderer now can handle PCF bitmap fonts<BR>
+	* BUGFIX - FreeType text renderer now properly handles TTF fonts with embedded bitmaps<BR>
+	* BUGFIX - FreeType text renderer now doesn't mistake some Unicode fonts for non-Unicode<BR>
+	* BUGFIX - ":unscaled" font paths in xorg.conf are now parsed properly<BR>
+	* BUGFIX - Redraw lag when moving a dialog over main window in Windows is now greatly reduced (fixed in GTK+)<BR>
+	* BUGFIX - Ctrl+T key now draws selection outline as it should - keyboard shortcut for text tool is now Shift+T<BR>
+	* BUGFIX - Handbook installed into a path with spaces in it no longer fails to open in nondefault browser on Windows<BR>
+	* BUGFIX - Internationalization no longer fails on Windows when the current directory is not the installation directory<BR>
+	* BUGFIX - Redraw glitches in builtin file selector on Windows are now eliminated<BR>
+	* BUGFIX - Drag 'n' drop of files with non ASCII characters in names now works on Windows<BR>
+	* "Distance to A+B" palette sort mode removed due to utter uselessness<BR>
+<BR>
 3.31	2009-4-15<BR>
 <BR>
 	* Japanese translation updated by Norihiro YONEDA<BR>

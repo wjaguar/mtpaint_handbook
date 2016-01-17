@@ -10,11 +10,15 @@ The mtPaint Handbook
   - [2.1 Life Before mtPaint chap_02.html#SEC1]
   - [2.2 Project Genesis chap_02.html#SEC2]
   - [2.3 General Philosophy chap_02.html#SEC3]
+%    - 2.3.1 Intended purpose
+%    - 2.3.2 Design principles
+%    - 2.3.3 Interface structure
   - [2.4 Development Timeline chap_02.html#SEC4]
     - [2.4.1 Version 0.23 - 0.37 chap_02.html#SEC41]
     - [2.4.2 Version 0.40 - 0.97 chap_02.html#SEC42]
     - [2.4.3 Version 2.00 - 2.30 chap_02.html#SEC43]
     - [2.4.4 Version 3.00 chap_02.html#SEC44]
+    - [2.4.5 Version 3.10 - 3.40 chap_02.html#SEC45]
 
 - [3. Pixel Art chap_03.html]
   - [3.1 Creating a New Canvas chap_03.html#SEC1]
@@ -37,6 +41,8 @@ The mtPaint Handbook
     - [3.3.6 Picking a Colour from the Canvas chap_03.html#SEC36]
     - [3.3.7 Copy to Palette chap_03.html#SEC37]
     - [3.3.8 Paste Palette chap_03.html#SEC38]
+    - [3.3.9 Pick Gradient chap_03.html#SEC39]
+    - [3.3.10 Colour Chooser chap_03.html#SEC310]
   - [3.4 Patterns chap_03.html#SEC4]
   - [3.5 Painting Modes chap_03.html#SEC5]
     - [3.5.1 Continuous chap_03.html#SEC51]
@@ -72,6 +78,7 @@ The mtPaint Handbook
   - [5.4 The View Window chap_05.html#SEC4]
   - [5.5 Image Tracing chap_05.html#SEC5]
   - [5.6 Zoom Grid chap_05.html#SEC6]
+  - [5.7 Dock Pane chap_05.html#SEC7]
 
 - [6. Image Manipulation chap_06.html]
   - [6.1 Cropping chap_06.html#SEC1]
@@ -98,6 +105,8 @@ The mtPaint Handbook
       - [6.8.4.2 Manually Selecting Colours chap_06.html#SEC842]
       - [6.8.4.3 Dithering Settings chap_06.html#SEC843]
   - [6.9 Skewing chap_06.html#SEC9]
+  - [6.10 Segmentation chap_06.html#SEC10]
+    - [6.10.1 Object extraction chap_06.html#SEC101]
 
 - [7. Channels chap_07.html]
   - [7.1 Alpha chap_07.html#SEC1]
@@ -147,8 +156,6 @@ The mtPaint Handbook
 
 - [A. Miscellaneous chap_A.html]
   - [A.1 Shortcuts chap_A.html#SEC1]
-    - [A.1.1 Keyboard Shortcuts chap_A.html#SEC11]
-    - [A.1.2 Mouse Shortcuts chap_A.html#SEC12]
   - [A.2 Supported File Types chap_A.html#SEC2]
     - [A.2.1 PNG Files chap_A.html#SEC21]
     - [A.2.2 JPEG 2000 Files chap_A.html#SEC22]

@@ -163,7 +163,8 @@ black box. Here is an example:
 
 If you wish to paste some text onto the canvas you need to press the 'T' key or
 click the text tool icon on the toolbar. You will then be presented with a form,
-where you need to type in the text you want to paste onto the canvas. You will
+where you need to type in the text you want to paste onto the canvas; for 
+multi-line text, pressing Ctrl+Enter inserts a newline character. You will
 be able to change the font type and its size.
 
 If you are using GTK+2 and editing an RGB image you also have the option of
@@ -246,17 +247,25 @@ selected colours; set the "From" and "To" spins to the endpoints of the scale,
 select the interpolation mode, and press the "Create" button. Pressing the
 "From" and "To" buttons sets the corresponding spin to the current colour index.
 
-Scales can be built by interpolating between the endpoints' colours in RGB, in
-HSV, or by using the currently selected gradient; in the latter case, the
-endpoints get modified too. If you want a reverse HSV or gradient scale, set
-the endpoints in a reverse order (the "To" index smaller than the "From" index).
+Scales can be built by interpolating between the endpoints' colours in RGB,
+sRGB (linear RGB, see [6.8.2 chap_06.html#SEC82]), HSV, or by using the
+currently selected gradient; in the latter case, the endpoints get modified too.
+If you want a reverse HSV or gradient scale, set the endpoints in a reverse
+order (the "To" index smaller than the "From" index).
+
+If "Preview" button is toggled on, the changes you make will immediately be
+visible in the palette window, and on the canvas if the image is indexed.
 
 
 ===3.3.2 Loading and Saving the Palette===[SEC32]
 
 You can save and load the current palette by accessing the relevant function in
-the Palette menu. If you want a palette file to be used as the default mtPaint
-palette you can set this in the Path section of the Preferences window.
+the Palette menu. mtPaint supports GPL (GIMP palette) and TXT (simple text)
+palette file formats, and can also read palette from indexed image files in any
+supported image format.
+
+If you want a palette file to be used as the default mtPaint palette you can set
+this in the Path section of the Preferences window.
 
 
 ===3.3.3 Sorting and Adjusting the Palette===[SEC33]
@@ -334,10 +343,27 @@ palette. This operation also sets the size of the palette accordingly.
 
 ===3.3.8 Paste Palette===[SEC38]
 
-If you are editing an RGB image the Edit menu allows you to put the current
-palette onto clipboard, which you could then paste to the canvas. If you
-firstly select an area with the selection tool you can make the paste area have
-a different width.
+The Edit menu allows you to put the current palette onto clipboard, which you
+could then paste to the canvas. If you firstly select an area with the selection
+tool you can make the paste area have a different width.
+
+
+===3.3.9 Pick Gradient===[SEC39]
+
+This option in the Palette menu assembles a best possible approximation of a
+gradient from colour A to B using colours in the current palette, and puts it
+onto clipboard in the form of a line of pixels. The gradient can be approximated
+in RGB, sRGB, or LXN colour space (see [section 6.8.2 chap_06.html#SEC82] for
+their relative strengths and weaknesses).
+
+===3.3.10 Colour Chooser===[SEC310]
+
+To quickly choose a new colour from the palette, you can press E to call up the
+colour chooser window at the mouse cursor position. Left click on a colour
+chooses colour A, right click, colour B; to dismiss the window without changing
+anything, click outside the window or press any key.
+
+[../img/3.3.10.png]
 
 
 ==3.4 Patterns==[SEC4]
@@ -432,9 +458,9 @@ following dialog:
 
 The screenshot depicts a smooth grey gradient from one corner to the other, and
 the colour selection is for a middle section of this grey. The green preview
-area indicates what pixels will be protected from painting operations. By
-selecting the 'Inverse' toggle you will be designating which pixels will be
-available for painting.
+area indicates what pixels will be protected from painting operations (toggle
+the "Preview" button on to display it). By selecting the 'Inverse' toggle you
+will be designating which pixels will be available for painting.
 
 The sphere option is the L*X*N* Sphere (the same as fuzzy flood fills) and uses
 Euclidean distance in a perceptionally uniform colour space, thus it better
@@ -458,12 +484,66 @@ protected and also the colour-selection mask.
 When you select the gradient mode by clicking the horizontal gradient button,
 you are able to paint smooth graduated areas of pixels onto the canvas. By
 default the gradient uses colour A and B, although you can define your own
-colours, which is explained later. Once the mode is switched on, there are two
+colours, which is explained later. Once the mode is switched on, there are three
 ways to use it:
 
 - As a placed gradient in a fixed position using the gradient selection tool
 followed by a painting tool.
 - As a stroke gradient using the brush shapes.
+- As a shapeburst gradient using one of fill tools.
+
+
+Right clicking on the gradient button, or on the gradient placement tool icon,
+calls up the gradient configuration window, where you can change various
+properties of the gradient. The window looks like this:
+
+[../img/3.5.6.png]
+
+The meaning of it all:
+
+- **Gradient type** controls shape of the gradient:
+  - **Linear** goes along the placement line from beginning to end.
+  - **Bilinear** goes in both directions from beginning of the placement line.
+  - **Radial** makes a circle with placement line as its radius.
+  - **Square** makes a square with placement line going from its center to one
+corner.
+  - **Angular** goes 360 degrees clockwise starting at the placement line.
+  - **Conical** goes 180 degrees both clockwise and counterclockwise.
+- **Length**, if nonzero, overrides the default length above.
+- **Offset** is how far from the starting point the gradient will begin; it
+gets subtracted from the length.
+- **Repeat length**, if nonzero, specifies length of gradient itself, regardless
+of offset (**Length** setting is then ignored).
+- **Extension type** controls what to draw outside the set area of the gradient:
+  - **None** leaves the outside pixels unchanged.
+  - **Level** fills them with the first or last colour of the gradient,
+respectively.
+  - **Repeat** repeats the gradient again and again.
+  - **Mirror** repeats the gradient backwards, then forward again, and so on.
+- **Gradient** box selects type of the gradient:
+  - **A to B (RGB)** goes from colour A to colour B, interpolating between their
+RGB values.
+  - **A to B (sRGB)** goes from A to B interpolating in sRGB (linear RGB, see
+[6.8.2 chap_06.html#SEC82]).
+  - **A to B (HSV)** goes from A to B interpolating between their HSV values.
+  - **A to B (backward HSV)** does the same but interpolates the Hue values in
+reverse direction on the colour circle.
+  - **A only** just draws with colour A (no gradient at all).
+  - **Custom** draws a custom gradient.
+  - **Edit custom** opens a gradient editor, to configure that custom gradient.
+  - **Reverse** checkbox swaps the ends of the gradient (from B to A, or from
+end to start for a custom gradient).
+- **Opacity** box selects what opacity to use for the gradient:
+  - **Current only** draws everything with current opacity.
+  - **Current to 0** goes from current opacity to fully transparent.
+  - **Custom** applies a custom opacity gradient.
+
+
+Note: gradient length is defined as distance between endpoints, so a gradient
+actually covers one pixel row more (2 rows for 1-pixel-long, etc.) except in
+**Mirror** mode.
+
+Now, some examples of what can be done in gradient mode.
 
 
 ====3.5.6.1 Placed Gradients====[SEC561]
@@ -575,9 +655,11 @@ tool, you can create shapeburst gradients like this:
 
 ===3.5.7 Blend===[SEC57]
 
-Blend mode can only be used on RGB images, and works by blending certain parts
-of the source pixels with the canvas. In order to use this mode, you will need
-to configure it by pressing the right mouse button on the mode button.
+Blend mode works by blending certain parts of the source pixels with the canvas.
+In order to use this mode, you will need to configure it by pressing the right
+mouse button on the mode button. This mode can only be used on RGB images and 
+(except a few blends that are RGB specific) on utility channels; drawing on an
+indexed image in this mode will do nothing.
 
 In this example I have painted 2 ellipses onto a greyscale background. The
 ellipse on the left was painted using a pure red (RGB 255,0,0) with a 'Colour'

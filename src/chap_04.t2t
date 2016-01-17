@@ -15,18 +15,28 @@ which allows you to specify which pixels will be copied. For example it is
 possible to copy and paste elliptical shapes. See the channels chapter for more
 information and examples of how this works.
 
+Paste function in mtPaint works in a somewhat unusual way; you position the
+paste area over the canvas and commit the paste by right clicking or by pressing
+Enter - and you can do so repeatedly until you dismiss the paste by pressing
+Escape. Selecting another tool dismisses paste, but does not commit it unless
+that is enabled in the Interface section of the Preferences window.
+
 
 ==4.1 Rectangle Selections==[SEC1]
 
 The rectangle selection works by clicking on the canvas and dragging from one
-corner to another. If you want to select the whole image press Ctrl-A. To clear
-this selection press Escape, the right mouse button, Ctrl+Shift-A or use the
-Edit menu. The selection box can be moved around pixel by pixel by using the
-arrow keys. Pressing Shift and the arrow keys causes the selection box to be
-moved a set number of pixels determined by the Preferences window. After you
-have made a selection you can click and drag the corners to new positions. With
-the tool mouse cursor option switched on you will see the relevant corner arrow
-to indicate this new behaviour.
+corner to another. After you have made a selection, clicking again anywhere on
+the canvas will move the selection's nearest corner to the cursor position, and
+you may then drag to place it more precisely. With the tool mouse cursor option
+switched on you will see the relevant corner arrow to indicate this new
+behaviour. This way, a new selection can be made with no dragging, just by
+clicking two opposite corners of an area.
+
+If you want to select the whole image press Ctrl-A. To clear this selection
+press Escape, the right mouse button, Ctrl+Shift-A or use the Edit menu. The
+selection box can be moved around pixel by pixel by using the arrow keys.
+Pressing Shift and the arrow keys causes the selection box to be moved a set
+number of pixels determined by the Preferences window.
 
 
 ==4.2 Polygon Selections==[SEC2]

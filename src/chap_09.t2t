@@ -8,19 +8,35 @@
 
 mtPaint is able to edit frames of animations and also generate animation frames
 with the layer facilities. If you have the program Gifsicle installed you can
-load or create an animated GIF file. If you don't have Gifsicle already you can
+also create an animated GIF file. If you don't have Gifsicle already you can
 download it [HERE http://www.lcdf.org/gifsicle/].
 
 
 ==9.1 Loading Animated GIF Files==[SEC1]
 
-When you attempt to load a GIF file that has several frames, mtPaint will detect
-this and give you a message to ask if you want to edit them. If you do, then
-mtPaint will prompt you for a temporary directory to store these frames in. It
-is advisable to create a new folder (via the file selector) near the original
-GIF file for easy navigation.
+When you attempt to load a GIF file that has several frames, mtPaint will load
+the first frame, detect there are more and then give you a message to ask what
+you want to do with the file. You can either leave it at that, or load up to the
+first 100 animation frames into layers, or export ("explode") all the frames
+into a directory to edit them as separate files, or view the animation in
+Gifsicle's **gifview**.
 
-After Gifsicle has created these frames, a new mtPaint process will be started
+Frames can be loaded, or exported, in one of 3 ways:
+
+- **Composited frames** (the default) means animation frames as they are
+displayed.
+- **Raw frames** means frames as they are stored in the original file.
+- **Composited frames with nonzero delay** means only those animation frames
+that have a chance to be seen: some GIF files composite several frames without
+any delay to produce one visible frame. This isn't the default because some
+(ancient) GIFs use a zero delay throughout while still containing animations.
+
+
+If you do "Explode frames", then mtPaint will prompt you for a temporary
+directory to store these frames in. It is advisable to create a new folder (via
+the file selector) near the original GIF file for easy navigation.
+
+After mtPaint has created these frames, a new mtPaint process will be started
 with the frame filenames in the command line window. You click on a frame
 filename and this will be loaded so you can edit it as a normal image.
 
@@ -124,7 +140,7 @@ time. Up to 100 lines can be entered in the following format:
 
 frame1 frame2 layer1, layer2, layer3, ... , layer50
 
-Up to 50 layers can be listed on each line. Between the 2 frames of the
+Up to 100 layers can be listed on each line. Between the 2 frames of the
 animation only one of the sequence will be visible, with the others being
 switched off. As the frame increments, the next layer in the sequence will be
 shown, and the previous one hidden.

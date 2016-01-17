@@ -51,7 +51,7 @@ level by using the above formula, mixing these light levels together as
 particular image processing operation requires, and converting the result back
 to RGB.
 
-Gamma correction is made optional, instead of being used always by default, is
+Gamma correction is made optional, instead of being used always by default,
 because user might want to disable it to better preserve small dark details on a
 bright background which otherwise would be lost in the glare. Also, because most
 other software, such as GIMP, doesn't have gamma correction, and user might want
@@ -106,6 +106,11 @@ If you want to adjust the colour of an image you can do this by pressing the
 'Insert' key. This also enables you to use the posterize function to reduce the
 number of colours in the image.
 
+The "Show Detail" toggle will display additional controls: to choose the type of
+posterization; to make the adjustment affect the palette (whole or a specific
+colour range), or not affect the image; and to leave some RGB components
+unmodified.
+
 
 ==6.6 Applying Effects==[SEC6]
 
@@ -147,8 +152,8 @@ The Amount value controls how much sharper the image becomes. The higher the
 value then the sharper the resulting image will be.
 
 The Threshold value sets the minimum difference in pixels before applying
-sharpening. This value can be used to protect areas of smooth colour gradients
-from being affected by the sharpening process, such as a blue sky.
+sharpening. This value can be used to protect areas of smooth colour gradients,
+such as a blue sky, from being affected by the sharpening process.
 
 
 ===6.6.4 Gaussian Blur===[SEC64]
@@ -170,6 +175,9 @@ The example images show the effect of (gamma corrected) Kuwahara-Nagao blur
 with radius 1, 3, and 10.
 
 [../img/6.6.5a.png] [../img/6.6.5b.png] [../img/6.6.5c.png] 
+
+Turning "Protect details" on will leave more of smaller-scale irregularities
+of contours unsmoothed.
 
 
 ===6.6.6 Edge Detection===[SEC66]
@@ -274,7 +282,7 @@ using sRGB - but the result could still look better.
 LXN is a colour space which tries to provide a measure of how people actually
 perceive colour differences. While its success in that is limited, that's only
 to be expected - there can be no one true measure, as colour perception isn't in
-any way constant; different people see things differently, th same thing in
+any way constant; different people see things differently, the same thing in
 different conditions is seen differently, etc. But when RGB selects such a
 'nearest' colour that only a blind man would agree, it's LXN to the rescue; it's
 much less prone to finding green to be nearest to red or doing something equally
@@ -437,6 +445,67 @@ as an angle, or as offset along the skew direction, at a specified distance.
 The latter method makes it easy to do pixel-precise skew - instead of having
 to calculate an angle from offset and distance, you just feed the values to
 mtPaint.
+
+
+==6.10 Segmentation==[SEC10]
+
+With the Segment option in the Image menu you can make a segmentation map of
+the image. Results are much improved (segment boundaries more precisely follow
+contours of objects in the image) if the image is preprocessed with a
+gamma corrected radius 1 Kuwahara-Nagao filter.
+
+[../img/6.10.png]
+
+The larger is the Threshold value, the more dissimilar areas can be merged into
+one segment. Level controls coarseness of segmentation in a roughly logarithmic
+scale, by setting a minimum number of merges for a segment; it means that
+generally, smallest segment on one level is about twice smaller than on the
+level above it. Minimum size increases coarseness in a linear scale, so it may
+only be useful for low Level values.
+
+Switching to a different colour space, or another difference measure, may
+improve segmentation for some images. However, it resets the threshold value
+and you will need to adjust it again.
+
+Best segmentation settings for a specific object in a specific image can only be
+found by trial and error, which is made easier by enabling preview. Then,
+segment boundaries will be superimposed on the image in thin lines, and
+dynamically recalculated for every change of settings (colour is selectable
+through the 'Configure grid' dialog).
+
+Once you are satisfied with segmentation, press Apply to replace the image with
+the segmentation map, with each segment filled by a distinct RGB colour. Making
+use of this map is up to you.
+
+
+===6.10.1 Object extraction===[SEC101]
+
+One possible use I would like to describe, is cutting out a complex object from
+the image. To do this, you set up three layers in this way:
+
+- Background layer containing the original image.
+- Layer containing segmentation map, with added empty alpha channel - i.e.
+completely transparent for now.
+- Layer containing segmentation map processed by Roberts edge detection filter,
+with transparent colour set to black - i.e. transparent except segment contours.
+
+
+When you enable "Show all layers in main window", it will look like this:
+
+[../img/6.10.1a.png]
+
+Then you switch to the transparent layer, set your colour A to opaque magenta
+(RGB 255/0/255, alpha 255), and colour B to transparent, say, green (0/255/0,
+alpha 0), and proceed to flood fill the segments not belonging to your object
+with colour A and segments belonging to it with colour B. When you are done it
+will look like this:
+
+[../img/6.10.1b.png]
+
+Now you switch to editing alpha channel, invert it, and copy to the clipboard.
+Then you switch to the background layer, then to editing its alpha channel
+(creating an empty one) and paste the clipboard there. Now, having made
+everything but your object transparent, you can do with it whatever you wish.
 
 
 -------------------------------------------------

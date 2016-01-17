@@ -7,69 +7,16 @@
 
 ==A.1 Shortcuts==[SEC1]
 
-Several of the menu options have keyboard shortcuts which are labelled next to
-the option. In addition to these facilities, there are further shortcuts that
-you may find useful.
+The complete list of all keyboard and mouse shortcuts in mtPaint is part of
+builtin help, called up by pressing F1 or by "Help->About" menu option; see the
+"Keyboard shortcuts" and "Mouse shortcuts" sections.
 
+Additionally, several of the menu options have their keyboard shortcuts labelled
+next to the option.
 
-===A.1.1 Keyboard Shortcuts===[SEC11]
-
-| A            | Draw open arrow head while drawing line |
-| Q            | Quit the program (can be switched off in the preferences window) |
-| S            | Draw closed arrow head while drawing line |
-| Insert       | Transform the image colours, e.g. gamma, brightness, contrast |
-| Home         | Toggle full view mode |
-| Page Up      | Scale image |
-| Page Down    | Resize canvas |
-| Delete       | Crop image to current selection |
-| Escape       | Cancel paste or selection, Cancel line drawing |
-| Enter/Return | Commit paste operation |
-| Shift + Enter/Return | Commit paste operation and swap canvas into the clipboard |
-| Arrow keys   | Painting tool - Move the mouse cursor |
-| Arrow keys   | Paste/selection tool - Move area by one pixel |
-| Arrow keys + SHIFT   | Nudge mouse pointer, selection box or paste box by x pixels - x is defined by the Preferences window |
-| Arrow keys + CTRL [ + SHIFT ] | Move layer or resize selection box |
-| [ or ]       | Change colour A to the next or previous palette item |
-| Shift + [ or ]       | Change colour B to the next or previous palette item |
-| + or =       | Main edit window - Zoom in |
-| -            | Main edit window - Zoom out |
-| Shift + or = | View window - Zoom in |
-| Shift -      | View window - Zoom out |
-| 1            | 10% zoom |
-| 2            | 25% zoom |
-| 3            | 50% zoom |
-| 4            | 100% zoom |
-| 5            | 400% zoom |
-| 6            | 800% zoom |
-| 7            | 1200% zoom |
-| 8            | 1600% zoom |
-| 9            | 2000% zoom |
-| Shift + 1    | Edit image channel |
-| Shift + 2    | Edit alpha channel |
-| Shift + 3    | Edit selection channel |
-| Shift + 4    | Edit mask channel |
-| F4           | Paint tool |
-| F9           | Selection tool |
-
-
-===A.1.2 Mouse Shortcuts===[SEC12]
-
-| Left button        | Paint to canvas using the current tool and pattern |
-| Middle button      | Selects the point which will be the centre of the image after the next zoom |
-| Right button       | Paint to canvas with A/B colours reversed, Commit paste to canvas / Stop drawing current line / Cancel selection |
-| Scroll Wheel       | In GTK+2 the user can have the scroll wheel zoom in or out via the Preferences window |
-| Ctrl+Left button   | Choose colour A from under mouse pointer |
-| Ctrl+Left button double click  | Choose colour A from under mouse pointer by averaging the canvas area under the current brush |
-| Ctrl+Middle button | Create colour A/B and dither pattern based on the RGB colour in A (RGB images only) |
-| Ctrl+Right button  | Choose colour B from under mouse pointer |
-| Ctrl+Right button double click | Choose colour B from under mouse pointer by averaging the canvas area under the current brush |
-| Ctrl+Scroll Wheel  | Scroll the main edit window left or right |
-| Shift+Right button | Selects the point which will be the centre of the image after the next zoom |
-
-You can fixate the X/Y co-ordinates while moving the mouse:
-
-| Shift      | Constrain mouse movements to a vertical line   |
-| Shift+Ctrl | Constrain mouse movements to a horizontal line |
+Besides these, there is one optional shortcut that you may find useful: "Q" key
+will quit the program, if enabled through the Interface section of the
+Preferences window.
 
 
 ==A.2 Supported File Types==[SEC2]
@@ -215,9 +162,10 @@ It is possible to use the Preferences window to enable the use of touch
 sensitive tablets in mtPaint. Firstly, these devices need to be set up and
 tested using your operating system drivers. Once you have done this, you can
 then configure the 'Tablet' section of the Preferences window in order to affect
-tool size, flow and opacity. To test if this is working, use the tablet to apply
-pressure to the test area and you will see how much pressure has been
-registered.
+tool size, flow and opacity. You should enable only one of the devices listed
+there, usually the one called "stylus". To test if this is working, use the
+tablet to apply pressure to the test area and you will see how much pressure
+has been registered.
 
 
 ===A.4.2 Localized Translations===[SEC42]
@@ -247,9 +195,6 @@ You can retrieve the pixels by expanding the palette to 256 items and then
 When using the colour A/B editor with an indexed image, if colour A = colour B,
 you must edit colour B to change its RGB.
 
-On some systems there are problems when editing large images at high zoom levels
-like 2048x2048 at 1600%.
-
 Some key combinations may not work under certain window managers, e.g.
 Shift+F1-F12 or Ctrl+Mouse button.
 
@@ -259,6 +204,9 @@ CPU usage on older hardware when moving the cursor vigorously.
 The maximum number of layers is 100.
 
 GTK+ Text rotation does not work in Windows ME/95.
+
+Files with overly long pathnames cannot be displayed or opened in Windows
+(if longer than 259 bytes in system's ANSI codepage encoding).
 
 
 ==A.6 Customizing mtPaint==[SEC6]
@@ -271,7 +219,7 @@ so you can customize the program to suit your needs.
 
 Each pattern is simply an 8x8 grid which you can edit in the source code file
 ./src/icons1/xbm_patterns.xbm. To use these new patterns you need to save the
-new file somewhere safe and then refer to this file in the Path section of the
+new file somewhere safe and then refer to this file in the Paths section of the
 Preferences window.
 
 
@@ -296,10 +244,36 @@ For example in order to create and build a new set try:
 - make
 
 
+Furthermore, icon set can be partially or wholly replaced at runtime through
+GTK+ theming mechanism. For every "xpm_whatever.xpm" icon in the icon set,
+there is a corresponding stock ID "mtpaint_whatever", and mtPaint will display
+whatever other icon you assigned to that stock ID in a resource file, if you
+refer to that file as "Default theme" in the Paths section of the Preferences
+window.
+
+Example resource file:
+--------------------
+```
+gtk-icon-sizes="gtk-small-toolbar=22,22"
+style "mtPaint" {
+  stock["mtpaint_brcosa"] = {{ "color-brightness-contrast.png", *, *, * }}
+  # Other icon definitions go here
+}
+widget_class "*" style "mtPaint" 
+```
+--------------------
+Full documentation on relevant GTK+ resource file syntax can be found
+[HERE http://library.gnome.org/devel/gtk/stable/gtk-Resource-Files.html], under
+the "Styles" heading. 
+
+
 ===A.6.4 Default Settings===[SEC64]
 
-The GNU/Linux version of mtPaint allows to override the default configuration
-settings, using a global preferences file: **/etc/mtpaint/mtpaintrc**
+mtPaint allows to override the default configuration settings, using a global
+preferences file. On GNU/Linux systems, the file **/etc/mtpaint/mtpaintrc** is
+used; on Windows systems, the file **mtpaintrc** need be located in
+**etc\mtpaint** subdirectory under the mtPaint installation directory (i.e.,
+**..\etc\mtpaint\mtpaintrc** relative to where **mtpaint.exe** file is).
 
 Packagers and distribution builders can use this to preconfigure mtPaint in a
 distribution-specific way; start mtPaint, modify whatever preferences you want,
@@ -312,6 +286,17 @@ programs which mtPaint would run by default may be unavailable on a specific
 distribution. In such cases, it's better to substitute another similar program,
 or to disable the action entirely, than to confuse users by actions which do
 not work.
+
+Packager of a fully portable build can use **mtpaintrc** to relocate the user
+preferences file (**~/.mtpaint**) from its default place in current user's
+home directory to, say, somewhere under installation directory. To do so, add
+a line "userINI = /path/filename" to **mtpaintrc**
+
+Paths starting with "~", like "~/.mtpaint", point into the home directory. On
+Windows, paths starting with a drive letter are absolute, and ones starting with
+a "\" or "/" are taken to be package-relative just as "/etc/mtpaint/mtpaintrc"
+itself is. No path at all (just "userINI =") means, user preferences will be
+saved to **mtpaintrc** file as new default configuration.
 
 
 ==A.7 File Actions==[SEC7]
@@ -328,6 +313,16 @@ items in the list by dragging and dropping them in the list.
 
 When editing the command, the current image file is represented by using '%f'
 which is substituted when the command is run.
+
+Additionally, if that another program requires, or prefers, a specific image
+file format and/or pixel format, you can begin the command with "conversion
+statements": ">" character followed by name of what you want and a space. For a
+file format, use either its file extension, or the name used for the format in
+mtPaint, e.g. either ">jpg" or ">jpeg" for JPEG; either ">jp2", ">jpc", or
+">jpeg2000" for JPEG2000. To do an indexed to RGB conversion, add ">rgb";
+otherwise, conversion will be done if the file format is RGB-only. Statements
+requesting impossible things, like saving an RGB image as an XBM file, will be
+ignored.
 
 
 ===A.7.1 GNU/Linux Systems===[SEC71]
