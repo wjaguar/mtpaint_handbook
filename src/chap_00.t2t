@@ -19,6 +19,7 @@ The mtPaint Handbook
     - [2.4.3 Version 2.00 - 2.30 chap_02.html#SEC43]
     - [2.4.4 Version 3.00 chap_02.html#SEC44]
     - [2.4.5 Version 3.10 - 3.40 chap_02.html#SEC45]
+    - [2.4.6 Version 3.45 chap_02.html#SEC46]
 
 - [3. Pixel Art chap_03.html]
   - [3.1 Creating a New Canvas chap_03.html#SEC1]
@@ -161,6 +162,9 @@ The mtPaint Handbook
     - [A.2.2 JPEG 2000 Files chap_A.html#SEC22]
       - [A.2.2.1 Lossy Image Comparison - JPEG vs JP2 chap_A.html#SEC221]
       - [A.2.2.2 Lossless Image Comparison - PNG vs JP2 chap_A.html#SEC222]
+    - [A.2.3 PMM Files chap_A.html#SEC23]
+      - [A.2.3.1 PMM File Structure chap_A.html#SEC231]
+      - [A.2.3.2 Manipulating PMM Files chap_A.html#SEC232]
   - [A.3 Grabbing Screenshots chap_A.html#SEC3]
   - [A.4 Preferences chap_A.html#SEC4]
     - [A.4.1 Touch Sensitive Tablets chap_A.html#SEC41]

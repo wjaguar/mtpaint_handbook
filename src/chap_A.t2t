@@ -25,28 +25,36 @@ mtPaint can handle the following file formats:
 
 | **Format**    | **Load** | **Save** | **Image Type** |
 | BMP           | All.     | Indexed palette. 24 bit RGB including alpha channel. | Any |
-| GIF           | All single images. Animation frames via Gifsicle. | Indexed palette including transparency index. Animations via Gifsicle. | Indexed |
+| GIF           | All.     | Indexed palette including transparency index. Animations via Gifsicle. | Indexed |
 | JPEG          | All.     | 24 bit RGB. | RGB |
 | JPEG2000      | All.     | 24 bit RGB. | RGB |
 | LSS16 (*.lss) | All.     | Indexed palette (16 colours), 18 bits per colour (6 per RGB channel). | Indexed with 16 colours or less |
+| PAM           | All.     | 2 colour indexed palette. 24 bit RGB. Including alpha channel. | Any |
+| PBM           | All.     | 2 colour indexed palette. | Indexed with 2 colours |
+| PCX           | All.     | Indexed palette. 24 bit RGB. | Any |
+| PGM           | All.     | No. | Indexed with greyscale palette |
+| PMM           | All.     | Indexed palette. 24 bit RGB. Including transparency index, alpha/selection/mask channels. | Any |
 | PNG           | All.     | Indexed palette. 24 bit RGB. Including transparency index, alpha/selection/mask channels. | Any |
+| PPM           | All.     | 24 bit RGB. | RGB |
+| SVG           | All, on GNU/Linux systems. | No. | RGB |
 | TGA           | All.     | Indexed palette. 24 bit RGB. Including alpha channel. | Any |
 | TIFF          | All.     | Indexed palette. 24 bit RGB. Including alpha channel. | Any |
 | XBM           | All.     | 2 colour indexed palette including hotspot. | Indexed with 2 colours |
-| XPM           | All with 4096 colours or less | Indexed palette. 24 bit RGB images with up to 4096 colours. Including transparency index and hotspot | Indexed, or RGB with 4096 colours or less |
+| XPM           | All with 4096 colours or less. | Indexed palette. 24 bit RGB images with up to 4096 colours. Including transparency index and hotspot | Indexed, or RGB with 4096 colours or less |
 
 File types PNG, JPEG, JPEG2000, TIFF, and GIF are handled by external libraries:
-libpng, libjpeg, libopenjpeg, libtiff, and libungif/giflib. As a result of this,
-the efficiency of these file operations will depend on the version of these
-libraries installed on your system. For example, libtiff is unable to read
+libpng, libjpeg, libopenjpeg/libjasper, libtiff, and giflib/libungif. As a result
+of this, the efficiency of these file operations will depend on the version of
+these libraries installed on your system. For example, libtiff is unable to read
 certain old JPEG compressed TIFF files. For more information on these libraries,
 consult their respective websites:
 
 | libpng            | http://www.libpng.org/pub/png/libpng.html |
 | libjpeg           | http://www.ijg.org/                       |
 | libopenjpeg       | http://www.openjpeg.org/                  |
+| libjasper         | http://www.ece.uvic.ca/~frodo/jasper/     |
 | libtiff           | http://www.libtiff.org/                   |
-| libungif / giflib | http://libungif.sourceforge.net/doc/      |
+| giflib            | http://giflib.sourceforge.net/            |
 
 
 ===A.2.1 PNG Files===[SEC21]
@@ -136,6 +144,232 @@ JP2 when compressing images with fewer colours, such as pixel art, so the
 benefits are strictly limited to photographic images.
 
 
+===A.2.3 PMM Files===[SEC23]
+
+PMM format is designed as universal format for exchanging raster images.
+
+The idea is to allow mtPaint to be used with any of the niche and one-off image
+formats without adding support for the multitude of them in mtPaint code.
+Instead, a simple conversion utility could transforms source image to PMM format,
+which mtPaint would load and edit, and afterward, PMM could be converted back to
+original format if desired.
+
+For this, the format need be able to store any kind of image without limitation,
+and at the same time, be easy to create, parse, and process outside mtPaint. So
+PMM was created. PMM can store indexed or RGB images, with transparency or
+without, with alpha, selection, and mask channels or with none of them, single,
+layered, or animated.
+
+Internally, PMM (Portable MultiMap) is a compatible extension to the PAM format
+(Portable Arbitrary Map) used by [Netpbm toolkit http://netpbm.sourceforge.net/].
+And PMM file can be processed as it is, without any conversion, by any Netpbm
+tools designed for PAM format, and by other tools which support PAM. Afterward,
+resulting PAM file can be relabeled as PMM with a trivial '**cat**' command (or
+'**cp /b**', for those who use Windows).
+
+
+====A.2.3.1 PMM File Structure====[SEC231]
+
+The layout of PAM format is documented [HERE http://netpbm.sourceforge.net/doc/pam.html].
+Nearly everything in that description applies to PMM as well.
+
+File consists of one or more images. Every image has a text header, followed by
+image data.
+
+Header is like this:
+```
+P7
+#MTPAINT#
+WIDTH 640
+HEIGHT 480
+DEPTH 6
+MAXVAL 255
+TUPLTYPE RGB_ALPHA SELECTION MASK TRANS=0
+ENDHDR
+```
+Image data are stored as simple bitmap, in natural order: top to bottom and left
+to right, RGB as red, green, blue. Utility channels, if any, are stored for each
+pixel after its image channel, in the order they appear in the **TUPLTYPE**
+field. PMM always uses 8-bit values (**MAXVAL** larger than 255 is considered an
+error), so there are **DEPTH** bytes per pixel.
+
+The comment "**#MTPAINT#**" following the "**P7**" line is the signature of PMM
+format, distinguishing it from regular PAM image.
+
+Where PMM extends PAM, is in interpreting **TUPLTYPE** beyond its first
+space-separated token. In PMM, there can follow utility channel names:
+"**SELECTION**" and/or "**MASK**"; "**ALPHA**", while also can stand alone, is
+normally tagged onto first token, for compatibility: "**RGB_ALPHA**" is known to
+PAM readers, while "**RGB ALPHA**" they will interpret as "RGB".
+
+After the channels, there can be variables, in the "name=value" form. mtPaint
+will skip the ones not known to it, other PMM readers should do the same.
+
+The variables defined at the moment are:
+| **TRANS** | - transparent colour index
+| **DELAY** | - animation delay, in 1/100ths of a second
+| **X**     | - X offset
+| **Y**     | - Y offset
+
+First token of **TUPLTYPE** denotes the type of image. These types are recognized
+for PMM:
+| **RGB** | - regular RGB image
+| **RGB_ALPHA** | - the same with alpha (i.e. RGBA)
+| **INDEXED** | - regular indexed image
+| **INDEXED_ALPHA** | - the same with alpha
+| **PALETTE** | - palette for the following image; not an image in its own right
+| **TAGS** | - variables for the following image; itself not an image
+
+Palette data are stored as a single line of RGB. A header for a 64-colour
+palette, with 8 bits per channel:
+```
+P7
+#MTPAINT#
+WIDTH 64
+HEIGHT 1
+DEPTH 3
+MAXVAL 255
+TUPLTYPE PALETTE
+ENDHDR
+```
+
+Tags carry one character (usually a newline) of "image data", as PAM image cannot
+have zero size. A tags block setting animation delay of 0.1 seconds:
+```
+P7
+#MTPAINT#
+WIDTH 1
+HEIGHT 1
+DEPTH 1
+MAXVAL 255
+TUPLTYPE TAGS DELAY=10
+ENDHDR
+
+```
+
+
+====A.2.3.2 Manipulating PMM Images ====[SEC232]
+
+With textual nature of PMM headers, simple bitmap structure of PMM data, and
+variety of tools provided by Netpbm toolkit, many useful things can be done
+entirely on the command line. Here are a few practical examples.
+
+: - __Converting a raw VGA palette to a PMM palette file__
+
+File "pal.pal" is raw VGA palette: 256 colours, 6 bits per channel (768 bytes in
+all). First, create a PMM header for it, in file "pmmpal.txt":
+```
+P7
+#MTPAINT#
+WIDTH 256
+HEIGHT 1
+DEPTH 3
+MAXVAL 63
+TUPLTYPE PALETTE
+ENDHDR
+```
+Don't forget a newline after "ENDHDR". //(MAXVAL 63 denotes 6-bit values.)//
+
+Then, make a PMM file merging the two: **cat pmmpal.txt pal.pal > pal.pmm**
+
+: - __Converting a raw indexed image to a PMM file__
+
+A 320x200 raw image is in file "img.raw" (64000 bytes). First, create a PMM
+header for it, in file "pmmraw.txt":
+```
+P7
+#MTPAINT#
+WIDTH 320
+HEIGHT 200
+DEPTH 1
+MAXVAL 255
+TUPLTYPE INDEXED
+ENDHDR
+```
+
+Then, make a PMM file merging the two: **cat pmmraw.txt img.raw > img.pmm**
+
+To specify a palette for it, simply merge the PMM image file with a PMM palette
+(like one from the previous example): **cat pal.pmm img.pmm > pimg.pmm**
+Or in a single step: **cat pal.pmm pmmraw.txt img.raw > pimg.pmm**
+
+: - __Creating an animation out of PMM images__
+
+Files "frame00.pmm" ... "frame99.pmm" are animation frames. Animation speed will
+be 4 frames per second (frame delay 25/100ths of a second). First, create a PMM
+tags block for the delay, in file "anim4fps.pmm":
+```
+P7
+#MTPAINT#
+WIDTH 1
+HEIGHT 1
+DEPTH 1
+MAXVAL 255
+TUPLTYPE TAGS DELAY=25
+ENDHDR
+
+```
+Note the **two** newlines after ENDHDR.
+
+Now, make a PMM file merging all of these: **cat anim4fps.pmm frame*.pmm > anim.pmm**
+
+If frame images are indexed, you can add a global palette, like this:
+**cat pal.pmm anim4fps.pmm frame*.pmm > panim.pmm**
+
+: - __Relabeling a PAM file as PMM__
+
+File "img.pam" is a regular PAM file. To use it as part of PMM file (a frame in
+animation, or a layer in layered image), it must itself be recognizable as PMM.
+First, create a PMM identifier, in file "pmmid.txt":
+```
+P7
+#MTPAINT#
+```
+Make sure there is **no** newline after final "#". Alternately, if the file has
+a TUPLTYPE which is not valid for PMM (or no TUPLTYPE at all), you can put a
+valid one after the identifier - like this:
+```
+P7
+#MTPAINT#
+TUPLTYPE RGB
+#
+```
+Again, there should be **no** newline after final "#".
+
+Now, make a PMM file merging the two: **cat pmmid.txt img.pam > img.pmm**
+
+: - __Separating an RGBA image into RGB and alpha__
+
+File "rgba.pmm" is of type "RGB_ALPHA", and having been written by mtPaint, has
+a palette ("TUPLTYPE PALETTE") as first sub-image. Use Netpbm command "pampick"
+to extract the second sub-image (index 1), and "pamchannel" to extract channels.
+
+First, extract RGB image channel:
+**cat rgba.pmm | pampick 1 | pamchannel -tupletype=RGB 0 1 2 > rgb.pam**
+
+Then, extract alpha (labelling it as grayscale):
+**cat rgba.pmm | pampick 1 | pamchannel -tupletype=GRAYSCALE 3 > alpha.pam**
+
+: - __Making an RGBA image from separate RGB and alpha__
+
+Files "rgb.pam" and "alpha.pam" (like ones made in previous example). Use Netpbm
+command "pamstack": **pamstack -tupletype=RGB_ALPHA rgb.pam alpha.pam > rgba.pam**
+
+: - __Splitting a PMM image into constituent sub-images__
+
+File "anim.pmm" is an animation. Use Netpbm command "pamsplit":
+**pamsplit anim.pmm part%d.pam -padname=3**
+
+This will write PAM files "part000.pam", "part001.pam", etc. They will differ
+from the original sub-images (whatever mix of frames, palettes, and tags they
+are) in not having the "#MTPAINT#" marking in header, so to reuse them as PMMs
+they will need relabeling (as shown in example above).
+
+: - __Listing sub-images in a PMM image__
+
+File "anim.pmm". Use Netpbm command "pamfile": **pamfile -allimages anim.pmm**
+
+
 ==A.3 Grabbing Screenshots==[SEC3]
 
 mtPaint can be used to grab a screenshot with either 'File->New' or using
@@ -207,6 +441,8 @@ GTK+ Text rotation does not work in Windows ME/95.
 
 Files with overly long pathnames cannot be displayed or opened in Windows
 (if longer than 259 bytes in system's ANSI codepage encoding).
+
+SVG support is not included in mtPaint package for Windows.
 
 
 ==A.6 Customizing mtPaint==[SEC6]

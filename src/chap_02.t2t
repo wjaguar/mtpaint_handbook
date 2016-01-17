@@ -166,4 +166,17 @@ particularly if one tries to keep the program small. Those features which aren't
 obvious, have explanations in the handbook; time spent looking them up will be
 well rewarded by not wasting time on learning things by trial and error.
 
+
+===2.4.6 Version 3.45===[SEC46]
+
+In this version, there aren't many visible changes; but under the hood, the
+entire user interface has been reimplemented. The new code separated content and
+organization of the interface from the specifics of how it is displayed - making
+it simpler to adapt to different backends.
+
+The first visible result of that, is scripting. Menus and dialogs that now can be
+controlled by text commands just the same as with point-and-click. And
+commandline mode, where mtPaint runs a script without even bringing up the
+graphical interface.
+
 -------------------------------------------------
