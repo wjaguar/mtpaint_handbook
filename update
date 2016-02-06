@@ -1,0 +1,38 @@
+#!/bin/sh
+# With git losing modification times anyway, easier to just rebuild everything
+
+VERSION=3.50
+
+if [ -d ../mtpaint-$VERSION ]
+then
+	cp -af ../mtpaint-$VERSION/README ../mtpaint-$VERSION/NEWS src
+else
+	cat << NOUPD
+
+  ************************************************************************
+  * No "../mtpaint-$VERSION" directory - src/README and src/NEWS not updated *
+  ************************************************************************
+
+NOUPD
+fi
+
+DEST=docs/en_GB
+
+PWD=`pwd`
+cd src
+for ZAD in *.t2t
+do
+	txt2tags -t html -o "../$DEST/${ZAD%.t2t}.html" $ZAD
+done
+
+htmlify ()
+{
+	sed -e 's/&/\&amp;/g' -e 's/>/\&gt;/g' -e 's/</\&lt;/g' -e's/$/<BR>/' "$1"
+}
+
+for ZAD in *.sh
+do
+	. $ZAD > "../$DEST/${ZAD%.sh}.html"
+done
+
+cd "$PWD"
