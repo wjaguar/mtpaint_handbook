@@ -46,11 +46,12 @@ $VNODES = scalar @vnumi;
 @axis_x = ( 38169, 40908 ); @axis_y = ( 0, 1500 );
 $width = 713; $height = 455;
 
+$qq = "\\";
 sub list
 {
 	my @v;
 	push @v, int(shift @_) . "," . int(shift @_) while @_;
-	return "(" . join(" ", @v) .") ";
+	return "$qq(" . join(" ", @v) ."$qq) ";
 }
 
 $sc = "mtpaint --cmd ";
@@ -86,7 +87,7 @@ $sc .= "-s/all " . list(@main_co) . "-s/outline ";
 $sc .= "-s/all " . list(@key_co) . "-s/outline ";
 #	mtpaint_rectangle( key_co[0], key_co[1], key_co[2], key_co[3], 1 );	// Key area border
 
-$sc .= "-e/freetype font='$font' size=14 back=-1 -s/no ";
+$sc .= "-e/freetype font='$font' size=14 back=-1 angle=0 -s/no ";
 #		mtpaint_text(txt, strlen(txt), font_filename, "ASCII", 14, 0, 0, MT_TEXT_SHRINK);
 for ($i = $axis_y[0]; $i <= $axis_y[1]; $i += 100)	# Y axis major gridlines
 {
@@ -177,9 +178,11 @@ for ($q = 3; $q >= 0; $q--)			# Coloured balls and text labels
 	}
 }
 
-$sc .= "-f/as=mdtim.png ";
+$sc .= "-f/as=mdtim.png "; # $sc .= "png=5 ";
 #	mtpaint_file_save("test1.png", FT_PNG, 5);
 
-$sc =~ s/([\(\)])/\\$1/g; # Quote for the shell
-#print "#!/bin/sh\nsrc/$sc\n";
-system($sc);
+print "#!/bin/sh\n$sc\n";
+#system($sc);
+
+use Text::ParseWords;
+exec shellwords $sc;

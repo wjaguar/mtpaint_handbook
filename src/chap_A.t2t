@@ -150,7 +150,7 @@ PMM format is designed as universal format for exchanging raster images.
 
 The idea is to allow mtPaint to be used with any of the niche and one-off image
 formats without adding support for the multitude of them in mtPaint code.
-Instead, a simple conversion utility could transforms source image to PMM format,
+Instead, a simple conversion utility could transform source image to PMM format,
 which mtPaint would load and edit, and afterward, PMM could be converted back to
 original format if desired.
 
