@@ -7,16 +7,19 @@
 
 ==A.1 Shortcuts==[SEC1]
 
-The complete list of all keyboard and mouse shortcuts in mtPaint is part of
-builtin help, called up by pressing F1 or by "Help->About" menu option; see the
+The complete list of all keyboard and mouse shortcuts in mtPaint is part of the
+built-in help, called up by pressing F1 or by the 'Help->About' menu option; see the
 "Keyboard shortcuts" and "Mouse shortcuts" sections.
 
 Additionally, several of the menu options have their keyboard shortcuts labelled
 next to the option.
 
-Besides these, there is one optional shortcut that you may find useful: "Q" key
+Besides these, there is one optional shortcut that you may find useful: The "Q" key
 will quit the program, if enabled through the Interface section of the
 Preferences window.
+
+You can reconfigure the shortcuts, remove existing ones or add your own, using
+the 'Help->Keyboard shortcuts' menu option.
 
 
 ==A.2 Supported File Types==[SEC2]
@@ -36,7 +39,7 @@ mtPaint can handle the following file formats:
 | PMM           | All.     | Indexed palette. 24 bit RGB. Including transparency index, alpha/selection/mask channels. | Any |
 | PNG           | All.     | Indexed palette. 24 bit RGB. Including transparency index, alpha/selection/mask channels. | Any |
 | PPM           | All.     | 24 bit RGB. | RGB |
-| SVG           | All, on GNU/Linux systems. | No. | RGB |
+| SVG           | All.     | No. | RGB |
 | TGA           | All.     | Indexed palette. 24 bit RGB. Including alpha channel. | Any |
 | TIFF          | All.     | Indexed palette. 24 bit RGB. Including alpha channel. | Any |
 | XBM           | All.     | 2 colour indexed palette including hotspot. | Indexed with 2 colours |
@@ -480,7 +483,7 @@ For example in order to create and build a new set try:
 - make
 
 
-Furthermore, icon set can be partially or wholly replaced at runtime through
+Furthermore, an icon set can be partially or wholly replaced at runtime through
 GTK+ theming mechanism. For every "xpm_whatever.xpm" icon in the icon set,
 there is a corresponding stock ID "mtpaint_whatever", and mtPaint will display
 whatever other icon you assigned to that stock ID in a resource file, if you
@@ -505,7 +508,7 @@ the "Styles" heading.
 
 ===A.6.4 Default Settings===[SEC64]
 
-mtPaint allows to override the default configuration settings, using a global
+mtPaint allows you to override the default configuration settings, using a global
 preferences file. On GNU/Linux systems, the file **/etc/mtpaint/mtpaintrc** is
 used; on Windows systems, the file **mtpaintrc** need be located in
 **etc\mtpaint** subdirectory under the mtPaint installation directory (i.e.,
@@ -523,16 +526,16 @@ distribution. In such cases, it's better to substitute another similar program,
 or to disable the action entirely, than to confuse users by actions which do
 not work.
 
-Packager of a fully portable build can use **mtpaintrc** to relocate the user
-preferences file (**~/.mtpaint**) from its default place in current user's
-home directory to, say, somewhere under installation directory. To do so, add
+A packager of a fully portable build can use **mtpaintrc** to relocate the user
+preferences file (**~/.mtpaint**) from its default place in the current user's
+home directory to, say, somewhere under the installation directory. To do so, add
 a line "userINI = /path/filename" to **mtpaintrc**
 
 Paths starting with "~", like "~/.mtpaint", point into the home directory. On
 Windows, paths starting with a drive letter are absolute, and ones starting with
 a "\" or "/" are taken to be package-relative just as "/etc/mtpaint/mtpaintrc"
 itself is. No path at all (just "userINI =") means, user preferences will be
-saved to **mtpaintrc** file as new default configuration.
+saved to **mtpaintrc** file as the new default configuration.
 
 
 ==A.7 File Actions==[SEC7]
@@ -550,7 +553,7 @@ items in the list by dragging and dropping them in the list.
 When editing the command, the current image file is represented by using '%f'
 which is substituted when the command is run.
 
-Additionally, if that another program requires, or prefers, a specific image
+Additionally, if a program requires, or prefers, a specific image
 file format and/or pixel format, you can begin the command with "conversion
 statements": ">" character followed by name of what you want and a space. For a
 file format, use either its file extension, or the name used for the format in
@@ -565,7 +568,7 @@ ignored.
 
 The GNU/Linux version of mtPaint comes pre-loaded with some examples of file
 actions. The command is executed using the shell command sh, so in the case of
-bash you can using more than one command by separating them with a semi colon.
+bash you can use more than one command by separating them with a semi colon.
 For example this command waits for 5 seconds and then grabs a screenshot:
 
 sleep 5; mtpaint -s &

@@ -98,8 +98,8 @@ The mask channel can also be used to selectively apply effects such as blur,
 sharpen or any kind of colour transformation.
 
 Normally each mask pixel is completely set or cleared (255 or 0), but partial
-values in between can be used to offer semi protection. See section 7.5.8 for an
-example of this.
+values in between can be used to offer semi protection. See section
+[7.5.8 #SEC58] for an example of this.
 
 
 ==7.4 File Handling==[SEC4]

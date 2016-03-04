@@ -170,7 +170,7 @@ you make to the grid will look on the canvas.
 When the settings toolbar or the layers window are not displayed as separate
 windows, they instead reside in the dock pane, which is on the right side of
 the main window. This arrangement is sometimes more convenient, particularly on
-widescreen displays. Image file list, if present, occupies a separate tab in
+widescreen displays. The image file list, if present, occupies a separate tab in
 the dock pane.
 
 The dock area can be toggled on or off by F12 key, or through the View menu.

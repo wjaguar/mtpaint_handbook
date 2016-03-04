@@ -54,7 +54,7 @@ sub list
 	return "$qq(" . join(" ", @v) ."$qq) ";
 }
 
-$sc = "mtpaint --cmd ";
+$sc = "";
 $sc .= "-f/new w=$width h=$height =24 ";
 #	mtpaint_new_image(width, height, 256, 0, 3);
 $sc .= "-e/set grad=1 ";
@@ -87,7 +87,7 @@ $sc .= "-s/all " . list(@main_co) . "-s/outline ";
 $sc .= "-s/all " . list(@key_co) . "-s/outline ";
 #	mtpaint_rectangle( key_co[0], key_co[1], key_co[2], key_co[3], 1 );	// Key area border
 
-$sc .= "-e/freetype font='$font' size=14 back=-1 angle=0 -s/no ";
+$sc .= "-e/freetype font='$font' style=regular size=14 back=-1 angle=0 -s/no ";
 #		mtpaint_text(txt, strlen(txt), font_filename, "ASCII", 14, 0, 0, MT_TEXT_SHRINK);
 for ($i = $axis_y[0]; $i <= $axis_y[1]; $i += 100)	# Y axis major gridlines
 {
@@ -181,8 +181,7 @@ for ($q = 3; $q >= 0; $q--)			# Coloured balls and text labels
 $sc .= "-f/as=mdtim.png "; # $sc .= "png=5 ";
 #	mtpaint_file_save("test1.png", FT_PNG, 5);
 
-print "#!/bin/sh\n$sc\n";
-#system($sc);
+print "$sc\n";
 
 use Text::ParseWords;
-exec shellwords $sc;
+exec shellwords "mtpaint --cmd $sc";

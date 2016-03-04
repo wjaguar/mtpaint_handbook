@@ -52,12 +52,12 @@ particular image processing operation requires, and converting the result back
 to RGB.
 
 Gamma correction is made optional, instead of being used always by default,
-because user might want to disable it to better preserve small dark details on a
+because a user might want to disable it to better preserve small dark details on a
 bright background which otherwise would be lost in the glare. Also, because most
-other software, such as GIMP, doesn't have gamma correction, and user might want
+other software, such as GIMP, doesn't have gamma correction, and a user might want
 results identical to those produced by such software.
 
-You can ensure Gamma Correction used by default by setting the toggle in the
+You can ensure Gamma Correction is used by default by setting the toggle in the
 Preferences window. Here is an image which has been scaled with and without
 gamma correction:
 

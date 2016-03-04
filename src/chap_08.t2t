@@ -18,12 +18,15 @@ the Layers menu. Same as with new image, new layer can be created either empty
 or from a screenshot, or from clipboard. You can then edit, manipulate, load to,
 or save this new layer just like any other image.
 
-The background layer has some special properties. It sits below all other layers
-and cannot be moved around, all transparency in it is ignored when doing
-compositing, and the size of the background layer determines the size of the
-final composite image. Still, all layers are created equal - you can make any
-other layer the background, or turn background into a normal layer, by
-rearranging layers (raising or lowering).
+The background layer, the one that sits below all other layers, has some special
+properties. Its size determines the size of the final composite image, and its
+transparent colour, if any, is used for colour transparency in the composite
+image. If the background has alpha transparency, then the composite image will
+have alpha transparency as well.
+
+Otherwise, all layers are created equal - you can make any other layer the
+background, or turn background into a normal layer, by rearranging layers
+(raising or lowering).
 
 
 ===8.1.1 Drag 'n' Drop===[SEC11]

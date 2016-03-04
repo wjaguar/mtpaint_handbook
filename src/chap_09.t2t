@@ -63,7 +63,7 @@ format, and name the file 'frame-001.gif'.
 [../img/9.2a.gif]
 
 - Press T to bring up the text paste input window and type 'Animating'. Press
-Enter and paste this text at the top of the image. 'Use File->Save as' to save
+Enter and paste this text at the top of the image. Use 'File->Save as' to save
 this image as 'frame-002.gif'.
 
 [../img/9.2b.gif]
@@ -216,8 +216,8 @@ rate, and with variable opacity for the layers. Here are some examples:
 [[../img/9.5b.png] ../files/9.5b.zip]
 
 When creating the frames for this animation you are advised to use a low value
-for PNG compression, such as 1. See section A.2 for more information on PNG
-compression settings.
+for PNG compression, such as 1. See section [A.2 chap_A.html#SEC2] for more
+information on PNG compression settings.
 
 
 ==9.6 Palette Shifting==[SEC6]
