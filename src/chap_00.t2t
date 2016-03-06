@@ -63,6 +63,7 @@ The mtPaint Handbook
   - [4.1 Rectangle Selections chap_04.html#SEC1]
   - [4.2 Polygon Selections chap_04.html#SEC2]
   - [4.3 The Lasso chap_04.html#SEC3]
+    - [4.3.1 Smoothing a Selection chap_04.html#SEC31]
   - [4.4 Masking Colours chap_04.html#SEC4]
   - [4.5 Alpha Blending chap_04.html#SEC5]
     - [4.5.1 Single Colour Variation chap_04.html#SEC51]

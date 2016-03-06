@@ -27,7 +27,7 @@ done
 
 htmlify ()
 {
-	sed -e 's/&/\&amp;/g' -e 's/>/\&gt;/g' -e 's/</\&lt;/g' -e's/$/<BR>/' "$1"
+	sed -e 's/&/\&amp;/g' -e 's/>/\&gt;/g' -e 's/</\&lt;/g' -e 's/$/<BR>/' "$1"
 }
 
 for ZAD in *.sh

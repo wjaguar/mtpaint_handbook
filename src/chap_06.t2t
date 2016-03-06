@@ -358,8 +358,8 @@ one would best fit a given image, can be determined only by trial and error.
 
 When selective propagation is turned on, error propagation percentage controls
 what percent of the incoming difference to preserve despite it being dropped; by
-default it's 0, but could be raised to 75% or 85% to get a more discriminating
-variant of reduced overall error propagation.
+default it's 85%, working as a more discriminating variant of reduced overall
+error propagation, but could be lowered to 75% or all the way to 0.
 
 Where selective propagation is needed most is fine-resolution images being
 converted to not-quite-fitting palettes. For a small sprite image being

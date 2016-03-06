@@ -33,7 +33,7 @@ behaviour. This way, a new selection can be made with no dragging, just by
 clicking two opposite corners of an area.
 
 If you want to select the whole image press Ctrl-A. To clear this selection
-press Escape, the right mouse button, Ctrl+Shift-A or use the Edit menu. The
+press Escape, the right mouse button, Ctrl+Shift-A or use the Selection menu. The
 selection box can be moved around pixel by pixel by using the arrow keys.
 Pressing Shift and the arrow keys causes the selection box to be moved a set
 number of pixels determined by the Preferences window.
@@ -47,6 +47,10 @@ button down for a freehand shape or release it to have a long straight edge. To
 finish press the right button. You can also create an polygon by holding down
 the right mouse button and then dragging. In this case, releasing the right
 button completes the polygon. To cancel the shape press the Escape key.
+
+While creating the polygon, you can delete the current vertex with Ctrl+right
+click. After the polygon is completed, a Ctrl+right click will remove the vertex
+nearest to the cursor position.
 
 
 ==4.3 The Lasso==[SEC3]
@@ -72,6 +76,25 @@ selected area on the canvas.
 
 If you have made no selection on the canvas, the lasso tool will shrink wrap the
 current clipboard (starting at the top left, as with a rectangular selection).
+
+If you want the lasso tool to ignore the colours, and just shrink wrap the
+selection shape defined by the selection channel, then right click on the lasso
+tool icon and check the option 'By selection channel'.
+
+
+===4.3.1 Smoothing a Selection===[SEC31]
+
+If you want a smoother transition around a selection instead of a sharp boundary,
+you can feather its edges, similarly to the example in section
+[7.5.10 chap_07.html#SEC510].
+
+- Switch to selection channel
+- Fill the selection
+- Use the Gaussian Blur effect on it, say with a value of 10
+- Switch to image channel
+- Select a rough area (rectangle or polygon) around the blurred selection shape
+- Right click on the lasso tool icon and check the option 'By selection channel'
+- Use the lasso tool
 
 
 ==4.4 Masking Colours==[SEC4]

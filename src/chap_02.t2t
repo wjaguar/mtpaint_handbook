@@ -167,7 +167,7 @@ obvious, have explanations in the handbook; time spent looking them up will be
 well rewarded by not wasting time on learning things by trial and error.
 
 
-===2.4.6 Version 3.45===[SEC46]
+===2.4.6 Version 3.50===[SEC46]
 
 In this version, there aren't many visible changes; but under the hood, the
 entire user interface has been reimplemented. The new code separated content and

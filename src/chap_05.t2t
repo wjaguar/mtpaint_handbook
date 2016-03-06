@@ -28,6 +28,10 @@ current view with. To do this you either press the arrow keys to move or click
 on the thumbnail using the mouse. The size of the thumbnail is set using the
 Preferences window.
 
+If you enable 'Mouse Scroll Wheel = Zoom' in the Preferences window, rotating
+your mouse scroll wheel when cursor is over the canvas will zoom it in or out,
+instead of scrolling down or up.
+
 
 ===5.1.1 Zooming to a Particular Area===[SEC11]
 
@@ -35,6 +39,12 @@ If you wish to zoom into a particular area of the image you can do this by
 positioning the mouse pointer over the area you want as the centre and then
 pressing the middle mouse button. If you then zoom in, this point on the canvas
 will be the new centre of the current view.
+
+If 'Zoom on cursor position' is enabled in the Interface section of the
+Preferences window, then without the middle click, zooming in will be centered
+on the point where the cursor is at the moment. Middle click is still useful,
+however, for when you select the new zoom from the dropdown on the toolbar;
+cursor, being over the dropdown, is not a good reference point in that case.
 
 
 ==5.2 Full View Mode==[SEC2]
@@ -101,6 +111,9 @@ original image. For example, if you are tracing around a 640x480 image on a
 canvas that is 80x60 pixels then the relative scale will be 8. Then check the
 'Display' box and press OK.
 
+From then on, your tracing image will take the place of the default checkered
+background, showing through the transparent areas of your images.
+
 Now create a new image, and then set the black background as transparent by
 pressing Ctrl+P and setting the transparency index to 0 in the Files tab.
 Alternately, you can create an empty alpha channel using 'Channels->New'. Then
@@ -127,9 +140,8 @@ Ctrl+double click picks the colour which is a gamma corrected average of all
 tracing image's pixels under the canvas pixel you've clicked in; this is useful
 when the relative scale is larger than 1, like in the example above.
 
-You can also move the tracing image using Ctrl + arrow keys, if the current
-layer is the background. Otherwise, you can change its origin in the 'Tracing
-Image' window.
+You can also move the tracing image using Ctrl + arrow keys, or change its origin
+in the 'Tracing Image' window.
 
 Below you can see the final stages of turning a tracing image into a small
 tile:
