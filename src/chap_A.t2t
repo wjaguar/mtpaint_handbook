@@ -97,8 +97,8 @@ file:
 
 In this example I have used the photo image from section 6.8.3, and then saved
 it as a JPEG image at level 95, and compared this to a JPEG 2000 file saved at
-level 6. The JPEG file was 15,172 bytes in size, with the JP2 file being 14,438
-bytes.
+level 6 by libjasper. The JPEG file was 15,172 bytes in size, with the JP2 file
+being 14,500 bytes.
 
 Pixel by pixel analysis of the difference between the original image and the
 compressed files reveals the following errors:
@@ -107,12 +107,12 @@ compressed files reveals the following errors:
 | Maximum Error | Red     | 19      | 84        |
 |               | Green   | 12      | 46        |
 |               | Blue    | 21      | 104       |
-| Average Error | Red     | 2.78    | 4.17      |
-|               | Green   | 1.87    | 2.54      |
-|               | Blue    | 2.62    | 5.15      |
+| Average Error | Red     | 2.70    | 4.17      |
+|               | Green   | 1.86    | 2.54      |
+|               | Blue    | 2.63    | 5.15      |
 
-This data was created by using the micmp program from libmtpixel, available from
-the mtPaint website.
+This data can be reproduced by using the **jcmp.sh** script from the
+[examples ../examples] directory.
 
 In this example, the JP2 image on the left shows far closer similarity to the
 original in the centre than the JPEG on the right. The JPEG wheel arch at the
@@ -147,7 +147,100 @@ JP2 when compressing images with fewer colours, such as pixel art, so the
 benefits are strictly limited to photographic images.
 
 
-===A.2.3 PMM Files===[SEC23]
+===A.2.3 TIFF Files===[SEC23]
+
+The TIFF format has enough of a variety of compression modes to warrant its own
+page in the Preferences window. With some of them only applicable to some of
+possible image types, and with different modes being optimal for different kinds
+of images, there are 3 separate default settings; one for RGB, another for
+indexed, and the third for monochrome (2 colour).
+
+The modes and their supported image types are:
+
+| Compression | 2 colour | Indexed | RGB | Alpha | Uses predictor      |
+| None        | Yes      | Yes     | Yes | Yes   | No                  |
+| Group 3     | Yes      | No      | No  | No    | No                  |
+| Group 4     | Yes      | No      | No  | No    | No                  |
+| PackBits    | Yes      | Yes     | Yes | Yes   | No                  |
+| LZW         | Yes      | Yes     | Yes | Yes   | Indexed, RGB, Alpha |
+| ZIP         | Yes      | Yes     | Yes | Yes   | Indexed, RGB, Alpha |
+| LZMA2       | Yes      | Yes     | Yes | Yes   | Indexed, RGB, Alpha |
+| JPEG        | No       | No      | Yes | No    | No                  |
+
+None means uncompressed; a simple bitmap in the natural order (red, green, blue,
+alpha), with TIFF header and footer (TIFF directory).
+
+Group 3 (properly named "CCITT Group 3 compression") is a specialized compression
+algorithm designed for fax images. As such, it works only on 2 colour images, but
+on them it usually achieves a much better compression ratio than more general
+algorithms such as LZW, ZIP or LZMA2.
+
+Group 4 ("CCITT Group 4 compression") is an improved variant of the Group 3
+algorithm. Equally limited to 2 colour images, it produces even better
+compression.
+
+PackBits is a type of RLE compression, which is rather poor (comparable to PCX,
+or RLE-encoded TGA) but is applicable to any flavour of image and supported by
+any libtiff build. Can save some space if an image has long runs of the same
+colour (being generated or hand-drawn), otherwise is useless.
+
+LZW is the compression technique used in the GIF format. TIFF files written in
+this mode, still are a bit larger than equivalent GIFs.
+
+ZIP is the method used in the PNG format. In mtPaint, ZIP-compressed TIFFs and
+PNGs share the compression level setting (0-9, where 0 means uncompressed).
+Again, as with LZW, TIFF files using this compression are a bit larger than
+equivalent PNGs.
+
+LZMA2 is the compression algorithm introduced by the 7-Zip archiver, and on
+GNU/Linux systems currently represented by the **xz** compressor. Is generally
+more efficient than ZIP or LZW, but slower. Not supported by libtiff versions
+prior to 4.0.0.
+
+JPEG is exactly the compression used in the file format of the same name. Again,
+in mtPaint JPEG-compressed TIFFs and JPEGs share the quality setting (0-100, the
+more the better - but larger too).
+
+The "Enable predictor" setting in the Preferences window toggles the
+pre-compression horizontal differencing for the general compression algorithms
+(LZW, ZIP, LZMA2). The procedure is similar to the filtering used by the PNG
+format, but much more simplistic, with corresponding drawbacks; while the libpng
+encoder analyzes each row to select an appropriate filter (or no filter) for it,
+libtiff indifferently applies its differencing whether it is gainful or quite the
+opposite.
+
+For this reason, when choosing a compression mode that supports differencing, you
+must apply your own brain to work around the dumb library. In general, with
+anything but photographic or scanned images, differencing makes the compression
+even worse, and disabling it is the right choice. But conversely, with a photo or
+a scan, enabling the predictor can easily make the compressed image about 1.5
+times smaller.
+
+
+====A.2.3.1 Creating PDF Files====[SEC231]
+
+One major use for TIFF files is in creation of PDF documents, by feeding a
+multipage TIFF to **tiff2pdf**. While assembling any number of single-page TIFFs
+into a multipage one is easily done by **tiffcp**, the proper preparation of the
+parts is a much more delicate task.
+
+For certain types of TIFF pages, **tiff2pdf** will pass them through as is;
+anything else, it will try to recompress, with usually disastrous results.
+Therefore, all the prepared pages must be saved with those compression types that
+do not offend **tiff2pdf**'s fine sensibilities.
+
+For a 2 colour image, such as a scanned text converted to monochrome, use the
+"__Group 4__" compression mode.
+
+For a hand-drawn or generated image, use the "__ZIP__" compression mode (set to
+level 9 for best compression). Predictor must be __disabled__ in the Preferences
+window, or the page will display wrong in the resulting PDF.
+
+For a photographic (or scanned) image, use the "__JPEG__" compression mode (with
+whatever quality setting results in suitable size/quality).
+
+
+===A.2.4 PMM Files===[SEC24]
 
 PMM format is designed as universal format for exchanging raster images.
 
@@ -171,7 +264,7 @@ resulting PAM file can be relabeled as PMM with a trivial '**cat**' command (or
 '**cp /b**', for those who use Windows).
 
 
-====A.2.3.1 PMM File Structure====[SEC231]
+====A.2.4.1 PMM File Structure====[SEC241]
 
 The layout of PAM format is documented [HERE http://netpbm.sourceforge.net/doc/pam.html].
 Nearly everything in that description applies to PMM as well.
@@ -251,7 +344,7 @@ ENDHDR
 ```
 
 
-====A.2.3.2 Manipulating PMM Images ====[SEC232]
+====A.2.4.2 Manipulating PMM Images ====[SEC242]
 
 With textual nature of PMM headers, simple bitmap structure of PMM data, and
 variety of tools provided by Netpbm toolkit, many useful things can be done
