@@ -538,8 +538,6 @@ GTK+ Text rotation does not work in Windows ME/95.
 Files with overly long pathnames cannot be displayed or opened in Windows
 (if longer than 259 bytes in system's ANSI codepage encoding).
 
-SVG support is not included in mtPaint package for Windows.
-
 
 ==A.6 Customizing mtPaint==[SEC6]
 

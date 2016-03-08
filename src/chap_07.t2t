@@ -27,12 +27,20 @@ channel will show the chequered pattern underneath like this:
 
 [../img/7.1.png]
 
+As you can draw in the alpha channel directly, mtPaint does not need an eraser
+tool; to "erase" some part of image to transparent, you just draw with
+transparency (alpha value 0) over it.
+
 If you want to edit just the alpha channel it may be convenient to hide the
 image channel or show the alpha channel as an overlay. These options can be
 toggled on and off with the Channels menu. This is what the above image looks
 like with these toggles switched on:
 
 [../img/7.1b.png]
+
+These options affect all layers at once, unless 'Enable overlays by layer' is
+toggled on in the Preferences window; then, you can modify the appearance of just
+some layers, leaving the rest displayed in the normal way.
 
 If you disable alpha in the Channels menu, all pixels will display as fully
 opaque, and processes which respect alpha transparency - such as image scaling,
@@ -84,6 +92,21 @@ certain parts of the image. For example you may want to copy and paste an
 elliptical shaped area like this:
 
 [../img/7.2.png]
+
+With selection channel, all the varied functions for creating, modifying, adding,
+subtracting, etc., etc. of selections become simple, regular drawing operations.
+You create an elliptical selection by filling an ellipse in the selection
+channel; you feather a selection by applying a blur to the selection channel;
+you shrink a selection by eroding, or grow it by dilating; invert it by - yes -
+just inverting the channel; add to a selection by filling an additional selected
+area, or just by drawing over the parts you want selected; or subtract from it by
+filling/drawing with 0 (which is, conveniently, colour B by default). It is
+because of this that mtPaint does not need any of these operations in the
+Selection menu; all of them, and many more, are easily done with regular drawing
+tools and effects.
+
+In the section [7.5 #SEC5] below, there are several examples of how you can use
+the selection channel in various image editing tasks.
 
 
 ==7.3 Mask==[SEC3]
@@ -332,7 +355,7 @@ colours in palette window.
 - Draw.
 
 
-In RGB mode, you use the colour-selective mode:
+In RGB mode, you can use the colour-selective mode:
 
 - Right click on the colour-selective mode icon on the settings toolbar, to
 open the configuration dialog.
@@ -340,6 +363,13 @@ open the configuration dialog.
 - Select the "Cube" mode, check the "Inverse" option, and set radius to 0.
 - Press "OK" to close the dialog.
 - Left click on the colour-selective mode icon to activate the mode.
+- Draw.
+
+
+Alternately, you can use masking:
+
+- Choose the colour you wish to replace as colour A and colour B both.
+- Create a new mask channel as "Colour A radius B, inverted".
 - Draw.
 
 

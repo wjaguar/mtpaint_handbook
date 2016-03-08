@@ -78,6 +78,10 @@ of brush shapes to choose from:
 If you want to manually adjust the brush size, or flow of the spray, you can do
 this by using the settings toolbar.
 
+Brushes are centered on the cursor coordinates if odd-sized; even-sized brushes,
+being impossible to exactly center, are biased to the upper left (i.e. the cursor
+is on the pixel to the lower right of the geometric centre).
+
 
 ===3.2.2 Shuffle===[SEC22]
 
@@ -130,7 +134,8 @@ size.
 
 The straight line tool can also draw an arrow head at the end of the current
 line if you press either the 'A' or 'S' keys for an open or closed head. The
-size of the head is determined by the tool flow.
+size of the head is determined by the tool flow. If you set the flow value too
+low, the arrowhead will be drawn too small to be visible at all.
 
 
 ===3.2.5 Smudge===[SEC25]
@@ -157,6 +162,15 @@ left mouse button to copy pixels from the red and black box to the white and
 black box. Here is an example:
 
 [../img/3.2.6.png]
+
+If you right click on the tool icon you can have more control over the tool. You
+can set the source offset to precise values with the corresponding spins. Or you
+can toggle off the "Aligned" mode, making the clone source stay in one place
+instead of follow the cursor; the second pair of spins allows you to set the
+coordinates (the centre point) for the source.
+
+Ctrl+left click will move the source (clone perimeter) to the location where the
+mouse cursor is.
 
 
 ===3.2.7 Text===[SEC27]
@@ -520,6 +534,8 @@ of offset (**Length** setting is then ignored).
 respectively.
   - **Repeat** repeats the gradient again and again.
   - **Mirror** repeats the gradient backwards, then forward again, and so on.
+- **Distance type** controls what to consider a distance from the boundary of a
+shapeburst gradient fill (see section [3.5.6.5 #SEC565]).
 - **Gradient** box selects type of the gradient:
   - **A to B (RGB)** goes from colour A to colour B, interpolating between their
 RGB values.
@@ -651,6 +667,32 @@ fill in gradient mode without placing a gradient with the gradient placement
 tool, you can create shapeburst gradients like this:
 
 [../img/3.5.6.5.png]
+
+A shapeburst gradient varies with the distance from the filled area boundary, so
+its shape depends on the distance type you selected. The above example is for the
+default 'Sum (L1)' distance - it is a sum of absolute values of the differences
+in coordinates.
+
+[../img/3.5.6.5li.png]
+
+This example has the same two shapes filled using the 'Largest (Linf)' distance -
+which is the largest absolute value of the coordinate differences. This distance
+function is a bit slower than L1.
+
+[../img/3.5.6.5l2.png]
+
+And this example uses the 'Euclidean (L2)' distance - the one we are most
+familiar with, the square root of the sum of squared coordinate differences. The
+gradients shapes created with it are what we expect them to be, without
+surprising corners where we feel should be none. But this distance is the slowest
+to calculate, and using the most memory in the process (not that these things
+matter unless you do a gradient fill of a really large area on a really weak
+hardware).
+
+The image below compares shapeburst floodfills of same two test shapes (a circle,
+and a square with 3 holes) using each of the 3 distance functions:
+
+[../img/3.5.6.5a.png]
 
 
 ===3.5.7 Blend===[SEC57]

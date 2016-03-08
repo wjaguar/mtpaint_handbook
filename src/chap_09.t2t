@@ -151,6 +151,18 @@ For example:
 
 Will cycle the visibility of layers 1, 2, 3 between frames 1 and 10.
 
+The background layer (layer 0) is never hidden; you can use it as a placeholder,
+on the steps when none of the layers in the sequence should be visible. And when
+several layers at once should be shown on a single step, you list them in
+parentheses.
+
+For example:
+
+1 16 0, (2, 3, 4)
+
+Will alternately turn layers 2, 3 and 4 off and on - all three of them at once -
+between frames 1 and 16.
+
 Normally frame2 will be greater than frame1, but if they are equal you can then
 manually set which layers are visible or invisible at that frame. For example:
 
