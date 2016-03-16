@@ -5,7 +5,7 @@ mtPaint NEWS
 Here is a summary of the main changes in this release (see handbook for full details):
 
 3.50	2016-??-??
-	* Scripting added - "Image->Script" to enter or run a script : See handbook section A.9 for details
+	* Scripting added - "Image->Script" to enter or run a script : See handbook chapter 10 for details
 	* Commandline mode added - use "mtpaint --cmd" to run a script without GUI
 	* Keyboard shortcuts can now be reconfigured - "Help->Keyboard shortcuts"
 	* New keyboard shortcut Ctrl+H added for Channels->Hide image
@@ -15,6 +15,7 @@ Here is a summary of the main changes in this release (see handbook for full det
 	* Background layer now can use transparency like any other layer
 	* Background layer position now can be changed via Ctrl+arrows or layers window spinbuttons, like any other layer
 	* Lasso tool can be configured to shrink selection based on the selection channel - right click the tool icon
+	* Clone tool is now continuous
 	* Clone tool can be configured to work in unaligned mode - right click the tool icon
 	* Ctrl+Left click now positions clone source when using clone tool
 	* Ctrl+Right click now deletes last point when making polygonal selection (from a closed polygon, deletes the point nearest to cursor)
@@ -29,6 +30,7 @@ Here is a summary of the main changes in this release (see handbook for full det
 	* Dimensions can now be specified when loading SVG files
 	* SVG files now can be loaded through 'rsvg-convert', in absence of GTK+2 librsvg plugin
 	* Animation cycles can now specify sequence steps as containing several layers, or none : See handbook section 9.3.3 for details
+	* Image loading and new image creation are now undoable by default
 	* Committing paste when changing tool is now enabled by default
 	* Saving an image now commits paste if auto commit mode is enabled
 	* "Scale canvas" and "Resize canvas" now remember their aspect ratio toggle setting

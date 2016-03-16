@@ -166,7 +166,7 @@ black box. Here is an example:
 If you right click on the tool icon you can have more control over the tool. You
 can set the source offset to precise values with the corresponding spins. Or you
 can toggle off the "Aligned" mode, making the clone source stay in one place
-instead of follow the cursor; the second pair of spins allows you to set the
+instead of following the cursor; the second pair of spins allows you to set the
 coordinates (the centre point) for the source.
 
 Ctrl+left click will move the source (clone perimeter) to the location where the
@@ -404,12 +404,12 @@ Not all modes are applicable to all of the tools. Here is a table detailing
 which modes affect each of the tools:
 
 |            | Paint | Shuffle | Flood Fill | Smudge | Clone | Paste |
-| Continuous | Yes   |                     || Yes    |              ||
+| Continuous | Yes   |                     || Yes    | Yes   |       |
 | Opacity    | Yes   |         | Yes        | Yes    | Yes   | Yes   |
-| Tint       | Yes   |         | Yes        |               || Yes   |
+| Tint       | Yes   |         | Yes        |        | Yes   | Yes   |
 | Mask       | Yes   | Yes     | Yes        | Yes    | Yes   | Yes   |
 | Gradient   | Yes   |         | Yes        |                      |||
-| Blend      | Yes   |         | Yes        |               || Yes   |
+| Blend      | Yes   |         | Yes        |        | Yes   | Yes   |
 
 Paint includes brushes, sprays, straight lines, selection shape fills and
 outlines.

@@ -367,7 +367,7 @@ converted from one palette to another, getting, say, a red area slightly darker
 but still smooth is infinitely more preferable to that same area being peppered
 by white pixels; and selective propagation prevents such unfortunate occurences,
 while still remaining able to convert, say, a rose-colored area into a
-checkerboard pattern of red and white pixels.
+chequerboard pattern of red and white pixels.
 
 
 ===6.8.3 Examples===[SEC83]

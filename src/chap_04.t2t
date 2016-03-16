@@ -85,7 +85,7 @@ tool icon and check the option 'By selection channel'.
 ===4.3.1 Smoothing a Selection===[SEC31]
 
 If you want a smoother transition around a selection instead of a sharp boundary,
-you can feather its edges, similarly to the example in section
+you can feather its edges, similar to the example in section
 [7.5.10 chap_07.html#SEC510].
 
 - Switch to selection channel
