@@ -45,7 +45,7 @@ The mtPaint Handbook
     - [3.3.9 Pick Gradient chap_03.html#SEC39]
     - [3.3.10 Colour Chooser chap_03.html#SEC310]
   - [3.4 Patterns chap_03.html#SEC4]
-  - [3.5 Painting Modes chap_03.html#SEC5]
+  - [3.5 Painting Modes and the Settings Toolbar chap_03.html#SEC5]
     - [3.5.1 Continuous chap_03.html#SEC51]
     - [3.5.2 Opacity chap_03.html#SEC52]
     - [3.5.3 Tint chap_03.html#SEC53]
@@ -162,7 +162,7 @@ The mtPaint Handbook
     - [A.2.1 PNG Files chap_A.html#SEC21]
     - [A.2.2 JPEG 2000 Files chap_A.html#SEC22]
       - [A.2.2.1 Lossy Image Comparison - JPEG vs JP2 chap_A.html#SEC221]
-      - [A.2.2.2 Lossless Image Comparison - PNG vs JP2 chap_A.html#SEC222]
+      - [A.2.2.2 Lossless Image Comparison - PNG vs JP2 vs WebP chap_A.html#SEC222]
     - [A.2.3 TIFF Files chap_A.html#SEC23]
       - [A.2.3.1 Creating PDF Files chap_A.html#SEC231]
     - [A.2.4 PMM Files chap_A.html#SEC24]
@@ -181,7 +181,8 @@ The mtPaint Handbook
   - [A.7 File Actions chap_A.html#SEC7]
     - [A.7.1 GNU/Linux Systems chap_A.html#SEC71]
     - [A.7.2 Windows Systems chap_A.html#SEC72]
-  - [A.8 Image Loading and Saving  chap_A.html#SEC8]
+  - [A.8 Image Loading and Saving chap_A.html#SEC8]
+  - [A.9 Command Line Options chap_A.html#SEC9]
 
 - [B. The History of this Document chap_B.html]
 

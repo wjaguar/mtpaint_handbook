@@ -50,7 +50,8 @@ the cursor being over the dropdown is not a good reference point.
 ==5.2 Full View Mode==[SEC2]
 
 At any time you can hide all of the menus, toolbars, palette and status bar in
-order to view as much of the image as possible. To do this simply press the Home
+order to view as much of the image as possible. To do this use 'Toggle Image
+View' from the View menu, or simply press the Home
 key. Pressing the Home key again will return the controls.
 
 

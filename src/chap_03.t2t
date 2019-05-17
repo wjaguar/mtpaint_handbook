@@ -241,6 +241,9 @@ for colour A and a right click will choose colour B. Colour A and B are
 previewed in a small area above the palette. A and B can be swapped by pressing
 the 'X' key.
 
+The palette colour chosen as colour A has a highlight on its left; the one
+chosen as colour B, on its right. If one colour is chosen as both A and B, it
+naturally has both highlights.
 
 ===3.3.1 Editing the Palette===[SEC31]
 
@@ -389,18 +392,69 @@ following patterns which you can choose from:
 
 [../img/3.4.png]
 
-[Section A.6.1 chap_A.html#SEC61] explains how to customize these patterns.
+If you [assign keyboard shortcuts chap_A.html#SEC1] to the 'Previous pattern'
+and 'Next pattern' actions, you can switch between patterns without calling up
+the pattern chooser.
+
+Alternately, mtPaint can choose a dither pattern and a pair of palette colours
+that best approximate a RGB colour you give. Pick the colour from canvas into
+colour A and use the 'Dither A' command from the Palette menu, or just press
+Ctrl and click the middle mouse button.
+
+The patterns used for this, are a separate set of 4x4 Bayer dither patterns. You
+can select them if you use the 'Previous pattern' shortcut; these 16 patterns
+are preceding the first pattern from the pattern chooser.
+
+[Section A.6.1 chap_A.html#SEC61] explains how to customize either set of
+patterns.
+
+If you enable 'Separate patterns for A & B' in the Preferences window, you can
+choose a pattern to colour A independently from colour B and vice versa; when
+you swap the colours (by pressing the 'X' key) the patterns will be swapped too.
+This way you can assign a flat colour to B, to use it for erasing whatever
+pattern you have drawn with.
+
+The 'Dither A' command will make use of the option, assigning to B a
+complementary pattern to the one chosen for A. Then if you swap the colours you
+get the same colour mix, but with the dither pattern aligned on the secondary
+colour of the pair instead of the primary one.
 
 
-==3.5 Painting Modes==[SEC5]
+==3.5 Painting Modes and the Settings Toolbar==[SEC5]
 
-Painting modes can be used to change the general behaviour of the painting
-actions. These modes are toggled on and off by using the settings toolbar icons,
-as shown here:
+Various aspects of painting actions are controlled from the settings toolbar. It
+can appear either as a separate window as shown below, if you press F7 or
+toggle it on using the View menu; or at the top of the dock pane, see section
+[5.7 chap_05.html#SEC7].
 
-[../img/3.5.png]
+|  RGB image  |  RGBA image  |  Indexed image  |  Alpha channel  |
+| [../img/3.5.png] | [../img/3.5c.png] | [../img/3.5a.png] | [../img/3.5b.png] |
 
-Not all modes are applicable to all of the tools. Here is a table detailing
+As you see, the layout of the settings toolbar depends on the type of image you
+are working with. 
+
+The first row is painting mode buttons, and below them, gradient mode button
+displaying the current gradient. What they do, will be discussed in detail in
+further parts of this section.
+
+Below that, are displayed the current colours A and B:
+
+- in RGB mode, their RGB values
+- in RGBA mode, both their RGB values and the coupled alpha value
+- in indexed mode, their palette index and RGB values
+- in indexed with alpha, palette index, RGB values and coupled alpha
+- in a utility channel, nothing - the current A value for the channel is instead
+  shown by the bottommost slider
+
+
+Further below are the sliders for tool size, flow, and opacity. With indexed
+images, the opacity control is disabled (greyed out). When editing utility
+channels, there appears a fourth slider with the channel's name, controlling the
+current A value (one that you draw with in the channel).
+
+Now, painting modes. They are toggled on and off by using the settings toolbar
+icons, and serve to change the general behaviour of the painting actions. Not all
+modes are applicable to all of the tools. Here is a table detailing
 which modes affect each of the tools:
 
 |            | Paint | Shuffle | Flood Fill | Smudge | Clone | Paste |

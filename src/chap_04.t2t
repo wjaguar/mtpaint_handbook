@@ -10,10 +10,14 @@ outline or copying and pasting. These operations can be accessed via the
 Selection menu or on the tools toolbar. The Edit menu has the cut and paste
 options.
 
-The copy function can be greatly enhanced with the use of a selection channel
-which allows you to specify which pixels will be copied. For example it is
-possible to copy and paste elliptical shapes. See the channels chapter for more
-information and examples of how this works.
+Unlike most other painting programs mtPaint does not have "selections", instead
+it uses a selection channel which allows you to specify which pixels will be
+copied. For example if you want an elliptical selection, you draw the ellipse in
+the selection channel, then select and copy a rectangle, or polygon, around it.
+If you want a selection that is a union of some shapes, you draw all the shapes
+in the selection channel; if you want to unselect some part, you erase it in the
+selection channel (draw with value 0). See [the channels chapter chap_07.html]
+for more information and examples of how this works.
 
 Paste function in mtPaint works in a somewhat unusual way; you position the
 paste area over the canvas and commit the paste by right clicking or by pressing

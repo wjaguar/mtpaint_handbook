@@ -4,31 +4,43 @@ mtPaint NEWS
 
 Here is a summary of the main changes in this release (see handbook for full details):
 
-3.50	2016-??-??
+3.50	2019-??-??
 	* Scripting added - "Image->Script" to enter or run a script : See handbook chapter 10 for details
 	* Commandline mode added - use "mtpaint --cmd" to run a script without GUI
 	* Keyboard shortcuts can now be reconfigured - "Help->Keyboard shortcuts"
 	* New keyboard shortcut Ctrl+H added for Channels->Hide image
-	* Text tools now allow selection of DPI value, and alignment for multiline text
+	* Keyboard shortcuts now can be assigned for choosing previous/next pattern, and larger/smaller brush size
+	* Optional gamma correction for painting and masking (Preferences->General->Use gamma correction when painting)
+	* Rendering now uses multiple threads to utilize all available CPU cores
+	* Text tools now allow selection of DPI value, letter-spacing, and alignment for multiline text
 	* Distance function for shapeburst gradients is now selectable : "Distance type"
 	* Composite images now can have alpha transparency, when background is non-opaque
 	* Background layer now can use transparency like any other layer
 	* Background layer position now can be changed via Ctrl+arrows or layers window spinbuttons, like any other layer
+	* Patterns for colours A and B can now be chosen separately (Preferences->General->Separate patterns for A&B)
+	* Builtin Bayer patterns now can be redefined : See handbook section A.6.1 for details
+	* Colour transform and source selection added to blend mode options
+	* "Saturate more" blend mode redefined to not ignore source (previous behaviour available with "Image" source selected)
 	* Lasso tool can be configured to shrink selection based on the selection channel - right click the tool icon
 	* Clone tool is now continuous
 	* Clone tool can be configured to work in unaligned mode - right click the tool icon
 	* Ctrl+Left click now positions clone source when using clone tool
 	* Ctrl+Right click now deletes last point when making polygonal selection (from a closed polygon, deletes the point nearest to cursor)
 	* Shift and Shift+Ctrl now constrain selection box width/height when resizing it by clicking and dragging
+	* Arrow keys can now be used for scrolling (Preferences->Interface->Arrow keys scroll canvas)
 	* Zooming now can use mouse cursor position as its fixed point (Preferences->Interface->Zoom on cursor position)
 	* Scroll wheel zoom now works for view window too
+	* Zoom is now up to 8000%
 	* "Hide image" and "View alpha as an overlay" can now be toggled separately for each layer (Preferences->General->Enable overlays by layer)
-	* New image format PMM (Portable MultiMap) added for interoperable storage and exchange of images : See handbook section A.2 for details
+	* Colours A and B now highlighted in palette window
+	* New image format PMM (Portable MultiMap) added for interoperable storage and exchange of images : See handbook section A.2.4 for details
+	* WebP file format save/load added
 	* XPM files with 65-92 colours are now saved with smaller size
 	* Raw RGB palette files (6-bit PAL and 8-bit ACT) can now be loaded/saved via the Palette menu
 	* TIFF compression made configurable
 	* Dimensions can now be specified when loading SVG files
 	* SVG files now can be loaded through 'rsvg-convert', in absence of GTK+2 librsvg plugin
+	* Animation frames now can be saved in any suitable supported file format
 	* Animation cycles can now specify sequence steps as containing several layers, or none : See handbook section 9.3.3 for details
 	* Image loading and new image creation are now undoable by default
 	* Committing paste when changing tool is now enabled by default
@@ -36,22 +48,28 @@ Here is a summary of the main changes in this release (see handbook for full det
 	* "Scale canvas" and "Resize canvas" now remember their aspect ratio toggle setting
 	* The Free Rotate window now remembers the previous rotation angle in that mtPaint session
 	* Dock area state is now remembered across sessions (unless opened automatically, for multiple files on command line)
+	* Unmaximized window position and size are now remembered across sessions
 	* Alpha values for colours A & B are now displayed on settings toolbar when editing image with alpha in coupled alpha mode
 	* Undo system now uses a bit less memory
 	* Initial undo memory size is now 1/4 of available memory
-	* Support for compiling with giflib 5, libpng 1.6, libjpeg 9, OpenJPEG 2 added
+	* Support for compiling with giflib 5, libpng 1.6, libjpeg 9, OpenJPEG 2.3 added
+	* Compilation now works using gcc-5.5 and GTK+1
 	* BUGFIX - Compilation without JPEG and TIFF support now works again
 	* BUGFIX - FreeType text tool now skips directory loops when scanning font directories
 	* BUGFIX - Geometry info on the status bar now correctly updates after arrow keys or Escape key
 	* BUGFIX - Gradient button no longer fails to show current gradient mode after showing settings toolbar
+	* BUGFIX - Preview of Transform Colour no longer ignores area within paste marquee
 	* BUGFIX - Ctrl+left/right/double click now set both colour and alpha from canvas in coupled alpha mode, as they should
 	* BUGFIX - New image creation from system clipboard now respects "Undoable" toggle
 	* BUGFIX - Problem with layers list in inactive dock tab sometimes not updating is now eliminated
 	* BUGFIX - All keyboard shortcuts now work in Image View mode, as they should
 	* BUGFIX - Transparent colour in composite images now works again
 	* BUGFIX - Flood fill with shapeburst gradient now works again
+	* BUGFIX - Flood fill with pattern now works when starting on colour A
 	* BUGFIX - Saving LSS16 images no longer produces broken files in certain rare cases
+	* BUGFIX - Trying to load a broken LSS16 file (truncated to header or less) no longer causes crash
 	* BUGFIX - PAM files with type BLACKANDWHITE are no longer loaded as grayscale (except if written as grayscale - ImageMagick does that)
+	* BUGFIX - Loading PAM files with unknown TUPLTYPE doesn't cause crash
 	* BUGFIX - SVG files starting with "<!DOCTYPE" no longer fail to load
 	* BUGFIX - Animation cycling now doesn't skip over the last frame of a GIF loaded into layers
 	* BUGFIX - Background layer is now made large enough to accommodate all frames when loading animation into layers
@@ -62,6 +80,7 @@ Here is a summary of the main changes in this release (see handbook for full det
 	* BUGFIX - Polygonal selections no longer skip some contour pixels in certain situations
 	* BUGFIX - Canvas window now doesn't lose mouse button press event if dock window has focus
 	* BUGFIX - Problem with command line window wrongly reacting to mouse in some cases is now eliminated
+	* BUGFIX - XPM icons now do not in some cases fail to display in compositing WMs
 	* BUGFIX - Escape and Enter keys now work properly in all dialogs in GTK+1
 	* BUGFIX - Dropping colours to palette in builtin colour selector now works properly in GTK+1
 

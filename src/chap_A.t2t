@@ -30,7 +30,8 @@ mtPaint can handle the following file formats:
 | BMP           | All.     | Indexed palette. 24 bit RGB including alpha channel. | Any |
 | GIF           | All.     | Indexed palette including transparency index. Animations via Gifsicle. | Indexed |
 | JPEG          | All.     | 24 bit RGB. | RGB |
-| JPEG2000      | All.     | 24 bit RGB. | RGB |
+| JPEG2000      | All.     | 24 bit RGB including alpha channel. | RGB |
+| WEBP          | All single images. | 24 bit RGB including alpha channel. | RGB |
 | LSS16 (*.lss) | All.     | Indexed palette (16 colours), 18 bits per colour (6 per RGB channel). | Indexed with 16 colours or less |
 | PAM           | All.     | 2 colour indexed palette. 24 bit RGB. Including alpha channel. | Any |
 | PBM           | All.     | 2 colour indexed palette. | Indexed with 2 colours |
@@ -45,18 +46,20 @@ mtPaint can handle the following file formats:
 | XBM           | All.     | 2 colour indexed palette including hotspot. | Indexed with 2 colours |
 | XPM           | All with 4096 colours or less. | Indexed palette. 24 bit RGB images with up to 4096 colours. Including transparency index and hotspot | Indexed, or RGB with 4096 colours or less |
 
-File types PNG, JPEG, JPEG2000, TIFF, and GIF are handled by external libraries:
-libpng, libjpeg, libopenjpeg/libjasper, libtiff, and giflib/libungif. As a result
+File types PNG, JPEG, JPEG2000, WEBP, TIFF, and GIF are handled by external
+libraries: libpng, libjpeg, libopenjpeg/libjasper, libwebp, libtiff, and giflib.
+As a result
 of this, the efficiency of these file operations will depend on the version of
 these libraries installed on your system. For example, libtiff is unable to read
 certain old JPEG compressed TIFF files. For more information on these libraries,
 consult their respective websites:
 
 | libpng            | http://www.libpng.org/pub/png/libpng.html |
-| libjpeg           | http://www.ijg.org/                       |
+| libjpeg           | https://ijg.org/                          |
 | libopenjpeg       | http://www.openjpeg.org/                  |
-| libjasper         | http://www.ece.uvic.ca/~frodo/jasper/     |
-| libtiff           | http://www.libtiff.org/                   |
+| libjasper         | https://www.ece.uvic.ca/~frodo/jasper/    |
+| libwebp           | https://developers.google.com/speed/webp/ |
+| libtiff           | http://www.simplesystems.org/libtiff/     |
 | giflib            | http://giflib.sourceforge.net/            |
 
 
@@ -131,20 +134,25 @@ image at the top.
 [../img/A.2.2f.png]
 
 
-====A.2.2.2 Lossless Image Comparison - PNG vs JP2====[SEC222]
+====A.2.2.2 Lossless Image Comparison - PNG vs JP2 vs WebP====[SEC222]
 
 To store a photographic image losslessly it is possible to use a compressed PNG
-file. However, for most photos the JP2 format produces smaller files by about
-5-25%. As an example, here are the results for the photo image in section 6.8.3:
+file. However, for most photos the JP2 and/or WebP formats produce smaller files
+by about 5-25%. As an example, here are the results for the photo image in
+section 6.8.3:
 
-| Format                 | File Size (Bytes) |
-| Uncompressed BMP       | 87,222            |
-| Lossless PNG (level 9) | 56,297            |
-| Lossless JP2 (level 1) | 51,731            |
+| Format                      | File Size (Bytes) |
+| Uncompressed BMP            | 87,222            |
+| Lossless PNG (level 9)      | 56,297            |
+| Lossless JP2 (libjasper)    | 51,731            |
+| Lossless JP2 (libopenjpeg2) | 54,733            |
+| Lossless WEBP (level 9)     | 49,820            |
 
 It should be noted that the PNG file format still produces smaller files than
 JP2 when compressing images with fewer colours, such as pixel art, so the
-benefits are strictly limited to photographic images.
+benefits are strictly limited to photographic images. WebP format however, does
+not share this flaw; even pixelart images compress notably better as WebP
+despite upconversion from indexed palette to RGB for the task.
 
 
 ===A.2.3 TIFF Files===[SEC23]
@@ -165,7 +173,9 @@ The modes and their supported image types are:
 | LZW         | Yes      | Yes     | Yes | Yes   | Indexed, RGB, Alpha |
 | ZIP         | Yes      | Yes     | Yes | Yes   | Indexed, RGB, Alpha |
 | LZMA2       | Yes      | Yes     | Yes | Yes   | Indexed, RGB, Alpha |
+| ZSTD        | Yes      | Yes     | Yes | Yes   | Indexed, RGB, Alpha |
 | JPEG        | No       | No      | Yes | No    | No                  |
+| WebP        | No       | No      | Yes | Yes   | No                  |
 
 None means uncompressed; a simple bitmap in the natural order (red, green, blue,
 alpha), with TIFF header and footer (TIFF directory).
@@ -197,13 +207,24 @@ GNU/Linux systems currently represented by the **xz** compressor. Is generally
 more efficient than ZIP or LZW, but slower. Not supported by libtiff versions
 prior to 4.0.0.
 
+ZSTD (Zstandard) is a compression algorithm developed at Facebook, and
+represented by the **zstd** compressor. On efficiency it is somewhere in between
+ZIP and LZMA2 (nearer to ZIP for the most part), but supposedly faster than
+either. Not supported by libtiff versions prior to 4.0.10.
+
 JPEG is exactly the compression used in the file format of the same name. Again,
 in mtPaint JPEG-compressed TIFFs and JPEGs share the quality setting (0-100, the
 more the better - but larger too).
 
+WebP also should be exactly the compression used by its namesake file format,
+however it is not the case with regard to its lossless mode. Despite the
+setting, the actual file is lossy; for that reason mtPaint does not offer this
+defective "lossless" mode as a separate choice. Not supported by libtiff
+versions prior to 4.0.10.
+
 The "Enable predictor" setting in the Preferences window toggles the
 pre-compression horizontal differencing for the general compression algorithms
-(LZW, ZIP, LZMA2). The procedure is similar to the filtering used by the PNG
+(LZW, ZIP, LZMA2, ZSTD). The procedure is similar to the filtering used by the PNG
 format, but much more simplistic, with corresponding drawbacks; while the libpng
 encoder analyzes each row to select an appropriate filter (or no filter) for it,
 libtiff indifferently applies its differencing whether it is gainful or quite the
@@ -547,9 +568,40 @@ so you can customize the program to suit your needs.
 
 ===A.6.1 Creating Patterns===[SEC61]
 
-Each pattern is simply an 8x8 grid which you can edit in the source code file
-./src/icons1/xbm_patterns.xbm. To use these new patterns you need to save the
-new file somewhere safe and then refer to this file in the Paths section of the
+The patterns that mtPaint uses by default, reside in the source code file
+**./src/icons1/xbm_patterns.xbm**. Each pattern is simply an 8x8 grid where
+colour index 0 (white) represents colour A, and index 1 (black), colour B.
+
+If you want a different set of patterns, you can edit this file, or create your
+own, then save the new file somewhere safe and then refer to this file in the
+Paths section of the Preferences window.
+
+While the original patterns are arranged in a 10x10 grid, a replacement file can
+be anything from 2x2 to 16x16 patterns, 8x8 pixels each. The pattern chooser
+will arrange the patterns the same way as they are in the file. The file must be
+a monochrome image (2 colour indexed palette) and its width and height must
+divide by 8 (so that it contains a whole number of patterns).
+
+The 4x4 Bayer dither patterns are not stored in the patterns file, but instead
+generated from the "master pattern", a 4x4 matrix of nonrepeating numbers from 0
+to 15. It is simply the order in which the pixels in each 4x4 grid will be
+filled, from #0 for 1/16 of colour A and 15/16 of B, all the way to #15 for
+16/16 of A and none of B. The default order, the archetypal Bayer pattern, is
+represented by this line:
+
+**0,8,2,10 12,4,14,6 3,11,1,9 15,7,13,5**
+
+You can replace this master pattern by one your own; put a line describing it
+into the 'Bayer master pattern' entry box in the Preferences window. As an
+example, here is a line for the patterns used once upon a time by Deluxe Paint
+program; the archetypal pattern rotated 90 degrees counterclockwise and offset
+by 2 pixels on X and Y axes:
+
+**11,7,8,4 3,15,0,12 9,5,10,6 1,13,2,14**
+
+If the pattern you entered is invalid in some way (too short, too long, numbers
+repeat or out of range, characters that are not a digit, comma or space),
+mtPaint will clear the box and switch to default pattern after you close the
 Preferences window.
 
 
@@ -709,6 +761,27 @@ simply not offered - which doesn't mean that the format is unavailable, but that
 you need to convert the image to an acceptable type and/or number of colours.
 See the "Image Type" column of the table in [section A.2 #SEC2] for requirements
 of specific image formats.
+
+
+==A.9 Command Line Options==[SEC9]
+
+mtPaint understand the following command line options:
+
+- **--version** - Display program version and exit.
+- **--help** - Display a short description of command line options and exit.
+- **-v** - Start in [full view mode chap_05.html#SEC2]: with everything but
+  the canvas hidden. Starting mtPaint through the filename **mtv** (or any name
+  that contains "mtv") will have the same effect.
+- **-s** - Grab a screenshot when starting up.
+- **-w** //'mask'// - Put files that match the mask into image file list, as if
+  passed on the command line (see section [5.3 chap_05.html#SEC3]).
+- **-g** //num// - Internal use: pass GIF animation delay along with list of
+  exported frames.
+- **--cmd** //commands...// - Start in scripting mode with no GUI, interpreting
+  command line from this point till end of options as script commands (see
+  chapter [10 chap_10.html]).
+- **--** - End of options: interpret everything on the command line from this
+  point as file names.
 
 
 -------------------------------------------------
