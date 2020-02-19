@@ -69,7 +69,8 @@ send them to mtPaint; or otherwise, mtPaint can take a wildcard pattern and
 find the files on its own if you use "-w" option, like this:
 '**mtpaint -w "*.jpg"**'. This option may prove useful on GNU/Linux system as
 well, in case there are too many matching files to fit into command line (rather
-unlikely, given its size limit of 64 Kb, but possible).
+unlikely, given its size limit of 64 Kb at least, and usually much more - see
+'**getconf ARG_MAX**' - but possible).
 
 Here is an example of what you can do using this procedure, along with a pan
 window and the main window toggled to full view:
@@ -77,6 +78,16 @@ window and the main window toggled to full view:
 [../img/5.3.jpg]
 
 To toggle the dock area off press F12 or use the View menu.
+
+In case mtPaint is run by the **find** command, option "--sort" will prove
+useful, as **find** on its own does not sort the filenames it feeds to the
+program it executes. For example, to view all JPG files under current directory,
+in alphabetical order:
+
+find ./ -iname '*.jpg' -exec mtpaint --sort '{}' +
+
+Alternately, you can save the list of filenames into a file, sort it, etc. then
+pass it to mtPaint: '**mtpaint --flist files.txt**'.
 
 
 ==5.4 The View Window==[SEC4]

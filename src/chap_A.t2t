@@ -32,6 +32,7 @@ mtPaint can handle the following file formats:
 | JPEG          | All.     | 24 bit RGB. | RGB |
 | JPEG2000      | All.     | 24 bit RGB including alpha channel. | RGB |
 | WEBP          | All single images. | 24 bit RGB including alpha channel. | RGB |
+| LBM           | All.     | Indexed palette. 24 bit RGB. Including alpha channel, mask, transparency index. | Any |
 | LSS16 (*.lss) | All.     | Indexed palette (16 colours), 18 bits per colour (6 per RGB channel). | Indexed with 16 colours or less |
 | PAM           | All.     | 2 colour indexed palette. 24 bit RGB. Including alpha channel. | Any |
 | PBM           | All.     | 2 colour indexed palette. | Indexed with 2 colours |
@@ -48,11 +49,13 @@ mtPaint can handle the following file formats:
 
 File types PNG, JPEG, JPEG2000, WEBP, TIFF, and GIF are handled by external
 libraries: libpng, libjpeg, libopenjpeg/libjasper, libwebp, libtiff, and giflib.
-As a result
-of this, the efficiency of these file operations will depend on the version of
-these libraries installed on your system. For example, libtiff is unable to read
-certain old JPEG compressed TIFF files. For more information on these libraries,
-consult their respective websites:
+As a result of this, the efficiency of these file operations will depend on the
+version, and build options, of these libraries installed on your system. For
+example, libtiff is unable to read certain old JPEG compressed TIFF files, and
+if built without certain libraries installed (liblzma for versions 4+, libzstd
+and libwebp for 4.0.10+) will be unable to read or save TIFF files compressed
+with these methods even if the libraries are installed on your system. For more
+information on these libraries, consult their respective websites:
 
 | libpng            | http://www.libpng.org/pub/png/libpng.html |
 | libjpeg           | https://ijg.org/                          |
@@ -61,6 +64,8 @@ consult their respective websites:
 | libwebp           | https://developers.google.com/speed/webp/ |
 | libtiff           | http://www.simplesystems.org/libtiff/     |
 | giflib            | http://giflib.sourceforge.net/            |
+| liblzma           | https://tukaani.org/xz/                   |
+| libzstd           | https://facebook.github.io/zstd/          |
 
 
 ===A.2.1 PNG Files===[SEC21]
@@ -487,6 +492,33 @@ they will need relabeling (as shown in example above).
 File "anim.pmm". Use Netpbm command "pamfile": **pamfile -allimages anim.pmm**
 
 
+===A.2.5 LBM Files===[SEC25]
+
+The LBM format originates on Amiga; once ubiquitous, today it is firmly a "legacy"
+one.
+
+More precisely, the "LBM" file extension is associated with two varieties of
+[IFF https://en.wikipedia.org/wiki/Interchange_File_Format]-based Amiga image
+formats: ILBM (Interleaved Bitmap) and PBM (Planar Bitmap).
+
+The transparency capabilities of LBM richly deserve the distinction of
+worst-followed standard ever. Not one single file in the set of examples
+available to me, that has a transparency mask, is using it for transparency; with
+most, it is not even anything resembling that: either outright garbage, or at
+best, a pixel protection mask of some kind (or some offset remains of such). For
+this reason, the mapping of LBM mask plane can be configured in the Preferences
+window (on the "LBM" tab, naturally), and its default destination is mtPaint's
+mask channel.
+
+As to transparent colour, its matching the observable reality is only a tiny bit
+better; only a handful among hundreds of examples has one that is not obviously
+in error. Nothing in the files themselves is found to mark those few where
+colour transparency is the real deal, any different from the great majority where
+it is just an artifact of some broken program or other. To avoid many images
+looking broken due to erroneous transparent colour, the colour transparency for
+LBMs is disabled by default (again, go to "LBM" tab in Preferences to enable).
+
+
 ==A.3 Grabbing Screenshots==[SEC3]
 
 mtPaint can be used to grab a screenshot with either 'File->New' or using
@@ -548,6 +580,10 @@ you must edit colour B to change its RGB.
 
 Some key combinations may not work under certain window managers, e.g.
 Shift+F1-F12 or Ctrl+Mouse button.
+
+Some buggy theme engines, like Oxygen-GTK2, can cause interface glitches or
+occasional crashes. The options are, either suffer through it, or disable the
+theme engine when running mtPaint, eg. using GTK2_RC_FILES shell variable.
 
 Using the status bar items 'Cursor X,Y' and 'Pixel [ I ] {RGB}' can cause high
 CPU usage on older hardware when moving the cursor vigorously.
@@ -706,6 +742,13 @@ otherwise, conversion will be done if the file format is RGB-only. Statements
 requesting impossible things, like saving an RGB image as an XBM file, will be
 ignored.
 
+The same way, you can add ">%" to get more variables than just '%f'. An example
+is worth more than a wordy explanation:
+
+>% echo Filename %N Selection X=%x Y=%y width %w height %h Cursor at %X,%Y
+Image width %W height %H, %B bytes/pixel, %A alpha, %S selection, %M mask,
+ %C colours in palette, %T transparent
+
 
 ===A.7.1 GNU/Linux Systems===[SEC71]
 
@@ -777,11 +820,25 @@ mtPaint understand the following command line options:
   passed on the command line (see section [5.3 chap_05.html#SEC3]).
 - **-g** //num// - Internal use: pass GIF animation delay along with list of
   exported frames.
+- **--flist** //filename// - Put file names listed in the file into image file
+  list. Names can be separated either by newlines, or by NUL character (ASCII 0)
+  as in eg. the output of '**find -print0**'.
+- **--sort** - Alphabetically sort image file list prior to displaying.
 - **--cmd** //commands...// - Start in scripting mode with no GUI, interpreting
   command line from this point till end of options as script commands (see
   chapter [10 chap_10.html]).
 - **--** - End of options: interpret everything on the command line from this
   point as file names.
+
+
+You cannot intermix file names with options other than '**-w**', nor put any
+options at all (including '**-w**') after the '**--**'. This prevents
+mishandling file names of the stranger sort (like say a PNG file called "**-v**")
+as options.
+
+The '**--cmd**' option (scripting mode) cannot coexist with any other options;
+to be recognized it must be the first option, and everything after it is script
+commands, maybe followed by '**--**' and a filename or several.
 
 
 -------------------------------------------------

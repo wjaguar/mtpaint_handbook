@@ -4,7 +4,7 @@ mtPaint NEWS
 
 Here is a summary of the main changes in this release (see handbook for full details):
 
-3.50	2019-??-??
+3.50	2020-??-??
 	* Scripting added - "Image->Script" to enter or run a script : See handbook chapter 10 for details
 	* Commandline mode added - use "mtpaint --cmd" to run a script without GUI
 	* Keyboard shortcuts can now be reconfigured - "Help->Keyboard shortcuts"
@@ -19,7 +19,10 @@ Here is a summary of the main changes in this release (see handbook for full det
 	* Background layer position now can be changed via Ctrl+arrows or layers window spinbuttons, like any other layer
 	* Patterns for colours A and B can now be chosen separately (Preferences->General->Separate patterns for A&B)
 	* Builtin Bayer patterns now can be redefined : See handbook section A.6.1 for details
+	* Threshold effect with interactive preview added (see handbook section 6.6.7)
+	* Normalize effect added
 	* Colour transform and source selection added to blend mode options
+	* Threshold blend mode added
 	* "Saturate more" blend mode redefined to not ignore source (previous behaviour available with "Image" source selected)
 	* Lasso tool can be configured to shrink selection based on the selection channel - right click the tool icon
 	* Clone tool is now continuous
@@ -33,8 +36,10 @@ Here is a summary of the main changes in this release (see handbook for full det
 	* Zoom is now up to 8000%
 	* "Hide image" and "View alpha as an overlay" can now be toggled separately for each layer (Preferences->General->Enable overlays by layer)
 	* Colours A and B now highlighted in palette window
+	* File actions can now enable and use an extended set of variable substitutions (see handbook section A.7)
 	* New image format PMM (Portable MultiMap) added for interoperable storage and exchange of images : See handbook section A.2.4 for details
 	* WebP file format save/load added
+	* LBM file format (ILBM/PBM) save/load added
 	* XPM files with 65-92 colours are now saved with smaller size
 	* Raw RGB palette files (6-bit PAL and 8-bit ACT) can now be loaded/saved via the Palette menu
 	* TIFF compression made configurable
@@ -42,6 +47,8 @@ Here is a summary of the main changes in this release (see handbook for full det
 	* SVG files now can be loaded through 'rsvg-convert', in absence of GTK+2 librsvg plugin
 	* Animation frames now can be saved in any suitable supported file format
 	* Animation cycles can now specify sequence steps as containing several layers, or none : See handbook section 9.3.3 for details
+	* Passing a list of files on command line is now possible using --flist option
+	* Filenames passed on command line can now be sorted alphabetically with --sort option
 	* Image loading and new image creation are now undoable by default
 	* Committing paste when changing tool is now enabled by default
 	* Saving an image now commits paste if auto commit mode is enabled
@@ -71,10 +78,14 @@ Here is a summary of the main changes in this release (see handbook for full det
 	* BUGFIX - PAM files with type BLACKANDWHITE are no longer loaded as grayscale (except if written as grayscale - ImageMagick does that)
 	* BUGFIX - Loading PAM files with unknown TUPLTYPE doesn't cause crash
 	* BUGFIX - SVG files starting with "<!DOCTYPE" no longer fail to load
+	* BUGFIX - XPM loader now ignores newlines or lack thereof outside quoted strings, as it should
+	* BUGFIX - No more misplaced colours when saving some XPM files with 257-4096 colours
+	* BUGFIX - Two-colour images with darker colour 0 now do not come out inverted when saved as black and white
 	* BUGFIX - Animation cycling now doesn't skip over the last frame of a GIF loaded into layers
 	* BUGFIX - Background layer is now made large enough to accommodate all frames when loading animation into layers
 	* BUGFIX - Animation cycles are now properly updated when layers are reordered, duplicated or deleted
 	* BUGFIX - Command line switches beyond the first one are now parsed properly
+	* BUGFIX - Filenames with '$' or '%' in them now work properly in file actions
 	* BUGFIX - Listing a directory containing files with broken date/time in builtin file selector on Windows doesn't cause crash
 	* BUGFIX - Rare problem of undo system ignoring a changed pixel is now eliminated
 	* BUGFIX - Polygonal selections no longer skip some contour pixels in certain situations

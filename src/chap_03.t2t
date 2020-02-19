@@ -434,8 +434,9 @@ As you see, the layout of the settings toolbar depends on the type of image you
 are working with. 
 
 The first row is painting mode buttons, and below them, gradient mode button
-displaying the current gradient. What they do, will be discussed in detail in
-further parts of this section.
+displaying the current gradient. Right clicking on some of them will open an
+additional window with the mode's options. The modes, and their options, will be
+discussed in detail in further parts of this section.
 
 Below that, are displayed the current colours A and B:
 
@@ -753,9 +754,10 @@ and a square with 3 holes) using each of the 3 distance functions:
 
 Blend mode works by blending certain parts of the source pixels with the canvas.
 In order to use this mode, you will need to configure it by pressing the right
-mouse button on the mode button. This mode can only be used on RGB images and 
-(except a few blends that are RGB specific) on utility channels; drawing on an
-indexed image in this mode will do nothing.
+mouse button on the mode button. The full power of this mode can only be used on
+RGB images and (except a few blends that are RGB specific) on utility channels;
+drawing on an indexed image with anything other than a 'Normal' blend will do
+nothing, but you still can make use of the 'Source' part even so.
 
 In this example I have painted 2 ellipses onto a greyscale background. The
 ellipse on the left was painted using a pure red (RGB 255,0,0) with a 'Colour'
@@ -781,6 +783,54 @@ over itself.
 
 mtPaint has no "Overlay" blend, because it does the same thing as "Soft Light";
 when you need "Overlay", use "Soft Light" instead.
+
+
+==3.6 Tricks and Tips==[SEC6]
+
+
+===3.6.1 Cleaning up a Scanned Image===[SEC61]
+
+A scan of a black and white page, be it in colour or greyscale mode, in fact
+gives you dark grey text and figures on light grey background. When printing, it
+results in dots of dither pattern scattered in areas where none should be; black
+on white, white on black. Binarizing the image, with say 'Channels->Threshold',
+while it gets rid of that, produces jagged edges and upgrades defects to full
+visibility; darker grey blots become pure black, lighter grey lines disappear
+altogether.
+
+With mtPaint, there is a more forgiving way to make a printing-friendly image:
+
+- Right click on the blend mode button on the settings toolbar and choose the
+'Grain Merge' blend, leaving source as 'Normal'.
+- Left click on the blend mode button, activating the mode.
+- Copy the image to clipboard.
+- Paste it over itself.
+
+
+This will convert the darkest greys (64 and below) to pure black, the lightest
+(192 and above) to pure white, and stretch the mid-range values to still keep
+the transitions between them smooth. See this example of a white to black
+gradient:
+
+[../img/3.6.1a.png]
+
+By pasting the image over more and more times, you can make the transition
+region as narrow as you desire:
+
+[../img/3.6.1b.png]
+
+
+===3.6.2 Extracting Colour Value Component===[SEC62]
+
+To get a greyscale image with its pixels' RGB components all set equal to the
+largest of the original ones, i.e. the 'Value' component of HSV representation:
+
+- Right click on the blend mode button and choose the 'Saturation' blend with
+'Normal' source.
+- Activate the blend mode.
+- Choose an unsaturated colour as colour A: pure black, pure white, or grey.
+- Select all
+- Fill selection
 
 
 -------------------------------------------------

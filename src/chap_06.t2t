@@ -193,6 +193,27 @@ the results of Roberts edge detector with and without preprocessing.
 [../img/6.6.6a.png] [../img/6.6.6b.png] 
 
 
+===6.6.7 Thresholding===[SEC67]
+
+You can set two threshold values, lower and upper. Toggle on the "Preview"
+button to immediately see the effect of the adjustments you make to them.
+
+If you threshold an indexed image, the pixels with colour index outside the
+range will be set to colour 0, and those inside range, to maximum palette colour.
+
+With RGB images, you have a choice of which colour channel value to use: the
+maximum one, the minimum one, red, green, or blue. Pixels with value outside the
+range will be set to pure black, the rest to pure white.
+
+With alpha, selection, or mask channel, the values within the range will be
+maximized, those outside, zeroed out.
+
+The simpler Threshold operation from the Channels menu uses only a lower
+threshold value, processes each RGB channel separately and does not respect
+any masking. Only sufficient for the most basic use case of applying a
+predefined threshold all over.
+
+
 ==6.7 Isometric Transformations==[SEC7]
 
 The Effects menu allows you to transform a flat image into an isometric version.
