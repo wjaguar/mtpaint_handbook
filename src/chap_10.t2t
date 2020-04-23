@@ -1,0 +1,580 @@
+
+%!postproc: '(?i)(</head>)' '<TITLE>The mtPaint Handbook - Chapter 10 - Scripting</TITLE>\1'
+
+
+=10. Scripting=
+
+mtPaint is totally scriptable. Everything you can do (except tweaking the GUI) you
+can also do from a script.
+
+You can run scripts in one of four ways.
+
+First is direct execution. Select 'Image->Scripts->Configure' menu option, choose
+a free script slot in the list on top, enter the commands in the window below,
+press "Execute", and it will happen. If there is an error in your script,
+execution will stop on it and the problem will be reported.
+
+Second is the 'Image->Scripts' submenu. If in the example above you fill the
+"Action" entry, above the commands window, with something not totally commented
+out (first non-whitespace character not "**#**", that is), enter the commands and
+press "OK", the action will appear in said submenu. Note that menu slots are
+rigidly mapped to the script list's rows; only the first 10 rows can appear in
+the menu, and whether a row's action is commented out or empty, its menu slot
+still belongs to it.
+
+Third is an extension of the second; in 'Help->Keyboard Shortcuts...' you assign
+a key to 'Image->Scripts->1'...'10', and then use that key to run your script that
+is sitting in the submenu.
+
+And last but certainly not least, you can use the commandline mode. If the first
+option on the commandline is "**--cmd**", everything else after it is treated as
+script commands, and the GUI is not fired up at all. Any changes done to
+persistent settings and preferences while in commandline mode, are not written
+back into the inifile either.
+
+Note that when a script is executing, all confirmation requests are automatically
+answered in the positive, or not asked at all. You will have no chance to change
+your mind at the last moment; it is assumed that you did your thinking //before//
+activating the script.
+
+
+==10.1 Script Commands==[SEC1]
+
+The commands are every bit as stable as menu structure and dialog items' naming
+is. Because the "commands" are the very same names - or, any prefix of any word in
+them that does still match uniquely. This self-naming and self-documenting is
+part of the reason why scripting is implemented through the V-code.
+
+A script is commands with their parameters. Commands are prefixed with "**-**"
+and match to menu items; parameters are followed by "**=**" and a value, and match
+to dialog items. If a command itself is followed by "**=**" and value, that
+matches the unnamed item in the dialog. But such an unnamed option can just stand
+alone: "**-file/as=zad**" is fully equivalent to "**-file/as =zad**".
+
+The entire name of a menu option, including spaces, is the canonical name of its
+matching command - with shell quoting used to protect the spaces. Like this:
+
+**mtpaint --cmd -file/'save as ...'=zad**
+
+It is safe to shorten the "**save as ...**" to just "**as**", because no word in
+other items' names in the same submenu starts with "as". And so it is done in the
+examples. But "save" on its own is a match for another item in the same submenu:
+"File->Save", which stands before "File->Save as".
+
+Parts separated by "**/**" are matched to corresponding menu levels in order. So
+to call up "Effects->Isometric transformation->Top side right", you can write a
+command "**-eff/iso/top**". Or more verbosely, "**-effect/isometric/top**".
+
+Same thing about parameters. You can write:
+
+**mtpaint --cmd -file/'save as' =zad 'file format'=png 'transparency index'=0 'png compression'=9**
+
+But it is just as unambiguous in this case to write this instead:
+
+**mtpaint --cmd -file/as=zad f=png t=0 p=9**
+
+Still, for the sake of understandability it's better to use some more chars per
+option. Say, like this:
+
+**mtpaint --cmd -file/as=zad format=png trans=0 png=9**
+
+But it is not unambiguous to use "c=9", "comp=9" or even "compression=9", because
+there also exist "JPEG2000 compression" and "TGA RLE compression" in this same
+dialog (visible to user for different filetypes, but V-code sees them all at once).
+
+So "**-effect/unsharp r=1 am=0.4**" in the example means the same as
+"**-effects/'unsharp mask' radius=1 amount=0.4**" would.
+
+The unnamed parameter matches to the unnamed control in a dialog - usually it is
+the top one, but not always. For fileselector, it is filename; for most filters,
+it is value spinbutton; but for image scale, you can see it is filter name -
+everything above their list has names; for image resize - tiling mode, for the
+same reason. So you see "**-image/scale=nearest**" and "**-image/resize=mirror**"
+in the examples.
+
+To select options from lists, such as filter names or file formats, values are
+matched to option names just the same way as parameters are matched to dialog
+items, and commands to menu items. So "**image/scale=near**" will select you the
+"Nearest neighbour" scaling method.
+
+In a list with named columns, each name refers to a list of that column's values;
+like in "**-edit/freetype font=Arial filename=arial.ttf face=0**".
+
+The matching rule for string values:
+- matching is case-insensitive according to current locale
+- initial match is preferred
+- shorter value with initial match is preferred to longer
+- the first value with a middle match goes if no initial match found
+- a middle match is by trying every word in the value after the first, as per
+  "find a space, skip all spaces and opening parentheses, try here": in "Paste
+  Text (FreeType)", try "Text (FreeType)" and then "FreeType)"
+
+
+To check a checkbutton or toggle a togglebutton on, you assign to it some true
+value, or omit the assignment and just mention the name. Same thing to press a
+button (if it is scriptable). Like this: "**-image/resize w=x2 fix centre**".
+Unchecking or toggling off always requires an explicit assignment of a false
+value. The check menuitems work the same way; "**-channels/couple**" enables
+the 'Couple RGBA Operations', "**-channels/couple=0**" disables it.
+
+If you aren't sure whether a parameter would be present in the dialog at all (it
+is one such as might get disabled) but want to set it in case it's present, you
+prefix its name with "**.**" Say, to scale an image of unknown type in a nearest
+neighbor mode, it's safe to write "**-image/scale .=near**", but
+"**-image/scale=near**" will fail to match in case the image turns out to be a GIF
+or other indexed format.
+
+Note that parameters that are merely conditionally hidden, stay readily accessible
+from a script despite that; for example, you can set PNG compression level for the
+file you're about to save, even before selecting the PNG format:
+"**-file/as=zad png=9 form=png**". The same rule applies to content of 'Settings'
+pages of dialogs such as 'Convert to Indexed' and 'Scale Canvas'.
+
+For ease of use, the "Width" and "Height" fields in "Scale canvas" and "Resize
+canvas" dialogs are made to understand a couple formats that a regular spinbutton
+wouldn't. Like this:
+: "**w=x1.5**" - multiplies the original value by 1.5;
+: "**w=33%**" - 33% of the original value.
+
+
+If "Fix aspect ratio" is toggled on ("**fix=1**" if you aren't sure it is) then
+setting the width will correspondingly modify the height, or vice versa. But only
+the first time; so you can write "w=200% h=x1" to make the image twice wider, and
+not bother with "Fix aspect ratio" setting.
+
+This is how it works.
+
+
+===10.1.1 Groups===[SEC11]
+
+There are places where items with same or similar names sit in one dialog. They
+are disambiguated with named groups (in V-code, it is the //GROUPN// command).
+Similarly to menu path in a command, parts of a parameter name separated by
+"**/**" are matched first to groups, and then to items in a group. Like this:
+
+**-image/skew horizontal/offset=10 vertical/offset=20**
+
+See [section 10.5 #SEC5] for full list of those places and the group names.
+
+
+===10.1.2 Flattening===[SEC12]
+
+An option menu or a radiobutton pack can be made to present its list of choices
+to scripts as if they are separate dialog items (in V-code, it is the //FLATTEN//
+command). For example, you can do "**-edit/paste left**" instead of wordier
+"**-edit/paste align=left**".
+
+The places where that is done, are listed in [section 10.5 #SEC5].
+
+
+==10.2 Quoting and Comments==[SEC2]
+
+Quoting and word-splitting in scripts works the same as in Bourne shell. Words
+(i.e. commands) are split on unquoted whitespace. For quoting, you can use double
+quotes, single quotes, and backslashes.
+- Inside double quotes, you can use a backslash to quote another backslash, a
+doublequote, a backtick, a dollar sign, or an end of line; a backslash before
+anything else is not special and is taken literally.
+- Inside single quotes, everything is taken literally.
+- Anything preceded by a backslash is taken literally, except end of line which is
+  then just ignored (and the next line is taken as continuation).
+
+
+A comment in a script is everything from an unquoted "**#**" to the end of line
+(again, same as in Bourne shell).
+
+```
+# This is an example
+-e/freetype text="One \"Example text\" "\ 'in
+two lines' # now is on clipboard
+-e\
+/paste=(100,100) # now is on canvas
+```
+
+
+==10.3 Lists==[SEC3]
+
+Some dialogs, for ease of use, have controls (usually their unnamed one) accepting
+lists of values. (On V-code level, it is the //EVENT(MULTI, handler)// command.)
+
+A list is one or more whitespace-separated groups of comma-separated values, put
+in parentheses. When assigning to the unnamed control, the "**=**" is optional.
+Like in the example below:
+
+**-select/all (11,22 95,55 11,166) # Select a triangle**
+
+
+==10.4 Toolbars==[SEC4]
+
+Tools toolbar, settings toolbar, and layers toolbar and window are accessed
+through the Edit menu: "**-edit/tools**", "**-edit/settings**",
+"**-edit/layers**".
+
+In place of a right click on a button, to open its configuration dialog, you add
+"**:**" to its name; a freestanding "**:**" closes the dialog and returns you to
+the toolbar. Like this: "**-edit/settings blend: =value : blend**" first
+configures the blend mode to the Value blend, and then enables it.
+
+To use a drawing tool, you enable it and then assign its path as a list, to the
+toolbar's unnamed control:
+
+**-edit/tool paint (10,10 20,10 20,20 30,20)**
+
+If you want to simulate a pressure-enabled tool, such as a tablet, add a third
+value (between 0 and 1) for pressure:
+
+**-edit/tool paint (10,10,0.5 20,10,0.7 20,20,0.8 30,20,1)**
+
+Without that third value pressure is set to **1**, same as when you use a mouse.
+
+
+==10.5 Irregularities==[SEC5]
+
+While for the most part, mtPaint's scripting capabilities are self-documenting,
+there also exists the other part.
+
+- Some menu items are not made visible to scripts, and conversely, there exist
+  some invisible ones added purely for scripting.
+- Some dialogs have extra aliases for some of the controls, or even a fully
+  invisible script-only control or two.
+- Some menu items, when activated from a script, even "open" an entire invisible,
+  script-only dialog with several such controls.
+- Some dialogs have controls that take lists, or spinbuttons that understand
+  multipliers and percentages.
+- Some dialogs have their unnamed control different from their first one.
+- Some things do not work, or work differently, in commandline mode.
+
+
+While all of that can be found out from reading the code, the sections below list
+such invisible features for each location in the interface that has them.
+
+
+===10.5.1 The File Menu===[SEC51]
+
+- **New**
+  - The unnamed control is the image type radiobutton pack: "24 bit RGB", ...
+  - In commandline mode, the "Grab Screenshot" option is not present.
+- **Open ...**
+  - Script-only controls for loading multipage/multiframe files (TIFF, GIF etc.):
+    - "Load into Layers" (checkbox)
+    - "Explode Frames" (path entry for the destination directory)
+    - "Frames" (option menu: "Raw frames", "Composited frames", "Composited frames
+      with nonzero delay", as in the "Load Frames" dialog)
+  - Script-only controls for loading scalable images (SVG):
+    - "Width" (spinbutton)
+    - "Height" (spinbutton)
+
+
+File actions and recent files are invisible to scripts.
+
+
+===10.5.2 The Edit Menu===[SEC52]
+
+- **Paste** and **Paste To Centre**
+  - When those are called from script, the paste automatically gets committed.
+  - Script-only controls for where and how to commit:
+    - "Align"/unnamed (flattened option menu: "Left", "Right", "Top", "Bottom",
+      "Centre")
+    - "swap" (checkbutton, for [paste swap chap_04.html#SEC9])
+    - "x0" (spinbutton)
+    - "y0" (spinbutton)
+  - The "flattened option menu" above presents its choices also as controls, so
+    you can do "**-e/paste left top**" instead of wordier
+    "**-e/paste align=left align=top**". Each align choice is applied immediately,
+    so "**-e/paste centre left**" centers the image in vertical direction and
+    left-aligns in the horizontal.
+  - The unnamed control accepts list with coordinates where to paste; there can
+    be more than one location, for [brush pasting chap_04.html#SEC7]:
+    "**-e/paste (5,5 10,10 20,10)**". You can add a third value for pressure
+    (fractional between 0 and 1): "**-e/paste (5,5,0.5 10,10,0.75 20,10,1)**".
+- **Paste Text** and **Paste Text (FreeType)**
+  - The "Background colour =" name means the spinbutton, no checkbutton there in
+    script mode; use the value **-1** for no background.
+  - Same thing with "DPI ="; use **0** for the default value.
+  - Same thing with "Angle of rotation ="; use **0** for no rotation.
+- **Paste Text**
+  - Needs GUI to work, is invisible to scripts in commandline mode.
+  - Font selector has the name "Font".
+  - Script-only control "Text" (entry).
+- **Paste Text (FreeType)**
+  - The unnamed control is the list of font names, also named "Font" per its named
+    column.
+  - The font names seen from scripts are prefixed with "B " for bitmap and "S "
+    for scalable: use "**-e/freetype font="S Courier"**" to avoid matching bitmap
+    Courier fonts, for example. Also to disambiguate simple font names; "Arial"
+    would match "S Arial Black" if it is encountered first (and note that the list
+    seen from script isn't sorted), while "S Arial" prefers the shortest matching
+    value (due to being an initial match instead of a middle one).
+  - The "Size" name means the spinbutton under the sizes list, and serves for
+    scalable fonts; the list itself has the name "Bitmap size" and serves for
+    bitmap ones.
+  - The "Font Directories" tab and everything in it is invisible to scripts.
+- **Choose Pattern ...**
+  - Script-only controls for which pattern:
+    - "A"/unnamed (spinbutton for pattern's index for colour A)
+    - "B" (spinbutton for pattern's index for colour B); only present if separate
+      patterns for A & B are enabled in the Preferences
+    - "X" (spinbutton for A pattern's column)
+    - "Y" (spinbutton for A pattern's row)
+  - The "A"/unnamed and "B" also accept lists of pattern's column/row:
+    "**-e/pattern=(3,3) b=(0,3)**"
+  - The negative pattern indices, from **-1** to **-16**, correspond to the 4x4
+    Bayer patterns, from the 15/16 to 0/16 filled respectively.
+- **Choose Brush ...**
+  - Script-only controls for which brush:
+    - unnamed (spinbutton for brush's index); also accepts list of brush's
+      column/row
+    - "X" (spinbutton for brush's column)
+    - "Y" (spinbutton for brush's row)
+    - "Type" (radiobutton pack: "Square", "Circle", "Horizontal", "Vertical",
+      "Slash", "Backslash", "Spray")
+    - "Size" (spinbutton)
+    - "Flow" (spinbutton)
+- **Choose Colour ...**
+  - Script-only controls for which colour:
+    - "A"/unnamed (spinbutton for colour A index in palette)
+    - "B" (spinbutton for colour A index in palette)
+  - Both controls also accept lists, for picking colour from canvas:
+    - (x,y) to read a single pixel
+    - (x0,y0 x1,y1) to average the area with corners at (x0,y0) and (x1,y1)
+    - (x,y,w,h) to average the area with top left at (x,y), width w, height h
+- **layers**
+  - Script-only menu item for accessing the [Layers window #SEC512].
+- **settings**
+  - Script-only menu item for accessing the [Settings toolbar #SEC511].
+- **tools**
+  - Script-only menu item for accessing the [Tools toolbar #SEC510].
+
+
+'Import Clipboard from System' and 'Export Clipboard to System' are invisible to
+scripts.
+
+
+===10.5.3 The View Menu===[SEC53]
+
+Only 'Snap To Tile Grid' is visible to scripts.
+
+
+===10.5.4 The Image Menu===[SEC54]
+
+- **Convert To RGB**
+  - Is always enabled when accessed from scripts (has an always-enabled alias).
+- **Scale Canvas ...** and **Resize Canvas ...**
+  - "Width" and "Height" also accept multiplies and percentages:
+    "**-i/scale w=x1.5 h=33%**" (from the original value, not the modified one:
+    "**w=1 w=x2**" means "**w=x2**" and not "**w=2**").
+  - "Fix aspect ratio" only triggers the first time width or height is set; if
+    you set either one, the other will be calculated for you, but if you set both,
+    what you set is what you get.
+- **Scale Canvas ...**
+  - The unnamed control is the filter radiobutton pack: "Nearest Neighbour", ...
+- **Resize Canvas ...**
+  - The unnamed control is the extend mode radiobutton pack: "Clear", ...
+  - The spinbuttons in the "Offset" row are named "X" and "Y".
+  - The "Centre" button is scriptable: "**-i/resize w=x2 centre**".
+- **rotate**
+  - Script-only menu item, alias for 'Free Rotate ...'; precedes 'Rotate
+    Clockwise' and 'Rotate Anti-Clockwise', so "**-i/rotate=45**" rotates the
+    image 45 degrees (the principle of least surprise).
+- **Skew ...**
+  - "Horizontal" and "Vertical" are groups for spinbuttons in their row, with
+    spinbuttons themselves named as per column:
+    "**-i/skew horizontal/offset=10 vertical/offset=20**".
+  - The unnamed control is the filter radiobutton pack: "Nearest Neighbour", ...
+- **Script ...**
+  - When called from script, takes the filename of a script to run:
+    "**-i/script=file.cmd**".
+- **Scripts/1** ... **Scripts/10**
+  - Runs the script from the corresponding script slot in
+    'Image->Scripts->Configure', if it is visible in the 'Image->Scripts' submenu.
+    The names (actions) displayed in the submenu are not visible to scripts, thus
+    the use of slot indices instead.
+- **Information ...**
+  - When called from script, takes a string, interpolates variables into it
+    (as a [file action chap_A.html#SEC7] with ">%" prefix does) and sends it to
+    standard output (by default), standard error, or system clipboard. Like this:
+    "**-i/info="Width %W Height %H" clipboard**".
+  - Script-only controls:
+    - unnamed (entry for a string to interpolate)
+    - flattened option menu: "stdout", "standard output", "stderr", "standard
+      error", "clipboard"
+  - In commandline mode, the "clipboard" option is not present.
+- **Preferences ...**
+  - Tabs' names are groups for everything on their tab, in case something needs
+    disambiguation; mostly the 'TIFF', 'WebP' and 'LBM' tabs need it:
+    "**-i/pref tiff/rgb=zip webp/mode=lossless**".
+  - On the 'General' tab, 'Optimize alpha chequers', 'Disable view window
+    transparencies', and 'Enable overlays by layer' are invisible to scripts.
+  - The entire 'Language', 'Interface', 'Paths', 'Status Bar' and 'Tablet' tabs
+    are invisible to scripts.
+
+
+Nesting of scripts (through "**-i/script=file**" and/or "**-i/scripts/1**" etc.)
+is limited to 16 (the //MAX_NESTING// constant in mainwindow.c).
+
+
+===10.5.5 The Selection Menu===[SEC55]
+
+- **Select All**
+  - Script-only controls for what to select:
+    - unnamed one accepting lists
+    - "x0", "y0", "x1", "y1", "width", "height" (spinbuttons)
+  - The lists can be:
+    - (x,y) to select a single pixel
+    - (x0,y0 x1,y1) to select the area with corners at (x0,y0) and (x1,y1)
+    - (x,y,w,h) to select the area with top left at (x,y), width w, height h
+    - (x0,y0 x1,y1 x2,y2 ...) to select a polygon
+
+
+===10.5.6 The Palette Menu===[SEC56]
+
+- **a** and **b**
+  - Script-only menu items for setting colours A and B.
+  - Script-only control:
+    - unnamed (spinbutton for the colour index)
+  - The control also accept lists, for picking colour from canvas:
+    - (x,y) to read a single pixel
+    - (x0,y0 x1,y1) to average the area with corners at (x0,y0) and (x1,y1)
+    - (x,y,w,h) to average the area with top left at (x,y), width w, height h
+- **Mask All** and **Mask None**
+  - Script-only control for what to mask/unmask:
+    - unnamed (spinbutton for the colour index); also accepts lists:
+      "**-p/all (1,3,4)**".
+- **Edit Colour A & B ...** and **Palette Editor ...**
+  - The unnamed control is the colours list.
+  - The colour chooser is named "Colour" and the values it accepts are what its
+    'Hex' field could parse: "**-p/edit =a col=#FF0000 =b col=black**".
+- **Edit Colour A & B ...**
+  - The "Posterize" name means the spinbutton, button is ignored in script mode;
+    just set the bitdepth to make colour A or B to posterize, does not matter if
+    the value you set is unchanged: "**-p/edit =a posterize=4 =b posterize=4**".
+- **Palette Editor ...**
+  - The "From" and "To" names mean the spinbuttons, buttons are ignored in script
+    mode.
+  - The "Scale" name is assigned to scale type option menu: "RGB", ...; setting
+    its value creates the colour scale: "**-p/palette from=1 to=7 scale=srgb**".
+- **Sort Colours ...**
+  - The unnamed control is the sort mode radiobutton pack: "Hue", ...
+- **Palette Shifter ...**
+  - Script-only controls:
+   - unnamed (spinbutton for selecting a row); also accepts lists, to set some or
+     all rows starting from 0th: "**-p/shift (13,6,0 50,19,0 51,82,0)**".
+   - "Start", "Finish", "Delay" (spinbuttons for the selected row)
+  - The "Play" name means the spinslider, button is ignored in script mode.
+  - The "Clear", "Fix Palette", and "Create Frames" buttons are scriptable.
+
+
+===10.5.7 The Effects Menu===[SEC57]
+
+- **Transform Colour ...**
+  - The palette range spinbuttons are named "from" and "to".
+  - 'Show Detail' and 'Auto-Preview' are invisible to scripts.
+- **Threshold ...**
+  - The unnamed control is the channel radiobutton pack: "Max", ...
+- **Gaussian Blur ...**
+  - The first, unnamed, radius spinbutton has an alias "X".
+  - The second radius spinbutton is named "Y".
+
+
+===10.5.8 The Channels Menu===[SEC58]
+
+- **New ...**
+  - The unnamed control is the "Channel Type" radiobutton pack (as its alias).
+
+
+'Hide Image', 'View Alpha as an Overlay' and 'Configure Overlays ...' are
+invisible to scripts.
+
+
+===10.5.9 The Layers Menu===[SEC59]
+
+- **New Layer**
+  - The unnamed control is the image type radiobutton pack: "24 bit RGB", ...
+  - In commandline mode, the "Grab Screenshot" option is not present.
+
+
+Animation features are invisible to scripts: 'Configure Animation ...', 'Preview
+Animation ...' 'Set Key Frame ...', 'Remove All Key Frames ...'.
+
+
+===10.5.10 The Tools Toolbar===[SEC510]
+
+- **Place Gradient**
+  - To place a gradient, you need exactly two points in the list:
+    "**-e/tool grad (10,10 100,150)**".
+- **Clone:** (right click)
+  - "Position" and "Offset" are groups for spinbuttons in their row, with
+    spinbuttons themselves named "X" and "Y":
+    "**-e/tool clone: pos/x=100 pos/y=100 off/x=20 off/y=20**".
+- **Place Gradient:** (right click)
+  - "Gradient" and "Opacity" are names for the option menus in their boxes //and//
+    groups for everything else there:
+    "**-e/tool grad: gradient=srgb gradient/reverse opacity=0 opacity/reverse**".
+  - The "Edit Custom" buttons are scriptable.
+  - 'Preview opacity' is invisible to scripts.
+  - Note that for "Gradient type", the usable short name would be "type", while
+    "gradient" or "grad" resolves to the option menu in the "Gradient" box (the
+    first middle match, vs the shortest initial match):
+    "**-e/tool grad: type=radial grad=srgb**".
+
+
+'Paste Text' is invisible to scripts; do it through the [Edit menu #SEC52] instead.
+
+
+====10.5.10.1 The Edit Gradient Dialog====[SEC5101]
+
+- For RGB:
+  - A script-only spinbutton for palette index, named "Value" (in lieu of palette
+    grid).
+  - The colour chooser is named "Colour".
+  - The span type option menu is named "Type".
+- For indexed and utility channels:
+  - The channel value spinslider is named "Value".
+- The unnamed control is a script-only spinbutton for current slot index (in lieu
+  of button-bar).
+
+
+This is how you set a custom gradient from script:
+"**-e/tool grad: grad/edit =0 col=red type=hsv =1 col=blue : grad=custom**".
+
+
+===10.5.11 The Settings Toolbar===[SEC511]
+
+- **Colour-Selective Mode:** (right click)
+  - The unnamed control is the colours list.
+  - The colour chooser is named "Colour".
+  - The radiobuttons pack ("Sphere", "Angle", "Cube") is named "Mode" and is
+    flattened.
+- **Gradient Mode:** (right click)
+  - Same thing as "Place Gradient:" (right click) on the [Tools toolbar #SEC510].
+- The unnamed control is the spinslider for current utility channel's value; has
+  an alias "Value".
+- Script-only spinbuttons "Alpha", "Selection", "Mask" (for channels' values).
+
+
+===10.5.12 The Layers Window===[SEC512]
+
+- The unnamed control is the layers list; layers are identified by indices, not
+  names: "**-e/layer =0**" to switch to layer 0.
+- The position spinbuttons are named "X" and "Y".
+- Script-only checkbutton "Visible" (for current layer's visibility).
+
+
+'Close Layers Window' and 'Show all layers in main window' are invisible to
+scripts.
+
+
+==10.6 Examples==[SEC6]
+
+: - __"Value Invert" filter__
+
+See https://docs.gimp.org/en/gimp-filter-invert-value.html
+```
+-e/set blend: =val rev : blend
+-pal/edit=a c=#FFFFFF
+-s/all -s/fill -ef/inv -e/copy -e/undo -e/undo
+-e/set blend: rev=0 -e/paste
+```
+
+
+-------------------------------------------------

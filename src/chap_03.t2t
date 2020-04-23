@@ -76,7 +76,8 @@ of brush shapes to choose from:
 [../img/3.2.1b.png]
 
 If you want to manually adjust the brush size, or flow of the spray, you can do
-this by using the settings toolbar.
+this by using the settings toolbar. Alternately, you can assign keyboard shortcuts
+to "Larger brush" and "Smaller brush", and use them.
 
 Brushes are centered on the cursor coordinates if odd-sized; even-sized brushes,
 being impossible to exactly center, are biased to the upper left (i.e. the cursor

@@ -19,7 +19,11 @@ will quit the program, if enabled through the Interface section of the
 Preferences window.
 
 You can reconfigure the shortcuts, remove existing ones or add your own, using
-the 'Help->Keyboard shortcuts' menu option.
+the 'Help->Keyboard shortcuts' menu option. In the left-hand list, choose an
+action; in the right-hand list, choose a shortcut and press the "Remove" button;
+or click the "New key..." button, press the key or combo, and press "Add". If the
+key is already in use for something else, you'll be offered a choice to remap it
+or leave as is.
 
 
 ==A.2 Supported File Types==[SEC2]
