@@ -22,6 +22,9 @@ pixel is. Alpha channels can be used to smoothly blend the edges of one image
 when super-imposing it onto another image, such as with layers. This is very
 useful for things like text.
 
+Alpha blending can either be done in a naive way, or with gamma correction if
+enabled in the Preferences (see [6.2.1 chap_06.html#SEC21]).
+
 In the main editing window, a pixel that is made transparent by the alpha
 channel will show the chequered pattern underneath like this:
 
@@ -105,6 +108,9 @@ because of this that mtPaint does not need any of these operations in the
 Selection menu; all of them, and many more, are easily done with regular drawing
 tools and effects.
 
+Pasting feathered selections is affected by the "Use gamma correction when
+painting" setting, see section [6.2.1 chap_06.html#SEC21].
+
 In the section [7.5 #SEC5] below, there are several examples of how you can use
 the selection channel in various image editing tasks.
 
@@ -121,19 +127,23 @@ The mask channel can also be used to selectively apply effects such as blur,
 sharpen or any kind of colour transformation.
 
 Normally each mask pixel is completely set or cleared (255 or 0), but partial
-values in between can be used to offer semi protection. See section
-[7.5.8 #SEC58] for an example of this.
+values in between can be used to offer semi protection (optionally with gamma
+correction, see [6.2.1 chap_06.html#SEC21]). See section [7.5.8 #SEC58] for an
+example of this.
 
 
 ==7.4 File Handling==[SEC4]
 
 If you are editing an image with any type of channel, mtPaint will save this
-data within the PNG file format. Any other format will not save this data, so if
-you need to keep the channel you will need to use the PNG format or save the
-channel individually using the Channels menu.
+data within the PNG file format. Any other format except mtPaint's own
+[PMM chap_A.html#SEC24] will not save this data except maybe the alpha channel
+(see section [A.2 chap_A.html#SEC2] for which formats do what when), so if
+you need to keep the channel you will need to use the PNG or PMM format or save
+the channel individually using the Channels menu.
 
-Technically, the channel is saved as a compressed private chunk which means that
-mtPaint will be able to recognise this data, but other image editors will not.
+Technically, in PNG the channel is saved as a compressed private chunk which
+means that mtPaint will be able to recognise this data, but other image editors
+will not.
 
 
 ==7.5 Tricks and Tips==[SEC5]

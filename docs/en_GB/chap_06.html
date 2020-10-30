@@ -1,24 +1,28 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META NAME="generator" CONTENT="http://txt2tags.org">
 <TITLE>The mtPaint Handbook - Chapter 6 - Image Manipulation</TITLE></HEAD><BODY BGCOLOR="white" TEXT="black">
-<FONT SIZE="4">
-</FONT></CENTER>
+<CENTER>
+</CENTER>
+
 
 <H1>6. Image Manipulation</H1>
+
 <P>
 mtPaint has several general image manipulation facilities that are useful for
 various tasks. These features can be found in the Image and Effects menus.
 </P>
-<A NAME="SEC1"></A>
-<H2>6.1 Cropping</H2>
+
+<H2 ID="SEC1">6.1 Cropping</H2>
+
 <P>
 To crop an image you create a rectangle selection for the area of the image you
 wish to keep and press the Delete key.
 </P>
-<A NAME="SEC2"></A>
-<H2>6.2 Scaling</H2>
+
+<H2 ID="SEC2">6.2 Scaling</H2>
+
 <P>
 To quickly scale an image you simply press the 'Page Up' key and enter the new
 image geometry you require. If you are scaling an RGB image you will have a
@@ -27,8 +31,9 @@ the other methods are available if you require something more specialised, such
 as slightly sharpening the image which is useful for scaling down to a thumbnail
 sized image.
 </P>
-<A NAME="SEC21"></A>
-<H3>6.2.1 Gamma Correction</H3>
+
+<H3 ID="SEC21">6.2.1 Gamma Correction</H3>
+
 <P>
 When you are scaling an RGB image you have the option of using gamma correction
 to adjust the image. The human eye is more sensitive to differences between the
@@ -58,13 +63,13 @@ to RGB.
 </P>
 <P>
 Gamma correction is made optional, instead of being used always by default,
-because user might want to disable it to better preserve small dark details on a
+because a user might want to disable it to better preserve small dark details on a
 bright background which otherwise would be lost in the glare. Also, because most
-other software, such as GIMP, doesn't have gamma correction, and user might want
+other software, such as GIMP, doesn't have gamma correction, and a user might want
 results identical to those produced by such software.
 </P>
 <P>
-You can ensure Gamma Correction used by default by setting the toggle in the
+You can ensure Gamma Correction is used by default by setting the toggle in the
 Preferences window. Here is an image which has been scaled with and without
 gamma correction:
 </P>
@@ -75,13 +80,28 @@ gamma correction:
 Gamma Correction of this type is also used in other functions like free
 rotating, the unsharp mask effect, and the greyscale effect.
 </P>
-<A NAME="SEC3"></A>
-<H2>6.3 Rotating</H2>
+<P>
+The same considerations apply to all other operations that do pixel mixing, such
+as alpha blending, partial masking, pasting with feathered edges, painting with
+partial opacity. Difference can be very noticeable where dark colours are mixed
+with light ones. All these too can apply gamma correction, but it is controlled
+by a separate toggle in the Preferences, the "Use gamma correction when painting"
+one. On the image below, the two circles have been drawn with yellow with opacity
+128 on black background; the left one without gamma correction, the right one
+with it:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/6.2.1d.png" BORDER="0" ALT="">
+</P>
+
+<H2 ID="SEC3">6.3 Rotating</H2>
+
 <P>
 It is possible to rotate the image quickly in 90 degree movements, or by any
 angle. For example, you may have a photo that is not quite straight, in which
 case you can try this procedure:
 </P>
+
 <UL>
 <LI>Calculate the angle of rotation require by using the rectangle selection
 dragged from one end of the straight line to the other (bottom left to top
@@ -92,6 +112,7 @@ example:
 <P>
 <IMG ALIGN="middle" SRC="../img/6.3a.jpg" BORDER="0" ALT="">
 </P>
+
 <UL>
 <LI>Rotate using the Image menu and enter the negative angle required to
 straighten the image, i.e. -12.1 here:
@@ -100,17 +121,20 @@ straighten the image, i.e. -12.1 here:
 <P>
 <IMG ALIGN="middle" SRC="../img/6.3b.jpg" BORDER="0" ALT="">
 </P>
-<A NAME="SEC4"></A>
-<H2>6.4 Resizing the Canvas</H2>
+
+<H2 ID="SEC4">6.4 Resizing the Canvas</H2>
+
 <P>
 If you wish to increase or decrease the width or height of the image you can do
 this by pressing the 'Page Down' key.
 </P>
-<A NAME="SEC41"></A>
-<H3>6.4.1 Tile Effects</H3>
+
+<H3 ID="SEC41">6.4.1 Tile Effects</H3>
+
 <P>
 The resize dialog also enables various tile facilities. Here are some examples:
 </P>
+
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TD><IMG ALIGN="middle" SRC="../img/6.4.1a.png" BORDER="0" ALT=""></TD>
@@ -126,8 +150,8 @@ The resize dialog also enables various tile facilities. Here are some examples:
 </TR>
 </TABLE>
 
-<A NAME="SEC5"></A>
-<H2>6.5 Adjusting the Image Gamma, Brightness, Contrast, Saturation, Hue</H2>
+<H2 ID="SEC5">6.5 Adjusting the Image Gamma, Brightness, Contrast, Saturation, Hue</H2>
+
 <P>
 If you want to adjust the colour of an image you can do this by pressing the
 'Insert' key. This also enables you to use the posterize function to reduce the
@@ -139,28 +163,32 @@ posterization; to make the adjustment affect the palette (whole or a specific
 colour range), or not affect the image; and to leave some RGB components
 unmodified.
 </P>
-<A NAME="SEC6"></A>
-<H2>6.6 Applying Effects</H2>
+
+<H2 ID="SEC6">6.6 Applying Effects</H2>
+
 <P>
 The Effects menu allows you to apply effects to the current canvas. The type of
 effects available will depend on whether your are editing an indexed palette
 image or an RGB image.
 </P>
-<A NAME="SEC61"></A>
-<H3>6.6.1 Bacteria</H3>
+
+<H3 ID="SEC61">6.6.1 Bacteria</H3>
+
 <P>
 Here is what the bacteria effect can do to a suitably prepared image:
 </P>
 <P>
 <IMG ALIGN="left" SRC="../img/6.6a.png" BORDER="0" ALT=""> <IMG ALIGN="middle" SRC="../img/6.6b.png" BORDER="0" ALT=""> <IMG ALIGN="middle" SRC="../img/6.6c.png" BORDER="0" ALT=""> <IMG ALIGN="middle" SRC="../img/6.6d.png" BORDER="0" ALT=""> 
 </P>
-<A NAME="SEC62"></A>
-<H3>6.6.2 Greyscale</H3>
+
+<H3 ID="SEC62">6.6.2 Greyscale</H3>
+
 <P>
 mtPaint has two methods for generating a greyscale image. There is the basic
 greyscale method and also a gamma corrected version as explained in section
 <A HREF="#SEC21">6.2.1</A>. Here is a visual comparison:
 </P>
+
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TD><IMG ALIGN="middle" SRC="../img/6.6.2a.png" BORDER="0" ALT=""></TD>
@@ -176,8 +204,8 @@ greyscale method and also a gamma corrected version as explained in section
 </TR>
 </TABLE>
 
-<A NAME="SEC63"></A>
-<H3>6.6.3 Unsharp Mask</H3>
+<H3 ID="SEC63">6.6.3 Unsharp Mask</H3>
+
 <P>
 The Unsharp Mask is a special type of sharpening method that is more suitable
 for photographs than the standard Sharpen effect due to the greater amount of
@@ -198,11 +226,13 @@ The Threshold value sets the minimum difference in pixels before applying
 sharpening. This value can be used to protect areas of smooth colour gradients,
 such as a blue sky, from being affected by the sharpening process.
 </P>
-<A NAME="SEC64"></A>
-<H3>6.6.4 Gaussian Blur</H3>
+
+<H3 ID="SEC64">6.6.4 Gaussian Blur</H3>
+
 <P>
 Here is a visual example of the Gaussian Blur with the different X/Y toggle set:
 </P>
+
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TD><IMG ALIGN="middle" SRC="../img/6.6.4a.png" BORDER="0" ALT=""></TD>
@@ -218,8 +248,8 @@ Here is a visual example of the Gaussian Blur with the different X/Y toggle set:
 </TR>
 </TABLE>
 
-<A NAME="SEC65"></A>
-<H3>6.6.5 Kuwahara-Nagao Blur</H3>
+<H3 ID="SEC65">6.6.5 Kuwahara-Nagao Blur</H3>
+
 <P>
 Kuwahara-Nagao edge preserving blur smooths out small details while preserving,
 and even sharpening, larger-scale contours. It can be used either as an
@@ -236,8 +266,9 @@ with radius 1, 3, and 10.
 Turning "Protect details" on will leave more of smaller-scale irregularities
 of contours unsmoothed.
 </P>
-<A NAME="SEC66"></A>
-<H3>6.6.6 Edge Detection</H3>
+
+<H3 ID="SEC66">6.6.6 Edge Detection</H3>
+
 <P>
 mtPaint has 8 edge detection filters, differing in width of edge response and
 in resistance to pixel noise. Try them to select which one works best for your
@@ -251,8 +282,35 @@ the results of Roberts edge detector with and without preprocessing.
 <P>
 <IMG ALIGN="left" SRC="../img/6.6.6a.png" BORDER="0" ALT=""> <IMG ALIGN="middle" SRC="../img/6.6.6b.png" BORDER="0" ALT=""> 
 </P>
-<A NAME="SEC7"></A>
-<H2>6.7 Isometric Transformations</H2>
+
+<H3 ID="SEC67">6.6.7 Thresholding</H3>
+
+<P>
+You can set two threshold values, lower and upper. Toggle on the "Preview"
+button to immediately see the effect of the adjustments you make to them.
+</P>
+<P>
+If you threshold an indexed image, the pixels with colour index outside the
+range will be set to colour 0, and those inside range, to maximum palette colour.
+</P>
+<P>
+With RGB images, you have a choice of which colour channel value to use: the
+maximum one, the minimum one, red, green, or blue. Pixels with value outside the
+range will be set to pure black, the rest to pure white.
+</P>
+<P>
+With alpha, selection, or mask channel, the values within the range will be
+maximized, those outside, zeroed out.
+</P>
+<P>
+The simpler Threshold operation from the Channels menu uses only a lower
+threshold value, processes each RGB channel separately and does not respect
+any masking. Only sufficient for the most basic use case of applying a
+predefined threshold all over.
+</P>
+
+<H2 ID="SEC7">6.7 Isometric Transformations</H2>
+
 <P>
 The Effects menu allows you to transform a flat image into an isometric version.
 For example, here is the start image followed by the menu item 'Left Side Down':
@@ -270,8 +328,9 @@ items 'Bottom Side Right' and then 'Left Side Down':
 <P>
 <IMG ALIGN="middle" SRC="../img/6.7c.png" BORDER="0" ALT="">
 </P>
-<A NAME="SEC8"></A>
-<H2>6.8 Converting an RGB Image to Indexed Palette</H2>
+
+<H2 ID="SEC8">6.8 Converting an RGB Image to Indexed Palette</H2>
+
 <P>
 It may be desirable for technical or artistic reasons to convert an RGB image
 into an Indexed Palette image. mtPaint has several tools to achieve this using
@@ -281,8 +340,9 @@ plotted using this palette to approximate the original RGB image. Because this
 process is an approximation, there is no perfect solution and results can vary
 wildly according to the settings that the artist prescribes.
 </P>
-<A NAME="SEC81"></A>
-<H3>6.8.1 The Palette</H3>
+
+<H3 ID="SEC81">6.8.1 The Palette</H3>
+
 <P>
 The first decision you need to make is how many colours you want to have in the
 palette (between 2 and 256). The more colours you have then the more the
@@ -292,6 +352,7 @@ for you. Each of the the Quantizers mtPaint uses has different advantages and
 disadvantages, so its best to experiment to discover which works best on a given
 image.
 </P>
+
 <UL>
 <LI>Wu is a fast quantizer that usually works well for larger palettes.
 <LI>PNN is a slower quantizer than Wu, although it usually creates better
@@ -306,8 +367,9 @@ For Wu and PNN quantizers, you can also enable 'Diameter based weighting'
 option. This allocates more importance to medium frequent colours, usually
 resulting in palette better matching the colours of image's details.
 </P>
-<A NAME="SEC82"></A>
-<H3>6.8.2 The Pixels</H3>
+
+<H3 ID="SEC82">6.8.2 The Pixels</H3>
+
 <P>
 Once you have a palette prepared, then the pixels can be calculated on the new
 Indexed Palette canvas. The simplest method is to choose the closest colour in
@@ -439,8 +501,8 @@ one would best fit a given image, can be determined only by trial and error.
 <P>
 When selective propagation is turned on, error propagation percentage controls
 what percent of the incoming difference to preserve despite it being dropped; by
-default it's 0, but could be raised to 75% or 85% to get a more discriminating
-variant of reduced overall error propagation.
+default it's 85%, working as a more discriminating variant of reduced overall
+error propagation, but could be lowered to 75% or all the way to 0.
 </P>
 <P>
 Where selective propagation is needed most is fine-resolution images being
@@ -449,13 +511,30 @@ converted from one palette to another, getting, say, a red area slightly darker
 but still smooth is infinitely more preferable to that same area being peppered
 by white pixels; and selective propagation prevents such unfortunate occurences,
 while still remaining able to convert, say, a rose-colored area into a
-checkerboard pattern of red and white pixels.
+chequerboard pattern of red and white pixels.
 </P>
-<A NAME="SEC83"></A>
-<H3>6.8.3 Examples</H3>
-<P>
-<IMG ALIGN="left" SRC="../img/6.8.3a.png" BORDER="0" ALT=""> <IMG ALIGN="middle" SRC="../img/6.8.3b.png" BORDER="0" ALT=""> <IMG ALIGN="middle" SRC="../img/6.8.3c.png" BORDER="0" ALT=""> <IMG ALIGN="middle" SRC="../img/6.8.3d.png" BORDER="0" ALT=""> <IMG ALIGN="middle" SRC="../img/6.8.3e.png" BORDER="0" ALT=""> <IMG ALIGN="middle" SRC="../img/6.8.3f.png" BORDER="0" ALT=""> 
-</P>
+
+<H3 ID="SEC83">6.8.3 Examples</H3>
+
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TD ALIGN="center">A</TD>
+<TD ALIGN="center">B</TD>
+<TD ALIGN="center">C</TD>
+<TD ALIGN="center">D</TD>
+<TD ALIGN="center">E</TD>
+<TD ALIGN="center">F</TD>
+</TR>
+<TR>
+<TD><IMG ALIGN="middle" SRC="../img/6.8.3a.png" BORDER="0" ALT=""></TD>
+<TD><IMG ALIGN="middle" SRC="../img/6.8.3b.png" BORDER="0" ALT=""></TD>
+<TD><IMG ALIGN="middle" SRC="../img/6.8.3c.png" BORDER="0" ALT=""></TD>
+<TD><IMG ALIGN="middle" SRC="../img/6.8.3d.png" BORDER="0" ALT=""></TD>
+<TD><IMG ALIGN="middle" SRC="../img/6.8.3e.png" BORDER="0" ALT=""></TD>
+<TD><IMG ALIGN="middle" SRC="../img/6.8.3f.png" BORDER="0" ALT=""></TD>
+</TR>
+</TABLE>
+
 <P>
 A - Original.
 </P>
@@ -476,10 +555,11 @@ E - 8 colours, PNN Quantizer, Floyd-Steinberg.
 F - 8 colours, Max-Min Quantizer, Floyd-Steinberg, LXN colour space,
 separate/split at 75% error propagation.
 </P>
-<A NAME="SEC84"></A>
-<H3>6.8.4 Tricks and Tips</H3>
-<A NAME="SEC841"></A>
-<H4>6.8.4.1 Saturation</H4>
+
+<H3 ID="SEC84">6.8.4 Tricks and Tips</H3>
+
+<H4 ID="SEC841">6.8.4.1 Saturation</H4>
+
 <P>
 Sometimes the Quantizers produce flatter and less colourful results than are
 desirable. This can sometimes be avoided by making the image more saturated by
@@ -487,13 +567,15 @@ using the 'Transform Colour' window before converting the original RGB image.
 The best quantizer for maintaining image saturation and contrast for small
 palettes (e.g. 16) is the Max-Min combined with Floyd-Steinberg or Stucki.
 </P>
-<A NAME="SEC842"></A>
-<H4>6.8.4.2 Manually Selecting Colours</H4>
+
+<H4 ID="SEC842">6.8.4.2 Manually Selecting Colours</H4>
+
 <P>
 If you are reducing an RGB image to just a few colours, like 16, the Quantizer
 may miss a few important colours that you want to appear in the indexed image.
 You can manually avoid this problem by doing the following:
 </P>
+
 <UL>
 <LI>Reduce the palette size to 14 using 'Palette -&gt; Set Palette Size'.
 <LI>Select 'Palette -&gt; Create Quantized' using your chosen Quantizer.
@@ -512,13 +594,15 @@ higher contrast than by using a quantizer, which in some cases is preferable.
 Using just these 8 colours, mtPaint will be able to approximate most photograhic
 images fairly well.
 </P>
-<A NAME="SEC843"></A>
-<H4>6.8.4.3 Dithering Settings</H4>
+
+<H4 ID="SEC843">6.8.4.3 Dithering Settings</H4>
+
 <P>
 The dithering settings for Floyd-Steinberg and Stucki need to be experimented
 with for each image to achieve the best results, but I use the following
 settings due to their good results over many different types of photos:
 </P>
+
 <UL>
 <LI>sRGB colour space, 75% error propagation, separate split.
 <LI>RGB colour space, 50% error propagation, separate split.
@@ -526,8 +610,8 @@ settings due to their good results over many different types of photos:
 <LI>RGB colour space, 85% error propagation.
 </UL>
 
-<A NAME="SEC9"></A>
-<H2>6.9 Skewing</H2>
+<H2 ID="SEC9">6.9 Skewing</H2>
+
 <P>
 By using the Skew option in the Image menu you can skew the canvas vertically,
 horizontally, or in both directions at once (horizontally then vertically, in
@@ -537,8 +621,9 @@ The latter method makes it easy to do pixel-precise skew - instead of having
 to calculate an angle from offset and distance, you just feed the values to
 mtPaint.
 </P>
-<A NAME="SEC10"></A>
-<H2>6.10 Segmentation</H2>
+
+<H2 ID="SEC10">6.10 Segmentation</H2>
+
 <P>
 With the Segment option in the Image menu you can make a segmentation map of
 the image. Results are much improved (segment boundaries more precisely follow
@@ -573,12 +658,14 @@ Once you are satisfied with segmentation, press Apply to replace the image with
 the segmentation map, with each segment filled by a distinct RGB colour. Making
 use of this map is up to you.
 </P>
-<A NAME="SEC101"></A>
-<H3>6.10.1 Object extraction</H3>
+
+<H3 ID="SEC101">6.10.1 Object extraction</H3>
+
 <P>
 One possible use I would like to describe, is cutting out a complex object from
 the image. To do this, you set up three layers in this way:
 </P>
+
 <UL>
 <LI>Background layer containing the original image.
 <LI>Layer containing segmentation map, with added empty alpha channel - i.e.
@@ -609,8 +696,9 @@ Then you switch to the background layer, then to editing its alpha channel
 (creating an empty one) and paste the clipboard there. Now, having made
 everything but your object transparent, you can do with it whatever you wish.
 </P>
+
 <HR NOSHADE SIZE=1>
 
-<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
-<!-- cmdline: txt2tags -t html chap_00.t2t chap_01.t2t chap_02.t2t chap_03.t2t chap_04.t2t chap_05.t2t chap_06.t2t chap_07.t2t chap_08.t2t chap_09.t2t chap_A.t2t chap_B.t2t -->
+<!-- html code generated by txt2tags 2.6.1171 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t html -o ../docs/en_GB/chap_06.html chap_06.t2t -->
 </BODY></HTML>

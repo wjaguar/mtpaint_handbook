@@ -66,6 +66,17 @@ gamma correction:
 Gamma Correction of this type is also used in other functions like free
 rotating, the unsharp mask effect, and the greyscale effect.
 
+The same considerations apply to all other operations that do pixel mixing, such
+as alpha blending, partial masking, pasting with feathered edges, painting with
+partial opacity. Difference can be very noticeable where dark colours are mixed
+with light ones. All these too can apply gamma correction, but it is controlled
+by a separate toggle in the Preferences, the "Use gamma correction when painting"
+one. On the image below, the two circles have been drawn with yellow with opacity
+128 on black background; the left one without gamma correction, the right one
+with it:
+
+[../img/6.2.1d.png]
+
 
 ==6.3 Rotating==[SEC3]
 

@@ -1,15 +1,16 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META NAME="generator" CONTENT="http://txt2tags.org">
 <TITLE>The mtPaint Handbook - Contents</TITLE>
 </HEAD><BODY BGCOLOR="white" TEXT="black">
-<P ALIGN="center"><CENTER><H1>The mtPaint Handbook</H1>
-<FONT SIZE="4">
-</FONT></CENTER>
+<CENTER>
+<H1>The mtPaint Handbook</H1>
+</CENTER>
+
 
 <HR NOSHADE SIZE=1>
-<P></P>
+
 <UL>
 <LI><A HREF="chap_01.html">1. Legal</A>
 <P></P>
@@ -25,6 +26,7 @@
     <LI><A HREF="chap_02.html#SEC43">2.4.3 Version 2.00 - 2.30</A>
     <LI><A HREF="chap_02.html#SEC44">2.4.4 Version 3.00</A>
     <LI><A HREF="chap_02.html#SEC45">2.4.5 Version 3.10 - 3.40</A>
+    <LI><A HREF="chap_02.html#SEC46">2.4.6 Version 3.50</A>
     <P></P>
     </UL>
   </UL>
@@ -61,7 +63,7 @@
     <LI><A HREF="chap_03.html#SEC310">3.3.10 Colour Chooser</A>
     </UL>
   <LI><A HREF="chap_03.html#SEC4">3.4 Patterns</A>
-  <LI><A HREF="chap_03.html#SEC5">3.5 Painting Modes</A>
+  <LI><A HREF="chap_03.html#SEC5">3.5 Painting Modes and the Settings Toolbar</A>
     <UL>
     <LI><A HREF="chap_03.html#SEC51">3.5.1 Continuous</A>
     <LI><A HREF="chap_03.html#SEC52">3.5.2 Opacity</A>
@@ -77,6 +79,11 @@
       <LI><A HREF="chap_03.html#SEC565">3.5.6.5 Shapeburst Gradients</A>
       </UL>
     <LI><A HREF="chap_03.html#SEC57">3.5.7 Blend</A>
+    </UL>
+  <LI><A HREF="chap_03.html#SEC6">3.6 Tricks and Tips</A>
+    <UL>
+    <LI><A HREF="chap_03.html#SEC61">3.6.1 Cleaning up a Scanned Image</A>
+    <LI><A HREF="chap_03.html#SEC62">3.6.2 Extracting Colour Value Component</A>
     <P></P>
     </UL>
   </UL>
@@ -85,6 +92,9 @@
   <LI><A HREF="chap_04.html#SEC1">4.1 Rectangle Selections</A>
   <LI><A HREF="chap_04.html#SEC2">4.2 Polygon Selections</A>
   <LI><A HREF="chap_04.html#SEC3">4.3 The Lasso</A>
+    <UL>
+    <LI><A HREF="chap_04.html#SEC31">4.3.1 Smoothing a Selection</A>
+    </UL>
   <LI><A HREF="chap_04.html#SEC4">4.4 Masking Colours</A>
   <LI><A HREF="chap_04.html#SEC5">4.5 Alpha Blending</A>
     <UL>
@@ -131,6 +141,7 @@
     <LI><A HREF="chap_06.html#SEC64">6.6.4 Gaussian Blur</A>
     <LI><A HREF="chap_06.html#SEC65">6.6.5 Kuwahara-Nagao Blur</A>
     <LI><A HREF="chap_06.html#SEC66">6.6.6 Edge Detection</A>
+    <LI><A HREF="chap_06.html#SEC67">6.6.7 Thresholding</A>
     </UL>
   <LI><A HREF="chap_06.html#SEC7">6.7 Isometric Transformations</A>
   <LI><A HREF="chap_06.html#SEC8">6.8 Converting an RGB Image to Indexed Palette</A>
@@ -216,6 +227,37 @@
   <LI><A HREF="chap_09.html#SEC6">9.6 Palette Shifting</A>
   <P></P>
   </UL>
+<LI><A HREF="chap_10.html">10. Scripting</A>
+  <UL>
+  <LI><A HREF="chap_10.html#SEC1">10.1 Script Commands</A>
+    <UL>
+    <LI><A HREF="chap_10.html#SEC11">10.1.1 Groups</A>
+    <LI><A HREF="chap_10.html#SEC12">10.1.2 Flattening</A>
+    </UL>
+  <LI><A HREF="chap_10.html#SEC2">10.2 Quoting and Comments</A>
+  <LI><A HREF="chap_10.html#SEC3">10.3 Lists</A>
+  <LI><A HREF="chap_10.html#SEC4">10.4 Toolbars</A>
+  <LI><A HREF="chap_10.html#SEC5">10.5 Irregularities</A>
+    <UL>
+    <LI><A HREF="chap_10.html#SEC51">10.5.1 The File Menu</A>
+    <LI><A HREF="chap_10.html#SEC52">10.5.2 The Edit Menu</A>
+    <LI><A HREF="chap_10.html#SEC53">10.5.3 The View Menu</A>
+    <LI><A HREF="chap_10.html#SEC54">10.5.4 The Image Menu</A>
+    <LI><A HREF="chap_10.html#SEC55">10.5.5 The Selection Menu</A>
+    <LI><A HREF="chap_10.html#SEC56">10.5.6 The Palette Menu</A>
+    <LI><A HREF="chap_10.html#SEC57">10.5.7 The Effects Menu</A>
+    <LI><A HREF="chap_10.html#SEC58">10.5.8 The Channels Menu</A>
+    <LI><A HREF="chap_10.html#SEC59">10.5.9 The Layers Menu</A>
+    <LI><A HREF="chap_10.html#SEC510">10.5.10 The Tools Toolbar</A>
+      <UL>
+      <LI><A HREF="chap_10.html#SEC5101">10.5.10.1 The Edit Gradient Dialog</A>
+      </UL>
+    <LI><A HREF="chap_10.html#SEC511">10.5.11 The Settings Toolbar</A>
+    <LI><A HREF="chap_10.html#SEC512">10.5.12 The Layers Window</A>
+    </UL>
+  <LI><A HREF="chap_10.html#SEC6">10.6 Examples</A>
+  <P></P>
+  </UL>
 <LI><A HREF="chap_A.html">A. Miscellaneous</A>
   <UL>
   <LI><A HREF="chap_A.html#SEC1">A.1 Shortcuts</A>
@@ -225,8 +267,18 @@
     <LI><A HREF="chap_A.html#SEC22">A.2.2 JPEG 2000 Files</A>
       <UL>
       <LI><A HREF="chap_A.html#SEC221">A.2.2.1 Lossy Image Comparison - JPEG vs JP2</A>
-      <LI><A HREF="chap_A.html#SEC222">A.2.2.2 Lossless Image Comparison - PNG vs JP2</A>
+      <LI><A HREF="chap_A.html#SEC222">A.2.2.2 Lossless Image Comparison - PNG vs JP2 vs WebP</A>
       </UL>
+    <LI><A HREF="chap_A.html#SEC23">A.2.3 TIFF Files</A>
+      <UL>
+      <LI><A HREF="chap_A.html#SEC231">A.2.3.1 Creating PDF Files</A>
+      </UL>
+    <LI><A HREF="chap_A.html#SEC24">A.2.4 PMM Files</A>
+      <UL>
+      <LI><A HREF="chap_A.html#SEC241">A.2.4.1 PMM File Structure</A>
+      <LI><A HREF="chap_A.html#SEC242">A.2.4.2 Manipulating PMM Files</A>
+      </UL>
+    <LI><A HREF="chap_A.html#SEC25">A.2.5 LBM Files</A>
     </UL>
   <LI><A HREF="chap_A.html#SEC3">A.3 Grabbing Screenshots</A>
   <LI><A HREF="chap_A.html#SEC4">A.4 Preferences</A>
@@ -248,6 +300,7 @@
     <LI><A HREF="chap_A.html#SEC72">A.7.2 Windows Systems</A>
     </UL>
   <LI><A HREF="chap_A.html#SEC8">A.8 Image Loading and Saving</A>
+  <LI><A HREF="chap_A.html#SEC9">A.9 Command Line Options</A>
   <P></P>
   </UL>
 <LI><A HREF="chap_B.html">B. The History of this Document</A>
@@ -259,6 +312,6 @@
 
 <HR NOSHADE SIZE=1>
 
-<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
-<!-- cmdline: txt2tags -t html chap_00.t2t chap_01.t2t chap_02.t2t chap_03.t2t chap_04.t2t chap_05.t2t chap_06.t2t chap_07.t2t chap_08.t2t chap_09.t2t chap_A.t2t chap_B.t2t -->
+<!-- html code generated by txt2tags 2.6.1171 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t html -o ../docs/en_GB/chap_00.html chap_00.t2t -->
 </BODY></HTML>

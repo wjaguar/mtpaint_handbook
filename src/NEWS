@@ -5,7 +5,7 @@ mtPaint NEWS
 Here is a summary of the main changes in this release (see handbook for full details):
 
 3.50	2020-??-??
-        * GTK+3 support - "./configure gtk3"
+	* GTK+3 support - "./configure gtk3"
 	* Scripting added - "Image->Script" to enter or run a script : See handbook chapter 10 for details
 	* Commandline mode added - use "mtpaint --cmd" to run a script without GUI
 	* Keyboard shortcuts can now be reconfigured - "Help->Keyboard shortcuts"
@@ -27,6 +27,7 @@ Here is a summary of the main changes in this release (see handbook for full det
 	* Colour transform and source selection added to blend mode options
 	* Threshold blend mode added
 	* "Saturate more" blend mode redefined to not ignore source (previous behaviour available with "Image" source selected)
+	* Horizontal and vertical ramps now respect drawing modes, opacity and masking
 	* Lasso tool can be configured to shrink selection based on the selection channel - right click the tool icon
 	* Clone tool is now continuous
 	* Clone tool can be configured to work in unaligned mode - right click the tool icon
@@ -44,6 +45,7 @@ Here is a summary of the main changes in this release (see handbook for full det
 	* WebP file format save/load added
 	* LBM file format (ILBM/PBM) save/load added
 	* XPM files with 65-92 colours are now saved with smaller size
+	* XPM files with up to 16M colours can now be saved and loaded as RGB images
 	* ICC colour profiles embedded in BMP images now can be applied on load
 	* OS/2 BMP files now load properly
 	* Raw RGB palette files (6-bit PAL and 8-bit ACT) can now be loaded/saved via the Palette menu
@@ -62,10 +64,12 @@ Here is a summary of the main changes in this release (see handbook for full det
 	* Dock area state is now remembered across sessions (unless opened automatically, for multiple files on command line)
 	* Unmaximized window position and size are now remembered across sessions
 	* Alpha values for colours A & B are now displayed on settings toolbar when editing image with alpha in coupled alpha mode
+	* Drawing and fill operations on RGB images with colour protection mask now are up to 20 times faster
 	* Undo system now uses a bit less memory
 	* Initial undo memory size is now 1/4 of available memory
 	* Support for compiling with giflib 5, libpng 1.6, libjpeg 9, OpenJPEG 2.3 added
-	* Compilation now works using gcc-5.5 and GTK+1
+	* Compilation now works using gcc-5.5 or clang and GTK+1
+	* Compilation now works using gcc-10 or clang-11
 	* BUGFIX - Compilation without JPEG and TIFF support now works again
 	* BUGFIX - FreeType text tool now skips directory loops when scanning font directories
 	* BUGFIX - Geometry info on the status bar now correctly updates after arrow keys or Escape key
@@ -97,6 +101,7 @@ Here is a summary of the main changes in this release (see handbook for full det
 	* BUGFIX - Rare problem of undo system ignoring a changed pixel is now eliminated
 	* BUGFIX - Polygonal selections no longer skip some contour pixels in certain situations
 	* BUGFIX - Canvas window now doesn't lose mouse button press event if dock window has focus
+	* BUGFIX - Tool perimeter now doesn't sometimes disappear when you draw after visiting another window (such as Layers)
 	* BUGFIX - Problem with command line window wrongly reacting to mouse in some cases is now eliminated
 	* BUGFIX - XPM icons now do not in some cases fail to display in compositing WMs
 	* BUGFIX - Escape and Enter keys now work properly in all dialogs in GTK+1

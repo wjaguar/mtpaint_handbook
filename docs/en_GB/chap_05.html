@@ -1,12 +1,14 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META NAME="generator" CONTENT="http://txt2tags.org">
 <TITLE>The mtPaint Handbook - Chapter 5 - Image Viewing</TITLE></HEAD><BODY BGCOLOR="white" TEXT="black">
-<FONT SIZE="4">
-</FONT></CENTER>
+<CENTER>
+</CENTER>
+
 
 <H1>5. Image Viewing</H1>
+
 <P>
 Basic image viewing and manipulation can be achieved without having all of the
 toolbars on display. You toggle a toolbar on or off using the View menu, which
@@ -23,8 +25,9 @@ keystrokes: Zooming, panning, cropping, scaling and adjusting the colours. If
 you take the time to learn these keyboard and mouse shortcuts, they can really
 increase your work satisfaction and productivity.
 </P>
-<A NAME="SEC1"></A>
-<H2>5.1 Zooming and Panning</H2>
+
+<H2 ID="SEC1">5.1 Zooming and Panning</H2>
+
 <P>
 At any time you can zoom in or out using the + or - keys. You can also zoom to a
 preset value by pressing the number keys 1-9. It is sometimes useful to navigate
@@ -34,23 +37,39 @@ current view with. To do this you either press the arrow keys to move or click
 on the thumbnail using the mouse. The size of the thumbnail is set using the
 Preferences window.
 </P>
-<A NAME="SEC11"></A>
-<H3>5.1.1 Zooming to a Particular Area</H3>
+<P>
+If you enable 'Mouse Scroll Wheel = Zoom' in the Preferences window, rotating
+your mouse scroll wheel when the cursor is over the canvas will zoom it in or out,
+instead of scrolling down or up.
+</P>
+
+<H3 ID="SEC11">5.1.1 Zooming to a Particular Area</H3>
+
 <P>
 If you wish to zoom into a particular area of the image you can do this by
 positioning the mouse pointer over the area you want as the centre and then
 pressing the middle mouse button. If you then zoom in, this point on the canvas
 will be the new centre of the current view.
 </P>
-<A NAME="SEC2"></A>
-<H2>5.2 Full View Mode</H2>
+<P>
+If 'Zoom on cursor position' is enabled in the Interface section of the
+Preferences window, then without the middle click, zooming in will be centered
+on the point where the cursor is at the moment. The middle click is still useful,
+however, for when you select the new zoom from the dropdown on the toolbar as
+the cursor being over the dropdown is not a good reference point.
+</P>
+
+<H2 ID="SEC2">5.2 Full View Mode</H2>
+
 <P>
 At any time you can hide all of the menus, toolbars, palette and status bar in
-order to view as much of the image as possible. To do this simply press the Home
+order to view as much of the image as possible. To do this use 'Toggle Image
+View' from the View menu, or simply press the Home
 key. Pressing the Home key again will return the controls.
 </P>
-<A NAME="SEC3"></A>
-<H2>5.3 Image File List</H2>
+
+<H2 ID="SEC3">5.3 Image File List</H2>
+
 <P>
 If you started mtPaint by passing more than one filename at the command line
 such as '<B>mtpaint *.jpg</B>', these filenames will be put into a list in a window.
@@ -65,7 +84,8 @@ send them to mtPaint; or otherwise, mtPaint can take a wildcard pattern and
 find the files on its own if you use "-w" option, like this:
 '<B>mtpaint -w "*.jpg"</B>'. This option may prove useful on GNU/Linux system as
 well, in case there are too many matching files to fit into command line (rather
-unlikely, given its size limit of 64 Kb, but possible).
+unlikely, given its size limit of 64 Kb at least, and usually much more - see
+'<B>getconf ARG_MAX</B>' - but possible).
 </P>
 <P>
 Here is an example of what you can do using this procedure, along with a pan
@@ -77,8 +97,22 @@ window and the main window toggled to full view:
 <P>
 To toggle the dock area off press F12 or use the View menu.
 </P>
-<A NAME="SEC4"></A>
-<H2>5.4 The View Window</H2>
+<P>
+In case mtPaint is run by the <B>find</B> command, option "--sort" will prove
+useful, as <B>find</B> on its own does not sort the filenames it feeds to the
+program it executes. For example, to view all JPG files under current directory,
+in alphabetical order:
+</P>
+<P>
+find ./ -iname '*.jpg' -exec mtpaint --sort '{}' +
+</P>
+<P>
+Alternately, you can save the list of filenames into a file, sort it, etc. then
+pass it to mtPaint: '<B>mtpaint --flist files.txt</B>'.
+</P>
+
+<H2 ID="SEC4">5.4 The View Window</H2>
+
 <P>
 When you are editing an image at a high zoom, it is sometimes useful to have a
 second image at 100% to see what it looks like, but without having to zoom in
@@ -95,8 +129,9 @@ Here is an example of what the view window can be used for:
 <P>
 <IMG ALIGN="middle" SRC="../img/5.4.png" BORDER="0" ALT="">
 </P>
-<A NAME="SEC5"></A>
-<H2>5.5 Image Tracing</H2>
+
+<H2 ID="SEC5">5.5 Image Tracing</H2>
+
 <P>
 Instead of drawing from memory, you can set up a tracing image to help you
 reproduce its contours and colours. A tracing image can help even a person not
@@ -114,6 +149,10 @@ the relative scale if you want the new canvas image to be smaller than the
 original image. For example, if you are tracing around a 640x480 image on a
 canvas that is 80x60 pixels then the relative scale will be 8. Then check the
 'Display' box and press OK.
+</P>
+<P>
+From then on, your tracing image will take the place of the default chequered
+background, showing through the transparent areas of your images.
 </P>
 <P>
 Now create a new image, and then set the black background as transparent by
@@ -148,9 +187,11 @@ tracing image's pixels under the canvas pixel you've clicked in; this is useful
 when the relative scale is larger than 1, like in the example above.
 </P>
 <P>
-You can also move the tracing image using Ctrl + arrow keys, if the current
-layer is the background. Otherwise, you can change its origin in the 'Tracing
-Image' window.
+You can also move the tracing image using Ctrl + arrow keys, or change its origin
+in the 'Tracing Image' window. Note that in absence of tracing image,
+Ctrl + arrow keys move the current layer relative to other layers; when a tracing
+image is present, it takes precedence, while layer can be moved by the spins in
+the Layers window.
 </P>
 <P>
 Below you can see the final stages of turning a tracing image into a small
@@ -168,8 +209,9 @@ And the finished tile itself:
 <P>
 <IMG ALIGN="middle" SRC="../img/5.5d.png" BORDER="0" ALT="">
 </P>
-<A NAME="SEC6"></A>
-<H2>5.6 Zoom Grid</H2>
+
+<H2 ID="SEC6">5.6 Zoom Grid</H2>
+
 <P>
 Zoom grid makes it easier to edit images at a high zoom. You can enable or
 disable it using 'View-&gt;Show Zoom Grid' menu option.
@@ -193,13 +235,14 @@ factors.
 Toggle on the "Preview" button if you want to dynamically see how the changes
 you make to the grid will look on the canvas.
 </P>
-<A NAME="SEC7"></A>
-<H2>5.7 Dock Pane</H2>
+
+<H2 ID="SEC7">5.7 Dock Pane</H2>
+
 <P>
 When the settings toolbar or the layers window are not displayed as separate
 windows, they instead reside in the dock pane, which is on the right side of
 the main window. This arrangement is sometimes more convenient, particularly on
-widescreen displays. Image file list, if present, occupies a separate tab in
+widescreen displays. The image file list, if present, occupies a separate tab in
 the dock pane.
 </P>
 <P>
@@ -208,12 +251,23 @@ Its width can be changed by dragging the separator between main window and dock,
 and is remembered across sessions.
 </P>
 <P>
+The height of the layers window in the dock pane can be changed by dragging the
+separator under it up or down, and too is remembered across sessions. While the
+drag handle is near or totally invisible with some (many?) GTK+ themes, it
+<B>is</B> there nevertheless. See the red ellipse on the image below, an invisible
+handle is in there somewhere:
+</P>
+<P>
+<IMG ALIGN="middle" SRC="../img/5.7.png" BORDER="0" ALT="">
+</P>
+<P>
 When some window in dock area is selected and is taking the input, arrow keys
 will navigate through its fields, instead of moving the mouse cursor over the
 canvas. To release input from the dock, press the Escape key.
 </P>
+
 <HR NOSHADE SIZE=1>
 
-<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
-<!-- cmdline: txt2tags -t html chap_00.t2t chap_01.t2t chap_02.t2t chap_03.t2t chap_04.t2t chap_05.t2t chap_06.t2t chap_07.t2t chap_08.t2t chap_09.t2t chap_A.t2t chap_B.t2t -->
+<!-- html code generated by txt2tags 2.6.1171 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t html -o ../docs/en_GB/chap_05.html chap_05.t2t -->
 </BODY></HTML>

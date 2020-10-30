@@ -36,11 +36,16 @@ switched on you will see the relevant corner arrow to indicate this new
 behaviour. This way, a new selection can be made with no dragging, just by
 clicking two opposite corners of an area.
 
+To drag only one side of the rectangle, not a corner, you hold Shift to keep the
+width unchanged, or Ctrl+Shift to keep the height.
+
 If you want to select the whole image press Ctrl-A. To clear this selection
 press Escape, the right mouse button, Ctrl+Shift-A or use the Selection menu. The
 selection box can be moved around pixel by pixel by using the arrow keys.
 Pressing Shift and the arrow keys causes the selection box to be moved a set
-number of pixels determined by the Preferences window.
+number of pixels determined by the Preferences window. Pressing Ctrl and the
+arrow keys moves one side of the box, changing its heiht or width pixel by pixel;
+with Ctrl+Shift, the side is moved a set number of pixels at once.
 
 
 ==4.2 Polygon Selections==[SEC2]
@@ -200,7 +205,10 @@ mtPaint uses its own internal clipboard which other programs cannot touch
 without permission. In the Edit menu, you can use the "Import clipboard from
 system" command to copy clipboard contents from some other program into
 mtPaint, or "Export clipboard to system" to let other programs paste the
-contents of mtPaint's clipboard.
+contents of mtPaint's clipboard. In case mtPaint cannot import the clipboard, an
+error message will be displayed; if you see no error but a paste area did not
+appear either, it means the imported clipboard is RGB while the current image is
+Indexed Palette, and cannot be pasted.
 
 
 ==4.7 Brush Pasting==[SEC7]
@@ -223,9 +231,15 @@ line to create a perfectly smooth gradient:
 
 [../img/4.8.png]
 
+What the options do, is take the leftmost and the rightmost colours of each row
+(horizontal ramp), or the topmost and the bottommost ones of every column
+(vertical ramp) inside the selection area, and fill the row/column with an RGB
+transition between the two. If "Use gamma correction when painting" setting is
+enabled, the transition will be linear RGB (sRGB).
+
 As well as canvas effects the ramp can also be combined with the palette copying
-featuring in section 3.3.7 to create perfectly spaced one or two dimensional
-palettes.
+featuring in section [3.3.7 chap_03.html#SEC37] to create perfectly spaced one or
+two dimensional palettes.
 
 
 ==4.9 Paste Swap==[SEC9]

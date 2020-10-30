@@ -153,7 +153,10 @@ tracing image's pixels under the canvas pixel you've clicked in; this is useful
 when the relative scale is larger than 1, like in the example above.
 
 You can also move the tracing image using Ctrl + arrow keys, or change its origin
-in the 'Tracing Image' window.
+in the 'Tracing Image' window. Note that in absence of tracing image,
+Ctrl + arrow keys move the current layer relative to other layers; when a tracing
+image is present, it takes precedence, while layer can be moved by the spins in
+the Layers window.
 
 Below you can see the final stages of turning a tracing image into a small
 tile:
@@ -200,6 +203,14 @@ the dock pane.
 The dock area can be toggled on or off by F12 key, or through the View menu.
 Its width can be changed by dragging the separator between main window and dock,
 and is remembered across sessions.
+
+The height of the layers window in the dock pane can be changed by dragging the
+separator under it up or down, and too is remembered across sessions. While the
+drag handle is near or totally invisible with some (many?) GTK+ themes, it
+**is** there nevertheless. See the red ellipse on the image below, an invisible
+handle is in there somewhere:
+
+[../img/5.7.png]
 
 When some window in dock area is selected and is taking the input, arrow keys
 will navigate through its fields, instead of moving the mouse cursor over the

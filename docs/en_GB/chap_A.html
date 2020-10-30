@@ -1,17 +1,19 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META NAME="generator" CONTENT="http://txt2tags.org">
 <TITLE>The mtPaint Handbook - Appendix A - Miscellaneous</TITLE></HEAD><BODY BGCOLOR="white" TEXT="black">
-<FONT SIZE="4">
-</FONT></CENTER>
+<CENTER>
+</CENTER>
+
 
 <H1>Appendix A - Miscellaneous</H1>
-<A NAME="SEC1"></A>
-<H2>A.1 Shortcuts</H2>
+
+<H2 ID="SEC1">A.1 Shortcuts</H2>
+
 <P>
-The complete list of all keyboard and mouse shortcuts in mtPaint is part of
-builtin help, called up by pressing F1 or by "Help-&gt;About" menu option; see the
+The complete list of all keyboard and mouse shortcuts in mtPaint is part of the
+built-in help, called up by pressing F1 or by the 'Help-&gt;About' menu option; see the
 "Keyboard shortcuts" and "Mouse shortcuts" sections.
 </P>
 <P>
@@ -19,15 +21,25 @@ Additionally, several of the menu options have their keyboard shortcuts labelled
 next to the option.
 </P>
 <P>
-Besides these, there is one optional shortcut that you may find useful: "Q" key
+Besides these, there is one optional shortcut that you may find useful: The "Q" key
 will quit the program, if enabled through the Interface section of the
 Preferences window.
 </P>
-<A NAME="SEC2"></A>
-<H2>A.2 Supported File Types</H2>
+<P>
+You can reconfigure the shortcuts, remove existing ones or add your own, using
+the 'Help-&gt;Keyboard shortcuts' menu option. In the left-hand list, choose an
+action; in the right-hand list, choose a shortcut and press the "Remove" button;
+or click the "New key..." button, press the key or combo, and press "Add". If the
+key is already in use for something else, you'll be offered a choice to remap it
+or leave as is.
+</P>
+
+<H2 ID="SEC2">A.2 Supported File Types</H2>
+
 <P>
 mtPaint can handle the following file formats:
 </P>
+
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TD><B>Format</B></TD>
@@ -43,7 +55,7 @@ mtPaint can handle the following file formats:
 </TR>
 <TR>
 <TD>GIF</TD>
-<TD>All single images. Animation frames via Gifsicle.</TD>
+<TD>All.</TD>
 <TD>Indexed palette including transparency index. Animations via Gifsicle.</TD>
 <TD>Indexed</TD>
 </TR>
@@ -56,8 +68,14 @@ mtPaint can handle the following file formats:
 <TR>
 <TD>JPEG2000</TD>
 <TD>All.</TD>
-<TD>24 bit RGB.</TD>
+<TD>24 bit RGB including alpha channel.</TD>
 <TD>RGB</TD>
+</TR>
+<TR>
+<TD>LBM</TD>
+<TD>All.</TD>
+<TD>Indexed palette. 24 bit RGB. Including alpha channel, mask, transparency index.</TD>
+<TD>Any</TD>
 </TR>
 <TR>
 <TD>LSS16 (*.lss)</TD>
@@ -66,10 +84,52 @@ mtPaint can handle the following file formats:
 <TD>Indexed with 16 colours or less</TD>
 </TR>
 <TR>
+<TD>PAM</TD>
+<TD>All.</TD>
+<TD>2 colour indexed palette. 24 bit RGB. Including alpha channel.</TD>
+<TD>Any</TD>
+</TR>
+<TR>
+<TD>PBM</TD>
+<TD>All.</TD>
+<TD>2 colour indexed palette.</TD>
+<TD>Indexed with 2 colours</TD>
+</TR>
+<TR>
+<TD>PCX</TD>
+<TD>All.</TD>
+<TD>Indexed palette. 24 bit RGB.</TD>
+<TD>Any</TD>
+</TR>
+<TR>
+<TD>PGM</TD>
+<TD>All.</TD>
+<TD>No.</TD>
+<TD>Indexed with greyscale palette</TD>
+</TR>
+<TR>
+<TD>PMM</TD>
+<TD>All.</TD>
+<TD>Indexed palette. 24 bit RGB. Including transparency index, alpha/selection/mask channels.</TD>
+<TD>Any</TD>
+</TR>
+<TR>
 <TD>PNG</TD>
 <TD>All.</TD>
 <TD>Indexed palette. 24 bit RGB. Including transparency index, alpha/selection/mask channels.</TD>
 <TD>Any</TD>
+</TR>
+<TR>
+<TD>PPM</TD>
+<TD>All.</TD>
+<TD>24 bit RGB.</TD>
+<TD>RGB</TD>
+</TR>
+<TR>
+<TD>SVG</TD>
+<TD>All.</TD>
+<TD>No.</TD>
+<TD>RGB</TD>
 </TR>
 <TR>
 <TD>TGA</TD>
@@ -84,6 +144,12 @@ mtPaint can handle the following file formats:
 <TD>Any</TD>
 </TR>
 <TR>
+<TD>WEBP</TD>
+<TD>All single images.</TD>
+<TD>24 bit RGB including alpha channel.</TD>
+<TD>RGB</TD>
+</TR>
+<TR>
 <TD>XBM</TD>
 <TD>All.</TD>
 <TD>2 colour indexed palette including hotspot.</TD>
@@ -91,20 +157,24 @@ mtPaint can handle the following file formats:
 </TR>
 <TR>
 <TD>XPM</TD>
-<TD>All with 4096 colours or less</TD>
-<TD>Indexed palette. 24 bit RGB images with up to 4096 colours. Including transparency index and hotspot</TD>
-<TD>Indexed, or RGB with 4096 colours or less</TD>
+<TD>All.</TD>
+<TD>Indexed palette. 24 bit RGB. Including transparency index and hotspot.</TD>
+<TD>Any</TD>
 </TR>
 </TABLE>
 
 <P>
-File types PNG, JPEG, JPEG2000, TIFF, and GIF are handled by external libraries:
-libpng, libjpeg, libopenjpeg, libtiff, and libungif/giflib. As a result of this,
-the efficiency of these file operations will depend on the version of these
-libraries installed on your system. For example, libtiff is unable to read
-certain old JPEG compressed TIFF files. For more information on these libraries,
-consult their respective websites:
+File types PNG, JPEG, JPEG2000, WEBP, TIFF, and GIF are handled by external
+libraries: libpng, libjpeg, libopenjpeg/libjasper, libwebp, libtiff, and giflib.
+As a result of this, the efficiency of these file operations will depend on the
+version, and build options, of these libraries installed on your system. For
+example, libtiff is unable to read certain old JPEG compressed TIFF files, and
+if built without certain libraries installed (liblzma for versions 4+, libzstd
+and libwebp for 4.0.10+) will be unable to read or save TIFF files compressed
+with these methods even if the libraries are installed on your system. For more
+information on these libraries, consult their respective websites:
 </P>
+
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TD>libpng</TD>
@@ -112,24 +182,40 @@ consult their respective websites:
 </TR>
 <TR>
 <TD>libjpeg</TD>
-<TD><A HREF="http://www.ijg.org/">http://www.ijg.org/</A></TD>
+<TD><A HREF="https://ijg.org/">https://ijg.org/</A></TD>
 </TR>
 <TR>
 <TD>libopenjpeg</TD>
 <TD><A HREF="http://www.openjpeg.org/">http://www.openjpeg.org/</A></TD>
 </TR>
 <TR>
-<TD>libtiff</TD>
-<TD><A HREF="http://www.libtiff.org/">http://www.libtiff.org/</A></TD>
+<TD>libjasper</TD>
+<TD><A HREF="https://www.ece.uvic.ca/~frodo/jasper/">https://www.ece.uvic.ca/~frodo/jasper/</A></TD>
 </TR>
 <TR>
-<TD>libungif / giflib</TD>
-<TD><A HREF="http://libungif.sourceforge.net/doc/">http://libungif.sourceforge.net/doc/</A></TD>
+<TD>libwebp</TD>
+<TD><A HREF="https://developers.google.com/speed/webp/">https://developers.google.com/speed/webp/</A></TD>
+</TR>
+<TR>
+<TD>libtiff</TD>
+<TD><A HREF="http://www.simplesystems.org/libtiff/">http://www.simplesystems.org/libtiff/</A></TD>
+</TR>
+<TR>
+<TD>giflib</TD>
+<TD><A HREF="http://giflib.sourceforge.net/">http://giflib.sourceforge.net/</A></TD>
+</TR>
+<TR>
+<TD>liblzma</TD>
+<TD><A HREF="https://tukaani.org/xz/">https://tukaani.org/xz/</A></TD>
+</TR>
+<TR>
+<TD>libzstd</TD>
+<TD><A HREF="https://facebook.github.io/zstd/">https://facebook.github.io/zstd/</A></TD>
 </TR>
 </TABLE>
 
-<A NAME="SEC21"></A>
-<H3>A.2.1 PNG Files</H3>
+<H3 ID="SEC21">A.2.1 PNG Files</H3>
+
 <P>
 When saving a PNG file you can use the preferences window or the save as dialog
 to set a compression value between 1 and 9 (0 = no compression). A value of 9
@@ -140,6 +226,7 @@ the frames of an animation. Here is a table comparing the time it takes me to
 save a 4096x4096 photo. As a comparison the basic BMP image format is also
 included:
 </P>
+
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TD>Format</TD>
@@ -178,8 +265,8 @@ included:
 </TR>
 </TABLE>
 
-<A NAME="SEC22"></A>
-<H3>A.2.2 JPEG 2000 Files</H3>
+<H3 ID="SEC22">A.2.2 JPEG 2000 Files</H3>
+
 <P>
 The JPEG file format is currently the most commonly used file format for storing
 digital photos. However, there also exists a more modern and higher quality
@@ -192,23 +279,25 @@ important factor.
 There are two main benefits of JPEG 2000 files (JP2) compared to a regular JPEG
 file:
 </P>
+
 <UL>
 <LI>For the same file size, JP2 files are normally of a higher quality.
 <LI>Photos can be stored losslessly so that no information is lost.
 </UL>
 
-<A NAME="SEC221"></A>
-<H4>A.2.2.1 Lossy Image Comparison - JPEG vs JP2</H4>
+<H4 ID="SEC221">A.2.2.1 Lossy Image Comparison - JPEG vs JP2</H4>
+
 <P>
 In this example I have used the photo image from section 6.8.3, and then saved
 it as a JPEG image at level 95, and compared this to a JPEG 2000 file saved at
-level 6. The JPEG file was 15,172 bytes in size, with the JP2 file being 14,438
-bytes.
+level 6 by libjasper. The JPEG file was 15,172 bytes in size, with the JP2 file
+being 14,500 bytes.
 </P>
 <P>
 Pixel by pixel analysis of the difference between the original image and the
 compressed files reveals the following errors:
 </P>
+
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TD></TD>
@@ -237,26 +326,26 @@ compressed files reveals the following errors:
 <TR>
 <TD>Average Error</TD>
 <TD>Red</TD>
-<TD>2.78</TD>
+<TD>2.70</TD>
 <TD>4.17</TD>
 </TR>
 <TR>
 <TD></TD>
 <TD>Green</TD>
-<TD>1.87</TD>
+<TD>1.86</TD>
 <TD>2.54</TD>
 </TR>
 <TR>
 <TD></TD>
 <TD>Blue</TD>
-<TD>2.62</TD>
+<TD>2.63</TD>
 <TD>5.15</TD>
 </TR>
 </TABLE>
 
 <P>
-This data was created by using the micmp program from libmtpixel, available from
-the mtPaint website.
+This data can be reproduced by using the <B>jcmp.sh</B> script from the
+<A HREF="../examples">examples</A> directory.
 </P>
 <P>
 In this example, the JP2 image on the left shows far closer similarity to the
@@ -280,13 +369,16 @@ image at the top.
 <P>
 <IMG ALIGN="middle" SRC="../img/A.2.2f.png" BORDER="0" ALT="">
 </P>
-<A NAME="SEC222"></A>
-<H4>A.2.2.2 Lossless Image Comparison - PNG vs JP2</H4>
+
+<H4 ID="SEC222">A.2.2.2 Lossless Image Comparison - PNG vs JP2 vs WebP</H4>
+
 <P>
 To store a photographic image losslessly it is possible to use a compressed PNG
-file. However, for most photos the JP2 format produces smaller files by about
-5-25%. As an example, here are the results for the photo image in section 6.8.3:
+file. However, for most photos the JP2 and/or WebP formats produce smaller files
+by about 5-25%. As an example, here are the results for the photo image in
+section 6.8.3:
 </P>
+
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TD>Format</TD>
@@ -301,18 +393,563 @@ file. However, for most photos the JP2 format produces smaller files by about
 <TD>56,297</TD>
 </TR>
 <TR>
-<TD>Lossless JP2 (level 1)</TD>
+<TD>Lossless JP2 (libjasper)</TD>
 <TD>51,731</TD>
+</TR>
+<TR>
+<TD>Lossless JP2 (libopenjpeg2)</TD>
+<TD>54,733</TD>
+</TR>
+<TR>
+<TD>Lossless WEBP (level 9)</TD>
+<TD>49,820</TD>
 </TR>
 </TABLE>
 
 <P>
 It should be noted that the PNG file format still produces smaller files than
 JP2 when compressing images with fewer colours, such as pixel art, so the
-benefits are strictly limited to photographic images.
+benefits are strictly limited to photographic images. WebP format however, does
+not share this flaw; even pixelart images compress notably better as WebP
+despite upconversion from indexed palette to RGB for the task.
 </P>
-<A NAME="SEC3"></A>
-<H2>A.3 Grabbing Screenshots</H2>
+
+<H3 ID="SEC23">A.2.3 TIFF Files</H3>
+
+<P>
+The TIFF format has enough of a variety of compression modes to warrant its own
+page in the Preferences window. With some of them only applicable to some of
+possible image types, and with different modes being optimal for different kinds
+of images, there are 3 separate default settings; one for RGB, another for
+indexed, and the third for monochrome (2 colour).
+</P>
+<P>
+The modes and their supported image types are:
+</P>
+
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TD>Compression</TD>
+<TD>2 colour</TD>
+<TD>Indexed</TD>
+<TD>RGB</TD>
+<TD>Alpha</TD>
+<TD>Uses predictor</TD>
+</TR>
+<TR>
+<TD>None</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>No</TD>
+</TR>
+<TR>
+<TD>Group 3</TD>
+<TD>Yes</TD>
+<TD>No</TD>
+<TD>No</TD>
+<TD>No</TD>
+<TD>No</TD>
+</TR>
+<TR>
+<TD>Group 4</TD>
+<TD>Yes</TD>
+<TD>No</TD>
+<TD>No</TD>
+<TD>No</TD>
+<TD>No</TD>
+</TR>
+<TR>
+<TD>PackBits</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>No</TD>
+</TR>
+<TR>
+<TD>LZW</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Indexed, RGB, Alpha</TD>
+</TR>
+<TR>
+<TD>ZIP</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Indexed, RGB, Alpha</TD>
+</TR>
+<TR>
+<TD>LZMA2</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Indexed, RGB, Alpha</TD>
+</TR>
+<TR>
+<TD>ZSTD</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>Indexed, RGB, Alpha</TD>
+</TR>
+<TR>
+<TD>JPEG</TD>
+<TD>No</TD>
+<TD>No</TD>
+<TD>Yes</TD>
+<TD>No</TD>
+<TD>No</TD>
+</TR>
+<TR>
+<TD>WebP</TD>
+<TD>No</TD>
+<TD>No</TD>
+<TD>Yes</TD>
+<TD>Yes</TD>
+<TD>No</TD>
+</TR>
+</TABLE>
+
+<P>
+None means uncompressed; a simple bitmap in the natural order (red, green, blue,
+alpha), with TIFF header and footer (TIFF directory).
+</P>
+<P>
+Group 3 (properly named "CCITT Group 3 compression") is a specialized compression
+algorithm designed for fax images. As such, it works only on 2 colour images, but
+on them it usually achieves a much better compression ratio than more general
+algorithms such as LZW, ZIP or LZMA2.
+</P>
+<P>
+Group 4 ("CCITT Group 4 compression") is an improved variant of the Group 3
+algorithm. Equally limited to 2 colour images, it produces even better
+compression.
+</P>
+<P>
+PackBits is a type of RLE compression, which is rather poor (comparable to PCX,
+or RLE-encoded TGA) but is applicable to any flavour of image and supported by
+any libtiff build. Can save some space if an image has long runs of the same
+colour (being generated or hand-drawn), otherwise is useless.
+</P>
+<P>
+LZW is the compression technique used in the GIF format. TIFF files written in
+this mode, still are a bit larger than equivalent GIFs.
+</P>
+<P>
+ZIP is the method used in the PNG format. In mtPaint, ZIP-compressed TIFFs and
+PNGs share the compression level setting (0-9, where 0 means uncompressed).
+Again, as with LZW, TIFF files using this compression are a bit larger than
+equivalent PNGs.
+</P>
+<P>
+LZMA2 is the compression algorithm introduced by the 7-Zip archiver, and on
+GNU/Linux systems currently represented by the <B>xz</B> compressor. Is generally
+more efficient than ZIP or LZW, but slower. Not supported by libtiff versions
+prior to 4.0.0.
+</P>
+<P>
+ZSTD (Zstandard) is a compression algorithm developed at Facebook, and
+represented by the <B>zstd</B> compressor. On efficiency it is somewhere in between
+ZIP and LZMA2 (nearer to ZIP for the most part), but supposedly faster than
+either. Not supported by libtiff versions prior to 4.0.10.
+</P>
+<P>
+JPEG is exactly the compression used in the file format of the same name. Again,
+in mtPaint JPEG-compressed TIFFs and JPEGs share the quality setting (0-100, the
+more the better - but larger too).
+</P>
+<P>
+WebP also should be exactly the compression used by its namesake file format,
+however it is not the case with regard to its lossless mode. Despite the
+setting, the actual file is lossy; for that reason mtPaint does not offer this
+defective "lossless" mode as a separate choice. Not supported by libtiff
+versions prior to 4.0.10.
+</P>
+<P>
+The "Enable predictor" setting in the Preferences window toggles the
+pre-compression horizontal differencing for the general compression algorithms
+(LZW, ZIP, LZMA2, ZSTD). The procedure is similar to the filtering used by the PNG
+format, but much more simplistic, with corresponding drawbacks; while the libpng
+encoder analyzes each row to select an appropriate filter (or no filter) for it,
+libtiff indifferently applies its differencing whether it is gainful or quite the
+opposite.
+</P>
+<P>
+For this reason, when choosing a compression mode that supports differencing, you
+must apply your own brain to work around the dumb library. In general, with
+anything but photographic or scanned images, differencing makes the compression
+even worse, and disabling it is the right choice. But conversely, with a photo or
+a scan, enabling the predictor can easily make the compressed image about 1.5
+times smaller.
+</P>
+
+<H4 ID="SEC231">A.2.3.1 Creating PDF Files</H4>
+
+<P>
+One major use for TIFF files is in creation of PDF documents, by feeding a
+multipage TIFF to <B>tiff2pdf</B>. While assembling any number of single-page TIFFs
+into a multipage one is easily done by <B>tiffcp</B>, the proper preparation of the
+parts is a much more delicate task.
+</P>
+<P>
+For certain types of TIFF pages, <B>tiff2pdf</B> will pass them through as is;
+anything else, it will try to recompress, with usually disastrous results.
+Therefore, all the prepared pages must be saved with those compression types that
+do not offend <B>tiff2pdf</B>'s fine sensibilities.
+</P>
+<P>
+For a 2 colour image, such as a scanned text converted to monochrome, use the
+"<U>Group 4</U>" compression mode.
+</P>
+<P>
+For a hand-drawn or generated image, use the "<U>ZIP</U>" compression mode (set to
+level 9 for best compression). Predictor must be <U>disabled</U> in the Preferences
+window, or the page will display wrong in the resulting PDF.
+</P>
+<P>
+For a photographic (or scanned) image, use the "<U>JPEG</U>" compression mode (with
+whatever quality setting results in suitable size/quality).
+</P>
+
+<H3 ID="SEC24">A.2.4 PMM Files</H3>
+
+<P>
+PMM format is designed as universal format for exchanging raster images.
+</P>
+<P>
+The idea is to allow mtPaint to be used with any of the niche and one-off image
+formats without adding support for the multitude of them in mtPaint code.
+Instead, a simple conversion utility could transform source image to PMM format,
+which mtPaint would load and edit, and afterward, PMM could be converted back to
+original format if desired.
+</P>
+<P>
+For this, the format need be able to store any kind of image without limitation,
+and at the same time, be easy to create, parse, and process outside mtPaint. So
+PMM was created. PMM can store indexed or RGB images, with transparency or
+without, with alpha, selection, and mask channels or with none of them, single,
+layered, or animated.
+</P>
+<P>
+Internally, PMM (Portable MultiMap) is a compatible extension to the PAM format
+(Portable Arbitrary Map) used by <A HREF="http://netpbm.sourceforge.net/">Netpbm toolkit</A>.
+And PMM file can be processed as it is, without any conversion, by any Netpbm
+tools designed for PAM format, and by other tools which support PAM. Afterward,
+resulting PAM file can be relabeled as PMM with a trivial '<B>cat</B>' command (or
+'<B>cp /b</B>', for those who use Windows).
+</P>
+
+<H4 ID="SEC241">A.2.4.1 PMM File Structure</H4>
+
+<P>
+The layout of PAM format is documented <A HREF="http://netpbm.sourceforge.net/doc/pam.html">HERE</A>.
+Nearly everything in that description applies to PMM as well.
+</P>
+<P>
+File consists of one or more images. Every image has a text header, followed by
+image data.
+</P>
+<P>
+Header is like this:
+</P>
+
+<PRE>
+  P7
+  #MTPAINT#
+  WIDTH 640
+  HEIGHT 480
+  DEPTH 6
+  MAXVAL 255
+  TUPLTYPE RGB_ALPHA SELECTION MASK TRANS=0
+  ENDHDR
+</PRE>
+
+<P>
+Image data are stored as simple bitmap, in natural order: top to bottom and left
+to right, RGB as red, green, blue. Utility channels, if any, are stored for each
+pixel after its image channel, in the order they appear in the <B>TUPLTYPE</B>
+field. PMM always uses 8-bit values (<B>MAXVAL</B> larger than 255 is considered an
+error), so there are <B>DEPTH</B> bytes per pixel.
+</P>
+<P>
+The comment "<B>#MTPAINT#</B>" following the "<B>P7</B>" line is the signature of PMM
+format, distinguishing it from regular PAM image.
+</P>
+<P>
+Where PMM extends PAM, is in interpreting <B>TUPLTYPE</B> beyond its first
+space-separated token. In PMM, there can follow utility channel names:
+"<B>SELECTION</B>" and/or "<B>MASK</B>"; "<B>ALPHA</B>", while also can stand alone, is
+normally tagged onto first token, for compatibility: "<B>RGB_ALPHA</B>" is known to
+PAM readers, while "<B>RGB ALPHA</B>" they will interpret as "RGB".
+</P>
+<P>
+After the channels, there can be variables, in the "name=value" form. mtPaint
+will skip the ones not known to it, other PMM readers should do the same.
+</P>
+<P>
+The variables defined at the moment are:
+</P>
+
+<TABLE CELLPADDING="4">
+<TR>
+<TD><B>TRANS</B></TD>
+<TD>- transparent colour index</TD>
+</TR>
+<TR>
+<TD><B>DELAY</B></TD>
+<TD>- animation delay, in 1/100ths of a second</TD>
+</TR>
+<TR>
+<TD><B>X</B></TD>
+<TD>- X offset</TD>
+</TR>
+<TR>
+<TD><B>Y</B></TD>
+<TD>- Y offset</TD>
+</TR>
+</TABLE>
+
+<P>
+First token of <B>TUPLTYPE</B> denotes the type of image. These types are recognized
+for PMM:
+</P>
+
+<TABLE CELLPADDING="4">
+<TR>
+<TD><B>RGB</B></TD>
+<TD>- regular RGB image</TD>
+</TR>
+<TR>
+<TD><B>RGB_ALPHA</B></TD>
+<TD>- the same with alpha (i.e. RGBA)</TD>
+</TR>
+<TR>
+<TD><B>INDEXED</B></TD>
+<TD>- regular indexed image</TD>
+</TR>
+<TR>
+<TD><B>INDEXED_ALPHA</B></TD>
+<TD>- the same with alpha</TD>
+</TR>
+<TR>
+<TD><B>PALETTE</B></TD>
+<TD>- palette for the following image; not an image in its own right</TD>
+</TR>
+<TR>
+<TD><B>TAGS</B></TD>
+<TD>- variables for the following image; itself not an image</TD>
+</TR>
+</TABLE>
+
+<P>
+Palette data are stored as a single line of RGB. A header for a 64-colour
+palette, with 8 bits per channel:
+</P>
+
+<PRE>
+  P7
+  #MTPAINT#
+  WIDTH 64
+  HEIGHT 1
+  DEPTH 3
+  MAXVAL 255
+  TUPLTYPE PALETTE
+  ENDHDR
+</PRE>
+
+<P>
+Tags carry one character (usually a newline) of "image data", as PAM image cannot
+have zero size. A tags block setting animation delay of 0.1 seconds:
+</P>
+
+<PRE>
+  P7
+  #MTPAINT#
+  WIDTH 1
+  HEIGHT 1
+  DEPTH 1
+  MAXVAL 255
+  TUPLTYPE TAGS DELAY=10
+  ENDHDR
+  
+</PRE>
+
+<H4 ID="SEC242">A.2.4.2 Manipulating PMM Images</H4>
+
+<P>
+With textual nature of PMM headers, simple bitmap structure of PMM data, and
+variety of tools provided by Netpbm toolkit, many useful things can be done
+entirely on the command line. Here are a few practical examples.
+</P>
+
+<DL>
+<DT>- <U>Converting a raw VGA palette to a PMM palette file</U></DT><DD>
+<P></P>
+File "pal.pal" is raw VGA palette: 256 colours, 6 bits per channel (768 bytes in
+all). First, create a PMM header for it, in file "pmmpal.txt":
+
+<PRE>
+  P7
+  #MTPAINT#
+  WIDTH 256
+  HEIGHT 1
+  DEPTH 3
+  MAXVAL 63
+  TUPLTYPE PALETTE
+  ENDHDR
+</PRE>
+
+Don't forget a newline after "ENDHDR". <I>(MAXVAL 63 denotes 6-bit values.)</I>
+<P></P>
+Then, make a PMM file merging the two: <B>cat pmmpal.txt pal.pal &gt; pal.pmm</B>
+<P></P>
+<DT>- <U>Converting a raw indexed image to a PMM file</U></DT><DD>
+<P></P>
+A 320x200 raw image is in file "img.raw" (64000 bytes). First, create a PMM
+header for it, in file "pmmraw.txt":
+
+<PRE>
+  P7
+  #MTPAINT#
+  WIDTH 320
+  HEIGHT 200
+  DEPTH 1
+  MAXVAL 255
+  TUPLTYPE INDEXED
+  ENDHDR
+</PRE>
+
+<P></P>
+Then, make a PMM file merging the two: <B>cat pmmraw.txt img.raw &gt; img.pmm</B>
+<P></P>
+To specify a palette for it, simply merge the PMM image file with a PMM palette
+(like one from the previous example): <B>cat pal.pmm img.pmm &gt; pimg.pmm</B>
+Or in a single step: <B>cat pal.pmm pmmraw.txt img.raw &gt; pimg.pmm</B>
+<P></P>
+<DT>- <U>Creating an animation out of PMM images</U></DT><DD>
+<P></P>
+Files "frame00.pmm" ... "frame99.pmm" are animation frames. Animation speed will
+be 4 frames per second (frame delay 25/100ths of a second). First, create a PMM
+tags block for the delay, in file "anim4fps.pmm":
+
+<PRE>
+  P7
+  #MTPAINT#
+  WIDTH 1
+  HEIGHT 1
+  DEPTH 1
+  MAXVAL 255
+  TUPLTYPE TAGS DELAY=25
+  ENDHDR
+  
+</PRE>
+
+Note the <B>two</B> newlines after ENDHDR.
+<P></P>
+Now, make a PMM file merging all of these: <B>cat anim4fps.pmm frame*.pmm &gt; anim.pmm</B>
+<P></P>
+If frame images are indexed, you can add a global palette, like this:
+<B>cat pal.pmm anim4fps.pmm frame*.pmm &gt; panim.pmm</B>
+<P></P>
+<DT>- <U>Relabeling a PAM file as PMM</U></DT><DD>
+<P></P>
+File "img.pam" is a regular PAM file. To use it as part of PMM file (a frame in
+animation, or a layer in layered image), it must itself be recognizable as PMM.
+First, create a PMM identifier, in file "pmmid.txt":
+
+<PRE>
+  P7
+  #MTPAINT#
+</PRE>
+
+Make sure there is <B>no</B> newline after final "#". Alternately, if the file has
+a TUPLTYPE which is not valid for PMM (or no TUPLTYPE at all), you can put a
+valid one after the identifier - like this:
+
+<PRE>
+  P7
+  #MTPAINT#
+  TUPLTYPE RGB
+  #
+</PRE>
+
+Again, there should be <B>no</B> newline after final "#".
+<P></P>
+Now, make a PMM file merging the two: <B>cat pmmid.txt img.pam &gt; img.pmm</B>
+<P></P>
+<DT>- <U>Separating an RGBA image into RGB and alpha</U></DT><DD>
+<P></P>
+File "rgba.pmm" is of type "RGB_ALPHA", and having been written by mtPaint, has
+a palette ("TUPLTYPE PALETTE") as first sub-image. Use Netpbm command "pampick"
+to extract the second sub-image (index 1), and "pamchannel" to extract channels.
+<P></P>
+First, extract RGB image channel:
+<B>cat rgba.pmm | pampick 1 | pamchannel -tupletype=RGB 0 1 2 &gt; rgb.pam</B>
+<P></P>
+Then, extract alpha (labelling it as grayscale):
+<B>cat rgba.pmm | pampick 1 | pamchannel -tupletype=GRAYSCALE 3 &gt; alpha.pam</B>
+<P></P>
+<DT>- <U>Making an RGBA image from separate RGB and alpha</U></DT><DD>
+<P></P>
+Files "rgb.pam" and "alpha.pam" (like ones made in previous example). Use Netpbm
+command "pamstack": <B>pamstack -tupletype=RGB_ALPHA rgb.pam alpha.pam &gt; rgba.pam</B>
+<P></P>
+<DT>- <U>Splitting a PMM image into constituent sub-images</U></DT><DD>
+<P></P>
+File "anim.pmm" is an animation. Use Netpbm command "pamsplit":
+<B>pamsplit anim.pmm part%d.pam -padname=3</B>
+<P></P>
+This will write PAM files "part000.pam", "part001.pam", etc. They will differ
+from the original sub-images (whatever mix of frames, palettes, and tags they
+are) in not having the "#MTPAINT#" marking in header, so to reuse them as PMMs
+they will need relabeling (as shown in example above).
+<P></P>
+<DT>- <U>Listing sub-images in a PMM image</U></DT><DD>
+<P></P>
+File "anim.pmm". Use Netpbm command "pamfile": <B>pamfile -allimages anim.pmm</B>
+</DL>
+
+<H3 ID="SEC25">A.2.5 LBM Files</H3>
+
+<P>
+The LBM format originates on Amiga; once ubiquitous, today it is firmly a "legacy"
+one.
+</P>
+<P>
+More precisely, the "LBM" file extension is associated with two varieties of
+<A HREF="https://en.wikipedia.org/wiki/Interchange_File_Format">IFF</A>-based Amiga image
+formats: ILBM (Interleaved Bitmap) and PBM (Planar Bitmap).
+</P>
+<P>
+The transparency capabilities of LBM richly deserve the distinction of
+worst-followed standard ever. Not one single file in the set of examples
+available to me, that has a transparency mask, is using it for transparency; with
+most, it is not even anything resembling that: either outright garbage, or at
+best, a pixel protection mask of some kind (or some offset remains of such). For
+this reason, the mapping of LBM mask plane can be configured in the Preferences
+window (on the "LBM" tab, naturally), and its default destination is mtPaint's
+mask channel.
+</P>
+<P>
+As to transparent colour, its matching the observable reality is only a tiny bit
+better; only a handful among hundreds of examples has one that is not obviously
+in error. Nothing in the files themselves is found to mark those few where
+colour transparency is the real deal, any different from the great majority where
+it is just an artifact of some broken program or other. To avoid many images
+looking broken due to erroneous transparent colour, the colour transparency for
+LBMs is disabled by default (again, go to "LBM" tab in Preferences to enable).
+</P>
+
+<H2 ID="SEC3">A.3 Grabbing Screenshots</H2>
+
 <P>
 mtPaint can be used to grab a screenshot with either 'File-&gt;New' or using
 'mtpaint -s' from the command line. If you are an IceWM user you can assign the
@@ -322,8 +959,9 @@ include:
 <P>
 key "Print" mtpaint -s
 </P>
-<A NAME="SEC4"></A>
-<H2>A.4 Preferences</H2>
+
+<H2 ID="SEC4">A.4 Preferences</H2>
+
 <P>
 The preferences you choose in the preferences window are stored in the file
 <B>.mtpaint</B>
@@ -333,8 +971,9 @@ On GNU/Linux systems, it is placed in the user's home directory,
 and on Windows systems, in the user's profile directory. On Windows 9x, the
 root directory of the current drive is used instead (usually, <B>C:\</B> ).
 </P>
-<A NAME="SEC41"></A>
-<H3>A.4.1 Touch Sensitive Tablets</H3>
+
+<H3 ID="SEC41">A.4.1 Touch Sensitive Tablets</H3>
+
 <P>
 It is possible to use the Preferences window to enable the use of touch
 sensitive tablets in mtPaint. Firstly, these devices need to be set up and
@@ -345,8 +984,9 @@ there, usually the one called "stylus". To test if this is working, use the
 tablet to apply pressure to the test area and you will see how much pressure
 has been registered.
 </P>
-<A NAME="SEC42"></A>
-<H3>A.4.2 Localized Translations</H3>
+
+<H3 ID="SEC42">A.4.2 Localized Translations</H3>
+
 <P>
 mtPaint can be compiled to use localized translations to help non English
 speaking people. If your copy of mtPaint has this feature, there will be a
@@ -360,8 +1000,9 @@ are not complete. If you wish to complete any of these translations, or create
 new translations then you are advised to visit the mtPaint website so you can
 contact the maintainer in order to get instructions on doing this.
 </P>
-<A NAME="SEC5"></A>
-<H2>A.5 Limitations</H2>
+
+<H2 ID="SEC5">A.5 Limitations</H2>
+
 <P>
 The maximum image geometry is 16384x16384. The minimum geometry is 1x1.
 </P>
@@ -381,6 +1022,11 @@ Some key combinations may not work under certain window managers, e.g.
 Shift+F1-F12 or Ctrl+Mouse button.
 </P>
 <P>
+Some buggy theme engines, like Oxygen-GTK2, can cause interface glitches or
+occasional crashes. The options are, either suffer through it, or disable the
+theme engine when running mtPaint, eg. using GTK2_RC_FILES shell variable.
+</P>
+<P>
 Using the status bar items 'Cursor X,Y' and 'Pixel [ I ] {RGB}' can cause high
 CPU usage on older hardware when moving the cursor vigorously.
 </P>
@@ -394,35 +1040,82 @@ GTK+ Text rotation does not work in Windows ME/95.
 Files with overly long pathnames cannot be displayed or opened in Windows
 (if longer than 259 bytes in system's ANSI codepage encoding).
 </P>
-<A NAME="SEC6"></A>
-<H2>A.6 Customizing mtPaint</H2>
+<P>
+Screenshots, and colour picker (pipette) in colours editor window, do not work
+on Mac OS X with Quartz GTK+ backend.
+</P>
+
+<H2 ID="SEC6">A.6 Customizing mtPaint</H2>
+
 <P>
 One of the benefits of free software is that you have access to the source code
 so you can customize the program to suit your needs.
 </P>
-<A NAME="SEC61"></A>
-<H3>A.6.1 Creating Patterns</H3>
+
+<H3 ID="SEC61">A.6.1 Creating Patterns</H3>
+
 <P>
-Each pattern is simply an 8x8 grid which you can edit in the source code file
-./src/icons1/xbm_patterns.xbm. To use these new patterns you need to save the
-new file somewhere safe and then refer to this file in the Paths section of the
+The patterns that mtPaint uses by default, reside in the source code file
+<B>./src/icons1/xbm_patterns.xbm</B>. Each pattern is simply an 8x8 grid where
+colour index 0 (white) represents colour A, and index 1 (black), colour B.
+</P>
+<P>
+If you want a different set of patterns, you can edit this file, or create your
+own, then save the new file somewhere safe and then refer to this file in the
+Paths section of the Preferences window.
+</P>
+<P>
+While the original patterns are arranged in a 10x10 grid, a replacement file can
+be anything from 2x2 to 16x16 patterns, 8x8 pixels each. The pattern chooser
+will arrange the patterns the same way as they are in the file. The file must be
+a monochrome image (2 colour indexed palette) and its width and height must
+divide by 8 (so that it contains a whole number of patterns).
+</P>
+<P>
+The 4x4 Bayer dither patterns are not stored in the patterns file, but instead
+generated from the "master pattern", a 4x4 matrix of nonrepeating numbers from 0
+to 15. It is simply the order in which the pixels in each 4x4 grid will be
+filled, from #0 for 1/16 of colour A and 15/16 of B, all the way to #15 for
+16/16 of A and none of B. The default order, the archetypal Bayer pattern, is
+represented by this line:
+</P>
+<P>
+<B>0,8,2,10 12,4,14,6 3,11,1,9 15,7,13,5</B>
+</P>
+<P>
+You can replace this master pattern by one your own; put a line describing it
+into the 'Bayer master pattern' entry box in the Preferences window. As an
+example, here is a line for the patterns used once upon a time by Deluxe Paint
+program; the archetypal pattern rotated 90 degrees counterclockwise and offset
+by 2 pixels on X and Y axes:
+</P>
+<P>
+<B>11,7,8,4 3,15,0,12 9,5,10,6 1,13,2,14</B>
+</P>
+<P>
+If the pattern you entered is invalid in some way (too short, too long, numbers
+repeat or out of range, characters that are not a digit, comma or space),
+mtPaint will clear the box and switch to default pattern after you close the
 Preferences window.
 </P>
-<A NAME="SEC62"></A>
-<H3>A.6.2 Creating Brushes</H3>
+
+<H3 ID="SEC62">A.6.2 Creating Brushes</H3>
+
 <P>
 If you have a particular preference for certain types of brushes, such as
 circles or sprays, you can manually edit the sources to cater for your needs.
 Edit memory.c and find mem_brush_list which defines all of the brushes. Each
 entry is defined by a tool type, tool size and flow.
 </P>
-<A NAME="SEC63"></A>
-<H3>A.6.3 Custom Icons</H3>
+
+<H3 ID="SEC63">A.6.3 Custom Icons</H3>
+
 <P>
 The directory ./src/icons1 contains icons and mouse pointers that are compiled
 into mtPaint. It is possible to create custom icon sets to suit personal taste.
 For example in order to create and build a new set try:
 </P>
+
 <UL>
 <LI>cd src
 <LI>cp -r icons1 icons-new
@@ -432,7 +1125,7 @@ For example in order to create and build a new set try:
 </UL>
 
 <P>
-Furthermore, icon set can be partially or wholly replaced at runtime through
+Furthermore, an icon set can be partially or wholly replaced at runtime through
 GTK+ theming mechanism. For every "xpm_whatever.xpm" icon in the icon set,
 there is a corresponding stock ID "mtpaint_whatever", and mtPaint will display
 whatever other icon you assigned to that stock ID in a resource file, if you
@@ -442,7 +1135,9 @@ window.
 <P>
 Example resource file:
 </P>
+
 <HR NOSHADE SIZE=1>
+
 <PRE>
   gtk-icon-sizes="gtk-small-toolbar=22,22"
   style "mtPaint" {
@@ -451,16 +1146,19 @@ Example resource file:
   }
   widget_class "*" style "mtPaint" 
 </PRE>
+
 <HR NOSHADE SIZE=1>
+
 <P>
 Full documentation on relevant GTK+ resource file syntax can be found
 <A HREF="http://library.gnome.org/devel/gtk/stable/gtk-Resource-Files.html">HERE</A>, under
 the "Styles" heading. 
 </P>
-<A NAME="SEC64"></A>
-<H3>A.6.4 Default Settings</H3>
+
+<H3 ID="SEC64">A.6.4 Default Settings</H3>
+
 <P>
-mtPaint allows to override the default configuration settings, using a global
+mtPaint allows you to override the default configuration settings, using a global
 preferences file. On GNU/Linux systems, the file <B>/etc/mtpaint/mtpaintrc</B> is
 used; on Windows systems, the file <B>mtpaintrc</B> need be located in
 <B>etc\mtpaint</B> subdirectory under the mtPaint installation directory (i.e.,
@@ -481,9 +1179,9 @@ or to disable the action entirely, than to confuse users by actions which do
 not work.
 </P>
 <P>
-Packager of a fully portable build can use <B>mtpaintrc</B> to relocate the user
-preferences file (<B>~/.mtpaint</B>) from its default place in current user's
-home directory to, say, somewhere under installation directory. To do so, add
+A packager of a fully portable build can use <B>mtpaintrc</B> to relocate the user
+preferences file (<B>~/.mtpaint</B>) from its default place in the current user's
+home directory to, say, somewhere under the installation directory. To do so, add
 a line "userINI = /path/filename" to <B>mtpaintrc</B>
 </P>
 <P>
@@ -491,10 +1189,11 @@ Paths starting with "~", like "~/.mtpaint", point into the home directory. On
 Windows, paths starting with a drive letter are absolute, and ones starting with
 a "\" or "/" are taken to be package-relative just as "/etc/mtpaint/mtpaintrc"
 itself is. No path at all (just "userINI =") means, user preferences will be
-saved to <B>mtpaintrc</B> file as new default configuration.
+saved to <B>mtpaintrc</B> file as the new default configuration.
 </P>
-<A NAME="SEC7"></A>
-<H2>A.7 File Actions</H2>
+
+<H2 ID="SEC7">A.7 File Actions</H2>
+
 <P>
 The 'Actions' section of the File menu can be used to send the current image
 file to another program, such as a web browser or email client. The
@@ -511,7 +1210,7 @@ When editing the command, the current image file is represented by using '%f'
 which is substituted when the command is run.
 </P>
 <P>
-Additionally, if that another program requires, or prefers, a specific image
+Additionally, if a program requires, or prefers, a specific image
 file format and/or pixel format, you can begin the command with "conversion
 statements": "&gt;" character followed by name of what you want and a space. For a
 file format, use either its file extension, or the name used for the format in
@@ -521,12 +1220,22 @@ otherwise, conversion will be done if the file format is RGB-only. Statements
 requesting impossible things, like saving an RGB image as an XBM file, will be
 ignored.
 </P>
-<A NAME="SEC71"></A>
-<H3>A.7.1 GNU/Linux Systems</H3>
+<P>
+The same way, you can add "&gt;%" to get more variables than just '%f'. An example
+is worth more than a wordy explanation:
+</P>
+<P>
+&gt;% echo Filename %N Selection X=%x Y=%y width %w height %h Cursor at %X,%Y
+Image width %W height %H, %B bytes/pixel, %A alpha, %S selection, %M mask,
+ %C colours in palette, %T transparent
+</P>
+
+<H3 ID="SEC71">A.7.1 GNU/Linux Systems</H3>
+
 <P>
 The GNU/Linux version of mtPaint comes pre-loaded with some examples of file
 actions. The command is executed using the shell command sh, so in the case of
-bash you can using more than one command by separating them with a semi colon.
+bash you can use more than one command by separating them with a semi colon.
 For example this command waits for 5 seconds and then grabs a screenshot:
 </P>
 <P>
@@ -536,8 +1245,9 @@ sleep 5; mtpaint -s &amp;
 Because commands are run through the shell you can use any shell facilities like
 pipes, redirection, and wildcards.
 </P>
-<A NAME="SEC72"></A>
-<H3>A.7.2 Windows Systems</H3>
+
+<H3 ID="SEC72">A.7.2 Windows Systems</H3>
+
 <P>
 To run a program using the Windows version of mtPaint you must place the whole
 path of the program in the command box. For example the following command starts
@@ -549,8 +1259,9 @@ C:\WINDOWS\system32\mspaint.exe %f
 <P>
 C:\Program Files\Accessories\MSPAINT.EXE %f
 </P>
-<A NAME="SEC8"></A>
-<H2>A.8 Image Loading and Saving</H2>
+
+<H2 ID="SEC8">A.8 Image Loading and Saving</H2>
+
 <P>
 These functions may seem obvious, but there is more to them than meets the eye.
 </P>
@@ -585,8 +1296,49 @@ you need to convert the image to an acceptable type and/or number of colours.
 See the "Image Type" column of the table in <A HREF="#SEC2">section A.2</A> for requirements
 of specific image formats.
 </P>
+
+<H2 ID="SEC9">A.9 Command Line Options</H2>
+
+<P>
+mtPaint understand the following command line options:
+</P>
+
+<UL>
+<LI><B>--version</B> - Display program version and exit.
+<LI><B>--help</B> - Display a short description of command line options and exit.
+<LI><B>-v</B> - Start in <A HREF="chap_05.html#SEC2">full view mode</A>: with everything but
+  the canvas hidden. Starting mtPaint through the filename <B>mtv</B> (or any name
+  that contains "mtv") will have the same effect.
+<LI><B>-s</B> - Grab a screenshot when starting up.
+<LI><B>-w</B> <I>'mask'</I> - Put files that match the mask into image file list, as if
+  passed on the command line (see section <A HREF="chap_05.html#SEC3">5.3</A>).
+<LI><B>-g</B> <I>num</I> - Internal use: pass GIF animation delay along with list of
+  exported frames.
+<LI><B>--flist</B> <I>filename</I> - Put file names listed in the file into image file
+  list. Names can be separated either by newlines, or by NUL character (ASCII 0)
+  as in eg. the output of '<B>find -print0</B>'.
+<LI><B>--sort</B> - Alphabetically sort image file list prior to displaying.
+<LI><B>--cmd</B> <I>commands...</I> - Start in scripting mode with no GUI, interpreting
+  command line from this point till end of options as script commands (see
+  chapter <A HREF="chap_10.html">10</A>).
+<LI><B>--</B> - End of options: interpret everything on the command line from this
+  point as file names.
+</UL>
+
+<P>
+You cannot intermix file names with options other than '<B>-w</B>', nor put any
+options at all (including '<B>-w</B>') after the '<B>--</B>'. This prevents
+mishandling file names of the stranger sort (like say a PNG file called "<B>-v</B>")
+as options.
+</P>
+<P>
+The '<B>--cmd</B>' option (scripting mode) cannot coexist with any other options;
+to be recognized it must be the first option, and everything after it is script
+commands, maybe followed by '<B>--</B>' and a filename or several.
+</P>
+
 <HR NOSHADE SIZE=1>
 
-<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
-<!-- cmdline: txt2tags -t html chap_00.t2t chap_01.t2t chap_02.t2t chap_03.t2t chap_04.t2t chap_05.t2t chap_06.t2t chap_07.t2t chap_08.t2t chap_09.t2t chap_A.t2t chap_B.t2t -->
+<!-- html code generated by txt2tags 2.6.1171 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t html -o ../docs/en_GB/chap_A.html chap_A.t2t -->
 </BODY></HTML>

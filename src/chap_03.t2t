@@ -178,13 +178,15 @@ mouse cursor is.
 
 If you wish to paste some text onto the canvas you need to press the 'T' key or
 click the text tool icon on the toolbar. You will then be presented with a form,
-where you need to type in the text you want to paste onto the canvas; for 
-multi-line text, pressing Ctrl+Enter inserts a newline character. You will
+where you need to type in the text you want to paste onto the canvas. You will
 be able to change the font type and its size.
 
-If you are using GTK+2 and editing an RGB image you also have the option of
-having antialiased text for smoother edges. GTK+2.6 users have the luxury of
-rotating the text to any angle.
+If you are using GTK+2 or GTK+3, you also have a number of extra options. You
+can enter multi-line text (press Ctrl+Enter to insert a newline character) and
+choose alignment for it: left/center/right. You can set target DPI different from
+one of your display. When editing an RGB image you also have the option of having
+antialiased text for smoother edges. With GTK+2.6 or later, you have the luxury
+of rotating the text to any angle, and setting letter spacing.
 
 Once you are happy with the text in the preview area you will then be able to
 drag the text around and position it where you want. You can then change the
@@ -208,8 +210,10 @@ host operating system.
 achieve an oblique effect.
 - Rendering is identical regardless of operating system, or GTK+ version.
 - Rendering and rotation quality is higher on some systems, such as Windows.
-- Text rotation is available to GTK+1 and GTK+2.0 - GTK+2.4 systems.
-- The GTK+1 version of mtPaint can now paste anti-aliased text.
+- Text rotation and letter spacing are available to GTK+1 and GTK+2.0 - GTK+2.4
+systems.
+- The GTK+1 version of mtPaint can now paste anti-aliased text, multiline text,
+text with specified target DPI.
 
 
 [../img/3.2.7.1.png]
@@ -245,6 +249,12 @@ the 'X' key.
 The palette colour chosen as colour A has a highlight on its left; the one
 chosen as colour B, on its right. If one colour is chosen as both A and B, it
 naturally has both highlights.
+
+Also you can see palette indices and RGB values of colours A and B on the
+Settings toolbar (see [3.5 #SEC5], the "Indexed image" example). The palette
+index and RGB values for the colour under cursor are displayed on the status
+bar as the 'Pixel [ I ] {RGB}' item.
+
 
 ===3.3.1 Editing the Palette===[SEC31]
 
@@ -502,6 +512,9 @@ tool paints over a pixel, like this example:
 
 [../img/3.5.2b.png]
 
+This colour mixing can either be done in a naive way, or with gamma correction if
+enabled in the Preferences (see [6.2.1 chap_06.html#SEC21]).
+
 
 ===3.5.3 Tint===[SEC53]
 
@@ -755,10 +768,47 @@ and a square with 3 holes) using each of the 3 distance functions:
 
 Blend mode works by blending certain parts of the source pixels with the canvas.
 In order to use this mode, you will need to configure it by pressing the right
-mouse button on the mode button. The full power of this mode can only be used on
-RGB images and (except a few blends that are RGB specific) on utility channels;
-drawing on an indexed image with anything other than a 'Normal' blend will do
-nothing, but you still can make use of the 'Source' part even so.
+mouse button on the mode button.
+
+[../img/3.5.7.png]
+
+The full power of this mode can only be used on RGB images and (except a few
+blends that are RGB specific) on utility channels; drawing on an indexed image
+with anything other than a 'Normal' blend will do nothing, but you still can
+make use of the 'Source' part even so.
+
+The sources work this way:
+
+- **Normal** is current colours A and B in the current pattern, or the current
+gradient.
+- **Image** is the canvas; effectively you blend it onto itself, same as if you
+copied those pixels to the clipboard and then pasted them back. This is how you
+can get yourself a "Soft Light brush" and the like.
+- **Layer index and name** is that layer; you get to use it as a tiled pattern.
+If you need to offset the pattern, move its layer relative to the one you draw
+on, or vice versa.
+
+
+The setting only affects drawing operations; for paste operations, the source is
+always the clipboard.
+
+As to the options you see between the blend selector and the source selector,
+'Reverse' changes the direction a blend transformation is applied; instead of
+the source pixel being blended onto the destination one to make the resulting
+value, the destination is blended onto the source instead. While not changing
+anything for symmetric blends like 'Difference', it changes everything for
+asymmetric ones such as 'Hue'; instead of canvas pixels getting a new hue while
+retaining their saturation and value, they get new saturation and value while
+retaining their hue.
+
+'Transform Colour' works only on RGB images (ignored on indexed), by applying
+a preset adjustment to the source colours. The "Settings" button opens a
+["Transform Colour" dialog chap_06.html#SEC5] for you to choose what the
+adjustment will be; if you enable 'Auto-Preview' there, you will be able to see
+how the adjustment would affect the canvas pixels. When you are drawing with the
+'Normal' source and the option working, the 'Image' source is used instead; that
+is, you get a "Transform Colour brush" without having to change the source by
+hand.
 
 In this example I have painted 2 ellipses onto a greyscale background. The
 ellipse on the left was painted using a pure red (RGB 255,0,0) with a 'Colour'

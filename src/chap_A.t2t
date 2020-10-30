@@ -35,7 +35,6 @@ mtPaint can handle the following file formats:
 | GIF           | All.     | Indexed palette including transparency index. Animations via Gifsicle. | Indexed |
 | JPEG          | All.     | 24 bit RGB. | RGB |
 | JPEG2000      | All.     | 24 bit RGB including alpha channel. | RGB |
-| WEBP          | All single images. | 24 bit RGB including alpha channel. | RGB |
 | LBM           | All.     | Indexed palette. 24 bit RGB. Including alpha channel, mask, transparency index. | Any |
 | LSS16 (*.lss) | All.     | Indexed palette (16 colours), 18 bits per colour (6 per RGB channel). | Indexed with 16 colours or less |
 | PAM           | All.     | 2 colour indexed palette. 24 bit RGB. Including alpha channel. | Any |
@@ -48,8 +47,9 @@ mtPaint can handle the following file formats:
 | SVG           | All.     | No. | RGB |
 | TGA           | All.     | Indexed palette. 24 bit RGB. Including alpha channel. | Any |
 | TIFF          | All.     | Indexed palette. 24 bit RGB. Including alpha channel. | Any |
+| WEBP          | All single images. | 24 bit RGB including alpha channel. | RGB |
 | XBM           | All.     | 2 colour indexed palette including hotspot. | Indexed with 2 colours |
-| XPM           | All with 4096 colours or less. | Indexed palette. 24 bit RGB images with up to 4096 colours. Including transparency index and hotspot | Indexed, or RGB with 4096 colours or less |
+| XPM           | All.     | Indexed palette. 24 bit RGB. Including transparency index and hotspot. | Any |
 
 File types PNG, JPEG, JPEG2000, WEBP, TIFF, and GIF are handled by external
 libraries: libpng, libjpeg, libopenjpeg/libjasper, libwebp, libtiff, and giflib.
@@ -598,6 +598,9 @@ GTK+ Text rotation does not work in Windows ME/95.
 
 Files with overly long pathnames cannot be displayed or opened in Windows
 (if longer than 259 bytes in system's ANSI codepage encoding).
+
+Screenshots, and colour picker (pipette) in colours editor window, do not work
+on Mac OS X with Quartz GTK+ backend.
 
 
 ==A.6 Customizing mtPaint==[SEC6]

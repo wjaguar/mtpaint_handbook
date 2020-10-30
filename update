@@ -32,7 +32,7 @@ htmlify ()
 
 for ZAD in *.sh
 do
-	. $ZAD > "../$DEST/${ZAD%.sh}.html"
+	. ./$ZAD > "../$DEST/${ZAD%.sh}.html"
 done
 
 cd "$PWD"

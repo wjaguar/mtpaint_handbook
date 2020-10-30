@@ -270,6 +270,9 @@ File actions and recent files are invisible to scripts.
 
 ===10.5.2 The Edit Menu===[SEC52]
 
+- **Undo** and **Redo**
+  - Script-only control:
+    - unnamed (spinbutton for repeat count)
 - **Paste** and **Paste To Centre**
   - When those are called from script, the paste automatically gets committed.
   - Script-only controls for where and how to commit:
@@ -443,7 +446,8 @@ is limited to 16 (the //MAX_NESTING// constant in mainwindow.c).
 - **Edit Colour A & B ...** and **Palette Editor ...**
   - The unnamed control is the colours list.
   - The colour chooser is named "Colour" and the values it accepts are what its
-    'Hex' field could parse: "**-p/edit =a col=#FF0000 =b col=black**".
+    'Hex' field could parse: "**-p/edit =a col=#FF0000 =b col=black**"; also
+    accepts lists, for picking a single pixel from canvas: **col=(5,5)**.
 - **Edit Colour A & B ...**
   - The "Posterize" name means the spinbutton, button is ignored in script mode;
     just set the bitdepth to make colour A or B to posterize, does not matter if
@@ -526,7 +530,8 @@ Animation ...' 'Set Key Frame ...', 'Remove All Key Frames ...'.
 - For RGB:
   - A script-only spinbutton for palette index, named "Value" (in lieu of palette
     grid).
-  - The colour chooser is named "Colour".
+  - The colour chooser is named "Colour", see section [10.5.6 #SEC56] for what it
+    accepts.
   - The span type option menu is named "Type".
 - For indexed and utility channels:
   - The channel value spinslider is named "Value".
@@ -542,7 +547,8 @@ This is how you set a custom gradient from script:
 
 - **Colour-Selective Mode:** (right click)
   - The unnamed control is the colours list.
-  - The colour chooser is named "Colour".
+  - The colour chooser is named "Colour", see section [10.5.6 #SEC56] for what it
+    accepts.
   - The radiobuttons pack ("Sphere", "Angle", "Cube") is named "Mode" and is
     flattened.
 - **Gradient Mode:** (right click)
@@ -574,6 +580,33 @@ See https://docs.gimp.org/en/gimp-filter-invert-value.html
 -pal/edit=a c=#FFFFFF
 -s/all -s/fill -ef/inv -e/copy -e/undo -e/undo
 -e/set blend: rev=0 -e/paste
+```
+
+: - __Aura__
+
+Considering colour B the background, draw a one pixel wide contour of colour A
+around everything on it.
+```
+# Copy image to clipboard
+-s/all -e/copy
+# Put colors A & B onto canvas
+-s/all=(0,0) -s/fill -p/swap -s/all=(1,0) -s/fill
+# Make colors A & B both be the original B, and mask clipboard with that
+-e/col b=(1,0) -s/mask
+# Restore color A and restore canvas to original
+-e/col a=(0,0) -e/undo=2
+# Reinit canvas from clipboard, now clipboard mask is the selection channel
+-f/new=clip
+# Create mask from selection
+-c/new=mask init=sel
+# Fill by color A outside mask, and delete the mask
+-s/all -s/fill -c/del mask
+# Dilate selection and copy the image; selection becomes clipboard mask
+-c/sel -ef/dilate -c/image -e/copy
+# Restore canvas again
+-e/undo=5
+# Paste over
+-e/paste -s/none
 ```
 
 
