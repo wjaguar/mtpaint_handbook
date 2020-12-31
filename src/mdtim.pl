@@ -24,8 +24,6 @@ $title = "mtPaint Development Timeline";
 $y_axis_title = "Kilobytes";
 @key = ( "Code", "Binary", "Tarball" );
 @balls = ( "img/ball-green.png", "img/ball-blue.png", "img/ball-yellow.png" );
-@key_co = ( 641 - 7, 199 + 12, 697 - 7, 251 + 12 );
-@main_co = ( 80, 50, 612, 424 );
 @vnumi = ( [ 38206,  31,  24,  15, "0.03" ], [ 38243, 144,  99,  55, "0.23" ],
 	   [ 38299, 334, 224, 107, "0.40" ], [ 38353, 389, 225, 123, "0.50" ],
 	   [ 38454, 452, 253, 179, "0.90" ], [ 38571, 589, 322, 200, "2.00" ],
@@ -41,10 +39,28 @@ $y_axis_title = "Kilobytes";
 	   [ 40149, 1241833 / 1024, 518300 / 1024, 497876 / 1024, "3.30" ],
 #/* 3.40 */	{40907, 1465096 / 1024, /* 582972 */ 585232 /*540080*/ / 1024, 600857 / 1024},
 	   [ 40907, 1465096 / 1024, 585232 / 1024, 600857 / 1024, "3.40" ],
+	   [ 44196, 1893850 / 1024, 807628 / 1024, 800155 / 1024, "3.50" ],
 );
 $VNODES = scalar @vnumi;
-@axis_x = ( 38169, 40908 ); @axis_y = ( 0, 1500 );
-$width = 713; $height = 455;
+@axis_x = ( 38169, 44197 ); @axis_y = ( 0, 2000 );
+$xsc = (612 - 80 + 1) / (40908 - 38206);
+$ysc = (424 - 50 + 1) / 1500;
+@ltrb = (80, 50, 100, 30);
+
+$xsc /= 1.5;
+
+$ww = int(($axis_x[1] - $axis_x[0] + 1) * $xsc + 0.5);
+$hh = int($axis_y[1] * $ysc + 0.5);
+#@main_co = ( 80, 50, 612, 424 );
+@main_co = ( $ltrb[0], $ltrb[1], $ltrb[0] + $ww - 1, $ltrb[1] + $hh - 1 );
+#$width = 713; $height = 455;
+$width = $ltrb[0] + $ww + $ltrb[2];
+$height = $ltrb[1] + $hh + $ltrb[3];
+#@key_co = ( 641 - 7, 199 + 12, 697 - 7, 251 + 12 );
+$keyh = 251 - 199 + 1;
+$dk = int(($hh - $keyh) / 2);
+@key_co = ( $main_co[2] + 29 - 7, $main_co[1] + $dk,
+	$main_co[2] + 85 - 7, $main_co[1] + $dk + $keyh - 1);
 
 $qq = "\\";
 sub list
@@ -87,7 +103,7 @@ $sc .= "-s/all " . list(@main_co) . "-s/outline ";
 $sc .= "-s/all " . list(@key_co) . "-s/outline ";
 #	mtpaint_rectangle( key_co[0], key_co[1], key_co[2], key_co[3], 1 );	// Key area border
 
-$sc .= "-e/freetype font='$font' style=regular size=14 back=-1 angle=0 -s/no ";
+$sc .= "-e/freetype font='$font' style=regular size=14 back=-1 angle=0 dpi=0 spac=0 -s/no ";
 #		mtpaint_text(txt, strlen(txt), font_filename, "ASCII", 14, 0, 0, MT_TEXT_SHRINK);
 for ($i = $axis_y[0]; $i <= $axis_y[1]; $i += 100)	# Y axis major gridlines
 {
