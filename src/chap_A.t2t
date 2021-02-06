@@ -51,8 +51,8 @@ mtPaint can handle the following file formats:
 | XBM           | All.     | 2 colour indexed palette including hotspot. | Indexed with 2 colours |
 | XPM           | All.     | Indexed palette. 24 bit RGB. Including transparency index and hotspot. | Any |
 
-File types PNG, JPEG, JPEG2000, WEBP, TIFF, and GIF are handled by external
-libraries: libpng, libjpeg, libopenjpeg/libjasper, libwebp, libtiff, and giflib.
+File types PNG, JPEG, JPEG2000, WEBP, and TIFF are handled by external
+libraries: libpng, libjpeg, libopenjpeg/libjasper, libwebp, and libtiff.
 As a result of this, the efficiency of these file operations will depend on the
 version, and build options, of these libraries installed on your system. For
 example, libtiff is unable to read certain old JPEG compressed TIFF files, and
@@ -67,7 +67,6 @@ information on these libraries, consult their respective websites:
 | libjasper         | https://www.ece.uvic.ca/~frodo/jasper/    |
 | libwebp           | https://developers.google.com/speed/webp/ |
 | libtiff           | http://www.simplesystems.org/libtiff/     |
-| giflib            | http://giflib.sourceforge.net/            |
 | liblzma           | https://tukaani.org/xz/                   |
 | libzstd           | https://facebook.github.io/zstd/          |
 

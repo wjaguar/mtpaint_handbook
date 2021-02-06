@@ -260,6 +260,7 @@ such invisible features for each location in the interface that has them.
     - "Explode Frames" (path entry for the destination directory)
     - "Frames" (option menu: "Raw frames", "Composited frames", "Composited frames
       with nonzero delay", as in the "Load Frames" dialog)
+    - "File Format" (option menu, as in the "Choose frames directory" window)
   - Script-only controls for loading scalable images (SVG):
     - "Width" (spinbutton)
     - "Height" (spinbutton)

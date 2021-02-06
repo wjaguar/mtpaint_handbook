@@ -10,9 +10,10 @@ The mtPaint Handbook
   - [2.1 Life Before mtPaint chap_02.html#SEC1]
   - [2.2 Project Genesis chap_02.html#SEC2]
   - [2.3 General Philosophy chap_02.html#SEC3]
-%    - 2.3.1 Intended purpose
-%    - 2.3.2 Design principles
-%    - 2.3.3 Interface structure
+    - [2.3.1 POV change chap_02.html#SEC31]
+%    - 2.3.2 Intended purpose
+%    - 2.3.3 Design principles
+%    - 2.3.4 Interface structure
   - [2.4 Development Timeline chap_02.html#SEC4]
     - [2.4.1 Version 0.23 - 0.37 chap_02.html#SEC41]
     - [2.4.2 Version 0.40 - 0.97 chap_02.html#SEC42]
@@ -155,7 +156,7 @@ The mtPaint Handbook
     - [9.3.1 Preparation of Ideas chap_09.html#SEC31]
     - [9.3.2 Project Initializing chap_09.html#SEC32]
     - [9.3.3 Setting up Positions and Cycle Data chap_09.html#SEC33]
-    - [9.3.4 Exporting Frames for GIF or MPEG Encoding chap_09.html#SEC34]
+    - [9.3.4 Exporting Frames for GIF, WebP, or MPEG Encoding chap_09.html#SEC34]
     - [9.3.5 Extra Notes chap_09.html#SEC35]
   - [9.4 Indexed Palette Animation Examples chap_09.html#SEC4]
   - [9.5 RGB Animation Examples chap_09.html#SEC5]
