@@ -47,7 +47,7 @@ mtPaint can handle the following file formats:
 | SVG           | All.     | No. | RGB |
 | TGA           | All.     | Indexed palette. 24 bit RGB. Including alpha channel. | Any |
 | TIFF          | All.     | Indexed palette. 24 bit RGB. Including alpha channel. | Any |
-| WEBP          | All single images. | 24 bit RGB including alpha channel. | RGB |
+| WEBP          | All.     | 24 bit RGB including alpha channel. | RGB |
 | XBM           | All.     | 2 colour indexed palette including hotspot. | Indexed with 2 colours |
 | XPM           | All.     | Indexed palette. 24 bit RGB. Including transparency index and hotspot. | Any |
 
@@ -687,8 +687,8 @@ widget_class "*" style "mtPaint"
 ```
 --------------------
 Full documentation on relevant GTK+ resource file syntax can be found
-[HERE http://library.gnome.org/devel/gtk/stable/gtk-Resource-Files.html], under
-the "Styles" heading. 
+[HERE https://web.archive.org/web/20141228182027/https://developer.gnome.org/gtk2/2.24/gtk2-Resource-Files.html],
+under the "Styles" heading. 
 
 
 ===A.6.4 Default Settings===[SEC64]
@@ -721,6 +721,35 @@ Windows, paths starting with a drive letter are absolute, and ones starting with
 a "\" or "/" are taken to be package-relative just as "/etc/mtpaint/mtpaintrc"
 itself is. No path at all (just "userINI =") means, user preferences will be
 saved to **mtpaintrc** file as the new default configuration.
+
+Another way to use a nondefault user preferences file, is via the environment
+variable MTPAINT_INI , like this:
+
+**export MTPAINT_INI=~/.config/mtpaint.ini**
+
+Or you can do it for a single mtPaint session, like this:
+
+**MTPAINT_INI=~/.config/mtpaint_as_viewer.ini mtpaint file_to_view.png**
+
+This latter way allows you to use different default configurations for specific
+needs, without them conflicting with each other.
+
+For those settings not preserved across sessions, such as flow, or brush size and
+type, or initial tool, you can use the MTPAINT_INIT variable to run a script that
+will change them when initializing mtPaint GUI.
+
+For example, this script will set flow to 12, and brush to 3-pixel circle, for
+drawing arrows when annotating screenshots and such:
+
+**export MTPAINT_INIT="-e/set flow=12 -e/brush type=circle size=3"**
+
+This will launch mtPaint, grab a screenshot, and scale it down to 80%:
+
+**MTPAINT_INIT="-f/new=screen -i/scale w=x0.8" mtpaint**
+
+The MTPAINT_INIT script is not run when mtPaint is run in commandline mode (with
+**--cmd**), as in that case you can do whatever initializations you need at the
+beginning of the commandline script itself.
 
 
 ==A.7 File Actions==[SEC7]

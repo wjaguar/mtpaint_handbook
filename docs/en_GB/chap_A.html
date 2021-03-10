@@ -145,7 +145,7 @@ mtPaint can handle the following file formats:
 </TR>
 <TR>
 <TD>WEBP</TD>
-<TD>All single images.</TD>
+<TD>All.</TD>
 <TD>24 bit RGB including alpha channel.</TD>
 <TD>RGB</TD>
 </TR>
@@ -1147,8 +1147,8 @@ Example resource file:
 
 <P>
 Full documentation on relevant GTK+ resource file syntax can be found
-<A HREF="http://library.gnome.org/devel/gtk/stable/gtk-Resource-Files.html">HERE</A>, under
-the "Styles" heading. 
+<A HREF="https://web.archive.org/web/20141228182027/https://developer.gnome.org/gtk2/2.24/gtk2-Resource-Files.html">HERE</A>,
+under the "Styles" heading. 
 </P>
 
 <H3 ID="SEC64">A.6.4 Default Settings</H3>
@@ -1186,6 +1186,46 @@ Windows, paths starting with a drive letter are absolute, and ones starting with
 a "\" or "/" are taken to be package-relative just as "/etc/mtpaint/mtpaintrc"
 itself is. No path at all (just "userINI =") means, user preferences will be
 saved to <B>mtpaintrc</B> file as the new default configuration.
+</P>
+<P>
+Another way to use a nondefault user preferences file, is via the environment
+variable MTPAINT_INI , like this:
+</P>
+<P>
+<B>export MTPAINT_INI=~/.config/mtpaint.ini</B>
+</P>
+<P>
+Or you can do it for a single mtPaint session, like this:
+</P>
+<P>
+<B>MTPAINT_INI=~/.config/mtpaint_as_viewer.ini mtpaint file_to_view.png</B>
+</P>
+<P>
+This latter way allows you to use different default configurations for specific
+needs, without them conflicting with each other.
+</P>
+<P>
+For those settings not preserved across sessions, such as flow, or brush size and
+type, or initial tool, you can use the MTPAINT_INIT variable to run a script that
+will change them when initializing mtPaint GUI.
+</P>
+<P>
+For example, this script will set flow to 12, and brush to 3-pixel circle, for
+drawing arrows when annotating screenshots and such:
+</P>
+<P>
+<B>export MTPAINT_INIT="-e/set flow=12 -e/brush type=circle size=3"</B>
+</P>
+<P>
+This will launch mtPaint, grab a screenshot, and scale it down to 80%:
+</P>
+<P>
+<B>MTPAINT_INIT="-f/new=screen -i/scale w=x0.8" mtpaint</B>
+</P>
+<P>
+The MTPAINT_INIT script is not run when mtPaint is run in commandline mode (with
+<B>--cmd</B>), as in that case you can do whatever initializations you need at the
+beginning of the commandline script itself.
 </P>
 
 <H2 ID="SEC7">A.7 File Actions</H2>
